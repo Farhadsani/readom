@@ -1,0 +1,6 @@
+
+@interface CWDLeftAlignedCollectionViewFlowLayout : UICollectionViewFlowLayout {
+    
+}
+
+@end

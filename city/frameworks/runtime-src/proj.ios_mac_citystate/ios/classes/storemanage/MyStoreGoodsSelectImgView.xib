@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="MyStoreGoodsSelectImgView">
+            <rect key="frame" x="0.0" y="0.0" width="366" height="98"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cmp-rc-Omg">
+                    <rect key="frame" x="0.0" y="10" width="366" height="88"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ec0-YV-FKu">
+                            <rect key="frame" x="10" y="10" width="68" height="68"/>
+                            <animations/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="68" id="DfE-hU-yOF"/>
+                                <constraint firstAttribute="width" constant="68" id="j6b-kS-tRs"/>
+                            </constraints>
+                            <state key="normal" image="addPicture.png">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="addBtnDidOnClik" destination="iN0-l3-epB" eventType="touchUpInside" id="ysC-Y7-Or9"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="loC-r5-ncj">
+                            <rect key="frame" x="93" y="10" width="90" height="68"/>
+                            <animations/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="90" id="YOm-DY-5eZ"/>
+                            </constraints>
+                            <state key="normal" title="添加图片">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="addBtnDidOnClik" destination="iN0-l3-epB" eventType="touchUpInside" id="TdL-do-6a5"/>
+                            </connections>
+                        </button>
+                        <view alpha="0.59999999999999964" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Me8-mk-UK8">
+                            <rect key="frame" x="0.0" y="0.0" width="366" height="1"/>
+                            <animations/>
+                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="0.59999999999999998" id="MJn-nr-BzZ"/>
+                            </constraints>
+                        </view>
+                        <view alpha="0.59999999999999964" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t1B-Rk-VTy">
+                            <rect key="frame" x="16" y="87" width="350" height="1"/>
+                            <animations/>
+                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="0.59999999999999998" id="CH9-UV-IvT"/>
+                            </constraints>
+                        </view>
+                        <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shanchu.png" translatesAutoresizingMaskIntoConstraints="NO" id="uBc-Jd-gIb">
+                            <rect key="frame" x="63" y="5" width="20" height="20"/>
+                            <animations/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="20" id="4mD-mb-qAh"/>
+                                <constraint firstAttribute="height" constant="20" id="FYJ-3T-Ywy"/>
+                            </constraints>
+                        </imageView>
+                    </subviews>
+                    <animations/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="loC-r5-ncj" firstAttribute="top" secondItem="ec0-YV-FKu" secondAttribute="top" id="5tp-ey-ttr"/>
+                        <constraint firstItem="ec0-YV-FKu" firstAttribute="top" secondItem="cmp-rc-Omg" secondAttribute="top" constant="10" id="8XY-PR-yT0"/>
+                        <constraint firstItem="loC-r5-ncj" firstAttribute="leading" secondItem="ec0-YV-FKu" secondAttribute="trailing" constant="15" id="DCR-7b-MDq"/>
+                        <constraint firstAttribute="bottom" secondItem="t1B-Rk-VTy" secondAttribute="bottom" id="GN0-qa-E3I"/>
+                        <constraint firstItem="uBc-Jd-gIb" firstAttribute="top" secondItem="ec0-YV-FKu" secondAttribute="top" constant="-5" id="Gwc-7c-0w9"/>
+                        <constraint firstItem="ec0-YV-FKu" firstAttribute="leading" secondItem="cmp-rc-Omg" secondAttribute="leading" constant="10" id="Yq8-lv-9sO"/>
+                        <constraint firstItem="loC-r5-ncj" firstAttribute="bottom" secondItem="ec0-YV-FKu" secondAttribute="bottom" id="ffP-Fl-Bmr"/>
+                        <constraint firstAttribute="trailing" secondItem="t1B-Rk-VTy" secondAttribute="trailing" id="g76-nN-Ggw"/>
+                        <constraint firstItem="Me8-mk-UK8" firstAttribute="leading" secondItem="cmp-rc-Omg" secondAttribute="leading" id="j5x-YT-BLZ"/>
+                        <constraint firstItem="Me8-mk-UK8" firstAttribute="top" secondItem="cmp-rc-Omg" secondAttribute="top" id="mYX-Yn-06z"/>
+                        <constraint firstAttribute="trailing" secondItem="Me8-mk-UK8" secondAttribute="trailing" id="sH3-iQ-qz1"/>
+                        <constraint firstItem="uBc-Jd-gIb" firstAttribute="trailing" secondItem="ec0-YV-FKu" secondAttribute="trailing" constant="5" id="vF0-eL-TQQ"/>
+                        <constraint firstItem="t1B-Rk-VTy" firstAttribute="leading" secondItem="cmp-rc-Omg" secondAttribute="leading" constant="16" id="zzC-VM-1gb"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <animations/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="cmp-rc-Omg" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="4Mi-Bg-zNJ"/>
+                <constraint firstAttribute="trailing" secondItem="cmp-rc-Omg" secondAttribute="trailing" id="KeN-1N-xAE"/>
+                <constraint firstAttribute="bottom" secondItem="cmp-rc-Omg" secondAttribute="bottom" id="M4f-U0-dJd"/>
+                <constraint firstItem="cmp-rc-Omg" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="SkU-OS-9bP"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="addBtn" destination="loC-r5-ncj" id="87B-ug-50U"/>
+                <outlet property="deleteIcon" destination="uBc-Jd-gIb" id="xAy-Lt-4w5"/>
+                <outlet property="iconBtn" destination="ec0-YV-FKu" id="dXZ-Ba-Pa4"/>
+            </connections>
+            <point key="canvasLocation" x="508" y="-144"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="addPicture.png" width="68" height="68"/>
+        <image name="shanchu.png" width="13" height="13"/>
+    </resources>
+</document>

@@ -1,0 +1,9 @@
+eclipse.preferences.version=1
+environment/project/cdt.managedbuild.config.gnu.macosx.exe.debug.784034987/COCOS2DX_ROOT/delimiter=\:
+environment/project/cdt.managedbuild.config.gnu.macosx.exe.debug.784034987/COCOS2DX_ROOT/operation=append
+environment/project/cdt.managedbuild.config.gnu.macosx.exe.debug.784034987/COCOS2DX_ROOT/value=${COCOS2DX_ROOT}
+environment/project/cdt.managedbuild.config.gnu.macosx.exe.debug.784034987/NDK_MODULE_PATH/delimiter=\:
+environment/project/cdt.managedbuild.config.gnu.macosx.exe.debug.784034987/NDK_MODULE_PATH/operation=append
+environment/project/cdt.managedbuild.config.gnu.macosx.exe.debug.784034987/NDK_MODULE_PATH/value=${NDK_MOUDLE_PATH}
+environment/project/cdt.managedbuild.config.gnu.macosx.exe.debug.784034987/append=true
+environment/project/cdt.managedbuild.config.gnu.macosx.exe.debug.784034987/appendContributed=true

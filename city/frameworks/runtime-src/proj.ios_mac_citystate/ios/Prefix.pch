@@ -1,0 +1,234 @@
+//
+//  Prefix header
+//
+//  The contents of this file are implicitly included at the beginning of every source file.
+//
+
+#import <Availability.h>
+
+#ifdef __OBJC__
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+//
+#import "GlobalConstants.h"
+#import "GlobalFunction.h"
+#import <QuartzCore/QuartzCore.h>
+
+#import "Debug.h"
+
+#import "JSONKit.h"
+
+#import "FileManager.h"
+
+#import "ExceptionEngine.h"
+
+#import "NSString+Addtion.h"
+#import "NSString+SubString.h"
+#import "NSDate+Category.h"
+#import "NSString+MD5HMAC.h"
+#import "NSString+Extension.h"
+
+#import "Device.h"
+
+#import "UIView+Addtion.h"
+#import "UIView+Category.h"
+#import "UIImage+Addtion.h"
+#import "UIColor+Category.h"
+#import "UIViewController+Addtion.h"
+
+#import "NSMutableArrayAdditions.h"
+#import "NSMutableDictionaryAdditions.h"
+
+#import "ReqEngine.h"
+#import "ReqHandle.h"
+#import "Reqest.h"
+
+#import "UserManager.h"
+#import "Cache.h"
+
+#import "BaseViewController.h"
+
+#import "MessageView.h"
+#import "CocosManager.h"
+
+#import "MJExtension.h"//数据模型扩展库
+
+#endif
+
+#ifndef DEBUG
+#    define NSLog(...)
+#endif
+
+//--Logger--
+#define LOG_LEVEL_DEBUG    0
+#define LOG_LEVEL_INFO     1
+#define LOG_LEVEL_WARNING  2
+#define LOG_LEVEL_ERROR    3
+
+#ifndef LOGLEVEL
+#define LOGLEVEL LOG_LEVEL_DEBUG
+#endif
+
+#define LogTag @"SHITOUREN"
+
+#ifdef DEBUG
+#define DoLog(level, tag, ...) \
+if (level >= LOGLEVEL) { \
+LogMessageF(__FILE__,__LINE__,__FUNCTION__, tag, level,__VA_ARGS__); \
+}
+#else
+#define DoLog(level, tag, ...)  ((void)0)
+#endif
+
+#define LogError(...) DoLog(LOG_LEVEL_ERROR, LogTag, __VA_ARGS__)
+#define LogWarning(...) DoLog(LOG_LEVEL_WARNING, LogTag, __VA_ARGS__)
+#define LogInfo(...) DoLog(LOG_LEVEL_INFO, LogTag, __VA_ARGS__)
+#define LogDebug(...) DoLog(LOG_LEVEL_DEBUG, LogTag, __VA_ARGS__)
+
+#define Log(_format, ...) DoLog(LOG_LEVEL_INFO, LogTag, @"line:%4d\t\t>>\t%@\n%42s",__LINE__,[NSString stringWithFormat:(_format), ##__VA_ARGS__],__FUNCTION__)
+
+
+#define SYNTHESIZE_SINGLETON_FOR_CLASS_HEADER(__CLASSNAME__)    \
+\
++ (__CLASSNAME__*) sharedInstance;
+
+#define SYNTHESIZE_SINGLETON_FOR_CLASS(classname)   \
+\
++ (classname *)sharedInstance\
+{\
+static classname *shared##classname = nil;\
+static dispatch_once_t onceToken;\
+dispatch_once(&onceToken, ^{\
+shared##classname = [[classname alloc] init];\
+});\
+return shared##classname;\
+}
+
+//--颜色转换--
+#define UIColorFromRGB(rgbValue,alphaValue) [UIColor \
+colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 \
+green:((float)((rgbValue & 0xFF00) >> 8))/255.0 \
+blue:((float)(rgbValue & 0xFF))/255.0 alpha:alphaValue]
+
+//--订阅和取消订阅--
+#define AddObserver(func,topic) [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(func) name:topic object:nil]
+
+#define DelObserver(topic) [[NSNotificationCenter defaultCenter] removeObserver:self name:topic object:nil];
+
+#define SendNotify(topic,obj) [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:topic object:obj]];
+
+//--基本URL--
+#define SHITOUREN_HOST k_EXTERN_ENDPOINT_SERVER_URL
+
+#define SHITOUREN_USER_API [NSString stringWithFormat:@"%@/api/user",SHITOUREN_HOST]
+#define SHITOUREN_API_USER_SIGNIN [NSString stringWithFormat:@"%@/signin",SHITOUREN_USER_API]
+#define SHITOUREN_API_USER_VALIDATE [NSString stringWithFormat:@"%@/validate",SHITOUREN_USER_API]
+#define SHITOUREN_API_USER_SIGNOUT [NSString stringWithFormat:@"%@/signout",SHITOUREN_USER_API]
+#define SHITOUREN_API_USER_SENDSMS [NSString stringWithFormat:@"%@/sendsms",SHITOUREN_USER_API]
+#define SHITOUREN_API_USER_SIGNUP [NSString stringWithFormat:@"%@/signup",SHITOUREN_USER_API]
+#define SHITOUREN_API_USER_FINDPWD [NSString stringWithFormat:@"%@/findpwd",SHITOUREN_USER_API]
+#define SHITOUREN_API_USER_RESETPWD [NSString stringWithFormat:@"%@/resetpwd",SHITOUREN_USER_API]
+#define SHITOUREN_API_USER_PHONEEDIT [NSString stringWithFormat:@"%@/phoneedit",SHITOUREN_USER_API]
+#define SHITOUREN_API_USER_PWDEDIT [NSString stringWithFormat:@"%@/pwdedit",SHITOUREN_USER_API]
+#define SHITOUREN_API_USER_DETAIL [NSString stringWithFormat:@"%@/getuser",SHITOUREN_USER_API]
+#define SHITOUREN_API_USER_UPDATEDETAIL [NSString stringWithFormat:@"%@/updatedetail",SHITOUREN_USER_API]
+#define SHITOUREN_API_USER_UPDATEBRIEF [NSString stringWithFormat:@"%@/updatebrief",SHITOUREN_USER_API]
+#define SHITOUREN_API_USER_GETFOLLOW [NSString stringWithFormat:@"%@/getfollow",SHITOUREN_USER_API]
+#define SHITOUREN_API_USER_GETFANS [NSString stringWithFormat:@"%@/getfans",SHITOUREN_USER_API]
+#define SHITOUREN_API_USER_FOLLOW [NSString stringWithFormat:@"%@/follow",SHITOUREN_USER_API]
+#define SHITOUREN_API_USER_UNFOLLOW [NSString stringWithFormat:@"%@/unfollow",SHITOUREN_USER_API]
+#define SHITOUREN_API_USER_GETBUDDYCOUNT [NSString stringWithFormat:@"%@/getbuddycount",SHITOUREN_USER_API]
+#define SHITOUREN_API_USER_SQUARE [NSString stringWithFormat:@"%@/square",SHITOUREN_USER_API]
+#define SHITOUREN_API_USER_FEED_LIST [NSString stringWithFormat:@"%@/feed/list",SHITOUREN_USER_API]
+#define SHITOUREN_API_USER_FEED_HIDESET [NSString stringWithFormat:@"%@/feed/hide/set",SHITOUREN_USER_API]
+#define SHITOUREN_API_USER_FEED_BUDDY [NSString stringWithFormat:@"%@/feed/buddy",SHITOUREN_USER_API]
+
+
+#define SHITOUREN_TOPIC_API [NSString stringWithFormat:@"%@/api/topic",SHITOUREN_HOST]
+#define SHITOUREN_API_TOPIC_LIST [NSString stringWithFormat:@"%@/list",SHITOUREN_TOPIC_API]
+#define SHITOUREN_API_TOPIC_LIKE_POST [NSString stringWithFormat:@"%@/like/post",SHITOUREN_TOPIC_API]
+#define SHITOUREN_API_TOPIC_LIKE_DEL [NSString stringWithFormat:@"%@/like/del",SHITOUREN_TOPIC_API]
+
+#define SHITOUREN_NOTE_API [NSString stringWithFormat:@"%@/api/note",SHITOUREN_HOST]
+#define SHITOUREN_API_NOTE_LIST [NSString stringWithFormat:@"%@/list",SHITOUREN_NOTE_API]
+#define SHITOUREN_API_NOTE_POST [NSString stringWithFormat:@"%@/post",SHITOUREN_NOTE_API]
+#define SHITOUREN_API_NOTE_LIKE_POST [NSString stringWithFormat:@"%@/like/post",SHITOUREN_NOTE_API]
+#define SHITOUREN_API_NOTE_LIKE_DEL [NSString stringWithFormat:@"%@/like/del",SHITOUREN_NOTE_API]
+
+#define SHITOUREN_MESSAGE_API [NSString stringWithFormat:@"%@/api/message",SHITOUREN_HOST]
+#define SHITOUREN_API_MESSAGE_SYSTEM [NSString stringWithFormat:@"%@/system",SHITOUREN_MESSAGE_API]
+#define SHITOUREN_API_MESSAGE_SYSTEM_DEL [NSString stringWithFormat:@"%@/system/del",SHITOUREN_MESSAGE_API]
+#define SHITOUREN_API_MESSAGE_USER [NSString stringWithFormat:@"%@/user",SHITOUREN_MESSAGE_API]
+#define SHITOUREN_API_MESSAGE_USER_ADD [NSString stringWithFormat:@"%@/user/add",SHITOUREN_MESSAGE_API]
+#define SHITOUREN_API_MESSAGE_USER_DEL [NSString stringWithFormat:@"%@/user/del",SHITOUREN_MESSAGE_API]
+#define SHITOUREN_API_MESSAGE_PET [NSString stringWithFormat:@"%@/pet",SHITOUREN_MESSAGE_API]
+#define SHITOUREN_API_MESSAGE_PET_ADD [NSString stringWithFormat:@"%@/pet/add",SHITOUREN_MESSAGE_API]
+#define SHITOUREN_API_MESSAGE_PET_DEL [NSString stringWithFormat:@"%@/pet/del",SHITOUREN_MESSAGE_API]
+#define SHITOUREN_API_MESSAGE_LIKE [NSString stringWithFormat:@"%@/note/like",SHITOUREN_MESSAGE_API]
+
+#define SHITOUREN_API_SHOUT [NSString stringWithFormat:@"%@/api/shout/update",SHITOUREN_HOST]
+#define SHITOUREN_API_FEEDBACK_ADD [NSString stringWithFormat:@"%@/api/feedback/add",SHITOUREN_HOST]
+
+#define SHITOUREN_BLANK [NSString stringWithFormat:@"about:blank"]
+
+//--基本参数--
+#define SCREEN_WIDTH        [[UIScreen mainScreen] bounds].size.width    //当前设备的屏幕宽度
+#define SCREEN_HEIGHT       [[UIScreen mainScreen] bounds].size.height  //当前设备的屏幕高度
+#define WINDOW_WIDTH        [ UIScreen mainScreen ].applicationFrame.size.width
+#define WINDOW_HEIGHT       [ UIScreen mainScreen ].applicationFrame.size.height
+
+//--appKey--
+#define UMENG_APPKEY        @"5276f8f756240b90592e69b2"                     //友盟KEY
+#define SINA_APPKEY         @"373768190"                                    //新浪微博分享key
+#define SINA_APPSECRET      @"42bc1d97ce13f8a696ab2af5bc1468ed"             //新浪微博分享secret
+#define QQ_APPKEY           @"101097137"                                    //QQ分享key
+#define QQ_APPSECRET        @"e218da62d9275fd973594a7d17e7c314"             //QQ分享secret
+#define SINA_REDIRECTURI    @"http://sns.whalecloud.com/sina2/callback"     //新浪微博登录回调地址
+#define WEIXIN_APPKEY       @"wxf9ed14e4ccd45cb7"                           //微信key
+
+//--文件夹--
+#define CACHES_FOLDER           [NSHomeDirectory() stringByAppendingPathComponent:@"Library/Caches"]
+#define TOPIC_IMAGE_FOLDER      [NSHomeDirectory() stringByAppendingPathComponent:@"Library/Caches/ImageCache/TopicDetail"]
+#define SPLASH_IMAGE_FOLDER     [NSHomeDirectory() stringByAppendingPathComponent:@"Library/Caches/SplashImage"]
+#define SD_CACHES_FOLDER        [NSHomeDirectory() stringByAppendingPathComponent:@"Library/Caches/ImageCache"]
+
+//--查看是否是wifi--
+#define SHITOUREN_HASWIFI       [[NetWorkManager sharedInstance]hasWifiNetwork]
+
+//--无网络提示--
+#define HAS_NO_NETWORK(__OWNER__)    \
+if (![[NetWorkManager sharedInstance]hasNetwork])\
+{ \
+[(__OWNER__) baseShowInfoHud:@"网络没有连接,请重试" andIsTop:NO];\
+return;\
+}\
+
+//--SDWebImage缓存时间--
+#define SDWebImageCacheTime 60*60*24*15  //15天
+
+// cell的相关间距
+#define BuddyStatusCellPadding 8
+#define BuddyStatusCellSubviewsMargin 5
+#define BuddyStatusNoteTagsViewH 32
+#define BuddyStatusNoteNewThumbViewCellW [UIScreen mainScreen].bounds.size.width
+#define BuddyStatusNoteNewThumbViewCellH (BuddyStatusNoteNewThumbViewCellW * 0.618)
+#define BuddyStatusNoteImageIndexLabelH BuddyStatusNoteTagsViewH
+#define BuddyStatusNoteImageIndexLabelW 50
+
+#define StoreCommentImgsViewCellWH 80
+
+
+#define RandomColor [UIColor colorWithRed:arc4random_uniform(256)/255.0 green:arc4random_uniform(256)/255.0 blue:arc4random_uniform(256)/255.0 alpha:1.0]
+
+#define LIMIT 10
+
+#define SocialCategoryIds @"SocialCategoryIds"
+#define ConsumeCategoryIds @"ConsumeCategoryIds"
+#define HotTagsCategoryIds @"HotTagsCategoryIds"
+#define WeiXinPayOrderId @"WeiXinPayOrderId"
+#define ZhiFuBaoPayOrderId @"ZhiFuBaoPayOrderId"
+#define SocialKey @"api_category_list_social.json"
+#define ConsumeKey @"api_category_list_store.json"
+#define HotTagsKey @"api_category_list_tag.json"
+
+

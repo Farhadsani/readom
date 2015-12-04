@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="GoodsShoppingCell" rowHeight="110" id="HFV-n9-KaZ" customClass="GoodsShoppingCell">
+            <rect key="frame" x="0.0" y="0.0" width="322" height="110"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HFV-n9-KaZ" id="z0k-p7-0c6">
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UHP-kd-hew">
+                        <rect key="frame" x="33" y="32" width="70" height="70"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="70" id="7aj-03-bmG"/>
+                            <constraint firstAttribute="width" constant="70" id="iAv-96-3k3"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2015-09-12" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xGm-w7-yiN">
+                        <rect key="frame" x="33" y="8" width="120" height="16"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="120" id="dNM-29-THr"/>
+                            <constraint firstAttribute="height" constant="16" id="eiU-vt-Zjh"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="timeline_2.png" translatesAutoresizingMaskIntoConstraints="NO" id="ewb-sH-UPU">
+                        <rect key="frame" x="8" y="0.0" width="20" height="110"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="20" id="RH9-f1-xTA"/>
+                            <constraint firstAttribute="height" constant="110" id="dYO-eA-mxz"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabel" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cZY-Qb-Wsu">
+                        <rect key="frame" x="113" y="32" width="191" height="61"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="xGm-w7-yiN" firstAttribute="top" secondItem="z0k-p7-0c6" secondAttribute="top" constant="8" id="4YO-vQ-AZf"/>
+                    <constraint firstItem="cZY-Qb-Wsu" firstAttribute="top" secondItem="xGm-w7-yiN" secondAttribute="bottom" constant="8" id="JSh-0U-8bv"/>
+                    <constraint firstItem="ewb-sH-UPU" firstAttribute="top" secondItem="z0k-p7-0c6" secondAttribute="top" id="YRp-AT-Fmr"/>
+                    <constraint firstItem="ewb-sH-UPU" firstAttribute="leading" secondItem="z0k-p7-0c6" secondAttribute="leading" constant="8" id="cRN-3Q-1p1"/>
+                    <constraint firstItem="cZY-Qb-Wsu" firstAttribute="leading" secondItem="UHP-kd-hew" secondAttribute="trailing" constant="10" id="dhQ-JJ-M3x"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="cZY-Qb-Wsu" secondAttribute="trailing" constant="10" id="kYp-ZH-sa4"/>
+                    <constraint firstItem="UHP-kd-hew" firstAttribute="top" secondItem="xGm-w7-yiN" secondAttribute="bottom" constant="8" id="qCp-Jc-JZ4"/>
+                    <constraint firstItem="UHP-kd-hew" firstAttribute="leading" secondItem="ewb-sH-UPU" secondAttribute="trailing" constant="5" id="qnC-zQ-2uD"/>
+                    <constraint firstItem="xGm-w7-yiN" firstAttribute="leading" secondItem="ewb-sH-UPU" secondAttribute="trailing" constant="5" id="xd3-AJ-O3o"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="contentLabel" destination="cZY-Qb-Wsu" id="ge2-gE-IFZ"/>
+                <outlet property="iconView" destination="UHP-kd-hew" id="dXH-Eu-bnW"/>
+                <outlet property="timeLabel" destination="xGm-w7-yiN" id="gue-Kz-AAW"/>
+                <outlet property="timeline" destination="ewb-sH-UPU" id="LYO-9X-J99"/>
+            </connections>
+            <point key="canvasLocation" x="635" y="191"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="timeline_2.png" width="5" height="110"/>
+    </resources>
+</document>
