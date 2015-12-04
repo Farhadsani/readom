@@ -1,0 +1,384 @@
+<Solution>
+  <PropertyGroup Name="QMapUIDesign" Version="2.0.6.0" Type="CocosStudio" />
+  <SolutionFolder>
+    <Group ctype="ResourceGroup">
+      <RootFolder Name=".">
+        <Folder Name="map">
+          <Folder Name="country">
+            <Project Name="country.csd" />
+            <Folder Name="image">
+              <Image Name="aomen.png" />
+              <Image Name="beihai.png" />
+              <Image Name="changsha.png" />
+              <Image Name="dali.png" />
+              <Image Name="guiling.png" />
+              <Image Name="haerbing.png" />
+              <Image Name="chinamap.png" />
+              <Image Name="qingdao.png" />
+              <Image Name="tianjing.png" />
+              <Image Name="yixing.png" />
+              <Image Name="zhouzhuang.png" />
+            </Folder>
+          </Folder>
+          <Folder Name="qingdao">
+            <Folder Name="image">
+              <Image Name="qindaomap.png" />
+              <PlistImageFolder PListFile="qingdao.plist" LastPlistWriteTime="2015-03-09T13:44:55+08:00" LastImageWriteTime="2015-03-09T13:44:55+08:00" Name=".qingdao_PList.Dir">
+                <PlistImageFile Name="bridge.png" Key="bridge.png" />
+                <PlistImageFile Name="bridge2.png" Key="bridge2.png" />
+                <PlistImageFile Name="building.png" Key="building.png" />
+                <PlistImageFile Name="building1.png" Key="building1.png" />
+                <PlistImageFile Name="building3.png" Key="building3.png" />
+                <PlistImageFile Name="harbour1.png" Key="harbour1.png" />
+                <PlistImageFile Name="park1.png" Key="park1.png" />
+                <PlistImageFile Name="park2.png" Key="park2.png" />
+                <PlistImageFile Name="residence1.png" Key="residence1.png" />
+                <PlistImageFile Name="residence2.png" Key="residence2.png" />
+                <PlistImageFile Name="residence3.png" Key="residence3.png" />
+                <PlistImageFile Name="square.png" Key="square.png" />
+                <PlistImageFile Name="statue.png" Key="statue.png" />
+                <PlistImageFile Name="tower.png" Key="tower.png" />
+                <PlistImageFile Name="tower1.png" Key="tower1.png" />
+                <PlistImageFile Name="tower2.png" Key="tower2.png" />
+              </PlistImageFolder>
+            </Folder>
+            <Project Name="qingdao.csd" />
+          </Folder>
+          <Folder Name="guilin">
+            <Folder Name="image">
+              <Image Name="guilinmap.jpg" />
+              <Image Name="_0000_39.png" />
+              <Image Name="_0001_37.png" />
+              <Image Name="_0002_29.png" />
+              <Image Name="_0003_20.png" />
+              <Image Name="_0004_19.png" />
+              <Image Name="_0005_18.png" />
+              <Image Name="_0006_14.png" />
+              <Image Name="_0007_9.png" />
+              <Image Name="_0008_8.png" />
+            </Folder>
+            <Project Name="guilin.csd" />
+          </Folder>
+          <Folder Name="taiyuan">
+            <Folder Name="image">
+              <PlistImageFolder PListFile="taiyuan.plist" LastPlistWriteTime="2015-11-24T11:32:32+08:00" LastImageWriteTime="2015-11-24T11:33:09+08:00" Name=".taiyuan_PList.Dir">
+                <PlistImageFile Name="1401002001.png" Key="1401002001.png" />
+                <PlistImageFile Name="1401002002.png" Key="1401002002.png" />
+                <PlistImageFile Name="1401002003.png" Key="1401002003.png" />
+                <PlistImageFile Name="1401002004.png" Key="1401002004.png" />
+                <PlistImageFile Name="1401002005.png" Key="1401002005.png" />
+                <PlistImageFile Name="1401002006.png" Key="1401002006.png" />
+                <PlistImageFile Name="1401002007.png" Key="1401002007.png" />
+                <PlistImageFile Name="1401002008.png" Key="1401002008.png" />
+                <PlistImageFile Name="1401002009.png" Key="1401002009.png" />
+                <PlistImageFile Name="1401002011.png" Key="1401002011.png" />
+                <PlistImageFile Name="1401002012.png" Key="1401002012.png" />
+                <PlistImageFile Name="1401002013.png" Key="1401002013.png" />
+                <PlistImageFile Name="1401002014.png" Key="1401002014.png" />
+                <PlistImageFile Name="1401002015.png" Key="1401002015.png" />
+                <PlistImageFile Name="1401002016.png" Key="1401002016.png" />
+                <PlistImageFile Name="1401002017.png" Key="1401002017.png" />
+                <PlistImageFile Name="1401002018.png" Key="1401002018.png" />
+                <PlistImageFile Name="1401002019.png" Key="1401002019.png" />
+                <PlistImageFile Name="1401002020.png" Key="1401002020.png" />
+                <PlistImageFile Name="1401002021.png" Key="1401002021.png" />
+                <PlistImageFile Name="1401002022.png" Key="1401002022.png" />
+                <PlistImageFile Name="1401002023.png" Key="1401002023.png" />
+                <PlistImageFile Name="1401002025.png" Key="1401002025.png" />
+                <PlistImageFile Name="1401002026.png" Key="1401002026.png" />
+                <PlistImageFile Name="1401002028.png" Key="1401002028.png" />
+                <PlistImageFile Name="1401002029.png" Key="1401002029.png" />
+                <PlistImageFile Name="1401002032.png" Key="1401002032.png" />
+                <PlistImageFile Name="1401002033.png" Key="1401002033.png" />
+                <PlistImageFile Name="1401002034.png" Key="1401002034.png" />
+                <PlistImageFile Name="1401002040.png" Key="1401002040.png" />
+                <PlistImageFile Name="1401002041.png" Key="1401002041.png" />
+                <PlistImageFile Name="1401002046.png" Key="1401002046.png" />
+                <PlistImageFile Name="1401002049.png" Key="1401002049.png" />
+                <PlistImageFile Name="1401002050.png" Key="1401002050.png" />
+                <PlistImageFile Name="1401002051.png" Key="1401002051.png" />
+                <PlistImageFile Name="1401002069.png" Key="1401002069.png" />
+                <PlistImageFile Name="1401002070.png" Key="1401002070.png" />
+                <PlistImageFile Name="1401002071.png" Key="1401002071.png" />
+                <PlistImageFile Name="1401002072.png" Key="1401002072.png" />
+                <PlistImageFile Name="1401002073.png" Key="1401002073.png" />
+                <PlistImageFile Name="1401002080.png" Key="1401002080.png" />
+                <PlistImageFile Name="1401002082.png" Key="1401002082.png" />
+                <PlistImageFile Name="1401002083.png" Key="1401002083.png" />
+                <PlistImageFile Name="1401002084.png" Key="1401002084.png" />
+                <PlistImageFile Name="1401002085.png" Key="1401002085.png" />
+                <PlistImageFile Name="1401002090.png" Key="1401002090.png" />
+                <PlistImageFile Name="1401002091.png" Key="1401002091.png" />
+                <PlistImageFile Name="1401002092.png" Key="1401002092.png" />
+                <PlistImageFile Name="1401002095.png" Key="1401002095.png" />
+                <PlistImageFile Name="1401002096.png" Key="1401002096.png" />
+                <PlistImageFile Name="1401002097.png" Key="1401002097.png" />
+                <PlistImageFile Name="1401002098.png" Key="1401002098.png" />
+                <PlistImageFile Name="1401002099.png" Key="1401002099.png" />
+                <PlistImageFile Name="1401002100.png" Key="1401002100.png" />
+                <PlistImageFile Name="1401002102.png" Key="1401002102.png" />
+                <PlistImageFile Name="1401002103.png" Key="1401002103.png" />
+                <PlistImageFile Name="1401002104.png" Key="1401002104.png" />
+                <PlistImageFile Name="1401002105.png" Key="1401002105.png" />
+                <PlistImageFile Name="1401002106.png" Key="1401002106.png" />
+                <PlistImageFile Name="1401002107.png" Key="1401002107.png" />
+                <PlistImageFile Name="1401002108.png" Key="1401002108.png" />
+                <PlistImageFile Name="1401002109.png" Key="1401002109.png" />
+              </PlistImageFolder>
+              <Image Name="taiyuanmap.jpg" />
+            </Folder>
+            <Project Name="taiyuan.csd" />
+          </Folder>
+        </Folder>
+        <Folder Name="ui">
+          <Folder Name="image">
+            <Image Name="emptyDot.png" />
+            <Image Name="backBtn.png" />
+            <Image Name="backBtn1.png" />
+            <Image Name="bg1.png" />
+            <Image Name="closed.png" />
+            <Image Name="collectBG.png" />
+            <Image Name="gBtnBG.png" />
+            <Image Name="menubackground.png" />
+            <Image Name="numBG.png" />
+            <Image Name="oneBtnBG.png" />
+            <Image Name="picTest1.png" />
+            <Image Name="redPoint.png" />
+            <Image Name="shitouren.png" />
+            <Image Name="wBG.png" />
+            <Image Name="bk2.png" />
+            <Image Name="greenBK.png" />
+            <Image Name="wBGCircle.png" />
+            <Image Name="graySmall.png" />
+            <Image Name="greenSmall.png" />
+            <Image Name="menuBack.png" />
+            <Image Name="menuBack1.png" />
+            <Image Name="menuBack2.png" />
+            <Image Name="bWBG.png" />
+            <Image Name="addPic.png" />
+            <Image Name="btnDelete.png" />
+            <Image Name="pClose.png" />
+            <Image Name="delPic.png" />
+            <Image Name="selectImage.png" />
+            <Image Name="barrageNormal.png" />
+            <Image Name="barragePress.png" />
+            <Image Name="barrageCell.png" />
+            <Image Name="writeBarrage.png" />
+            <Image Name="IntroduceBack.png" />
+            <Image Name="loadSP2.png" />
+            <Image Name="city_ball_button_background.png" />
+            <Image Name="city_ball_default.png" />
+            <PlistImageFolder PListFile="loadimage.plist" LastPlistWriteTime="2015-05-13T16:57:16+08:00" LastImageWriteTime="2015-05-13T16:57:16+08:00" Name=".loadimage_PList.Dir">
+              <PlistImageFile Name="loadimage1_01.png" Key="loadimage1_01.png" />
+              <PlistImageFile Name="loadimage1_02.png" Key="loadimage1_02.png" />
+              <PlistImageFile Name="loadimage1_03.png" Key="loadimage1_03.png" />
+              <PlistImageFile Name="loadimage1_04.png" Key="loadimage1_04.png" />
+              <PlistImageFile Name="loadimage1_05.png" Key="loadimage1_05.png" />
+              <PlistImageFile Name="loadimage1_06.png" Key="loadimage1_06.png" />
+              <PlistImageFile Name="loadimage1_07.png" Key="loadimage1_07.png" />
+              <PlistImageFile Name="loadimage1_08.png" Key="loadimage1_08.png" />
+              <PlistImageFile Name="loadimage1_09.png" Key="loadimage1_09.png" />
+              <PlistImageFile Name="loadimage1_10.png" Key="loadimage1_10.png" />
+              <PlistImageFile Name="loadimage1_11.png" Key="loadimage1_11.png" />
+              <PlistImageFile Name="loadimage1_12.png" Key="loadimage1_12.png" />
+              <PlistImageFile Name="loadimage1_13.png" Key="loadimage1_13.png" />
+              <PlistImageFile Name="loadimage2_01.png" Key="loadimage2_01.png" />
+              <PlistImageFile Name="loadimage2_02.png" Key="loadimage2_02.png" />
+              <PlistImageFile Name="loadimage2_03.png" Key="loadimage2_03.png" />
+              <PlistImageFile Name="loadimage2_04.png" Key="loadimage2_04.png" />
+              <PlistImageFile Name="loadimage2_05.png" Key="loadimage2_05.png" />
+              <PlistImageFile Name="loadimage2_06.png" Key="loadimage2_06.png" />
+              <PlistImageFile Name="loadimage2_07.png" Key="loadimage2_07.png" />
+              <PlistImageFile Name="loadimage2_08.png" Key="loadimage2_08.png" />
+              <PlistImageFile Name="loadimage2_09.png" Key="loadimage2_09.png" />
+              <PlistImageFile Name="loadimage2_10.png" Key="loadimage2_10.png" />
+              <PlistImageFile Name="loadimage2_11.png" Key="loadimage2_11.png" />
+              <PlistImageFile Name="loadimage2_12.png" Key="loadimage2_12.png" />
+            </PlistImageFolder>
+            <Image Name="city_ball_next.png" />
+            <Image Name="shopBackhround.png" />
+            <Image Name="redBtnBack.png" />
+            <Image Name="priceBack.png" />
+            <Image Name="cardCollect.png" />
+            <Image Name="cardGround.png" />
+            <Image Name="cardTitle1.png" />
+            <Image Name="cardWrite.png" />
+            <Image Name="city_ball_button_download.png" />
+            <Image Name="grayBtnBG.png" />
+            <PlistImageFolder PListFile="loadSP.plist" LastPlistWriteTime="2015-06-23T18:29:39+08:00" LastImageWriteTime="2015-06-23T18:29:39+08:00" Name=".loadSP_PList.Dir">
+              <PlistImageFile Name="loadSP2_1.png" Key="loadSP2_1.png" />
+              <PlistImageFile Name="loadSP2_2.png" Key="loadSP2_2.png" />
+              <PlistImageFile Name="loadSP2_3.png" Key="loadSP2_3.png" />
+              <PlistImageFile Name="loadSP2_4.png" Key="loadSP2_4.png" />
+              <PlistImageFile Name="loadSP2_5.png" Key="loadSP2_5.png" />
+              <PlistImageFile Name="loadSP2_6.png" Key="loadSP2_6.png" />
+            </PlistImageFolder>
+            <Image Name="IntroduceBg1.png" />
+            <Image Name="locationBG.png" />
+            <Folder Name="userHome">
+              <Image Name="chest.png" />
+              <Image Name="desirepond.png" />
+              <Image Name="dock.png" />
+              <Image Name="hotball.png" />
+              <Image Name="lighthouse.png" />
+              <Image Name="portraitstone.png" />
+              <Image Name="postbox.png" />
+              <Image Name="stonebase.png" />
+              <Image Name="userHomeMap.jpg" />
+              <Image Name="bigmouthbird.png" />
+              <Image Name="aboutstone.png" />
+            </Folder>
+            <Image Name="wbg2.png" />
+            <Image Name="refresh.png" />
+            <Image Name="lineBK.png" />
+            <Image Name="line2.png" />
+            <Image Name="newshop.png" />
+            <Image Name="newtask.png" />
+            <Image Name="userhome_pic1.png" />
+            <Image Name="wFrame.png" />
+            <Image Name="uhMoveDown.png" />
+            <Image Name="guanzhu.png" />
+            <Image Name="shouye.png" />
+            <Image Name="calloutBK.png" />
+            <Image Name="greenFrame.png" />
+            <Image Name="cardCollect2_0.png" />
+            <Image Name="ball_100.png" />
+            <Image Name="menu_1.png" />
+            <Image Name="uh_addgz.png" />
+            <Image Name="uhMoveDown1.png" />
+            <Image Name="uh_loginDlg.png" />
+            <Image Name="map_title.png" />
+            <Image Name="back_101.png" />
+            <Image Name="back_102.png" />
+            <Image Name="back_103.png" />
+            <Image Name="calloutBK1.png" />
+            <Image Name="back_104.png" />
+            <Image Name="uh_1.png" />
+            <Folder Name="uh_image">
+              <Image Name="uh_add1.png" />
+              <Image Name="uh_add2.png" />
+              <Image Name="uh_shouye1.png" />
+              <Image Name="uh_shouye2.png" />
+            </Folder>
+            <Image Name="loadingbarbk.png" />
+            <Image Name="loadingbarbk1.png" />
+            <Image Name="areaDefault.png" />
+          </Folder>
+          <Project Name="messageBox.csd" />
+          <Project Name="scenicSpotSnapshot.csd" />
+          <Project Name="scenicSpotNoteLayer.csd" />
+          <Project Name="scenicSpotNoteCell.csd" />
+          <Project Name="TravelNote.csd" />
+          <Project Name="TravelNoteButton.csd" />
+          <Project Name="TravelNoteTitle.csd" />
+          <Folder Name="menu">
+            <Folder Name="image">
+              <Image Name="iconBook.png" />
+              <Image Name="iconCancel.png" />
+              <Image Name="iconCase.png" />
+              <Image Name="iconComment.png" />
+              <Image Name="iconDown.png" />
+              <Image Name="iconFavorate.png" />
+              <Image Name="iconHome.png" />
+              <Image Name="iconLeft.png" />
+              <Image Name="iconLocation.png" />
+              <Image Name="iconMail.png" />
+              <Image Name="iconRefresh.png" />
+              <Image Name="iconRight.png" />
+              <Image Name="iconStar.png" />
+              <Image Name="iconTrash.png" />
+              <Image Name="iconUser.png" />
+              <Image Name="iconView.png" />
+              <Image Name="cityMark.png" />
+              <Image Name="cardCollectDisable.png" />
+              <Image Name="cardCollectNormal.png" />
+              <Image Name="cardCollectPress.png" />
+              <Image Name="foodDisable.png" />
+              <Image Name="foodNormal.png" />
+              <Image Name="foodPress.png" />
+              <Image Name="taskDisable.png" />
+              <Image Name="taskNormal.png" />
+              <Image Name="taskPress.png" />
+              <Image Name="backDisable.png" />
+              <Image Name="backNormal.png" />
+              <Image Name="back1Normal.png" />
+            </Folder>
+            <Project Name="menu.csd" />
+            <Project Name="locationLabel.csd" />
+            <Project Name="CollectCaptionNode.csd" />
+            <Project Name="menuBar.csd" />
+            <Project Name="mainCityVIewMenu.csd" />
+            <Project Name="topMenuBar.csd" />
+            <Project Name="OneBtnNode.csd" />
+            <Project Name="suspendMenuLayer.csd" />
+            <Project Name="locationLabel1.csd" />
+            <Project Name="locationLabel2.csd" />
+            <Project Name="locationLabel3.csd" />
+            <Project Name="locationLabel4.csd" />
+          </Folder>
+          <Project Name="EdittingLayer.csd" />
+          <Project Name="EdittingCell.csd" />
+          <Project Name="LoadLayer.csd" />
+          <Project Name="IntroduceLayer.csd" />
+          <Project Name="IntroduceCell.csd" />
+          <Project Name="oneBtnMsg.csd" />
+          <Project Name="AddCommentLayer.csd" />
+          <Project Name="numMarkNode.csd" />
+          <Project Name="MarkPointNode.csd" />
+          <Project Name="ScenicSpotLabelLayer.csd" />
+          <Project Name="labelCell.csd" />
+          <Project Name="ScenicSpotCommentLayer.csd" />
+          <Project Name="ScenicSpotCommentCell.csd" />
+          <Project Name="TravelNoteCell.csd" />
+          <Project Name="BrowseLayer.csd" />
+          <Project Name="AddImageNode.csd" />
+          <Project Name="EditMarkLayer.csd" />
+          <Project Name="SeePicView.csd" />
+          <Project Name="BarrageLayer.csd" />
+          <Project Name="BarrageNode.csd" />
+          <Project Name="WriteBarrageLayer.csd" />
+          <Project Name="IntroduceNode.csd" />
+          <Project Name="LoadAni.csd" />
+          <Project Name="ballNode.csd" />
+          <Project Name="dlWaittingNode.csd" />
+          <Project Name="dlWaittingNode2.csd" />
+          <Project Name="ShopLayer.csd" />
+          <Project Name="ShopDescItem.csd" />
+          <Project Name="Card.csd" />
+          <Project Name="CardLayer.csd" />
+          <Project Name="CardOneLayer.csd" />
+          <Project Name="cityBall.csd" />
+          <Project Name="DialogLayer.csd" />
+          <Project Name="IntroduceNode1.csd" />
+          <Project Name="IntroduceCell1.csd" />
+          <Project Name="UserHome.csd" />
+          <Project Name="TopicHot.csd" />
+          <Project Name="UserHomeCaption1.csd" />
+          <Project Name="UserHomeCaption2.csd" />
+          <Project Name="IntroduceNode2.csd" />
+          <Folder Name="introImage">
+            <Image Name="intro_1.png" />
+            <Image Name="intro_3.png" />
+            <Image Name="intro_4.png" />
+            <Image Name="intro_5.png" />
+            <Image Name="intro_line1.png" />
+            <Image Name="intro_line2.png" />
+            <Image Name="intro_6.png" />
+          </Folder>
+          <Project Name="IntroduceCell2.csd" />
+          <Project Name="HPLoginTip.csd" />
+        </Folder>
+        <Image Name="bWBG.png" />
+        <Folder Name="ttf">
+          <File Name="FZCuYuan-M03S.TTF" />
+          <File Name="FZDaHei-B02S.ttf" />
+          <File Name="FZXuanZhenZhuanBianS-R-GB.TTF" />
+          <File Name="FZZJ-YGYTKJW.ttf" />
+          <File Name="fzxyjt.ttf" />
+          <File Name="fzzyjt.ttf" />
+        </Folder>
+        <Image Name="bgCloud.png" />
+      </RootFolder>
+    </Group>
+  </SolutionFolder>
+</Solution>
