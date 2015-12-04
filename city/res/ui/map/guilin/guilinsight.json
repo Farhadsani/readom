@@ -1,0 +1,723 @@
+{
+    "cityid": 1,
+    "cname": "桂林",
+    "sights": [
+        {
+            "cname": "象鼻山1",
+            "type":2,
+            "descs": [
+                {
+                    "content": "4月-10月",
+                    "descid": 1
+                },
+                {
+                    "content": "淡季(12-3月): 07: 00-21: 30\r\n旺季(4-11月): 06: 30-21: 30",
+                    "descid": 2
+                },
+                {
+                    "content": "1-2小时",
+                    "descid": 3
+                },
+                {
+                    "content": "象鼻山、水月洞、普贤塔、象眼岩",
+                    "descid": 4
+                },
+                {
+                    "content": "山像一头站在江边伸鼻豪饮漓江甘泉的巨象",
+                    "descid": 5
+                },
+                {
+                    "content": "桂林市城徽，桂林山水的象征",
+                    "descid": 6
+                },
+                {
+                    "content": "75元/人",
+                    "descid": 7
+                }
+            ],
+            "name": "xiangbishan",
+            "sightid": 1
+        },
+        {
+            "cname": "靖江王府",
+            "type":2,
+            "descs": [
+                {
+                    "content": "四季皆宜",
+                    "descid": 1
+                },
+                {
+                    "content": "08: 30-17: 30",
+                    "descid": 2
+                },
+                {
+                    "content": "1-3小时",
+                    "descid": 3
+                },
+                {
+                    "content": "独秀峰、王府、摩崖石刻",
+                    "descid": 4
+                },
+                {
+                    "content": "王城之于桂林，犹如故宫之于帝都",
+                    "descid": 5
+                },
+                {
+                    "content": "国内保护最完整的明代藩王府",
+                    "descid": 6
+                },
+                {
+                    "content": "独秀峰·靖江王城景区通票130元/人",
+                    "descid": 7
+                }
+            ],
+            "name": "jingjiangwangfu",
+            "sightid": 2
+        },
+        {
+            "cname": "七星公园",
+            "descs": [
+                {
+                    "content": "4月-10月",
+                    "descid": 1
+                },
+                {
+                    "content": "夏季：06: 00-19: 30\r\n冬季：06: 30-19: 00",
+                    "descid": 2
+                },
+                {
+                    "content": "1-2小时",
+                    "descid": 3
+                },
+                {
+                    "content": "七星山、骆驼山、花桥、桂海碑林、七星岩",
+                    "descid": 4
+                },
+                {
+                    "content": "空气很清新，环境很幽静，公园景色美",
+                    "descid": 5
+                },
+                {
+                    "content": "桂林最大，游客最盛，历史性最长的综合性公园",
+                    "descid": 6
+                },
+                {
+                    "content": "75元/人",
+                    "descid": 7
+                }
+            ],
+            "name": "qixinggongyuan",
+            "sightid": 4
+        },
+        {
+            "cname": "日月双塔",
+            "descs": [
+                {
+                    "content": "4月-10月",
+                    "descid": 1
+                },
+                {
+                    "content": "08: 00-22: 30",
+                    "descid": 2
+                },
+                {
+                    "content": "1小时",
+                    "descid": 3
+                },
+                {
+                    "content": "双塔灯光、水下水族馆",
+                    "descid": 4
+                },
+                {
+                    "content": "晚上的双塔上都会打开灯光，非常漂亮",
+                    "descid": 5
+                },
+                {
+                    "content": "日月双塔是夜游两江四湖最主要的景点之一",
+                    "descid": 6
+                },
+                {
+                    "content": "登塔35元/人",
+                    "descid": 7
+                }
+            ],
+            "name": "riyueshuangta",
+            "sightid": 5
+        },
+        {
+            "cname": "叠彩山",
+            "descs": [
+                {
+                    "content": "4月-10月",
+                    "descid": 1
+                },
+                {
+                    "content": "旺季（4月-11月）：06: 00-18: 30\r\n淡季（12月-3月）：07: 00-18: 00",
+                    "descid": 2
+                },
+                {
+                    "content": "1小时",
+                    "descid": 3
+                },
+                {
+                    "content": "摩崖石刻、蝴蝶馆、叠彩亭、于越阁",
+                    "descid": 4
+                },
+                {
+                    "content": "能看到郁郁葱葱的树木还能听到鸟叫声",
+                    "descid": 5
+                },
+                {
+                    "content": "景色优美又易于攀登，山上历代名人的摩崖石刻尤多",
+                    "descid": 6
+                },
+                {
+                    "content": "35元/人",
+                    "descid": 7
+                }
+            ],
+            "name": "diecaishan",
+            "sightid": 9
+        },
+        {
+            "cname": "伏波山",
+            "descs": [
+                {
+                    "content": "4月-10月",
+                    "descid": 1
+                },
+                {
+                    "content": "淡季（4-11月）：06: 30-18: 00\r\n旺季（12-3月）：06: 00-18: 30",
+                    "descid": 2
+                },
+                {
+                    "content": "1小时",
+                    "descid": 3
+                },
+                {
+                    "content": "听涛阁、半山亭、还珠洞、米芾自画像",
+                    "descid": 4
+                },
+                {
+                    "content": "具有很大的观赏价值的园林式山水公园",
+                    "descid": 5
+                },
+                {
+                    "content": "岩洞独特，景致清幽，江潭清澈",
+                    "descid": 6
+                },
+                {
+                    "content": "30元/人",
+                    "descid": 7
+                }
+            ],
+            "name": "fuboshan",
+            "sightid": 8
+        },
+        {
+            "cname": "两江四湖",
+            "descs": [
+                {
+                    "content": "4月-10月",
+                    "descid": 1
+                },
+                {
+                    "content": "夜游两江四湖19: 30-21: 30\r\n日游一江四湖8: 00-16: 30",
+                    "descid": 2
+                },
+                {
+                    "content": "2小时",
+                    "descid": 3
+                },
+                {
+                    "content": "金银双塔、玻璃桥、湖岸风光、夜景",
+                    "descid": 4
+                },
+                {
+                    "content": "城在水中水在山中山在城中，这就是夜游两江四湖的的感觉",
+                    "descid": 5
+                },
+                {
+                    "content": "桂林城市中心最优美的环城风景带",
+                    "descid": 6
+                },
+                {
+                    "content": "夜游两江四湖：190元/成人，125元/儿童\r\n日游一江四湖：80元/成人，60元/儿童",
+                    "descid": 7
+                }
+            ],
+            "name": "liangjaingsihu",
+            "sightid": 10
+        },
+        {
+            "cname": "老人山",
+            "descs": [
+                {
+                    "content": "桂林市区最高的山",
+                    "descid": 4
+                },
+                {
+                    "content": "可以看到桂林的日出，是市民喜好锻炼的地方，缺点是要登顶的话并没有楼梯，所以不适合老人小孩等等去。",
+                    "descid": 5
+                },
+                {
+                    "content": "在城西北桂湖之畔，与独秀峰、叠彩山鼎足三立",
+                    "descid": 6
+                },
+                {
+                    "content": "免费",
+                    "descid": 7
+                }
+            ],
+            "name": "laorenshan",
+            "sightid": 12
+        },
+        {
+            "cname": "木龙湖",
+            "descs": [
+                {
+                    "content": "4月-10月",
+                    "descid": 1
+                },
+                {
+                    "content": "08: 00—21: 00",
+                    "descid": 2
+                },
+                {
+                    "content": "1小时",
+                    "descid": 3
+                },
+                {
+                    "content": "宋代城墙、木龙塔",
+                    "descid": 4
+                },
+                {
+                    "content": "人工景区，修建很完善，有古香古色之美",
+                    "descid": 5
+                },
+                {
+                    "content": "以“清明上河图”为建设蓝本打造的景区",
+                    "descid": 6
+                },
+                {
+                    "content": "30元/人",
+                    "descid": 7
+                }
+            ],
+            "name": "mulonghu",
+            "sightid": 13
+        },
+        {
+            "cname": "刘三姐大观园",
+            "descs": [
+                {
+                    "content": "四季皆宜",
+                    "descid": 1
+                },
+                {
+                    "content": "8: 00-21: 00",
+                    "descid": 2
+                },
+                {
+                    "content": "3小时",
+                    "descid": 3
+                },
+                {
+                    "content": "金蟾对歌台、梦幻歌圩、侗家歌台、风雨长廊",
+                    "descid": 4
+                },
+                {
+                    "content": "最震撼的就是歌舞表演，篝火晚会好玩，但时间太短",
+                    "descid": 5
+                },
+                {
+                    "content": "民族歌舞秀被誉为“到桂林旅游必看的演出”",
+                    "descid": 6
+                },
+                {
+                    "content": "100元/人",
+                    "descid": 7
+                }
+            ],
+            "name": "liusanjiedaguanyuan",
+            "sightid": 14
+        },
+        {
+            "cname": "芦笛岩",
+            "descs": [
+                {
+                    "content": "四季皆宜",
+                    "descid": 1
+                },
+                {
+                    "content": "旺季（4月-12月）：07: 30-18: 00\r\n淡季（12月-3月）：08: 00-17: 30",
+                    "descid": 2
+                },
+                {
+                    "content": "2小时",
+                    "descid": 3
+                },
+                {
+                    "content": "狮岭朝霞、红罗宝帐、盘龙宝塔、原始森林、水晶宫",
+                    "descid": 4
+                },
+                {
+                    "content": "洞内钟乳石以玲珑、瑰丽、虚幻著称",
+                    "descid": 5
+                },
+                {
+                    "content": "溶洞中的极品，“大自然的艺术之宫”",
+                    "descid": 6
+                },
+                {
+                    "content": "120元/人",
+                    "descid": 7
+                }
+            ],
+            "name": "ludiyan",
+            "sightid": 15
+        },
+        {
+            "cname": "南溪山公园",
+            "descs": [
+                {
+                    "content": "4月-10月",
+                    "descid": 1
+                },
+                {
+                    "content": "8: 00-17: 30",
+                    "descid": 2
+                },
+                {
+                    "content": "2小时",
+                    "descid": 3
+                },
+                {
+                    "content": "石刻、白龙洞、樱花节",
+                    "descid": 4
+                },
+                {
+                    "content": "有山有水有洞有岩，对桂林市民免费",
+                    "descid": 5
+                },
+                {
+                    "content": "入门处有宋代王正功题写的“桂林山水甲天下”石碑",
+                    "descid": 6
+                },
+                {
+                    "content": "75元/人",
+                    "descid": 7
+                }
+            ],
+            "name": "nanxishangongyuan",
+            "sightid": 16
+        },
+        {
+            "cname": "正阳步行街",
+            "descs": [
+                {
+                    "content": "4-10月",
+                    "descid": 1
+                },
+                {
+                    "content": "全天",
+                    "descid": 2
+                },
+                {
+                    "content": "随意",
+                    "descid": 3
+                },
+                {
+                    "content": "沿街各种小店、特色美食",
+                    "descid": 4
+                },
+                {
+                    "content": "去过几个城市的商业步行街，感觉桂林的正阳步行街最好",
+                    "descid": 5
+                },
+                {
+                    "content": "地处桂林市区最繁华的地带，有浓厚的商业气息和传统文化气氛",
+                    "descid": 6
+                },
+                {
+                    "content": "无",
+                    "descid": 7
+                }
+            ],
+            "name": "zhengyangbuxingjie",
+            "sightid": 17
+        },
+        {
+            "cname": "尧山",
+            "descs": [
+                {
+                    "content": "四季皆宜",
+                    "descid": 1
+                },
+                {
+                    "content": "09: 00-16: 00",
+                    "descid": 2
+                },
+                {
+                    "content": "3-5小时",
+                    "descid": 3
+                },
+                {
+                    "content": "俯视整个桂林市区",
+                    "descid": 4
+                },
+                {
+                    "content": "风景很美，索道和滑道都很刺激",
+                    "descid": 5
+                },
+                {
+                    "content": "桂林市区最高的一座山峰",
+                    "descid": 6
+                },
+                {
+                    "content": "缆车90元/人（全程）",
+                    "descid": 7
+                }
+            ],
+            "name": "raoshan",
+            "sightid": 18
+        },
+        {
+            "cname": "穿山公园",
+            "descs": [
+                {
+                    "content": "四季皆宜",
+                    "descid": 1
+                },
+                {
+                    "content": "8: 30-17: 30",
+                    "descid": 2
+                },
+                {
+                    "content": "1-2小时",
+                    "descid": 3
+                },
+                {
+                    "content": "寿佛塔、月岩、穿岩",
+                    "descid": 4
+                },
+                {
+                    "content": "非常的美丽，山清水秀，跟城市有很大的区别",
+                    "descid": 5
+                },
+                {
+                    "content": "穿山与象鼻山隔漓江向望，山顶有明代寿佛塔",
+                    "descid": 6
+                },
+                {
+                    "content": "65元/人",
+                    "descid": 7
+                }
+            ],
+            "name": "chuanshangongyuan",
+            "sightid": 19
+        },
+        {
+            "cname": "桂林植物园",
+            "descs": [
+                {
+                    "content": "春秋两季",
+                    "descid": 1
+                },
+                {
+                    "content": "7: 30-17: 30",
+                    "descid": 2
+                },
+                {
+                    "content": "1小时",
+                    "descid": 3
+                },
+                {
+                    "content": "热带绿色植物",
+                    "descid": 4
+                },
+                {
+                    "content": "里面的植物种类比较丰富，可以看到很多南国的特色植物",
+                    "descid": 5
+                },
+                {
+                    "content": "植物众多，很适合散步。",
+                    "descid": 6
+                },
+                {
+                    "content": "35元/人",
+                    "descid": 7
+                }
+            ],
+            "name": "guilinzhiwuyuan",
+            "sightid": 20
+        },
+        {
+            "cname": "迎宾桥",
+            "descs": [
+                {
+                    "content": "迎宾桥是榕湖饭店供国宾出入的专用桥，将中西风格相结合突出“迎宾”的含义，整座桥显得典雅美观，高大肃穆。",
+                    "descid": 5
+                }
+            ],
+            "name": "yingbinqiao",
+            "sightid": 22
+        },
+        {
+            "cname": "桂林汽车站",
+            "descs": [
+                {
+                    "content": "桂林火车站位于东西向的大马路—上海路和南北向的大马路—中山南路交界处，规模比较大，是主要的客运站，在市中心，交通非常方便",
+                    "descid": 5
+                },
+                {
+                    "content": "3路、4路、5路、9路、10路、19路、22路、25路B线、88路、91路、99路、100路",
+                    "descid": 9
+                }
+            ],
+            "name": "guilinqichezhan",
+            "sightid": 29
+        },
+        {
+            "cname": "桂林站",
+            "descs": [
+                {
+                    "content": "桂林汽车总站提供桂林至其他只要城市的汽车，全天24小时工作。距离桂林火车站只有一站路程，绝大多数从广西省内以及周边省份发往桂林的车次均到达此站",
+                    "descid": 5
+                },
+                {
+                    "content": "10路，88路，11路，16路，25路，3路，51路，9路，91路，99路。到汽车站下车。",
+                    "descid": 9
+                }
+            ],
+            "name": "guilinzhan",
+            "sightid": 30
+        },
+        {
+            "cname": "能仁寺",
+            "descs": [
+                {
+                    "content": "秋季",
+                    "descid": 1
+                },
+                {
+                    "content": "07: 30-18: 00",
+                    "descid": 2
+                },
+                {
+                    "content": "1小时",
+                    "descid": 3
+                },
+                {
+                    "content": "始建于梁天监二年（503），距今已1400多年。唐代兴盛佛教，德宗时翰林学士陆贽舍宅筑基，名福业院，后改称报国院",
+                    "descid": 6
+                },
+                {
+                    "content": "免费",
+                    "descid": 7
+                }
+            ],
+            "name": "nengrensi",
+            "sightid": 37
+        },
+        {
+            "cname": "西山公园",
+            "descs": [
+                {
+                    "content": "秋季",
+                    "descid": 1
+                },
+                {
+                    "content": "8: 00-17: 30",
+                    "descid": 2
+                },
+                {
+                    "content": "3小时",
+                    "descid": 3
+                },
+                {
+                    "content": "西山，观音峰，西峰",
+                    "descid": 4
+                },
+                {
+                    "content": "西山公园有四山一湖组成，隐山石头很奇特，石壁上还有很多石刻书法",
+                    "descid": 5
+                },
+                {
+                    "content": "每近黄昏，夕阳斜挂山峰，云林变幻、金光万道、紫气蒸腾，是为脍炙人口的桂林老八景之“西峰夕照”",
+                    "descid": 6
+                },
+                {
+                    "content": "75元/人",
+                    "descid": 7
+                }
+            ],
+            "name": "xishangongyuabn",
+            "sightid": 39
+        },
+        {
+            "cname": "漓江",
+            "descs": [
+                {
+                    "content": "4月-10月",
+                    "descid": 1
+                },
+                {
+                    "content": "全段漂流每天9: 30、10: 00各发一班船\r\n精华漂流为8: 00-18: 00，具体发船时间可与船家协商",
+                    "descid": 2
+                },
+                {
+                    "content": "全程游约4-5小时；精华游约1-1.5小时",
+                    "descid": 3
+                },
+                {
+                    "content": "杨堤风光、九马画山、黄布倒影、望夫石",
+                    "descid": 4
+                },
+                {
+                    "content": "绝美的山水画卷",
+                    "descid": 5
+                },
+                {
+                    "content": "世界上规模最大、风景最美的岩溶山水游览区之一",
+                    "descid": 6
+                },
+                {
+                    "content": "80-210元/船，建议网上约船家，价格可议",
+                    "descid": 7
+                }
+            ],
+            "name": "lijiang",
+            "sightid": 43
+        },
+        {
+            "cname": "玻璃桥",
+            "descs": [
+                {
+                    "content": "15分钟",
+                    "descid": 3
+                },
+                {
+                    "content": "是我国第一座采用特别水晶玻璃构架的实用性桥梁",
+                    "descid": 6
+                }
+            ],
+            "name": "boliqiao",
+            "sightid": 25
+        },
+        {
+            "cname": "桂林白公馆",
+            "descs": [
+                {
+                    "content": "原国民党上将白崇禧先生故居一部，酒店珍藏了大量民国时期古董家私和海外少见的古董钢琴、留声机、座钟、图片等，更是将古董文物博览馆的概念与文化遗迹酒店高端商旅要求完美结合",
+                    "descid": 6
+                },
+                {
+                    "descid": 7
+                }
+            ],
+            "name": "lijiang",
+            "sightid": 28
+        }
+    ]
+}
