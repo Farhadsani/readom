@@ -11,8 +11,10 @@
 
 @protocol TitleBarDelegate <NSObject>
 
+@optional
 - (BOOL)titleBar:(TitleBar *)titleBar titleBtnWillOnClick:(NSInteger)index;
 
+@required
 - (void)titleBar:(TitleBar *)titleBar titleBtnDidOnClick:(NSInteger)index;
 
 @end
