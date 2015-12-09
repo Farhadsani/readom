@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rlPicSquare"
+    android:layout_width="match_parent"
+    android:layout_height="220dp" >
+
+    <com.shitouren.view.MyGallery
+        android:id="@+id/gySquareHot"
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:fadingEdge="none"
+        android:unselectedAlpha="1" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#88000000"
+        android:padding="10dp" >
+
+        <ImageView
+            android:id="@+id/imgTagSquare"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:src="@drawable/tag_square" />
+
+        <TextView
+            android:id="@+id/tvTagTextSquare"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/imgTagSquare"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:text="岁月 流连忘返 大桥"
+            android:textColor="@color/mainColor" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/tvCurPicNum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1"
+                android:textColor="@color/gray" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="/"
+                android:textColor="@color/gray" />
+
+            <TextView
+                android:id="@+id/tvSumPicNum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="4"
+                android:textColor="@color/gray" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</RelativeLayout>
