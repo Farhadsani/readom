@@ -13,6 +13,7 @@
 @property (nonatomic, assign) long feedid;
 @property (nonatomic, copy) NSString *ctime;
 @property (nonatomic, strong) NSArray *imgs;
+@property (nonatomic, strong) NSArray *thumbs;
 @property (nonatomic, strong) NSArray *tags;
 @property (nonatomic, copy) NSString *content;
 @property (nonatomic, assign) BOOL liked;
@@ -21,4 +22,6 @@
 @property (nonatomic, assign) long comments_count;
 @property (nonatomic, strong) NSArray *place;
 @property (nonatomic, strong) BuddyStatusUser *user;
+@property (nonatomic, assign) int selectedIndex;
+@property (nonatomic, strong) UIImageView *selectedImageView;
 @end

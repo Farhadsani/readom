@@ -959,7 +959,7 @@ static UserManager * st_UserManager = nil;
 #pragma mark request method
 //上传用户GPS坐标
 - (void)requestLocationUpdate{
-    if (!self.userid || ![self hasLogin]) {
+    if (!self.userid || self.userid==0 || ![self hasLogin]) {
         return;
     }
     

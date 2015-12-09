@@ -28,6 +28,8 @@
 @property(assign ,atomic)long areaid;
 @property(copy, atomic)NSMutableArray *place;
 
+@property (nonatomic, strong) UIImageView *selectedImageView;
+
 @property(assign, atomic)long topicID;
 
 @property (nonatomic, assign, readonly) CGFloat imageViewBGHeight;

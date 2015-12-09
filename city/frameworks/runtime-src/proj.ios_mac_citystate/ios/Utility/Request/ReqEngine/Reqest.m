@@ -297,19 +297,25 @@
         InfoLog(@"\n==== URL:%@ ====\n【【【Post data】】】:\n%@\n【【【response json】】】:\n%@", self.absoluteUrl,[self.data_dict objectOutForKey:k_r_postData],jsonDict);
     }
     
-    if ([jsonDict objectOutForKey:@"ret"] && [[jsonDict objectOutForKey:@"ret"] integerValue] == -3){
-        NSString * msg = [jsonDict objectOutForKey:@"msg"];
-        msg = ([NSString isEmptyString:msg])?@"您需要登录后才能继续操作!":msg;
-        if ([msg rangeOfString:@"登录"].location != NSNotFound ||
-            [msg rangeOfString:@"登陆"].location != NSNotFound) {
-            if ([[ReqEngine shared].reqestCollects containsObject:self]) {
-                [[ReqEngine shared].reqestCollects removeObject:self];
-                if (self.delegate && [self.delegate respondsToSelector:@selector(didfailedLoad:withError:)]) {
-                    [self.delegate didfailedLoad:self withError:[NSError errorWithDomain:msg code:[[jsonDict objectOutForKey:@"ret"] integerValue] userInfo:nil]];
+//    k_api_location_update
+    if (self.data_dict && [self.data_dict objectOutForKey:k_r_url] && [[self.data_dict objectOutForKey:k_r_url] isEqualToString:k_api_location_update]) {
+        //该接口不进行自动登录提示
+    }
+    else{
+        if ([jsonDict objectOutForKey:@"ret"] && [[jsonDict objectOutForKey:@"ret"] integerValue] == -3){
+            NSString * msg = [jsonDict objectOutForKey:@"msg"];
+            msg = ([NSString isEmptyString:msg])?@"您需要登录后才能继续操作!":msg;
+            if ([msg rangeOfString:@"登录"].location != NSNotFound ||
+                [msg rangeOfString:@"登陆"].location != NSNotFound) {
+                if ([[ReqEngine shared].reqestCollects containsObject:self]) {
+                    [[ReqEngine shared].reqestCollects removeObject:self];
+                    if (self.delegate && [self.delegate respondsToSelector:@selector(didfailedLoad:withError:)]) {
+                        [self.delegate didfailedLoad:self withError:[NSError errorWithDomain:msg code:[[jsonDict objectOutForKey:@"ret"] integerValue] userInfo:nil]];
+                    }
                 }
+                [[ExceptionEngine shared] alertTitle:nil message:msg delegate:self tag:-100 cancelBtn:@"取消" btn1:@"登录" btn2:nil];
+                return;
             }
-            [[ExceptionEngine shared] alertTitle:nil message:msg delegate:self tag:-100 cancelBtn:@"取消" btn1:@"登录" btn2:nil];
-            return;
         }
     }
     
