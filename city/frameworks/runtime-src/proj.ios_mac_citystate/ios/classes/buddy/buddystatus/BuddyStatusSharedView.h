@@ -24,7 +24,7 @@ typedef NS_ENUM(NSInteger, BuddyStatusSharedViewType){
 };
 
 @protocol BuddyStatusSharedViewDelegate <NSObject>
-- (void)buddyStatusSharedViewDidClickAddFriendBtn:(BuddyStatusSharedView *)buddyStatusSharedView;
+- (void)buddyStatusSharedViewDidClickSharedBtn:(BuddyStatusSharedViewBtnType)type;
 @end
 
 @interface BuddyStatusSharedView : UIView

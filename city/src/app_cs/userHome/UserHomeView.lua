@@ -470,6 +470,77 @@ function UserHomeView:setUserData( node, userInfo )
     end
 end
 
+function UserHomeView:showCalloutTip( callouts )
+    -- body
+    if self.t2 then
+        self.scheduler.unscheduleGlobal(self.t2)
+        self.t2 = nil
+    end
+
+    if self.t1 then
+        self.scheduler.unscheduleGlobal(self.t1)
+        self.t1 = nil
+    end
+
+    self.scheduler = require(cc.PACKAGE_NAME .. ".scheduler")
+    if self.t2 then
+        self.scheduler.unscheduleGlobal(self.t2)
+        self.t2 = nil
+    end
+    local calloutIndex_t2 = 1
+    local callouts_tip = callouts
+    self.t2 = self.scheduler.scheduleGlobal(function()
+
+        if not callouts_tip or not next(callouts_tip) then 
+            if self.t2 then
+                self.scheduler.unscheduleGlobal(self.t2)
+                self.t2 = nil
+            end
+            return 
+        end
+
+        if calloutIndex_t2 > #callouts_tip then
+            calloutIndex_t2 = 1
+            if self.t2 then
+                self.scheduler.unscheduleGlobal(self.t2)
+                self.t2 = nil
+            end
+            self:switchCallout(self.callouts)
+            return 
+        end
+        self.pnlCallout:setVisible(true)
+        -- print("1111111111111111")
+        self.txtCallout:setString(callouts_tip[calloutIndex_t2])
+        self.txtCallout1:setString(callouts_tip[calloutIndex_t2])
+
+        calloutIndex_t2 = calloutIndex_t2 + 1
+        -- self.txtCallout:setVisible(false)
+        -- self.txtCallout1:setVisible(true)
+        -- self.spCallout:setTexture("ui/image/calloutBK1.png")
+
+        local callSize = self.txtCallout:getContentSize()   
+        local callSize1 = self.txtCallout1:getContentSize()
+        local spSize = self.spCallout:getContentSize()
+        -- print("size...", callSize.width, callSize.height, (callSize.width + 20)/140)
+        if callSize.width < callSize1.width then
+            self.spCallout:setScaleX((callSize.width+40)/spSize.width)
+            self.spCallout:setScaleY((callSize.height+40)/spSize.height)
+        else
+            self.spCallout:setScaleX((callSize1.width+40)/spSize.width)
+            self.spCallout:setScaleY((callSize1.height+40)/spSize.height)
+        --     self.txtCallout:setVisible(true)
+        --     self.txtCallout1:setVisible(false)
+        --     self.spCallout:setTexture("ui/image/calloutBK.png")
+        --     self.spCallout:setScaleX((callSize.width + 20)/279)
+        end
+        -- self.pnlCallout:setContentSize(cc.size(callSize.width + 20, 66))
+        -- self.pnlCallout:setBackGroundImage("ui/image/calloutBK.png")
+         
+        -- self.spCallout:setScaleX((callSize.width + 20)/279)
+
+    end, 0.5)
+end
+
 function UserHomeView:switchCallout( callouts )
     -- body
     -- self.pnlCallout:setVisible(true)
@@ -497,7 +568,7 @@ function UserHomeView:switchCallout( callouts )
             self.calloutIndex = 1
         end
         self.pnlCallout:setVisible(true)
--- print("1111111111111111")
+        -- print("1111111111111111")
         self.txtCallout:setString(self.callouts[self.calloutIndex])
         self.txtCallout1:setString(self.callouts[self.calloutIndex])
 
@@ -1265,6 +1336,8 @@ function UserHomeView:viewWillUnload( ... )
         print("关闭手势！")
         self._gestureRecognizer:setEnabled(false)
     end
+
+    display.removeSpriteFrameByImageName("ui/image/userHome/userHomeMap.jpg")
     
 end
 

@@ -156,6 +156,13 @@
         }
         item.imgs = [imgs copy];
         
+        NSArray *thumbArr = [itemDict objectForKey:@"thumblink"];
+        NSMutableArray *thumbs = [NSMutableArray array];
+        for (NSString *thumb in thumbArr) {
+            [thumbs addObject:thumb];
+        }
+        item.thumbs = [thumbs copy];
+        
         NSDictionary *userDic = [itemDict objectForKey:@"user"];
         BuddyStatusUser *user = [[BuddyStatusUser alloc] init];
         user.userid = [[userDic objectForKey:@"userid"] longValue];

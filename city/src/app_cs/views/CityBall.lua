@@ -35,7 +35,7 @@ function CityBall:ctor(cityBallImage, state, citySName)
 	-- self.coverLayer:setAnchorPoint(cc.p(0,0))
 	-- self.coverLayer:setPosition(cc.p(-150,-150))
 	-- self.coverLayer:addTo(self)
-	-- self:addChild(self.coverLayer, 3)
+	-- self:addChild(self.coverLayer, 3) 
 
 	local txtName = ccui.Text:create()
 

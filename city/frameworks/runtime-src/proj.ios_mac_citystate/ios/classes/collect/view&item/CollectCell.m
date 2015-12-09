@@ -113,6 +113,8 @@
             imageView.hidden = YES;
         }
     }
+    self.dataItem.selectedImageView = self.imageArr[0];
+    
     self.placeTagsView.tags = item.place;
     self.tagsView.tags = item.tags;
     self.toolBar.noteItem = item;

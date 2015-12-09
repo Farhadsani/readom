@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "01BB174305DE26AB9EED94C73AAD3C9D3CF2196A",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "7486D0CA981AF594811BB63A9C0ED21E107E71BE" : 0,
+    "01BB174305DE26AB9EED94C73AAD3C9D3CF2196A" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "1DE4F60D-4BBB-4C7D-BC78-E77B730E1490",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "7486D0CA981AF594811BB63A9C0ED21E107E71BE" : "shitouren-qmap-client\/",
+    "01BB174305DE26AB9EED94C73AAD3C9D3CF2196A" : "shitouren-citystate-client\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "citystate",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "city\/frameworks\/runtime-src\/proj.ios_mac_citystate\/citystate.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/shitouren\/shitouren-citystate-client.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "01BB174305DE26AB9EED94C73AAD3C9D3CF2196A"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:shitouren\/shitouren-qmap-client.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "7486D0CA981AF594811BB63A9C0ED21E107E71BE"
+    }
+  ]
+}
