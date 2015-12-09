@@ -7,9 +7,7 @@
 //
 
 #import "BuddyStatusSharedView.h"
-#import "UMSocial.h"
 #import "SharedViewButton.h"
-#import "AppController.h"
 
 #define Margin 20
 #define SharedViewTitleHight 50
@@ -157,88 +155,8 @@
 {
     [self hide];
     
-    UMSocialUrlResource *urlResource = [[UMSocialUrlResource alloc] initWithSnsResourceType:UMSocialUrlResourceTypeImage url:@"http://a3.mzstatic.com/us/r30/Purple7/v4/2a/85/4d/2a854df4-3bce-fe68-02b8-e97510fd65c0/icon175x175.jpeg"];
-    NSString *content = @"跟着我走，帮你见识不一样的旅游。";
-    
-    switch (button.tag) {
-        case BuddyStatusSharedViewBtnTypeFriends:
-            NSLog(@"BuddyStatusSharedViewBtnTypeFriends。。。");
-            {
-                [[UMSocialDataService defaultDataService]  postSNSWithTypes:@[UMShareToWechatSession] content:content image:nil location:nil urlResource:urlResource presentedController:nil completion:^(UMSocialResponseEntity *shareResponse){
-                    if (shareResponse.responseCode == UMSResponseCodeSuccess) {
-                        NSLog(@"分享成功！");
-                        [MessageView showMessageView:@"分享成功" delayTime:2.0];
-//                        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil
-//                                                                        message:@"分享成功"
-//                                                                       delegate:self
-//                                                              cancelButtonTitle:@"确定"
-//                                                              otherButtonTitles:nil];
-//                        [alert show];
-                    }
-                }];
-            }
-            break;
-        case BuddyStatusSharedViewBtnTypeFriendsGroup:
-            NSLog(@"BuddyStatusSharedViewBtnTypeFriendsGroup。。。");
-            {
-                [[UMSocialDataService defaultDataService]  postSNSWithTypes:@[UMShareToWechatTimeline] content:content image:nil location:nil urlResource:urlResource presentedController:nil completion:^(UMSocialResponseEntity *shareResponse){
-                    if (shareResponse.responseCode == UMSResponseCodeSuccess) {
-                        NSLog(@"分享成功！");
-                        [MessageView showMessageView:@"分享成功" delayTime:2.0];
-//                        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil
-//                                                                        message:@"分享成功"
-//                                                                       delegate:self
-//                                                              cancelButtonTitle:@"确定"
-//                                                              otherButtonTitles:nil];
-//                        [alert show];
-                    }
-                }];
-            }
-            break;
-        case BuddyStatusSharedViewBtnTypeWeiBo:
-            {
-                NSLog(@"BuddyStatusSharedViewBtnTypeWeiBo。。。");
-                AppController *delegate = (AppController *)[UIApplication sharedApplication].delegate;
-                
-                [[UMSocialDataService defaultDataService]  postSNSWithTypes:@[UMShareToSina] content:content image:nil location:nil urlResource:urlResource presentedController:[delegate getVisibleViewController] completion:^(UMSocialResponseEntity *shareResponse){
-                    if (shareResponse.responseCode == UMSResponseCodeSuccess) {
-                        NSLog(@"分享成功！");
-                        [MessageView showMessageView:@"分享成功" delayTime:2.0];
-//                        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil
-//                                                                        message:@"分享成功"
-//                                                                       delegate:self
-//                                                              cancelButtonTitle:@"确定"
-//                                                              otherButtonTitles:nil];
-//                        [alert show];
-                    }
-                }];
-
-            }
-            break;
-        case BuddyStatusSharedViewBtnTypeQZone:
-            NSLog(@"BuddyStatusSharedViewBtnTypeQZone。。。");
-            {
-                [[UMSocialDataService defaultDataService]  postSNSWithTypes:@[UMShareToQzone] content:content image:[UIImage imageNamed:@"icon-144.png"] location:nil urlResource:nil presentedController:nil completion:^(UMSocialResponseEntity *shareResponse){
-                    if (shareResponse.responseCode == UMSResponseCodeSuccess) {
-                        NSLog(@"分享成功！");
-                        [MessageView showMessageView:@"分享成功" delayTime:2.0];
-//                        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil
-//                                                                        message:@"分享成功"
-//                                                                       delegate:self
-//                                                              cancelButtonTitle:@"确定"
-//                                                              otherButtonTitles:nil];
-//                        [alert show];
-                    }
-                }];
-            }
-            break;
-        case BuddyStatusSharedViewBtnTypeAddFriend:
-            if ([self.delegate respondsToSelector:@selector(buddyStatusSharedViewDidClickAddFriendBtn:)]) {
-                [self.delegate buddyStatusSharedViewDidClickAddFriendBtn:self];
-            }
-            break;
-        default:
-            break;
+    if ([self.delegate respondsToSelector:@selector(buddyStatusSharedViewDidClickSharedBtn:)]) {
+        [self.delegate buddyStatusSharedViewDidClickSharedBtn:(int)button.tag];
     }
 }
 @end

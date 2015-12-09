@@ -22,4 +22,6 @@
 @property (nonatomic, assign) long comments_count;
 @property (nonatomic, strong) NSArray *place;
 @property (nonatomic, strong) BuddyStatusUser *user;
+@property (nonatomic, assign) int selectedIndex;
+@property (nonatomic, strong) UIImageView *selectedImageView;
 @end
