@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#fffef5" >
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FDDC41">
+        <TextView 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:textSize="20dp"
+        android:gravity="center"
+        android:text="消息"
+        />
+    </LinearLayout>
+    
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+       <LinearLayout   
+         android:id="@+id/ll_tabs"  
+         android:layout_width="match_parent"  
+         android:layout_height="wrap_content"  
+         android:layout_alignParentTop="true"
+      	 android:orientation="horizontal"  
+         >  
+          <LinearLayout 
+              android:layout_width="0dp"  
+             android:layout_height="match_parent"  
+             android:layout_weight="1"
+             android:orientation="horizontal"
+              >
+              <TextView 
+             android:id="@+id/tv_my_message"  
+             android:layout_width="0dp"
+             android:layout_weight="1"
+             android:layout_height="wrap_content"  
+             android:gravity="center"
+             android:paddingTop="5dp"
+        	 android:paddingBottom="5dp"
+        	 android:clickable="true"
+             android:text="我的消息"  
+             />  
+              
+             <View 
+                android:layout_width="1dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+        		android:layout_height="match_parent" 
+        		android:background="@android:color/darker_gray"
+                 />
+          </LinearLayout> 
+          <LinearLayout 
+              android:layout_width="0dp"  
+             android:layout_height="match_parent"  
+             android:layout_weight="1"
+             android:orientation="horizontal"
+              >
+              <TextView 
+             android:id="@+id/tv_pet_message"  
+             android:layout_width="0dp"
+             android:layout_weight="1"
+             android:layout_height="wrap_content"  
+             android:gravity="center"
+             android:paddingTop="5dp"
+        	 android:paddingBottom="5dp"
+        	 android:clickable="true"
+             android:text="宠物消息"  
+             />  
+              
+             <View 
+                android:layout_width="1dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+        		android:layout_height="match_parent" 
+        		android:background="@android:color/darker_gray"
+                 />
+          </LinearLayout> 
+          <LinearLayout 
+              android:layout_width="0dp"  
+             android:layout_height="match_parent"  
+             android:layout_weight="1"
+             android:orientation="horizontal"
+              >
+              <TextView 
+             android:id="@+id/tv_my_help"  
+             android:layout_width="0dp"
+             android:layout_weight="1"
+             android:layout_height="wrap_content"  
+             android:gravity="center"
+             android:paddingTop="5dp"
+        	 android:paddingBottom="5dp"
+        	 android:clickable="true"
+             android:text="收到的赞"  
+             />  
+              
+             <View 
+                android:layout_width="1dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+        		android:layout_height="match_parent" 
+        		android:background="@android:color/darker_gray"
+                 />
+          </LinearLayout> 
+          <LinearLayout 
+              android:layout_width="0dp"  
+             android:layout_height="match_parent"  
+             android:layout_weight="1"
+             android:orientation="horizontal"
+              >
+              <TextView 
+             android:id="@+id/tv_sys_message"  
+             android:layout_width="0dp"
+             android:layout_weight="1"
+             android:layout_height="wrap_content"  
+             android:gravity="center"
+             android:paddingTop="5dp"
+        	 android:paddingBottom="5dp"
+        	 android:clickable="true"
+             android:text="系统消息"  
+             />  
+              
+          </LinearLayout> 
+           
+     </LinearLayout>
+        
+    </LinearLayout>
+    
+     <!--  <ImageView
+            android:id="@+id/iv_mymessage" 
+            android:layout_width="match_parent"
+        	android:layout_height="1dp"
+        	android:scaleType="matrix"
+        	android:src="@drawable/horital_yellow_line"
+            />  -->
+    
+     <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+      
+      <ImageView
+            android:id="@+id/iv_mymessage" 
+            android:layout_width="fill_parent"
+        	android:layout_height="1dp"
+        	android:scaleType="matrix"
+        	android:src="@drawable/horital_yellow_line"
+            />
+        <ImageView 
+            android:id="@+id/iv_petmessage" 
+            android:layout_width="fill_parent"
+        	android:layout_height="wrap_content"
+        	android:scaleType="matrix"
+        	android:background="#ffffff"
+            />
+        <ImageView 
+            android:id="@+id/iv_myhelp" 
+            android:layout_width="fill_parent"
+        	android:layout_height="wrap_content"
+        	android:scaleType="matrix"
+        	android:background="#ffffff"
+            />
+        <ImageView 
+            android:id="@+id/iv_sysmessage" 
+            android:layout_width="fill_parent"
+        	android:layout_height="wrap_content"
+        	android:scaleType="matrix"
+        	android:background="#ffffff"
+            /> 
+    </LinearLayout> 
+    
+     <!--    <FrameLayout
+        android:id="@+id/message_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" /> -->
+        
+        
+        <android.support.v4.view.ViewPager
+        android:id="@+id/messagePager"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginTop="15dp" >
+    </android.support.v4.view.ViewPager>
+
+</LinearLayout>
