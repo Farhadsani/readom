@@ -220,10 +220,10 @@
 #pragma mark 引导
 
 - (void)loadGuideViews{
-    id flag = [[NSUserDefaults standardUserDefaults] objectForKey:@"FIRST_LUNCH_FLAG"];
+    id flag = [[NSUserDefaults standardUserDefaults] objectForKey:[Device appBundleShortVersion]];
     if (!flag) {
         //第一次启动，需要加载引导页
-        [[UserManager sharedInstance] signout];
+//        [[UserManager sharedInstance] signout];
         [self addGuidePage];
     }
 }
@@ -244,7 +244,7 @@
 
 //引导结束时回调
 - (void)guideViewDidClose{
-    [[NSUserDefaults standardUserDefaults] setObject:@"1" forKey:@"FIRST_LUNCH_FLAG"];
+    [[NSUserDefaults standardUserDefaults] setObject:@"1" forKey:[Device appBundleShortVersion]];
     [[NSUserDefaults standardUserDefaults] synchronize];
 //    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
 }

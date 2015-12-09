@@ -243,6 +243,11 @@ function UserHomeController:getCallout(  )
 		end
 		
 	end)
+
+	if self:isLogin() and self:isSelfHome() then
+		local callouts = {"我是你的小宠物", "我能够帮你挨揍帮你卖萌", "点我教我两句逗B俏皮话吧"}
+		self.view:switchCallout(callouts)
+	end
 end
 
 function UserHomeController:isLogin( ... )
@@ -475,6 +480,10 @@ end
 
 function UserHomeController:SendPetMsg(  )
 	QMapGlobal.DataManager:SendPetMsg(self.curUser.userid, "揍了你的宠物")
+
+	local callouts = {"啊啊啊，我主人哪里得罪你了", "轻点~~"}
+	-- self.view:switchCallout(callouts)
+	self.view:showCalloutTip(callouts)
 end
 
 function UserHomeController:onUserDetail( ... )
@@ -757,7 +766,7 @@ end
 function UserHomeController:follow( isFollow, userID )
 	QMapGlobal.DataManager:follow(isFollow, userID, function ( returnData )
 		-- print("1111111111111111111111")
-		dump(returnData)
+		-- dump(returnData)
 		if returnData.type == 0 or returnData.type == 2 then      -- 没有关系  -- 粉丝
 			self.canClickGuangzhu = true
 			self.followState = "uh_add"
