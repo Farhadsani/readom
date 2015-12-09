@@ -23,7 +23,7 @@
 #define LOGLEVEL_ERROR    1
 
 #ifndef MAXLOGLEVEL
-#define MAXLOGLEVEL LOGLEVEL_ERROR
+#define MAXLOGLEVEL LOGLEVEL_INFO
 #endif
 
 //#define LOGGING  //The Macro define is used for trace debug info while running a release or distribution version.
