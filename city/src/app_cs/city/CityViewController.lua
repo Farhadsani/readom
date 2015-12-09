@@ -138,6 +138,16 @@ end
 function CityViewController:viewWillUnload()
     -- printf("CityViewController:viewWillUnload")
     self.view:setMapGestureRecognitionEnabled(false)
+
+    local fu = cc.FileUtils:getInstance()
+    local downloadPath = fu:getDownloadPath()
+    local jpgMap = QMapGlobal.resFile.image.map:gsub("?", self.cityName)
+    local mapPath = downloadPath .. jpgMap
+    if not fu:isFileExist(mapPath) then
+        mapPath = "ui/" .. jpgMap
+    end
+    print("function CityViewController:viewWillUnload() remove file ..", mapPath)
+    display.removeSpriteFrameByImageName(mapPath)
 end
 
 function CityViewController:_initScenarioControllers()
