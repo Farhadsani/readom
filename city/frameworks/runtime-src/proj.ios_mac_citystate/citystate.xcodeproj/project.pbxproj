@@ -306,6 +306,7 @@
 		6716121B1B85ECDE0039CAB5 /* Cache.m in Sources */ = {isa = PBXBuildFile; fileRef = 6716121A1B85ECDE0039CAB5 /* Cache.m */; };
 		67169BE21BC90EE0002D0492 /* UserBarcodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67169BE11BC90EE0002D0492 /* UserBarcodeViewController.m */; };
 		67169BE81BC91019002D0492 /* StateNearbyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67169BE71BC91019002D0492 /* StateNearbyViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		6730C1531C1911B7009D8E3A /* 上线配置.txt in Resources */ = {isa = PBXBuildFile; fileRef = 6730C1521C1911B7009D8E3A /* 上线配置.txt */; };
 		6737A8211BD200820036E9CB /* RatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6737A8201BD200820036E9CB /* RatingView.m */; };
 		6737A8241BD20C5C0036E9CB /* commentBG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6737A8221BD20C5C0036E9CB /* commentBG@2x.png */; };
 		6737A8251BD20C5C0036E9CB /* commentBG@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6737A8231BD20C5C0036E9CB /* commentBG@3x.png */; };
@@ -1604,6 +1605,7 @@
 		67169BE11BC90EE0002D0492 /* UserBarcodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserBarcodeViewController.m; sourceTree = "<group>"; };
 		67169BE61BC91019002D0492 /* StateNearbyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StateNearbyViewController.h; sourceTree = "<group>"; };
 		67169BE71BC91019002D0492 /* StateNearbyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StateNearbyViewController.m; sourceTree = "<group>"; };
+		6730C1521C1911B7009D8E3A /* 上线配置.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "上线配置.txt"; sourceTree = "<group>"; };
 		6737A81F1BD200820036E9CB /* RatingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RatingView.h; sourceTree = "<group>"; };
 		6737A8201BD200820036E9CB /* RatingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RatingView.m; sourceTree = "<group>"; };
 		6737A8221BD20C5C0036E9CB /* commentBG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "commentBG@2x.png"; sourceTree = "<group>"; };
@@ -4423,6 +4425,7 @@
 			isa = PBXGroup;
 			children = (
 				6767A1EC1C0EB7A000CF2BD7 /* jpush-lib */,
+				6730C1521C1911B7009D8E3A /* 上线配置.txt */,
 				9920713E1B5DF3F600F66F9C /* AppController.h */,
 				9920713F1B5DF3F600F66F9C /* AppController.mm */,
 				992D9FEB1C182FB300E689B7 /* WNXTopWindow.h */,
@@ -6281,6 +6284,7 @@
 				28336E491BD4E56F004D899F /* feed@2x.png in Resources */,
 				991B546E1BCF5ED3007171BC /* store_phone@2x.png in Resources */,
 				990C8F461B915EB8003CD84E /* about_1@2x.png in Resources */,
+				6730C1531C1911B7009D8E3A /* 上线配置.txt in Resources */,
 				991B547B1BCF7CAC007171BC /* store_location@3x.png in Resources */,
 				992548D31BB14F2D00506A9D /* LICENSE in Resources */,
 				28336E341BD4DDD6004D899F /* wechat@2x.png in Resources */,

@@ -52,9 +52,6 @@
 //JPush推送
 #import "APService.h"
 
-#import "WNXTopWindow.h"
-
-
 ////APP端签名相关头文件
 //#import "payRequsestHandler.h"
 
@@ -375,11 +372,11 @@ static AppDelegate s_sharedApplication;
         return;
     }
     
-    //TODO:判断推送的消息类型，如果推送的消息是订单则跳转到订单详情界面（目前只有订单类型、个人消息类型）【如果是个人消息类型推送则跳转到用户消息界面】
-    if ([inf[@"type"] integerValue] == 1) {
+    //判断推送的消息类型，如果推送的消息是订单则跳转到订单详情界面（目前只有订单类型、个人消息类型）【如果是个人消息类型推送则跳转到用户消息界面】
+    if (inf[@"type"] && [inf[@"type"] integerValue] == 1) {
         [self autoJumpToOrderDetail:inf];
     }
-    else if ([inf[@"type"] integerValue] == 2){
+    else if (inf[@"type"] && [inf[@"type"] integerValue] == 2){
         [self autoJumpToUserMessageController:inf];
     }
 }
@@ -431,6 +428,8 @@ static AppDelegate s_sharedApplication;
     NSDictionary * d = @{k_r_url:k_api_device_token,
                          k_r_delegate:self,
                          k_r_postData:dict,
+                         k_r_loading:num(0),
+                         k_r_showError:num(0),
                          };
     [[ReqEngine shared] tryRequest:d];
 }
