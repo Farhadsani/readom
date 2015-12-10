@@ -24,7 +24,7 @@ string getIPAddress()
 #include "../../../Classes/qmap/ToolFunction.h"
 std::string getSSID()
 {
-	//µ÷ÓÃ¾²Ì¬·½·¨
+	//ï¿½ï¿½ï¿½Ã¾ï¿½Ì¬ï¿½ï¿½ï¿½ï¿½
 //	jclass cls = env->FindClass("test/Demo");
 //	jmethodID mid = env->GetStaticMethodID(cls, "getHelloWorld","()Ljava/lang/String;");
 //	jstring msg = (jstring)env->CallStaticObjectMethod(cls, mid);
@@ -55,7 +55,7 @@ std::string getSSID_Verify()
 	return verify;
 }
 
-//ÓÑÃËÊÂ¼þ
+//ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½
 void ymOnEvent(string eventName)
 {
 	JniMethodInfo t;
@@ -95,21 +95,21 @@ std::string getAppVersion()
 
 void showWebView( std::string strUrl){
 	JniMethodInfo minfo;
-	//getStaticMethodInfo£¬ÅÐ¶ÏJava¾²Ì¬º¯ÊýÊÇ·ñ´æÔÚ£¬²¢ÇÒ°ÑÐÅÏ¢±£´æµ½minfoÀï
-	//²ÎÊý1£ºJniMethodInfo
-	//²ÎÊý2£ºJavaÀà°üÃû+ÀàÃû
-	//²ÎÊý3£ºJavaº¯ÊýÃû³Æ
-	//²ÎÊý4£ºº¯Êý²ÎÊýÀàÐÍºÍ·µ»ØÖµÀàÐÍ
+	//getStaticMethodInfoï¿½ï¿½ï¿½Ð¶ï¿½Javaï¿½ï¿½Ì¬ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Ú£ï¿½ï¿½ï¿½ï¿½Ò°ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½æµ½minfoï¿½ï¿½
+	//ï¿½ï¿½ï¿½ï¿½1ï¿½ï¿½JniMethodInfo
+	//ï¿½ï¿½ï¿½ï¿½2ï¿½ï¿½Javaï¿½ï¿½ï¿½ï¿½ï¿½+ï¿½ï¿½ï¿½ï¿½
+	//ï¿½ï¿½ï¿½ï¿½3ï¿½ï¿½Javaï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	//ï¿½ï¿½ï¿½ï¿½4ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÍºÍ·ï¿½ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½
 
 	bool isHave = JniHelper::getStaticMethodInfo(minfo,"org/cocos2dx/lua/AppActivity","getAppActivity","()Lorg/cocos2dx/lua/AppActivity;");
-	jobject jobj;//´æ¶ÔÏó
+	jobject jobj;//ï¿½ï¿½ï¿½ï¿½ï¿½
 	if (isHave) {
-		//ÕâÀïµÄµ÷ÓÃgetInstance£¬·µ»ØTestÀàµÄ¶ÔÏó¡£
+		//ï¿½ï¿½ï¿½ï¿½Äµï¿½ï¿½ï¿½getInstanceï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Testï¿½ï¿½Ä¶ï¿½ï¿½ï¿½
 		jobj = minfo.env->CallStaticObjectMethod(minfo.classID, minfo.methodID);
 
 		isHave = JniHelper::getMethodInfo(minfo,"org/cocos2dx/lua/AppActivity","openWebview","(Ljava/lang/String;)V");
 		if (isHave) {
-			//µ÷ÓÃopenWebview, ²ÎÊý1£ºTest¶ÔÏó   ²ÎÊý2£º·½·¨ID
+			//ï¿½ï¿½ï¿½ï¿½openWebview, ï¿½ï¿½ï¿½ï¿½1ï¿½ï¿½Testï¿½ï¿½ï¿½ï¿½   ï¿½ï¿½ï¿½ï¿½2ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ID
 			jstring jst = minfo.env->NewStringUTF(strUrl.c_str());
 			minfo.env->CallVoidMethod(jobj, minfo.methodID, jst);
 		}
@@ -136,19 +136,19 @@ void openAbout(ABOUTCALLBACK f)
 
 }
 
-//»°Ìâ
+//ï¿½ï¿½ï¿½ï¿½
 TOPICCALLBACK topicCallback_c;
 void topicCallback(int)
 {
     topicCallback_c();
 }
-//µ±topicIDÎª0Ê±£¬½øÈë·¢ÏÖÖ÷Ò³£¬´óÓÚ0Ê±£¬¸ÃÖµÎª»°ÌâµÄID£¬½øÈë¸Ä»°ÌâµÄÏêÇé
+//ï¿½ï¿½topicIDÎª0Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ë·¢ï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½0Ê±ï¿½ï¿½ï¿½ï¿½ÖµÎªï¿½ï¿½ï¿½ï¿½ï¿½IDï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 void openTopic(long topicID, TOPICCALLBACK f)
 {
 
 }
 
-//³ö·Ã
+//ï¿½ï¿½ï¿½ï¿½
 BUDDYCALLBACK buddyCallback_c;
 void buddyCallback(int ret)
 {
@@ -170,7 +170,7 @@ void openMail(MAILCALLBACK f)
 
 }
 
-//ÓÊÏä£¬·¢ËÍÓÊ¼þ ¸øuserID·¢ËÍÏûÏ¢
+//ï¿½ï¿½ï¿½ä£¬ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ ï¿½ï¿½userIDï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 SENDMAILCALLBACK sendMailCallback_c;
 void sendMailCallback(int ret)
 {
@@ -182,7 +182,7 @@ void openSendmail(long userID, SENDMAILCALLBACK f)
 
 }
 
-//¸öÈËÏêÇé£¬detail
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½é£¬detail
 DETAILCALLBACK detailCallback_c;
 void detailCallback(int ret)
 {
@@ -195,7 +195,7 @@ void openDetail(long userID, DETAILCALLBACK f)
 
 }
 
-//ÊÕ²Ø£¬collect
+//ï¿½Õ²Ø£ï¿½collect
 COLLECTCALLBACK collectCallback_c;
 void collectCallback(int ret)
 {
@@ -207,7 +207,7 @@ void openCollect(long userID, COLLECTCALLBACK f)
 
 }
 
-//ºÃÓÑ¶¯Ì¬
+//ï¿½ï¿½ï¿½Ñ¶ï¿½Ì¬
 FRIENDTRENDCALLBACK friendTrendCallback_c;
 void friendTrendCallback(int ret)
 {
@@ -216,11 +216,11 @@ void friendTrendCallback(int ret)
 void openFriendTrend(long userID, FRIENDTRENDCALLBACK f)
 {
     friendTrendCallback_c = f;
-    //Ò»ÏÂ²¹³äºÃÓÑ¶¯Ì¬µÄ¿ØÖÆÆ÷
+    //Ò»ï¿½Â²ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¶ï¿½Ì¬ï¿½Ä¿ï¿½ï¿½ï¿½ï¿½ï¿½
 
 }
 
-//¸öÈËÖÐÐÄ£¬usercenter  ´ò¿ª»ù±¾×ÊÁÏ½çÃæ
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä£ï¿½usercenter  ï¿½ò¿ª»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï½ï¿½ï¿½ï¿½
 USERCENTERCALLBACK userCenterCallback_c;
 void usercenterCallback(int ret)
 {
@@ -231,7 +231,7 @@ void openUsercenter(long userID, std::string name ,std::string intro,std::string
 
 }
 
-//º°»°£¬speak, ·µ»Øº°µÄÈý¾ä»°
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½speak, ï¿½ï¿½ï¿½Øºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ä»°
 SPEAKCALLBACK speakCallback_c;
 void speakCallback(int ret)
 {
@@ -243,7 +243,7 @@ void openSpeak(SPEAKCALLBACK f)
 
 }
 
-//Ë¢ÐÂÓÃ»§ÖÐÐÄ£¬µ±oc½çÃæÐèÒª´ò¿ª£¨²»ÊÇ·µ»Ø£©luaÖÐµÄÐ¡µºÖ÷½çÃæÊ±£¬µ÷ÓÃ
+//Ë¢ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½Ä£ï¿½ï¿½ï¿½ocï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½ò¿ª£ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½Ø£ï¿½luaï¿½Ðµï¿½Ð¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 USERHOMECALLBACK userHomeCallback_c;
 void openUserHomeCallback(long userID, string name, string intro, string zone, string thumblink, string imglink)
 {
@@ -259,14 +259,14 @@ void openUserHome(USERHOMECALLBACK f)
 
 void goback()
 {
-//    //ctrolÏÖÔÚÊÇUITabBarController
+//    //ctrolï¿½ï¿½ï¿½ï¿½ï¿½ï¿½UITabBarController
 //    UITabBarController* ctrol=(UITabBarController*)[UIApplication sharedApplication].keyWindow.rootViewController;
-//    //ÇÐ»»µÚ¶þÊÓÍ¼
+//    //ï¿½Ð»ï¿½ï¿½Ú¶ï¿½ï¿½ï¿½Í¼
 //    [ctrol setSelectedIndex:1];
 
-    //ctrolÏÖÔÚÊÇIIViewDeckController
+    //ctrolï¿½ï¿½ï¿½ï¿½ï¿½ï¿½IIViewDeckController
 //    IIViewDeckController* ctrol=(IIViewDeckController*)[UIApplication sharedApplication].keyWindow.rootViewController;
-    //ÇÐ»»µÚ¶þÊÓÍ¼
+    //ï¿½Ð»ï¿½ï¿½Ú¶ï¿½ï¿½ï¿½Í¼
 //    [ctrol toggleTopViewAnimated:YES];
 }
 
@@ -317,20 +317,20 @@ int CUserManager::userLoginStatus()
 
 std::string getAppName()
 {
-	return "";
+    return "citystate";
 }
 
-//µ±³¡¾°½Å±¾ÖÐ³¡¾°¼ÓÔØÍê±Ïºó£¬Í¨ÖªÔ­Éú´úÂë
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å±ï¿½ï¿½Ð³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ïºï¿½Í¨ÖªÔ­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 void sceneLoadOver(std::string name)
 {
 
 }
 
-//Ë¢ÐÂÐ¡µºÊý¾Ý
+//Ë¢ï¿½ï¿½Ð¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 REFRESHUSERHOMECALLBACK refreshUserHomeCallback_c;
-void refreshUserHomeCallback_1(long userID)    //¼Ó_1ÊÇÎªÁË±ÜÃâÖØÃû
+void refreshUserHomeCallback_1(long userID)    //ï¿½ï¿½_1ï¿½ï¿½Îªï¿½Ë±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 {
-//    InfoLog(@"Ë¢ÐÂ¸öÈËÖÐÐÄ");
+//    InfoLog(@"Ë¢ï¿½Â¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
     if (refreshUserHomeCallback_c) {
         refreshUserHomeCallback_c(userID);
     }
@@ -376,9 +376,9 @@ void registBackToUserHome(BACKTOUSERHOMECALLBACK f)
 //    [BaseUIViewController setBackUserHome:backToUserHomeCallback];
 }
 
-//¹Ø±Õ¾°µã½éÉÜºóÐèÒªµ÷ÓÃÏÂÃæµÄ»Øµ÷º¯Êý
+//ï¿½Ø±Õ¾ï¿½ï¿½ï¿½ï¿½ï¿½Üºï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä»Øµï¿½ï¿½ï¿½ï¿½ï¿½
 SIGHTINTROCALLBACK sightIntroCallback_c;
-void sightIntroCallback(int)   //´ò¿ª¾°µã½éÉÜºóµÄ»Øµ÷º¯Êý
+void sightIntroCallback(int)   //ï¿½ò¿ª¾ï¿½ï¿½ï¿½ï¿½ï¿½Üºï¿½Ä»Øµï¿½ï¿½ï¿½ï¿½ï¿½
 {
     if(sightIntroCallback_c)
     {
@@ -386,10 +386,10 @@ void sightIntroCallback(int)   //´ò¿ª¾°µã½éÉÜºóµÄ»Øµ÷º¯Êý
     }
 }
 
-//´ò¿ª¾°µã½éÉÜ
-//sightID£º¾°µãid
-//sightName£º¾°µãÃû³Æ
-//sightDescs£º¾°µãËù°üº¬µÄËùÓÐÊý¾Ý
+//ï¿½ò¿ª¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+//sightIDï¿½ï¿½ï¿½ï¿½ï¿½ï¿½id
+//sightNameï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+//sightDescsï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 void openSightIntro(long sightID, std::string sightName, std::string sightDescs, SIGHTINTROCALLBACK f)
 {
 //    SightDetailViewController * vc = [[[SightDetailViewController alloc] initWithNibName:nil bundle:nil] autorelease];
@@ -401,12 +401,12 @@ void openSightIntro(long sightID, std::string sightName, std::string sightDescs,
 //    CocosMapIndexRootViewController * sVC = (CocosMapIndexRootViewController *)[(AppController *)APPLICATION getVisibleViewController];
 //    [sVC showSightDetailView:vc];
 
-    //sightDescs  ÊÇ¾°µãµÄ½éÉÜµÄÃèÊö£¬json×Ö·û´®,ÈçÏÂ£º
-    //"[{\"content\":\"4ÔÂ-10ÔÂ\",\"descid\":1},{\"content\":\"µ­¼¾(12-3ÔÂ):07:00-21:30\\r\\nÍú¼¾(4-11ÔÂ):06:30-21:30\",\"descid\":2},{\"content\":\"1-2Ð¡Ê±\",\"descid\":3},{\"content\":\"Ïó±ÇÉ½¡¢Ë®ÔÂ¶´¡¢ÆÕÏÍËþ¡¢ÏóÑÛÑÒ\",\"descid\":4},{\"content\":\"É½ÏñÒ»Í·Õ¾ÔÚ½­±ßÉì±ÇºÀÒûÀì½­¸ÊÈªµÄ¾ÞÏó\",\"descid\":5},{\"content\":\"¹ðÁÖÊÐ³Ç»Õ£¬¹ðÁÖÉ½Ë®µÄÏóÕ÷\",\"descid\":6},{\"content\":\"75Ôª\\/ÈË\",\"descid\":7}]"
-    //content:½éÉÜµÄÄÚÈÝ£¬descid:Îª½éÉÜµÄ±êÊ¾£¬¸Ã±êÊ¾¶ÔÓ¦Í¼±êºÍ±êÌâ£¬±êÌâÈçÏÂ£º1 = "×îÃÀ¼¾½Ú", 2 = "¿ª·ÅÊ±¼ä", 3 = "ÓÎÀÀÊ±¼ä", 4 = "Ö÷Òª¿´µã", 5 = "´ó¼ÒÓ¡Ïó", 6 = "ÍÆ¼öÀíÓÉ", 7 = "ÃÅÆ±¼Û¸ñ", 8 = "ÓÎÀÀTips", 9 = "½»Í¨ÏßÂ·"
+    //sightDescs  ï¿½Ç¾ï¿½ï¿½ï¿½Ä½ï¿½ï¿½Üµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½jsonï¿½Ö·ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½Â£ï¿½
+    //"[{\"content\":\"4ï¿½ï¿½-10ï¿½ï¿½\",\"descid\":1},{\"content\":\"ï¿½ï¿½ï¿½ï¿½(12-3ï¿½ï¿½):07:00-21:30\\r\\nï¿½ï¿½ï¿½ï¿½(4-11ï¿½ï¿½):06:30-21:30\",\"descid\":2},{\"content\":\"1-2Ð¡Ê±\",\"descid\":3},{\"content\":\"ï¿½ï¿½ï¿½É½ï¿½ï¿½Ë®ï¿½Â¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½\",\"descid\":4},{\"content\":\"É½ï¿½ï¿½Ò»Í·Õ¾ï¿½Ú½ï¿½ï¿½ï¿½ï¿½ï¿½Çºï¿½ï¿½ï¿½ï¿½ì½­ï¿½ï¿½Èªï¿½Ä¾ï¿½ï¿½ï¿½\",\"descid\":5},{\"content\":\"ï¿½ï¿½ï¿½ï¿½ï¿½Ð³Ç»Õ£ï¿½ï¿½ï¿½ï¿½ï¿½É½Ë®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½\",\"descid\":6},{\"content\":\"75Ôª\\/ï¿½ï¿½\",\"descid\":7}]"
+    //content:ï¿½ï¿½ï¿½Üµï¿½ï¿½ï¿½ï¿½Ý£ï¿½descid:Îªï¿½ï¿½ï¿½ÜµÄ±ï¿½Ê¾ï¿½ï¿½ï¿½Ã±ï¿½Ê¾ï¿½ï¿½Ó¦Í¼ï¿½ï¿½Í±ï¿½ï¿½â£¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â£ï¿½1 = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½", 2 = "ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½", 3 = "ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½", 4 = "ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½", 5 = "ï¿½ï¿½ï¿½Ó¡ï¿½ï¿½", 6 = "ï¿½Æ¼ï¿½ï¿½ï¿½ï¿½ï¿½", 7 = "ï¿½ï¿½Æ±ï¿½Û¸ï¿½", 8 = "ï¿½ï¿½ï¿½ï¿½Tips", 9 = "ï¿½ï¿½Í¨ï¿½ï¿½Â·"
 }
 
-//¹Ø±ÕÆ¬ÇøÐÅÏ¢ºóÐèÒªµ÷ÓÃÏÂÃæµÄ»Øµ÷º¯Êý
+//ï¿½Ø±ï¿½Æ¬ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä»Øµï¿½ï¿½ï¿½ï¿½ï¿½
 CATEGORYCALLBACK categoryCallback_c;
 void categoryCallback(int)
 {
@@ -416,9 +416,9 @@ void categoryCallback(int)
     }
 }
 
-//´ò¿ªÖ¸Êý/Æ¬ÇøÖ¸ÊýÉ¸Ñ¡
-//sightID£ºÆ¬Çøid
-//categoryID£ºÑ¡ÔñµÄÖ¸Êýid
+//ï¿½ï¿½Ö¸ï¿½ï¿½/Æ¬ï¿½ï¿½Ö¸ï¿½ï¿½É¸Ñ¡
+//sightIDï¿½ï¿½Æ¬ï¿½ï¿½id
+//categoryIDï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½id
 void openCategory(long sightID, long categoryType, std::string categoryID, CATEGORYCALLBACK f)
 {
 //    NSInteger ID = [[NSString stringWithCString:categoryID.c_str() encoding:NSUTF8StringEncoding] integerValue];
@@ -470,8 +470,8 @@ void openCategory(long sightID, long categoryType, std::string categoryID, CATEG
 //    }
 }
 
-//µ±½Å±¾ÓÉºÃÓÑÓÃ»§ÖÐÐÄÖ±½Ó·µ»Øµ½×Ô¼ºµÄÓÃ»§ÖÐÐÄÊ±½«µ÷ÓÃ´Ëº¯ÊýÍ¨ÖªÔ­Éú³ÌÐò,
-//µ±Ô­Éú³ÌÐò²Ù×÷Íê±Ïºó£¬µ÷ÓÃ»Øµ÷
+//ï¿½ï¿½ï¿½Å±ï¿½ï¿½Éºï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½Ö±ï¿½Ó·ï¿½ï¿½Øµï¿½ï¿½Ô¼ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½Ã´Ëºï¿½ï¿½ï¿½Í¨ÖªÔ­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,
+//ï¿½ï¿½Ô­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ïºó£¬µï¿½ï¿½Ã»Øµï¿½
 ONMAINPAGECALLBACK onMainPageCallback_c;
 void onMainPageCallback()
 {
@@ -482,7 +482,7 @@ void onMainPageCallback()
 }
 void onMainPage(ONMAINPAGECALLBACK f)
 {
-//    NSLog(@"½Å±¾ÖÐÖ±½Óµ÷ÓÃÁË»Øµ½×Ô¼ºµÄ¸öÈËÖÐÐÄ£¬Ô­Éú³ÌÐò´¦ÀíÍê±Ïºó£¬µ÷ÓÃonMainPageCallback");
+//    NSLog(@"ï¿½Å±ï¿½ï¿½ï¿½Ö±ï¿½Óµï¿½ï¿½ï¿½ï¿½Ë»Øµï¿½ï¿½Ô¼ï¿½ï¿½Ä¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä£ï¿½Ô­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ïºó£¬µï¿½ï¿½ï¿½onMainPageCallback");
     onMainPageCallback_c = f;
 //    UIViewController * sVC = [(AppController *)APPLICATION getVisibleViewController];
 //    if (sVC.navigationController) {
@@ -493,7 +493,7 @@ void onMainPage(ONMAINPAGECALLBACK f)
 //    }
 }
 
-//ÓÃ»§µã»÷ÁËÈÈÆøÇò£¬hotball
+//ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½hotball
 HOTBALLCALLBACK hotBallCallback_c;
 void hotBallCallback(int)
 {

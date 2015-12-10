@@ -20,6 +20,10 @@ function LoadView:ctor(param)
     self.sp2 = self.pnlBackGround:getChildByName("sp2")
     self.sp3 = self.pnlBackGround:getChildByName("sp3")
 
+    self.sp1:setPosition(cc.p(display.width/2, display.height/2))
+    self.sp2:setVisible(false)
+    self.sp3:setVisible(false)
+
     local action = cc.CSLoader:createTimeline("ui/LoadAni.csb");   
 	self.sp1:runAction(action);   
 	    
@@ -47,8 +51,8 @@ function LoadView:ctor(param)
 	local f1 = cc.RepeatForever:create(seq1)
 	local f2 = cc.RepeatForever:create(seq2)
 	
-	self.sp2:runAction(f1)
-	self.sp3:runAction(f2)
+	-- self.sp2:runAction(f1)
+	-- self.sp3:runAction(f2)
 
 end
 

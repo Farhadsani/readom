@@ -32,7 +32,7 @@ end
 
 function ScenicSpotsController:getValueForMenuLabelWithName(labelName)
 	if labelName == "cityName" then
-		return self._parentController.city:getDisplayName()
+		return self._parentController.city:getShowName()
 	else
 		printError("label not defined: %s", labelName)
 		return ""
@@ -69,6 +69,7 @@ function ScenicSpotsController:tappedScenicSpotWithName(scenicSpotName)
 			local param = {
 				name = sightData.cname,
 				intros = sightData.desc
+				-- desc = 
 			}
 			self._attachedView:showIntrduce(true, param)
 
@@ -175,10 +176,21 @@ end
 
 function ScenicSpotsController:tapMenuButtonWithName(buttonName)
 
-	if buttonName == "back" then
+	if buttonName == "back102" then
 		printf("ScenicSpotsController:tapMenuButtonWithName, back button tapped")
-		self._attachedView:quitBarrage()
-		self._parentController:switchBackToCitySelection()
+		-- self._attachedView:quitBarrage()
+		-- self._parentController:switchBackToCitySelection()
+
+		local downloadPath = cc.FileUtils:getInstance():getDownloadPath()
+	    -- self.path = device.writablePath .. "map/" .. cityName .. "/image/" .. cityName 
+	    local cityName = self._parentController.city:getMapName()
+	    local path = downloadPath .. "map/" .. cityName .. "/image/" .. cityName
+	    print("移除plist  ", path)
+	    display.removeSpriteFramesWithFile(path ..".plist", path .. ".png")
+
+	    
+		self._parentController.navigationController:setControllerPathBase("")
+		self._parentController.navigationController:switchTo( "app/citySelection/CitySelectionViewController", {cityid = self._parentController.city:getCityId()}, "fade" )
 
 	elseif buttonName == "start" then
 		self._parentController:switchMapToTravelNoteScenario()
@@ -199,7 +211,7 @@ function ScenicSpotsController:tapMenuButtonWithName(buttonName)
 	-- 	self._parentController:switchMapToTravelPlanScenario()
 	elseif buttonName == "strategy" then
 		print("攻略。。。。。。")
-		local param = {cityID = self._parentController.city:getCityId(), cityName = self._parentController.city:getDisplayName()}
+		local param = {cityID = self._parentController.city:getCityId(), cityName = self._parentController.city:getShowName()}
 		param.callBack = function ( reParam )
 			-- if reParam then
 				-- local reType = reParam.type
@@ -221,6 +233,28 @@ function ScenicSpotsController:tapMenuButtonWithName(buttonName)
 		-- self:tappedElseWhere()
 		self._attachedView:showMenu(false)
 		self._parentController.navigationController:push("StrategyController", param)
+	elseif buttonName == "swicthCity" then
+		local downloadPath = cc.FileUtils:getInstance():getDownloadPath()
+	    -- self.path = device.writablePath .. "map/" .. cityName .. "/image/" .. cityName 
+	    local cityName = self._parentController.city:getMapName()
+	    local path = downloadPath .. "map/" .. cityName .. "/image/" .. cityName
+	    print("移除plist  ", path)
+	    display.removeSpriteFramesWithFile(path ..".plist", path .. ".png")
+
+	    
+		self._parentController.navigationController:setControllerPathBase("")
+		self._parentController.navigationController:switchTo( "app/citySelection/CitySelectionViewController", {cityid = self._parentController.city:getCityId()}, "fade" )
+	elseif buttonName == "strategy1" then
+		print("攻略。。。。。。")
+		local param = {cityID = self._parentController.city:getCityId(), cityName = self._parentController.city:getShowName()}
+		param.callBack = function ( reParam )
+
+				self._attachedView:showMenu(true)
+		end
+		-- self:tappedElseWhere()
+		self._attachedView:showMenu(false)
+		self._parentController.navigationController:push("StrategyController", param)
+		
 	else
 		printError("unexpected button: %s", buttonName)
 	end
