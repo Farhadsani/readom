@@ -7518,12 +7518,12 @@
 					"-force_load",
 					../iOS_Common_Libs/SinaSSO/libWeiboSDK.a,
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.shitouren.citystate.taiyuan;
-				PROVISIONING_PROFILE = "0ec1cbea-56a1-46c8-b2a6-7f7790c369cf";
+				PRODUCT_BUNDLE_IDENTIFIER = com.shitouren.citystate;
+				PROVISIONING_PROFILE = "36c5071f-7b14-4a99-aa0d-e5f75b1c5759";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "$(inherited) $(SRCROOT)/../../cocos2d-x/cocos/platform/ios $(SRCROOT)/../../cocos2d-x/external/curl/include/ios $(SDKROOT)/usr/include/libxml2 \"$(SRCROOT)/ios/jpush-lib\"";
-				VALID_ARCHS = "arm64 armv7";
+				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Debug;
 		};
@@ -7580,12 +7580,12 @@
 					"-force_load",
 					../iOS_Common_Libs/SinaSSO/libWeiboSDK.a,
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.shitouren.citystate.taiyuan;
-				PROVISIONING_PROFILE = "75705e13-fc45-4950-91b2-cd3541d04102";
+				PRODUCT_BUNDLE_IDENTIFIER = com.shitouren.citystate;
+				PROVISIONING_PROFILE = "bc38aa4b-adb6-46bb-a450-c8f6b3330625";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "$(inherited) $(SRCROOT)/../../cocos2d-x/cocos/platform/ios $(SDKROOT)/usr/include/libxml2 \"$(SRCROOT)/ios/jpush-lib\"";
-				VALID_ARCHS = "arm64 armv7";
+				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Release;
 		};
