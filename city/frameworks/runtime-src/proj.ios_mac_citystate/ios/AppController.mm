@@ -371,11 +371,11 @@ static AppDelegate s_sharedApplication;
         return;
     }
     
-    //TODO:判断推送的消息类型，如果推送的消息是订单则跳转到订单详情界面（目前只有订单类型、个人消息类型）【如果是个人消息类型推送则跳转到用户消息界面】
-    if ([inf[@"type"] integerValue] == 1) {
+    //判断推送的消息类型，如果推送的消息是订单则跳转到订单详情界面（目前只有订单类型、个人消息类型）【如果是个人消息类型推送则跳转到用户消息界面】
+    if (inf[@"type"] && [inf[@"type"] integerValue] == 1) {
         [self autoJumpToOrderDetail:inf];
     }
-    else if ([inf[@"type"] integerValue] == 2){
+    else if (inf[@"type"] && [inf[@"type"] integerValue] == 2){
         [self autoJumpToUserMessageController:inf];
     }
 }
