@@ -23,15 +23,15 @@ function MapMarkName:createItem( data )
     local namePanel = ccui.Layout:create()
 
     local item = ccui.Layout:create()
-    item:setBackGroundImage("ui/image/sightNameBack1.png")
+    item:setBackGroundImage("ui/image/sightNameBack4.png")
     item:setBackGroundImageScale9Enabled(true)
     -- item:setBackGroundImageCapInsets(cc.rect(3,0,3,0))
 
     local label = cc.ui.UILabel.new({
         UILabelType = 2,
         text = data.cname,
-        font = "Arial",
-        size = 36, 
+        font = QMapGlobal.resFile.font.content,
+        size = 48, 
         color = cc.c3b(255, 255, 255), -- 使用纯红色
         align = cc.ui.TEXT_ALIGN_CENTER,
         valign = cc.ui.TEXT_VALIGN_CENTER,
@@ -45,12 +45,12 @@ function MapMarkName:createItem( data )
     local height = sizeLabel.height + 20
     local width = sizeLabel.width + 50
     item:setContentSize(cc.size(width, height))
-    label:setPosition(cc.p(width/2, height/2))
+    label:setPosition(cc.p(width/2, height/2 +5))
 
     item:setAnchorPoint(cc.p(0.5, 0))
     
 
-    local sp = display.newSprite("ui/image/sightNameP.png")
+    local sp = display.newSprite("ui/image/sightNameP1.png")
     sp:setAnchorPoint(cc.p(0.5, 0))
     sp:setPosition(cc.p(0, 0))
     local spSize = sp:getContentSize()

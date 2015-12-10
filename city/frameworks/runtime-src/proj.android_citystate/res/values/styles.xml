@@ -39,7 +39,6 @@
 	</style>
 
 	 <style name="LoginAnimActivity" >
-        <item name="android:windowIsTranslucent">true</item>
         <item name="@android:windowAnimationStyle">@style/activty_fade_in_fade_out</item>
     </style>
 

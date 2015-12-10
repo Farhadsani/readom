@@ -208,6 +208,18 @@ function MenuLayer:_assignMenuItemsToProperValues()
             self:_setLocationLabel1ToValue(label, self._delegate:getValueForMenuLabelWithName(labelName))
         end
     end
+
+    if self._locationLabels2 then
+        for labelName, label in pairs(self._locationLabels2) do
+            self:_setLocationLabel2ToValue(label, self._delegate:getValueForMenuLabelWithName(labelName))
+        end
+    end
+
+    if self._locationLabels4 then
+        for labelName, label in pairs(self._locationLabels4) do
+            self:_setLocationLabel4ToValue(label, self._delegate:getValueForMenuLabelWithName(labelName))
+        end
+    end
 end
 
 function MenuLayer:_assemblyMenuItemsForController(controllerName)
@@ -249,6 +261,7 @@ function MenuLayer:_assemblyBarItems(itemImageBasePath, barConfig, barPanel)
     -- add every items to bar
     for itemPositionName, itemConfig in pairs(barConfig) do
 
+-- dump(itemConfig)
         local item = nil
 
         if itemConfig.type == "Button" then
@@ -259,18 +272,21 @@ function MenuLayer:_assemblyBarItems(itemImageBasePath, barConfig, barPanel)
 
         elseif itemConfig.type == "LocationLabel1" then
             item = self:_createLocationLabel1(itemConfig)
-
+        elseif itemConfig.type == "LocationLabel2" then
+            item = self:_createLocationLabel2(itemConfig)
         elseif itemConfig.type == "CustomizedWidget" then
             item = self:_createCustomizedWidget(itemConfig)
-
+        elseif itemConfig.type == "LocationLabel4" then
+            item = self:_createLocationLabel4(itemConfig)
         end
- 
+ -- print_r(item)
         local itemInBarPositionNode = barPanel:getChildByName(itemPositionName)
         local x,y = itemInBarPositionNode:getPosition()
         if itemConfig.varHeight then
             y = y * display.height/1920
         end
-        item:setPosition(cc.p(x,y))
+
+        item:setPosition(cc.p(x + (itemConfig.dW or 0), y +(itemConfig.dH or 0) ))
         item:addTo(barPanel)
 
         if itemConfig.disVisible then
@@ -431,6 +447,45 @@ function MenuLayer:_setLocationLabel1ToValue(widget, valueParam)
     
 end
 
+function MenuLayer:_setLocationLabel4ToValue(widget, valueParam)
+    local pnlBG = widget:getChildByName"pnlback"
+    local txtCityName = pnlBG:getChildByName"txtCityName"
+
+    txtCityName:setString(valueParam)
+
+    local posX, posY = widget:getPosition()
+    -- widget:setPosition(cc.p(display.width, posY))
+
+    local size = txtCityName:getContentSize()
+    -- pnlBG:setContentSize(cc.size(size.width + 60, size.height))
+
+    -- txtCityName:setPosition(cc.p(size.width + 40, size.height/2))
+    
+end
+
+function MenuLayer:_setLocationLabel2ToValue(widget, valueParam)
+    local pnlBG = widget:getChildByName"pnlback"
+    local txtCityName = pnlBG:getChildByName"txtCityName"
+    -- local spRefresh = pnlBG:getChildByName"spRefresh"
+
+    if not txtCityName then return end
+    txtCityName:setString(valueParam)
+    -- spRefresh:setScale(2)
+
+    -- local posX, posY = widget:getPosition()
+    -- widget:setPosition(cc.p(display.width, posY))
+    txtCityName:setFontSize(48)
+
+    local size = txtCityName:getContentSize()
+    -- local box = spRefresh:getBoundingBox()
+    pnlBG:setContentSize(cc.size(size.width + 90, size.height + 30))
+    -- spRefresh:setPosition(cc.p(10 + box.width/2 , size.height/2))
+    -- txtCityName:setPosition(cc.p(15+box.width, size.height/2))
+    txtCityName:setPosition(cc.p((size.width + 90)/2, (size.height+30)/2))
+    -- txtCityName:setPosition(cc.p(size.width + 40, size.height/2))
+    
+end
+
 function MenuLayer:setWidgetValue(widgetName, valueParam)
     
     local widget = self._customizedWidgets[widgetName]
@@ -453,6 +508,16 @@ function MenuLayer:setLocationLabel1(widgetName, valueParam)
     self:_setLocationLabel1ToValue(widget, valueParam)
 end
 
+function MenuLayer:setLocationLabel2(widgetName, valueParam)
+    local widget = self._locationLabels2[widgetName]
+    if not widget then
+        printError("menu layer: no customized widget found with name: %s", widgetName or "nil")
+        return
+    end
+
+    self:_setLocationLabel2ToValue(widget, valueParam)
+end
+
 function MenuLayer:_createCustomizedWidget(itemConfig)
 
     local customizedNode = cc.uiloader:load(itemConfig.csbFile)
@@ -470,6 +535,50 @@ function MenuLayer:_createLocationLabel1(itemConfig)
     self._locationLabels1 = self._locationLabels1 or {}
     self._locationLabels1[itemConfig.name] = customizedNode
 
+    return customizedNode
+end
+
+function MenuLayer:_createLocationLabel4(itemConfig)
+
+    local customizedNode = cc.uiloader:load(itemConfig.csbFile)
+
+    self._locationLabels4 = self._locationLabels4 or {}
+    self._locationLabels4[itemConfig.name] = customizedNode
+
+    return customizedNode
+end
+
+function MenuLayer:_createLocationLabel2(itemConfig)
+
+    -- dump(itemConfig)
+
+    local customizedNode = cc.uiloader:load(itemConfig.csbFile)
+
+    if itemConfig.name then
+        self._locationLabels2 = self._locationLabels2 or {}
+        self._locationLabels2[itemConfig.name] = customizedNode
+    end
+
+    customizedNode:setScale(itemConfig.scale or 1)
+
+    
+
+    local btns = itemConfig.btn 
+    if btns and next(btns) then
+        for nodeName, value in pairs(btns) do
+            print(nodeName, value)
+            local pnlNode = customizedNode:getChildByName(nodeName)
+            pnlNode:addTouchEventListener(function ( sender, event )
+                if event == 2 then
+                    -- print("关闭。。。。。。。。。")
+                    -- self.delegate:onBack()
+                    if not self._quitOrEnterAnimationInProgress then
+                        self._delegate:tapMenuButtonWithName(value)
+                    end
+                end
+            end)
+        end
+    end
     return customizedNode
 end
 

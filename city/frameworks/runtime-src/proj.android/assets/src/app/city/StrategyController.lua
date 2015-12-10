@@ -64,7 +64,7 @@ function StrategyController:onSelCard( cardID )
  		local cardDatas = QMapGlobal.cardDatas[self.cityID]
 		local cards = cardDatas.cards
 		local card = cards[cardID]
- 		self.view:setIsCollectData(cardID, isCollect, card.collectcount)
+ 		self.view:setIsCollectData(cardID, isCollect, card.collectcount, card.type)
  		self.view:setVisible(true)
  	end
 

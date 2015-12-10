@@ -1,5 +1,7 @@
 package com.shitouren.citystate;
 
+import org.cocos2dx.lua.AppActivity;
+
 import com.shitouren.qmap.R;
 import com.shitouren.utils.Debuger;
 import com.shitouren.utils.Utils;
@@ -117,7 +119,7 @@ public class MainActivity extends TabActivity implements OnClickListener {
 
 	private void prepareIntent() {
 
-		indexIntent = new Intent(this, IndexActivity.class);
+		indexIntent = new Intent(this, AppActivity.class);
 
 		squareIntent = new Intent(this, SquareActivity.class);
 

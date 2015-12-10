@@ -29,7 +29,8 @@ function CityView:_initUI(param)
 
     -- 显示简介
     self._IntroduceLayer = require("app/views/IntroduceLayer").new()
-    self._IntroduceLayer:setPosition(display.width/2, display.height/2)
+    -- self._IntroduceLayer:setPosition(display.width/2, display.height/2)
+    self._IntroduceLayer:setPosition(cc.p(0,0))
     self._IntroduceLayer:addTo(self)
     self._IntroduceLayer:setVisible(false)
 
@@ -57,10 +58,12 @@ function CityView:setDelegate(delegate)
 end
 
 function CityView:showIntrduce( isShow , introData)
-    self._IntroduceLayer:setVisible(isShow)
+    -- self._IntroduceLayer:setVisible(isShow)
     if isShow then
         self._IntroduceLayer:onInit(introData)
     end
+
+    self._IntroduceLayer:showAction(isShow)
 
     self:setSuspendVisible(not isShow)
 
@@ -99,6 +102,10 @@ end
 
 function CityView:setLocationLabel1( widgetName, value )
     self._menuLayer:setLocationLabel1(widgetName, value)
+end
+
+function CityView:setLocationLabel2( widgetName, value )
+    self._menuLayer:setLocationLabel2(widgetName, value)
 end
 
 function CityView:setMenuCustomizeWidgetValue(widgetName, value)

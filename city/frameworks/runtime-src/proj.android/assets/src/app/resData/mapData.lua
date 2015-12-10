@@ -7,7 +7,7 @@ QMapGlobal.systemData = {}  -- 系统数据，不能被改动，由服务器提�
 -- 模拟数据文件
 --  用户数据 
 QMapGlobal.userData.userInfo = {
-    userid = 114, name="star", image = "star.png", email = "star@shitouren.com", phone = "12345678901", pic = "headImage.jpg",
+    userid = 0, name="star", image = "star.png", email = "star@shitouren.com", phone = "12345678901", pic = "headImage.jpg",
     addr = "北京市", sex = "boy", desc = "上天入地唯我独尊"
 }
 
@@ -55,10 +55,10 @@ QMapGlobal.userData.userInfo.itinerary = {
     -- 1 = {}   -- 桂林
 }
 
-QMapGlobal.ortherData.userIDName = {
-    [112] = "王远帆",[113] = "朴成哲", [114] = "陈晓琪",[115] = "艳崽",
-    [116] = "文德",[117] = "司聪", [118] = "嘉文",[119] = ""
-}
+-- QMapGlobal.ortherData.userIDName = {
+--     -- [112] = "王远帆",[113] = "朴成哲", [114] = "陈晓琪",[115] = "艳崽",
+--     -- [116] = "文德",[117] = "司聪", [118] = "嘉文",[119] = ""
+-- }
 
 QMapGlobal.ortherData.labelData = {
     -- [1] = {

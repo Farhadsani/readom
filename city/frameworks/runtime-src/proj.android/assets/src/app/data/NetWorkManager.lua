@@ -79,8 +79,8 @@ function NetWorkManager:requestData(agreementName, reqParam, callBackSucceed, ca
     print("联网开始。。。", agreementName)
     -- 创建一个请求，并以 GET 方式发送数据到服务端
     -- local url = "http://test.shitouren.com/api/user/signin"
-    local url = "http://www.shitouren.com/" .. agreementName    --正式服务器
-    -- local url = "http://test.shitouren.com/" .. agreementName   --测试服务器
+    -- local url = "http://www.shitouren.com/" .. agreementName    --正式服务器
+    local url = "http://test.shitouren.com/" .. agreementName   --测试服务器
     -- local url = "http://www.baidu.com"
     local request = network.createHTTPRequest(onRequestFinished, url, "POST")
     local requestHeaderString = lua_getRequestHeader() or "User-Agent:shitouren_qmap"
@@ -88,17 +88,18 @@ function NetWorkManager:requestData(agreementName, reqParam, callBackSucceed, ca
     -- request:addRequestHeader("User-Agent:shitouren_qmap_ios")
     print("RequestHeader = ", requestHeaderString)
     request:addRequestHeader(requestHeaderString)
-    request:setTimeout(5000000)
+    request:setTimeout(10000)
 
-    local cookieString = "shitouren_ssid=" .. lua_getSSID()
+    local cookieString = "shitouren_ssid=" .. lua_getSSID() .. ";shitouren_check=" .. lua_getSSIDCheck() .. ";shitouren_verify=" .. lua_getSSIDVerify()
     local ver = getVersion()
+
     print("当前应用程序的版本是。。", ver)
     cookieString = cookieString .. ";" .. "shitouren_ver=" .. ver
     -- curl_easy_setopt(easy_handle, CURLOPT_COOKIE, "name=JGood; address=HangZhou"); 
     print("cookie......", cookieString)
     request:setCookieString(cookieString) 
 
-    local param = {idx = 0, ver = 210, params = reqParam.data}
+    local param = {idx = 0, ver = ver, params = reqParam.data}
     dump(param)
     local paramJson = json.encode(param)
 	-- param = "{\"idx\":0,\"ver\":210,\"params\":{ "  .. (param or "") .. "}}"
@@ -144,7 +145,7 @@ function NetWorkManager:getUrlFile(agreementName, filePath, callBackSucceed, cal
         local request = event.request
         if not ok then
             -- 请求失败，显示错误代码和错误消息
-            print("服务器。。。。", request:getErrorCode(), request:getErrorMessage())      
+            -- print("服务器。。。。", request:getErrorCode(), request:getErrorMessage())      
             if request:getErrorCode() ~= 0 then
                 -- print("服务器。。。。", request:getErrorCode(), request:getErrorMessage())   
                 print("save file failed!, file name is ", filePath)
@@ -181,7 +182,7 @@ function NetWorkManager:getUrlFile(agreementName, filePath, callBackSucceed, cal
     end
     -- print("下载文件开始。。。", agreementName, filePath)
     local request = network.createHTTPRequest(onRequestFinished, agreementName, "GET")
-    request:setTimeout(5000000)
+    request:setTimeout(10000)
     request:start()
     -- print("1111111111")
 end

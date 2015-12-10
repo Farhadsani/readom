@@ -1,5 +1,11 @@
 ShitourenApp/runtime/
-
+city/frameworks/runtime-src/proj.android/.cproject
+city/frameworks/runtime-src/proj.android/.externalToolBuilders/CocosBuilder.launch
+city/frameworks/runtime-src/proj.android/.project
+city/frameworks/runtime-src/proj.android/libs/armeabi/gdb.setup
+city/frameworks/runtime-src/proj.android/libs/armeabi/libcocos2dlua.so
+city/frameworks/runtime-src/proj.android_citystate/gen/com/shitouren/citystate/R.java
+city/frameworks/runtime-src/proj.ios_mac_citystate/citystate.xcodeproj/project.xcworkspace/xcuserdata/ruin.xcuserdatad/UserInterfaceState.xcuserstate
 # Ignore thumbnails created by windows
 Thumbs.db
 

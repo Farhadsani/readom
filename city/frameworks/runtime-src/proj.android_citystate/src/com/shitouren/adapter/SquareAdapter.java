@@ -31,6 +31,7 @@ public class SquareAdapter extends BaseAdapter {
 		this.context = context;
 		this.list = list;
 		bitmap = FinalBitmap.create(context);
+		bitmap.configBitmapLoadThreadSize(2);
 	}
 
 	@Override
