@@ -47,6 +47,8 @@
             	android:theme="@style/LoginAnimActivity"></activity>
         <activity android:name="com.shitouren.city.mine.PersonalDynamicActivity"
             	android:theme="@style/LoginAnimActivity"></activity>
+        <activity android:name="com.shitouren.city.mine.PersonalEditorActivity"
+            	android:theme="@style/LoginAnimActivity"></activity>
         <activity android:name="com.shitouren.citystate.IndexActivity"></activity>
     </application>
 
