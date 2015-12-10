@@ -52,9 +52,6 @@
 //JPush推送
 #import "APService.h"
 
-#import "WNXTopWindow.h"
-
-
 ////APP端签名相关头文件
 //#import "payRequsestHandler.h"
 
@@ -431,6 +428,8 @@ static AppDelegate s_sharedApplication;
     NSDictionary * d = @{k_r_url:k_api_device_token,
                          k_r_delegate:self,
                          k_r_postData:dict,
+                         k_r_loading:num(0),
+                         k_r_showError:num(0),
                          };
     [[ReqEngine shared] tryRequest:d];
 }
