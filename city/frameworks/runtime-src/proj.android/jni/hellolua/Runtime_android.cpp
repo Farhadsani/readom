@@ -244,17 +244,17 @@ void openSpeak(SPEAKCALLBACK f)
 }
 
 //刷新用户中心，当oc界面需要打开（不是返回）lua中的小岛主界面时，调用
-REFRESHUSERCENTERCALLBACK refreshUserCenterCallback_c;
-void refreshUserCenterCallback(long userID, string name, string intro, string zone, string thumblink, string imglink)
+USERHOMECALLBACK userHomeCallback_c;
+void openUserHomeCallback(long userID, string name, string intro, string zone, string thumblink, string imglink)
 {
-    if(refreshUserCenterCallback_c)
+    if(userHomeCallback_c)
     {
 //        refreshUserCenterCallback_c(userID, [name UTF8String], [intro UTF8String], [zone UTF8String], [thumblink UTF8String], [imglink UTF8String]);
     }
 }
-void refreshUserCenter(REFRESHUSERCENTERCALLBACK f)
+void openUserHome(USERHOMECALLBACK f)
 {
-    refreshUserCenterCallback_c = f;
+	userHomeCallback_c = f;
 }
 
 void goback()
@@ -268,4 +268,276 @@ void goback()
 //    IIViewDeckController* ctrol=(IIViewDeckController*)[UIApplication sharedApplication].keyWindow.rootViewController;
     //切换第二视图
 //    [ctrol toggleTopViewAnimated:YES];
+}
+
+CUserManager *CUserManager::getInstance()
+{
+	return new CUserManager();
+}
+
+long CUserManager::userid()
+{
+	return 0;
+}
+
+long CUserManager::role()
+{
+	return 0;
+}
+
+std::string CUserManager::name()
+{
+	return "";
+}
+
+std::string CUserManager::intro()
+{
+	return "";
+}
+
+std::string CUserManager::zone()
+{
+	return "";
+}
+
+std::string CUserManager::imglink()
+{
+	return "";
+}
+
+std::string CUserManager::thumblink()
+{
+	return "";
+}
+
+int CUserManager::userLoginStatus()
+{
+	return 0;
+}
+
+std::string getAppName()
+{
+	return "";
+}
+
+//当场景脚本中场景加载完毕后，通知原生代码
+void sceneLoadOver(std::string name)
+{
+
+}
+
+//刷新小岛数据
+REFRESHUSERHOMECALLBACK refreshUserHomeCallback_c;
+void refreshUserHomeCallback_1(long userID)    //加_1是为了避免重名
+{
+//    InfoLog(@"刷新个人中心");
+    if (refreshUserHomeCallback_c) {
+        refreshUserHomeCallback_c(userID);
+    }
+}
+void refreshUserHome(REFRESHUSERHOMECALLBACK f)
+{
+    refreshUserHomeCallback_c = f;
+//    [BaseUIViewController setRefreshUserHome:refreshUserHomeCallback_1];
+}
+
+MAPCALLBACK mapCallback_c;
+void mapCallback(int categoryType, std::string categoryID)
+{
+//    if (categoryID == nil) {
+//        categoryID = "";
+//    }
+//    InfoLog(@"");
+    if(mapCallback_c)
+    {
+//        mapCallback_c(categoryType, [categoryID UTF8String]);
+    }
+}
+void openMap(MAPCALLBACK f)
+{
+//    InfoLog(@"");
+    mapCallback_c = f;
+//    [BaseUIViewController setToMapCallback : mapCallback];
+}
+
+BACKTOUSERHOMECALLBACK backToUserHomeCallback_c;
+void backToUserHomeCallback(long userID)
+{
+//    InfoLog(@"");
+    if(backToUserHomeCallback_c)
+    {
+        backToUserHomeCallback_c(userID);
+    }
+}
+void registBackToUserHome(BACKTOUSERHOMECALLBACK f)
+{
+//    InfoLog(@"");
+    backToUserHomeCallback_c = f;
+//    [BaseUIViewController setBackUserHome:backToUserHomeCallback];
+}
+
+//关闭景点介绍后需要调用下面的回调函数
+SIGHTINTROCALLBACK sightIntroCallback_c;
+void sightIntroCallback(int)   //打开景点介绍后的回调函数
+{
+    if(sightIntroCallback_c)
+    {
+        sightIntroCallback_c();
+    }
+}
+
+//打开景点介绍
+//sightID：景点id
+//sightName：景点名称
+//sightDescs：景点所包含的所有数据
+void openSightIntro(long sightID, std::string sightName, std::string sightDescs, SIGHTINTROCALLBACK f)
+{
+//    SightDetailViewController * vc = [[[SightDetailViewController alloc] initWithNibName:nil bundle:nil] autorelease];
+//    [vc.data_dict setNonEmptyObject:@(sightID) forKey:k_sightID];
+//    [vc.data_dict setNonEmptyObject:[NSString stringWithCString:sightName.c_str() encoding:NSUTF8StringEncoding] forKey:k_sightName];
+//    [vc.data_dict setNonEmptyObject:[NSString stringWithCString:sightDescs.c_str() encoding:NSUTF8StringEncoding] forKey:k_sightDescs];
+//    sightIntroCallback_c = f;
+//    [vc setCocosCallback:sightIntroCallback];
+//    CocosMapIndexRootViewController * sVC = (CocosMapIndexRootViewController *)[(AppController *)APPLICATION getVisibleViewController];
+//    [sVC showSightDetailView:vc];
+
+    //sightDescs  是景点的介绍的描述，json字符串,如下：
+    //"[{\"content\":\"4月-10月\",\"descid\":1},{\"content\":\"淡季(12-3月):07:00-21:30\\r\\n旺季(4-11月):06:30-21:30\",\"descid\":2},{\"content\":\"1-2小时\",\"descid\":3},{\"content\":\"象鼻山、水月洞、普贤塔、象眼岩\",\"descid\":4},{\"content\":\"山像一头站在江边伸鼻豪饮漓江甘泉的巨象\",\"descid\":5},{\"content\":\"桂林市城徽，桂林山水的象征\",\"descid\":6},{\"content\":\"75元\\/人\",\"descid\":7}]"
+    //content:介绍的内容，descid:为介绍的标示，该标示对应图标和标题，标题如下：1 = "最美季节", 2 = "开放时间", 3 = "游览时间", 4 = "主要看点", 5 = "大家印象", 6 = "推荐理由", 7 = "门票价格", 8 = "游览Tips", 9 = "交通线路"
+}
+
+//关闭片区信息后需要调用下面的回调函数
+CATEGORYCALLBACK categoryCallback_c;
+void categoryCallback(int)
+{
+    if(categoryCallback_c)
+    {
+        categoryCallback_c();
+    }
+}
+
+//打开指数/片区指数筛选
+//sightID：片区id
+//categoryID：选择的指数id
+void openCategory(long sightID, long categoryType, std::string categoryID, CATEGORYCALLBACK f)
+{
+//    NSInteger ID = [[NSString stringWithCString:categoryID.c_str() encoding:NSUTF8StringEncoding] integerValue];
+//
+//    if (ID != 0) {
+//        NSArray *socailArr = [[Cache shared].cache_dict valueForKey:SocialCategoryIds];
+//        NSArray *consumeArr = [[Cache shared].cache_dict valueForKey:ConsumeCategoryIds];
+//        NSArray *tagArr = [[Cache shared].cache_dict valueForKey:HotTagsCategoryIds];
+//
+//        if ([socailArr containsObject:@(ID)] || [tagArr containsObject:@(ID)]) {
+//            SocialIndexViewController *socialIndexViewController = [[SocialIndexViewController alloc] init];
+//            socialIndexViewController.areaid = sightID;
+//            if (categoryType == 1) {
+//                NSArray *socialKey = [[Cache shared].cache_dict valueForKey:SocialKey];
+//                for (NSDictionary *d in socialKey) {
+//                    if ([d[@"categoryid"] intValue] == ID) {
+//                        socialIndexViewController.title = d[@"cname"];
+//                        break ;
+//                    }
+//                }
+//                socialIndexViewController.categoryid = ID;
+//            } else {
+//                NSArray *hotTagsKey = [[Cache shared].cache_dict valueForKey:HotTagsKey];
+//                for (NSDictionary *d in hotTagsKey) {
+//                    if ([d[@"tagid"] intValue] == ID) {
+//                        socialIndexViewController.title = d[@"name"];
+//                        break ;
+//                    }
+//                }
+//                socialIndexViewController.tagid = ID;
+//            }
+//            UIViewController * sVC = [(AppController *)APPLICATION getVisibleViewController];
+//            [sVC.navigationController pushViewController:socialIndexViewController animated:YES];
+//        } else if ([consumeArr containsObject:@(ID)]) {
+//            ConsumeIndexViewController *consumeIndexViewController = [[ConsumeIndexViewController alloc] init];
+//            NSArray *consumeKey = [[Cache shared].cache_dict valueForKey:ConsumeKey];
+//            for (NSDictionary *d in consumeKey) {
+//                if ([d[@"categoryid"] intValue] == ID) {
+//                    consumeIndexViewController.title = d[@"cname"];
+//                    break ;
+//                }
+//            }
+//            consumeIndexViewController.areaid = sightID;
+//            consumeIndexViewController.categoryid = ID;
+//            consumeIndexViewController.streetid = 0;
+//            UIViewController * sVC = [(AppController *)APPLICATION getVisibleViewController];
+//            [sVC.navigationController pushViewController:consumeIndexViewController animated:YES];
+//        }
+//    }
+}
+
+//当脚本由好友用户中心直接返回到自己的用户中心时将调用此函数通知原生程序,
+//当原生程序操作完毕后，调用回调
+ONMAINPAGECALLBACK onMainPageCallback_c;
+void onMainPageCallback()
+{
+    if(onMainPageCallback_c)
+    {
+        onMainPageCallback_c();
+    }
+}
+void onMainPage(ONMAINPAGECALLBACK f)
+{
+//    NSLog(@"脚本中直接调用了回到自己的个人中心，原生程序处理完毕后，调用onMainPageCallback");
+    onMainPageCallback_c = f;
+//    UIViewController * sVC = [(AppController *)APPLICATION getVisibleViewController];
+//    if (sVC.navigationController) {
+//        [sVC.navigationController popToRootViewControllerAnimated:YES];
+//    }
+//    else{
+//        [sVC dismissViewControllerAnimated:YES completion:nil];
+//    }
+}
+
+//用户点击了热气球，hotball
+HOTBALLCALLBACK hotBallCallback_c;
+void hotBallCallback(int)
+{
+    if (hotBallCallback_c) {
+        hotBallCallback_c();
+    }
+}
+void openHotBall(long userID, HOTBALLCALLBACK f)
+{
+//    if ([[UserManager sharedInstance] isCurrentUser:userID] && [[UserManager sharedInstance] isStoreUser:[UserManager sharedInstance].brief]) {
+//        hotBallCallback_c = f;
+////        StoreViewController *vc = [[StoreViewController alloc] init];
+//        MyStoreViewController *vc = [[MyStoreViewController alloc] init];
+//        [vc setUserData:userID];
+//        [vc setCocosCallback:detailCallback];
+//        toIOS(vc);
+//        [vc release];
+//    }
+//    else{
+//        [[UserManager sharedInstance] UserID:userID getUserInfo:^(NSDictionary *info) {
+//            BOOL isStore = NO;
+//            if(info && info.count > 0 && [info objectOutForKey:@"role"] && [[info objectOutForKey:@"role"] integerValue] == Role_Store){
+//                isStore = YES;
+//            }
+//            if (isStore) {
+//                hotBallCallback_c = f;
+//
+//                StoreViewController *vc = [[StoreViewController alloc] init];
+//
+//
+////                MyStoreViewController *vc = [[MyStoreViewController alloc] init];
+//                [vc setUserData:userID];
+//                [vc setCocosCallback:detailCallback];
+//                toIOS(vc);
+//                [vc release];
+//            }
+//            else{
+//                hotBallCallback_c = f;
+//                ShoppingListViewController *vc = [[ShoppingListViewController alloc] init];
+//                [vc setUserData:userID];
+//                [vc setCocosCallback:hotBallCallback];
+//                toIOS(vc);
+//                [vc release];
+//            }
+//        }];
+//    }
 }
