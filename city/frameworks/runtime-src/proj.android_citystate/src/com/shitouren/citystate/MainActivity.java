@@ -1,5 +1,6 @@
 package com.shitouren.citystate;
 
+import com.shitouren.city.mine.MineActivity;
 import com.shitouren.utils.Debuger;
 import com.shitouren.utils.Utils;
 

@@ -15,6 +15,7 @@ public final class R {
         public static final int left_in=0x7f040003;
         public static final int left_out=0x7f040004;
         public static final int out_to_left=0x7f040005;
+<<<<<<< HEAD
         public static final int push_up_in=0x7f040006;
         public static final int push_up_out=0x7f040007;
         public static final int right_in=0x7f040008;
@@ -23,6 +24,20 @@ public final class R {
         public static final int slide_in_from_top=0x7f04000b;
         public static final int slide_out_to_bottom=0x7f04000c;
         public static final int slide_out_to_top=0x7f04000d;
+=======
+        public static final int pophidden_anim=0x7f040006;
+        public static final int pophidden_top_anim=0x7f040007;
+        public static final int popshow_anim=0x7f040008;
+        public static final int popshow_top_anim=0x7f040009;
+        public static final int push_up_in=0x7f04000a;
+        public static final int push_up_out=0x7f04000b;
+        public static final int right_in=0x7f04000c;
+        public static final int right_out=0x7f04000d;
+        public static final int slide_in_from_bottom=0x7f04000e;
+        public static final int slide_in_from_top=0x7f04000f;
+        public static final int slide_out_to_bottom=0x7f040010;
+        public static final int slide_out_to_top=0x7f040011;
+>>>>>>> aedfac1f0f7c4992f9574f759d4209c195b8534b
     }
     public static final class attr {
         /**  BELOW HERE ARE DEPRECEATED. DO NOT USE. 
@@ -167,8 +182,11 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int line_divider=0x7f080005;
         public static final int mainColor=0x7f080000;
         public static final int square_background=0x7f080003;
+<<<<<<< HEAD
         public static final int textHint=0x7f080007;
         public static final int yellow=0x7f080006;
+=======
+>>>>>>> aedfac1f0f7c4992f9574f759d4209c195b8534b
     }
     public static final class dimen {
         public static final int header_footer_left_right_padding=0x7f060003;
@@ -191,6 +209,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int dengluyemianxiantiao=0x7f02000a;
         public static final int dengluyemianxiantiao2=0x7f02000b;
         public static final int ellipse_background=0x7f02000c;
+<<<<<<< HEAD
         public static final int gray_line=0x7f02000d;
         public static final int horital_yellow_line=0x7f02000e;
         public static final int ic_launcher=0x7f02000f;
@@ -227,6 +246,67 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int xlistview_arrow=0x7f02002e;
         public static final int zan_normal=0x7f02002f;
         public static final int zan_selected=0x7f020030;
+=======
+        public static final int fanhuiblack=0x7f02000d;
+        public static final int gray_line=0x7f02000e;
+        public static final int horital_yellow_line=0x7f02000f;
+        public static final int ic_launcher=0x7f020010;
+        public static final int index_normal=0x7f020011;
+        public static final int index_selected=0x7f020012;
+        public static final int index_selector=0x7f020013;
+        public static final int indicator_arrow=0x7f020014;
+        public static final int indicator_bg_bottom=0x7f020015;
+        public static final int indicator_bg_top=0x7f020016;
+        public static final int locate=0x7f020017;
+        public static final int message_normal=0x7f020018;
+        public static final int message_selected=0x7f020019;
+        public static final int message_selector=0x7f02001a;
+        public static final int mine_normal=0x7f02001b;
+        public static final int mine_selected=0x7f02001c;
+        public static final int mine_selector=0x7f02001d;
+        public static final int more_normal=0x7f02001e;
+        public static final int more_selected=0x7f02001f;
+        public static final int nearby=0x7f020020;
+        public static final int popwindow=0x7f020021;
+        public static final int publish=0x7f020022;
+        public static final int qianjin=0x7f020023;
+        public static final int radio_attention_selector=0x7f020024;
+        public static final int radio_hot_selector=0x7f020025;
+        public static final int sousuo=0x7f020026;
+        public static final int sousuodiban=0x7f020027;
+        public static final int sousuoqianse=0x7f020028;
+        public static final int square_normal=0x7f020029;
+        public static final int square_selected=0x7f02002a;
+        public static final int square_selector=0x7f02002b;
+        public static final int tag_square=0x7f02002c;
+        public static final int tou=0x7f02002d;
+        public static final int tubiaoshangmianfanhui=0x7f02002e;
+        public static final int with_city_pengyouquan_selector=0x7f02002f;
+        public static final int with_city_qqkongjian_selector=0x7f020030;
+        public static final int with_city_quxiao_selector=0x7f020031;
+        public static final int with_city_weibo_selector=0x7f020032;
+        public static final int withcityfankui=0x7f020033;
+        public static final int withcityfenxiangyingyong=0x7f020034;
+        public static final int withcityhaoping=0x7f020035;
+        public static final int withcitysharepengyouquan=0x7f020036;
+        public static final int withcitysharepengyouquanweixuanzhong=0x7f020037;
+        public static final int withcityshareqqkongjian=0x7f020038;
+        public static final int withcityshareqqkongjianweixuanzhong=0x7f020039;
+        public static final int withcitysharequxiao=0x7f02003a;
+        public static final int withcitysharequxiaoweixuanzhong=0x7f02003b;
+        public static final int withcityshareweibo=0x7f02003c;
+        public static final int withcityshareweiboweixuanzhong=0x7f02003d;
+        public static final int withcityweibo=0x7f02003e;
+        public static final int withcityweixin=0x7f02003f;
+        public static final int xiangyoubaise=0x7f020040;
+        public static final int xiaoxiyemiankunian=0x7f020041;
+        public static final int xiaoxiyemianshanchu=0x7f020042;
+        public static final int xiaoxiyemianshanchuzhong=0x7f020043;
+        public static final int xiaoxiyemianxiaonian=0x7f020044;
+        public static final int xlistview_arrow=0x7f020045;
+        public static final int zan_normal=0x7f020046;
+        public static final int zan_selected=0x7f020047;
+>>>>>>> aedfac1f0f7c4992f9574f759d4209c195b8534b
     }
     public static final class id {
         public static final int both=0x7f050003;
@@ -235,6 +315,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int etPhoneLogin=0x7f050018;
         public static final int etPwdBindPhone=0x7f05000e;
         public static final int etPwdLogin=0x7f050019;
+<<<<<<< HEAD
         public static final int etVerCodeBindPhone=0x7f050011;
         public static final int fl_inner=0x7f050048;
         public static final int flip=0x7f050008;
@@ -242,10 +323,28 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int gySquareHot=0x7f050064;
         public static final int ib_login=0x7f050040;
         public static final int imgCmtPic=0x7f05005f;
+=======
+        public static final int etSearch=0x7f05004c;
+        public static final int etVerCodeBindPhone=0x7f050011;
+        public static final int fl_inner=0x7f050066;
+        public static final int flip=0x7f050008;
+        public static final int gridview=0x7f050009;
+        public static final int gySquareHot=0x7f050081;
+        public static final int ibWithBaseData=0x7f050045;
+        public static final int ibWithChengBang=0x7f050041;
+        public static final int ibWithFriend=0x7f050042;
+        public static final int ibWithFriendTrends=0x7f050046;
+        public static final int ibWithPersonalDynamic =0x7f050043;
+        public static final int ibWithPersonalEditor =0x7f050044;
+        public static final int ibWithPropaganda =0x7f050047;
+        public static final int ib_login=0x7f050040;
+        public static final int imgCmtPic=0x7f05007c;
+>>>>>>> aedfac1f0f7c4992f9574f759d4209c195b8534b
         public static final int imgGyItem=0x7f050014;
         public static final int imgIndex=0x7f05001f;
         public static final int imgMessage=0x7f05002a;
         public static final int imgMine=0x7f05002d;
+<<<<<<< HEAD
         public static final int imgMoreSquare=0x7f050062;
         public static final int imgPersonSquare=0x7f050056;
         public static final int imgPublish=0x7f050026;
@@ -259,6 +358,25 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int ivLoginWeixin=0x7f050043;
         public static final int ivTopbarLeft=0x7f05006a;
         public static final int ivTopbarRight=0x7f05006e;
+=======
+        public static final int imgMoreSquare=0x7f05007f;
+        public static final int imgPersonSquare=0x7f050073;
+        public static final int imgPublish=0x7f050026;
+        public static final int imgSquare=0x7f050022;
+        public static final int imgTagSquare=0x7f050082;
+        public static final int imgZanPic=0x7f050079;
+        public static final int ivBackBindPhone=0x7f05000c;
+        public static final int ivBackLogin=0x7f050017;
+        public static final int ivLoginPhone=0x7f050052;
+        public static final int ivLoginPhoneBack=0x7f05004e;
+        public static final int ivLoginWeixin=0x7f050050;
+        public static final int ivSearch=0x7f05004b;
+        public static final int ivShareFriend=0x7f050061;
+        public static final int ivShareQQ=0x7f050063;
+        public static final int ivShareWeiBo=0x7f050062;
+        public static final int ivTopbarLeft=0x7f050048;
+        public static final int ivTopbarRight=0x7f05004a;
+>>>>>>> aedfac1f0f7c4992f9574f759d4209c195b8534b
         public static final int iv_my_message_delete=0x7f05003d;
         public static final int iv_my_message_head=0x7f05003c;
         public static final int iv_myhelp=0x7f050036;
@@ -270,6 +388,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int layoutMine=0x7f05002c;
         public static final int layoutPublish=0x7f050025;
         public static final int layoutSquare=0x7f050021;
+<<<<<<< HEAD
         public static final int listviewHotFragment=0x7f050015;
         public static final int llBottomTag=0x7f050051;
         public static final int llComment=0x7f05005e;
@@ -283,6 +402,27 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int llTopbarRight=0x7f05006d;
         public static final int llVerCodeBindPhone=0x7f05000f;
         public static final int llZan=0x7f05005b;
+=======
+        public static final int leftViewLine=0x7f050059;
+        public static final int listviewHotFragment=0x7f050015;
+        public static final int llBottomTag=0x7f050058;
+        public static final int llComment=0x7f05007b;
+        public static final int llLogin=0x7f05001a;
+        public static final int llLoginPhone=0x7f050051;
+        public static final int llLoginProblem=0x7f050053;
+        public static final int llMoreSquare=0x7f05007e;
+        public static final int llOkBindPhone=0x7f050012;
+        public static final int llTopbarLeft=0x7f050086;
+        public static final int llTopbarMiddle=0x7f050087;
+        public static final int llTopbarRight=0x7f050088;
+        public static final int llVerCodeBindPhone=0x7f05000f;
+        public static final int llWithCityFeedback=0x7f05005f;
+        public static final int llWithCityHaoPing=0x7f050060;
+        public static final int llWithCityShare=0x7f05005c;
+        public static final int llWithCityWeiBo=0x7f05005e;
+        public static final int llWithCityWeiXin=0x7f05005d;
+        public static final int llZan=0x7f050078;
+>>>>>>> aedfac1f0f7c4992f9574f759d4209c195b8534b
         public static final int ll_tabs=0x7f05002f;
         public static final int mainbottom=0x7f05001d;
         public static final int maincity=0x7f05001c;
@@ -290,11 +430,16 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int messagePager=0x7f050038;
         public static final int my_listview=0x7f050039;
         public static final int my_pbar=0x7f05003a;
+<<<<<<< HEAD
         public static final int pagerSquare=0x7f050054;
+=======
+        public static final int pagerSquare=0x7f050071;
+>>>>>>> aedfac1f0f7c4992f9574f759d4209c195b8534b
         public static final int pullDownFromTop=0x7f050005;
         public static final int pullFromEnd=0x7f050002;
         public static final int pullFromStart=0x7f050001;
         public static final int pullUpFromBottom=0x7f050006;
+<<<<<<< HEAD
         public static final int pull_to_refresh_image=0x7f050049;
         public static final int pull_to_refresh_progress=0x7f05004a;
         public static final int pull_to_refresh_sub_text=0x7f05004c;
@@ -330,6 +475,51 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int tvTopbarMiddle=0x7f05006c;
         public static final int tvVerCodeBindPhone=0x7f050010;
         public static final int tvZanNum=0x7f05005d;
+=======
+        public static final int pull_to_refresh_image=0x7f050067;
+        public static final int pull_to_refresh_progress=0x7f050068;
+        public static final int pull_to_refresh_sub_text=0x7f05006a;
+        public static final int pull_to_refresh_text=0x7f050069;
+        public static final int rightViewLine=0x7f05005a;
+        public static final int rlAttention=0x7f05006d;
+        public static final int rlHot=0x7f05006b;
+        public static final int rlLeftTV=0x7f050054;
+        public static final int rlLoginWeiXin=0x7f05004f;
+        public static final int rlPicSquare=0x7f050080;
+        public static final int rlRightTV=0x7f050056;
+        public static final int rlShareCancel=0x7f050064;
+        public static final int rlUserSquare=0x7f050072;
+        public static final int rotate=0x7f050007;
+        public static final int scrollview=0x7f05000b;
+        public static final int tv=0x7f050016;
+        public static final int tvAttention=0x7f05006e;
+        public static final int tvBack=0x7f050065;
+        public static final int tvCmtNum=0x7f05007d;
+        public static final int tvContentSquare=0x7f050076;
+        public static final int tvCurPicNum=0x7f050084;
+        public static final int tvHot=0x7f05006c;
+        public static final int tvIndex=0x7f050020;
+        public static final int tvLeft=0x7f050055;
+        public static final int tvLocationSquare=0x7f050077;
+        public static final int tvLogin=0x7f05001b;
+        public static final int tvMessage=0x7f05002b;
+        public static final int tvMine=0x7f05002e;
+        public static final int tvNameSquare=0x7f050074;
+        public static final int tvOkBindPhone=0x7f050013;
+        public static final int tvPublish=0x7f050027;
+        public static final int tvPublishPush=0x7f050028;
+        public static final int tvRight=0x7f050057;
+        public static final int tvSearch=0x7f05004d;
+        public static final int tvSquare=0x7f050023;
+        public static final int tvSquarePush=0x7f050024;
+        public static final int tvSumPicNum=0x7f050085;
+        public static final int tvTagTextSquare=0x7f050083;
+        public static final int tvTimeSquare=0x7f050075;
+        public static final int tvTopbarMiddle=0x7f050049;
+        public static final int tvTopbarRight=0x7f050089;
+        public static final int tvVerCodeBindPhone=0x7f050010;
+        public static final int tvZanNum=0x7f05007a;
+>>>>>>> aedfac1f0f7c4992f9574f759d4209c195b8534b
         public static final int tv_my_help=0x7f050032;
         public static final int tv_my_message=0x7f050030;
         public static final int tv_my_message_info=0x7f05003f;
@@ -337,6 +527,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int tv_my_message_time=0x7f05003b;
         public static final int tv_pet_message=0x7f050031;
         public static final int tv_sys_message=0x7f050033;
+<<<<<<< HEAD
         public static final int viewAttention=0x7f050053;
         public static final int viewHot=0x7f050052;
         public static final int webview=0x7f05000a;
@@ -349,6 +540,21 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int xlistview_header_progressbar=0x7f050077;
         public static final int xlistview_header_text=0x7f050073;
         public static final int xlistview_header_time=0x7f050075;
+=======
+        public static final int twoViewPager=0x7f05005b;
+        public static final int viewAttention=0x7f050070;
+        public static final int viewHot=0x7f05006f;
+        public static final int webview=0x7f05000a;
+        public static final int xlistview_footer_content=0x7f05008a;
+        public static final int xlistview_footer_hint_textview=0x7f05008c;
+        public static final int xlistview_footer_progressbar=0x7f05008b;
+        public static final int xlistview_header_arrow=0x7f050091;
+        public static final int xlistview_header_content=0x7f05008d;
+        public static final int xlistview_header_hint_textview=0x7f05008f;
+        public static final int xlistview_header_progressbar=0x7f050092;
+        public static final int xlistview_header_text=0x7f05008e;
+        public static final int xlistview_header_time=0x7f050090;
+>>>>>>> aedfac1f0f7c4992f9574f759d4209c195b8534b
     }
     public static final class layout {
         public static final int attention_fragment=0x7f030000;
@@ -368,6 +574,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int message_sysmessage=0x7f03000e;
         public static final int message_sysmessage_item=0x7f03000f;
         public static final int mine_activity=0x7f030010;
+<<<<<<< HEAD
         public static final int mine_login_activity1=0x7f030011;
         public static final int mine_login_phone_activity=0x7f030012;
         public static final int publish_activity=0x7f030013;
@@ -380,6 +587,27 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int top_layout=0x7f03001a;
         public static final int xlistview_footer=0x7f03001b;
         public static final int xlistview_header=0x7f03001c;
+=======
+        public static final int mine_good_friend_activity=0x7f030011;
+        public static final int mine_good_friend_search_popupwindow=0x7f030012;
+        public static final int mine_login_activity1=0x7f030013;
+        public static final int mine_login_phone_activity=0x7f030014;
+        public static final int mine_personal_dynamic_avtivity=0x7f030015;
+        public static final int mine_two_view=0x7f030016;
+        public static final int mine_with_city_activity=0x7f030017;
+        public static final int mine_with_city_share_popupwindow=0x7f030018;
+        public static final int publish_activity=0x7f030019;
+        public static final int pull_to_refresh_header_horizontal=0x7f03001a;
+        public static final int pull_to_refresh_header_vertical=0x7f03001b;
+        public static final int square_activity=0x7f03001c;
+        public static final int square_listview_item=0x7f03001d;
+        public static final int square_listview_item_pic=0x7f03001e;
+        public static final int top_bar=0x7f03001f;
+        public static final int top_bar_layout=0x7f030020;
+        public static final int top_layout=0x7f030021;
+        public static final int xlistview_footer=0x7f030022;
+        public static final int xlistview_header=0x7f030023;
+>>>>>>> aedfac1f0f7c4992f9574f759d4209c195b8534b
     }
     public static final class string {
         public static final int app_name=0x7f070006;
@@ -433,6 +661,17 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int LoginAnimActivity=0x7f090005;
         public static final int activty_fade_in_fade_out=0x7f090006;
         public static final int main_tab_but_linear=0x7f090002;
+<<<<<<< HEAD
+=======
+        /**   PopupWindow从底部出来
+ 指定消失的动画xml 
+         */
+        public static final int mypopwindow_anim_style=0x7f090007;
+        /**   PopupWindow从顶部出来
+ 指定消失的动画xml 
+         */
+        public static final int mypopwindow_anim_top_style=0x7f090008;
+>>>>>>> aedfac1f0f7c4992f9574f759d4209c195b8534b
     }
     public static final class styleable {
         /** Attributes that can be used with a PullToRefresh.
@@ -501,7 +740,11 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 <p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
           <p>This is a private symbol.
+<<<<<<< HEAD
           @attr name com.shitouren.citystate:ptrAdapterViewBackground
+=======
+          @attr name android:ptrAdapterViewBackground
+>>>>>>> aedfac1f0f7c4992f9574f759d4209c195b8534b
         */
         public static final int PullToRefresh_ptrAdapterViewBackground = 16;
         /**
@@ -520,7 +763,11 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 <tr><td><code>flip</code></td><td>0x1</td><td></td></tr>
 </table>
           <p>This is a private symbol.
+<<<<<<< HEAD
           @attr name com.shitouren.citystate:ptrAnimationStyle
+=======
+          @attr name android:ptrAnimationStyle
+>>>>>>> aedfac1f0f7c4992f9574f759d4209c195b8534b
         */
         public static final int PullToRefresh_ptrAnimationStyle = 12;
         /**
@@ -532,7 +779,11 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
+<<<<<<< HEAD
           @attr name com.shitouren.citystate:ptrDrawable
+=======
+          @attr name android:ptrDrawable
+>>>>>>> aedfac1f0f7c4992f9574f759d4209c195b8534b
         */
         public static final int PullToRefresh_ptrDrawable = 6;
         /**
@@ -542,7 +793,11 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<<<<<<< HEAD
           @attr name com.shitouren.citystate:ptrDrawableBottom
+=======
+          @attr name android:ptrDrawableBottom
+>>>>>>> aedfac1f0f7c4992f9574f759d4209c195b8534b
         */
         public static final int PullToRefresh_ptrDrawableBottom = 18;
         /**
@@ -554,7 +809,11 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
+<<<<<<< HEAD
           @attr name com.shitouren.citystate:ptrDrawableEnd
+=======
+          @attr name android:ptrDrawableEnd
+>>>>>>> aedfac1f0f7c4992f9574f759d4209c195b8534b
         */
         public static final int PullToRefresh_ptrDrawableEnd = 8;
         /**
@@ -566,7 +825,11 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
+<<<<<<< HEAD
           @attr name com.shitouren.citystate:ptrDrawableStart
+=======
+          @attr name android:ptrDrawableStart
+>>>>>>> aedfac1f0f7c4992f9574f759d4209c195b8534b
         */
         public static final int PullToRefresh_ptrDrawableStart = 7;
         /**
@@ -576,7 +839,11 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<<<<<<< HEAD
           @attr name com.shitouren.citystate:ptrDrawableTop
+=======
+          @attr name android:ptrDrawableTop
+>>>>>>> aedfac1f0f7c4992f9574f759d4209c195b8534b
         */
         public static final int PullToRefresh_ptrDrawableTop = 17;
         /**
@@ -590,7 +857,11 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 <p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
           <p>This is a private symbol.
+<<<<<<< HEAD
           @attr name com.shitouren.citystate:ptrHeaderBackground
+=======
+          @attr name android:ptrHeaderBackground
+>>>>>>> aedfac1f0f7c4992f9574f759d4209c195b8534b
         */
         public static final int PullToRefresh_ptrHeaderBackground = 1;
         /**
@@ -604,7 +875,11 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 <p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
           <p>This is a private symbol.
+<<<<<<< HEAD
           @attr name com.shitouren.citystate:ptrHeaderSubTextColor
+=======
+          @attr name android:ptrHeaderSubTextColor
+>>>>>>> aedfac1f0f7c4992f9574f759d4209c195b8534b
         */
         public static final int PullToRefresh_ptrHeaderSubTextColor = 3;
         /**
@@ -616,7 +891,11 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
+<<<<<<< HEAD
           @attr name com.shitouren.citystate:ptrHeaderTextAppearance
+=======
+          @attr name android:ptrHeaderTextAppearance
+>>>>>>> aedfac1f0f7c4992f9574f759d4209c195b8534b
         */
         public static final int PullToRefresh_ptrHeaderTextAppearance = 10;
         /**
@@ -630,7 +909,11 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 <p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
           <p>This is a private symbol.
+<<<<<<< HEAD
           @attr name com.shitouren.citystate:ptrHeaderTextColor
+=======
+          @attr name android:ptrHeaderTextColor
+>>>>>>> aedfac1f0f7c4992f9574f759d4209c195b8534b
         */
         public static final int PullToRefresh_ptrHeaderTextColor = 2;
         /**
@@ -647,7 +930,11 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
 <p>May be a boolean value, either "<code>true</code>" or "<code>false</code>".
           <p>This is a private symbol.
+<<<<<<< HEAD
           @attr name com.shitouren.citystate:ptrListViewExtrasEnabled
+=======
+          @attr name android:ptrListViewExtrasEnabled
+>>>>>>> aedfac1f0f7c4992f9574f759d4209c195b8534b
         */
         public static final int PullToRefresh_ptrListViewExtrasEnabled = 14;
         /**
@@ -671,7 +958,11 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 <tr><td><code>pullUpFromBottom</code></td><td>0x2</td><td></td></tr>
 </table>
           <p>This is a private symbol.
+<<<<<<< HEAD
           @attr name com.shitouren.citystate:ptrMode
+=======
+          @attr name android:ptrMode
+>>>>>>> aedfac1f0f7c4992f9574f759d4209c195b8534b
         */
         public static final int PullToRefresh_ptrMode = 4;
         /**
@@ -684,7 +975,11 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
 <p>May be a boolean value, either "<code>true</code>" or "<code>false</code>".
           <p>This is a private symbol.
+<<<<<<< HEAD
           @attr name com.shitouren.citystate:ptrOverScroll
+=======
+          @attr name android:ptrOverScroll
+>>>>>>> aedfac1f0f7c4992f9574f759d4209c195b8534b
         */
         public static final int PullToRefresh_ptrOverScroll = 9;
         /**
@@ -698,7 +993,11 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 <p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
           <p>This is a private symbol.
+<<<<<<< HEAD
           @attr name com.shitouren.citystate:ptrRefreshableViewBackground
+=======
+          @attr name android:ptrRefreshableViewBackground
+>>>>>>> aedfac1f0f7c4992f9574f759d4209c195b8534b
         */
         public static final int PullToRefresh_ptrRefreshableViewBackground = 0;
         /**
@@ -714,7 +1013,11 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
 <p>May be a boolean value, either "<code>true</code>" or "<code>false</code>".
           <p>This is a private symbol.
+<<<<<<< HEAD
           @attr name com.shitouren.citystate:ptrRotateDrawableWhilePulling
+=======
+          @attr name android:ptrRotateDrawableWhilePulling
+>>>>>>> aedfac1f0f7c4992f9574f759d4209c195b8534b
         */
         public static final int PullToRefresh_ptrRotateDrawableWhilePulling = 15;
         /**
@@ -727,7 +1030,11 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
 <p>May be a boolean value, either "<code>true</code>" or "<code>false</code>".
           <p>This is a private symbol.
+<<<<<<< HEAD
           @attr name com.shitouren.citystate:ptrScrollingWhileRefreshingEnabled
+=======
+          @attr name android:ptrScrollingWhileRefreshingEnabled
+>>>>>>> aedfac1f0f7c4992f9574f759d4209c195b8534b
         */
         public static final int PullToRefresh_ptrScrollingWhileRefreshingEnabled = 13;
         /**
@@ -740,7 +1047,11 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
 <p>May be a boolean value, either "<code>true</code>" or "<code>false</code>".
           <p>This is a private symbol.
+<<<<<<< HEAD
           @attr name com.shitouren.citystate:ptrShowIndicator
+=======
+          @attr name android:ptrShowIndicator
+>>>>>>> aedfac1f0f7c4992f9574f759d4209c195b8534b
         */
         public static final int PullToRefresh_ptrShowIndicator = 5;
         /**
@@ -752,7 +1063,11 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           <p>This is a private symbol.
+<<<<<<< HEAD
           @attr name com.shitouren.citystate:ptrSubHeaderTextAppearance
+=======
+          @attr name android:ptrSubHeaderTextAppearance
+>>>>>>> aedfac1f0f7c4992f9574f759d4209c195b8534b
         */
         public static final int PullToRefresh_ptrSubHeaderTextAppearance = 11;
     };

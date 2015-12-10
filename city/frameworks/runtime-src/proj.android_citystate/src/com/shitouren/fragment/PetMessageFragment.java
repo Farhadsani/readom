@@ -1,5 +1,6 @@
 package com.shitouren.fragment;
 
+
 import com.shitouren.citystate.R;
 
 import android.os.Bundle;
