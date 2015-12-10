@@ -73,6 +73,16 @@
     }
 }
 
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+//    [WNXTopWindow show];
+}
+
+- (void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+//    [WNXTopWindow hide];
+}
+
 #pragma mark - request delegate
 - (void)didFinishLoad:(Reqest *)req responseData:(NSData *)responseData result:(id)result{
     if ([[req.data_dict objectOutForKey:k_r_url] hasSuffix:k_api_feed_hot]) {

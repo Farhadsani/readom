@@ -53,6 +53,8 @@
 
 #import "MJExtension.h"//数据模型扩展库
 
+#import "WNXTopWindow.h"//添加到状态栏上
+
 #endif
 
 #ifndef DEBUG
