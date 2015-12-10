@@ -92,7 +92,7 @@
                                      V_Font_Size:@14,
                                      V_Font_Family:k_fontName_FZZY,
                                      V_Color:k_defaultTextColor,
-                                     V_Text:@"城邦通知",
+                                     V_Text:[NSString stringWithFormat:@"%@通知", [Device appDisplayName]],
                                      V_Alpha:@0.8,
                                      }];
     [section_1 addSubview:lab1];

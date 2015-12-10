@@ -163,8 +163,22 @@
 #pragma mark
 
 - (void)showTabBarAndNavBar{
-    [[self getFirstVCOfTabbar] setNavigationBarHidden:NO animated:YES];
-    [self hideTabBar:NO animation:YES];
+    id obj = [self getFirstVCOfTabbar];
+    [obj setNavigationBarHidden:NO animated:YES];
+    BOOL isIn = NO;
+    if ([obj isKindOfClass:[UINavigationController class]]) {
+        if ([obj viewControllers].count == 1 && [[[obj viewControllers] objectAtIndex:0] isKindOfClass:[CocosMapIndexRootViewController class]]) {
+            CocosMapIndexRootViewController * vc = (CocosMapIndexRootViewController *)[[obj viewControllers] objectAtIndex:0];
+            if (vc.sightDetailViewController && vc.sightDetailViewController.view.superview) {
+                isIn = YES;
+                [vc.view bringSubviewToFront:vc.sightDetailViewController.view];
+//                [self hideTabBar:YES animation:YES];
+            }
+        }
+    }
+    if (!isIn) {
+        [self hideTabBar:NO animation:YES];
+    }
 }
 
 - (void)hiddenTabBarAndNavBar{

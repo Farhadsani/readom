@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>zh_CN</string>
 	<key>CFBundleDisplayName</key>
-	<string>城邦</string>
+	<string>一圈一点</string>
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleGetInfoString</key>
@@ -30,7 +30,7 @@
 		<string>icon-02</string>
 	</array>
 	<key>CFBundleIdentifier</key>
-	<string>com.shitouren.citystate</string>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -47,10 +47,10 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string>com.shitouren.citystate</string>
+			<string>com.shitouren.citystate.taiyuan</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>citystate</string>
+				<string>citystate.taiyuan</string>
 			</array>
 		</dict>
 		<dict>
@@ -113,7 +113,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>10</string>
+	<string>1</string>
 	<key>LSApplicationCategoryType</key>
 	<string></string>
 	<key>LSApplicationQueriesSchemes</key>
