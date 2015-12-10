@@ -15,7 +15,7 @@
         android:background="@drawable/tou"
         android:orientation="vertical">
         <include layout="@layout/top_bar_layout"
-            android:background="#00444444"/>
+            android:background="#444444"/>
         
         		<com.shitouren.view.CircularImage
 		            android:id="@+id/imgPersonalEditor"
@@ -36,7 +36,7 @@
 				     android:id="@+id/tvPersonalEditordec"
 				   android:layout_width="wrap_content"
 				   android:layout_height="wrap_content"
-				   android:textColor="#444444"
+				   android:textColor="#ff0000"
 				   android:padding="3dp"
 				   android:textSize="10dp"
 				   android:text="See you again"/>

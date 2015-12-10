@@ -84,6 +84,7 @@ public class WithCityActivity extends Activity implements OnClickListener {
 	    ivShareWeiBo = (ImageView) view.findViewById(R.id.ivShareWeiBo);
 	    ivShareQQ = (ImageView) view.findViewById(R.id.ivShareQQ);
 	    rlShareCancel = (RelativeLayout) view.findViewById(R.id.rlShareCancel);
+	    ivShareFriend.setImageResource(R.drawable.withcitysharepengyouquan);
 	    ivShareFriend.setOnClickListener(this);
 		ivShareWeiBo.setOnClickListener(this);
 		ivShareQQ.setOnClickListener(this);
@@ -116,15 +117,12 @@ public class WithCityActivity extends Activity implements OnClickListener {
 			 */
 			//分享朋友
 		case R.id.ivShareFriend:
-			
 			break;
 			//分享微博
 		case R.id.ivShareWeiBo:
-			
 			break;
 			//分享QQ
 		case R.id.ivShareQQ:
-			
 			break;
 			//分享取消
 		case R.id.rlShareCancel:

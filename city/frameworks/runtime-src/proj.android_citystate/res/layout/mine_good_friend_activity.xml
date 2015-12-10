@@ -5,7 +5,8 @@
     android:background="@color/square_background"
     android:orientation="vertical" >
     
-    <include layout="@layout/top_bar_layout"/>
+    <include layout="@layout/top_bar_layout"
+        android:background="#ffd731"/>
     
     
     <LinearLayout 
