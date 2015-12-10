@@ -14,6 +14,7 @@
        <LinearLayout 
            android:layout_height="wrap_content"
             android:layout_width="wrap_content"
+            android:layout_marginLeft="5dp"
             android:background="@drawable/sousuodiban"
            >
            
@@ -23,16 +24,19 @@
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:background="@drawable/sousuoqianse"
-            android:layout_marginTop="6dp"
+            android:layout_gravity="center_vertical"
             android:layout_marginLeft="8dp"/>
          <EditText 
             android:id="@+id/etSearch"
             android:layout_height="match_parent"
             android:layout_width="match_parent"
             android:background="@null"
+            android:layout_marginLeft="8dp"
             android:layout_marginRight="15dp"
+            android:gravity="center_vertical"
             android:layout_toRightOf="@+id/ivSearch"
-            android:text="搜索全部关注"
+            android:hint="搜索全部关注"
+            android:maxLength="16"
             android:textColor="#55000000"
             android:textSize="15dp"
              />

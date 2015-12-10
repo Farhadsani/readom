@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/square_background"
+    android:orientation="vertical" >
+
+
+    <LinearLayout
+        android:id="@+id/llPersonalEditorBackground"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" 
+        android:gravity="center_horizontal"
+        android:background="@drawable/tou"
+        android:orientation="vertical">
+        <include layout="@layout/top_bar_layout"
+            android:background="#00444444"/>
+        
+        		<com.shitouren.view.CircularImage
+		            android:id="@+id/imgPersonalEditor"
+		            android:layout_width="50dp"
+		            android:layout_height="50dp"
+		            android:scaleType="fitXY"
+		            android:layout_marginTop="10dp"
+		            android:src="@drawable/tou" />
+        		<TextView
+        		    android:id="@+id/tvPersonalEditorName"
+				   android:layout_width="wrap_content"
+				   android:layout_height="wrap_content"
+				   android:textColor="#444444"
+				   android:padding="3dp"
+				   android:textSize="18dp"
+				   android:text="Seven"/>
+				 <TextView
+				     android:id="@+id/tvPersonalEditordec"
+				   android:layout_width="wrap_content"
+				   android:layout_height="wrap_content"
+				   android:textColor="#444444"
+				   android:padding="3dp"
+				   android:textSize="10dp"
+				   android:text="See you again"/>
+    </LinearLayout>
+    
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2" >
+				 <ListView
+				     android:id="@+id/lvPersonalEditor" 
+				     android:layout_width="match_parent"
+				     android:layout_height="wrap_content"
+				     >
+				     
+				 </ListView>
+        
+    </LinearLayout>
+
+</LinearLayout>
