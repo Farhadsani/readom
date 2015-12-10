@@ -284,7 +284,6 @@
                                         V_Alpha:@0.5,
                                         }];
     [_loginView addSubview:line2];
-
 }
 
 - (void)baseBack:(id)sender{

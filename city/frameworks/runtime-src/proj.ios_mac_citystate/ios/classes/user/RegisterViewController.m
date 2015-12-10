@@ -392,6 +392,28 @@
                                              V_SEL:selStr(@selector(requestRigister:)),
                                              V_Title:@"确定"}];
     [self.registerView addSubview:loginButton];
+    
+#ifdef k_SHOW_AGREEMENT_LINK_USER
+    UILabel * agreement = [UIView label:@{V_Parent_View:_registerView,
+                                          V_Over_Flow_Y:num(OverFlowBottom),
+                                          V_Over_Flow_X:num(OverFlowXCenter),
+                                          V_Height:@50,
+                                          V_Text:[NSString stringWithFormat:@"注册即视为已同意《%@》", k_user_agreement_user_title],
+                                          V_Font_Family:k_defaultFontName,
+                                          V_Font_Size:@12,
+                                          V_Color:white_color,
+                                          V_TextAlign:num(TextAlignCenter),
+                                          V_Alpha:@0.8,
+                                          V_Delegate:self,
+                                          V_SEL:selStr(@selector(jumpToAgreement)),
+                                          }];
+    [_registerView addSubview:agreement];
+#endif
+}
+
+- (void)jumpToAgreement{
+    InfoLog(@"");
+    [self openWebView:k_user_agreement_user localXml:nil title:k_user_agreement_user_title otherInfo:@{@"openType":@"push",@"hidNav":@"NO"}];
 }
 
 - (void)dealloc{
