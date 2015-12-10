@@ -29,6 +29,29 @@
     payMoneyView.frame = frame;
     payMoneyView.delegate = self;
     payMoneyView.goodsOrder = self.goodsOrder;
+    
+#ifdef k_SHOW_AGREEMENT_LINK_PAY
+    UILabel * agreement = [UIView label:@{V_Parent_View:self.contentView,
+                                          V_Over_Flow_Y:num(OverFlowBottom),
+                                          V_Over_Flow_X:num(OverFlowXCenter),
+                                          V_Height:@50,
+                                          V_Text:[NSString stringWithFormat:@"购买即为已同意《%@》", k_user_agreement_pay_title],
+                                          V_Font_Family:k_defaultFontName,
+                                          V_Font_Size:@12,
+                                          V_Color:gray_color,
+                                          V_TextAlign:num(TextAlignCenter),
+                                          V_Alpha:@0.6,
+                                          V_Delegate:self,
+                                          V_SEL:selStr(@selector(jumpToAgreement)),
+                                          }];
+    [self.contentView addSubview:agreement];
+#endif
+    
+}
+
+- (void)jumpToAgreement{
+    InfoLog(@"");
+    [self openWebView:k_user_agreement_pay localXml:nil title:k_user_agreement_pay_title otherInfo:@{@"openType":@"push",@"hidNav":@"NO"}];
 }
 
 #pragma mark - request delegate

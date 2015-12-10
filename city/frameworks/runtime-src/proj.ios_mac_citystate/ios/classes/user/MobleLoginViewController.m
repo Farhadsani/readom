@@ -124,7 +124,7 @@
 
 - (void)setupMainView{
     self.mobleloginView = [UIView scrollView:@{V_Parent_View:self.contentView,
-                                               V_Height:strFloat(self.contentView.height + 49),
+                                               V_Height:strFloat(self.contentView.height),
                                                V_BGColor:yello_color,
                                                }];
     [self.contentView addSubview:_mobleloginView];
@@ -277,6 +277,29 @@
                                              V_SEL:selStr(@selector(requestLogin:)),
                                              V_Title:@"立即登录"}];
     [self.mobleloginView addSubview:loginButton];
+    
+#ifdef k_SHOW_AGREEMENT_LINK_USER
+    UILabel * agreement = [UIView label:@{V_Parent_View:_mobleloginView,
+                                          V_Over_Flow_Y:num(OverFlowBottom),
+                                          V_Over_Flow_X:num(OverFlowXCenter),
+                                          V_Height:@50,
+                                          V_Text:[NSString stringWithFormat:@"登录即视为已同意《%@》", k_user_agreement_user_title],
+                                          V_Font_Family:k_defaultFontName,
+                                          V_Font_Size:@12,
+                                          V_Color:white_color,
+                                          V_TextAlign:num(TextAlignCenter),
+                                          V_Alpha:@0.8,
+                                          V_Delegate:self,
+                                          V_SEL:selStr(@selector(jumpToAgreement)),
+                                          }];
+    [_mobleloginView addSubview:agreement];
+#endif
+    
+}
+
+- (void)jumpToAgreement{
+    InfoLog(@"");
+    [self openWebView:k_user_agreement_user localXml:nil title:k_user_agreement_user_title otherInfo:@{@"openType":@"push",@"hidNav":@"NO"}];
 }
 
 - (void)popToMainController:(id)sender{
