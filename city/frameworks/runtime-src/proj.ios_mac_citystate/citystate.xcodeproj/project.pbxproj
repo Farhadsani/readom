@@ -780,6 +780,7 @@
 		992BB8D71BE2222A00DB377C /* shanchu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 992BB8D51BE2222A00DB377C /* shanchu@2x.png */; };
 		992BB8D81BE2222A00DB377C /* shanchu@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 992BB8D61BE2222A00DB377C /* shanchu@3x.png */; };
 		992BB8DB1BE3112D00DB377C /* MyStoreGoodsEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 992BB8DA1BE3112D00DB377C /* MyStoreGoodsEditViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		992D9FED1C182FB300E689B7 /* WNXTopWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 992D9FEC1C182FB300E689B7 /* WNXTopWindow.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		995347F11BDE33140019D0C4 /* buddystatus_sendcomment_sel.png in Resources */ = {isa = PBXBuildFile; fileRef = 995347EB1BDE33140019D0C4 /* buddystatus_sendcomment_sel.png */; };
 		995347F21BDE33140019D0C4 /* buddystatus_sendcomment_sel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 995347EC1BDE33140019D0C4 /* buddystatus_sendcomment_sel@2x.png */; };
 		995347F31BDE33140019D0C4 /* buddystatus_sendcomment_sel@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 995347ED1BDE33140019D0C4 /* buddystatus_sendcomment_sel@3x.png */; };
@@ -2327,6 +2328,8 @@
 		992BB8D61BE2222A00DB377C /* shanchu@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shanchu@3x.png"; sourceTree = "<group>"; };
 		992BB8D91BE3112D00DB377C /* MyStoreGoodsEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyStoreGoodsEditViewController.h; sourceTree = "<group>"; };
 		992BB8DA1BE3112D00DB377C /* MyStoreGoodsEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyStoreGoodsEditViewController.m; sourceTree = "<group>"; };
+		992D9FEB1C182FB300E689B7 /* WNXTopWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WNXTopWindow.h; sourceTree = "<group>"; };
+		992D9FEC1C182FB300E689B7 /* WNXTopWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WNXTopWindow.m; sourceTree = "<group>"; };
 		995347EB1BDE33140019D0C4 /* buddystatus_sendcomment_sel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buddystatus_sendcomment_sel.png; sourceTree = "<group>"; };
 		995347EC1BDE33140019D0C4 /* buddystatus_sendcomment_sel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "buddystatus_sendcomment_sel@2x.png"; sourceTree = "<group>"; };
 		995347ED1BDE33140019D0C4 /* buddystatus_sendcomment_sel@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "buddystatus_sendcomment_sel@3x.png"; sourceTree = "<group>"; };
@@ -4422,6 +4425,8 @@
 				6767A1EC1C0EB7A000CF2BD7 /* jpush-lib */,
 				9920713E1B5DF3F600F66F9C /* AppController.h */,
 				9920713F1B5DF3F600F66F9C /* AppController.mm */,
+				992D9FEB1C182FB300E689B7 /* WNXTopWindow.h */,
+				992D9FEC1C182FB300E689B7 /* WNXTopWindow.m */,
 				67905EB21BB2A69800369E70 /* FirstViewController.h */,
 				67905EB31BB2A69800369E70 /* FirstViewController.m */,
 				67CC85A41BC641920099E421 /* CocosManager.h */,
@@ -7204,6 +7209,7 @@
 				6764BE441BD498A200B07A7E /* PostViewController.m in Sources */,
 				33242EA41B8AF148007A7694 /* MBProgressHUD+Extension.m in Sources */,
 				33E56FE41B80A80B00CEF957 /* NetworkManager.m in Sources */,
+				992D9FED1C182FB300E689B7 /* WNXTopWindow.m in Sources */,
 				9F91073A19F5614900AD5CAB /* CCStoreIOS.mm in Sources */,
 				9925473A1BB13A7300506A9D /* ASICloudFilesCDNRequest.m in Sources */,
 				6704AA781B87329E00833E06 /* PersonalTopicViewController.m in Sources */,
