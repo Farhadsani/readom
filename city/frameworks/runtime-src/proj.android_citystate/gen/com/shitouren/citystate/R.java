@@ -442,6 +442,12 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
     }
     public static final class string {
         public static final int app_name=0x7f070006;
+        public static final int errcode_cancel=0x7f070013;
+        public static final int errcode_deny=0x7f070014;
+        /**  微信 
+         */
+        public static final int errcode_success=0x7f070012;
+        public static final int errcode_unknown=0x7f070015;
         public static final int index=0x7f070007;
         public static final int message=0x7f07000a;
         public static final int mine=0x7f07000b;
