@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="40dp"
+    android:background="#fddc41"
+    android:orientation="horizontal" >
+    <LinearLayout 
+        android:layout_width="0dp"
+        android:layout_weight="1"
+    	android:layout_height="match_parent"
+        android:gravity="center">
+        
+    <ImageView 
+        android:id="@+id/ivTopbarLeft" 
+        android:layout_width="wrap_content"
+    	android:layout_height="wrap_content"
+    	android:src="@drawable/fanhuiblack"
+    	android:gravity="center"
+        />
+    </LinearLayout>
+    <LinearLayout 
+        android:layout_width="0dp"
+        android:layout_weight="3"
+    	android:layout_height="match_parent"
+        android:gravity="center"
+        >
+        
+	      <TextView
+	        android:id="@+id/tvTopbarMiddle" 
+	        android:layout_width="wrap_content"
+	    	android:layout_height="wrap_content"
+	    	android:gravity="center"
+	    	android:textColor="#444444"
+	    	android:textSize="20dp"
+	        android:text="关于"/>
+    </LinearLayout>
+    
+    <RelativeLayout 
+        android:layout_width="0dp"
+        android:layout_weight="1"
+    	android:layout_height="match_parent"
+    	android:gravity="center"
+        >
+        <ImageView 
+	        android:id="@+id/ivTopbarRight" 
+	        android:layout_width="wrap_content"
+	    	android:layout_height="wrap_content"
+	    	android:src="@drawable/xiangyoubaise"
+	    	android:layout_gravity="center"
+	    	android:visibility="gone"/>
+        <TextView
+	        android:id="@+id/tvTopbarRight" 
+	        android:layout_width="wrap_content"
+	    	android:layout_height="wrap_content"
+	    	android:gravity="center"
+	    	android:textColor="#444444"
+	    	android:textSize="15dp"
+	    	android:visibility="gone"
+	        android:text="关于"/>
+    </RelativeLayout>
+
+</LinearLayout>

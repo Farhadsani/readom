@@ -114,5 +114,8 @@
 {
     int index = (int)(scrollView.contentOffset.x / scrollView.frame.size.width + 0.5);
     self.imageIndexLabel.text = [NSString stringWithFormat:@"%d/%ld", index + 1, _noteItem.imgs.count];
+    self.noteItem.selectedIndex = index;
+    BuddyStatusNoteNewThumbViewCell *cell = (BuddyStatusNoteNewThumbViewCell *)[self collectionView:(UICollectionView *)scrollView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0]];
+    self.noteItem.selectedImageView = cell.imageView;
 }
 @end

@@ -8,6 +8,8 @@
 
 #import "BuddyStatusToolBar.h"
 #import "BuddyStatusSharedView.h"
+#import "UMSocial.h"
+#import "AppController.h"
 
 @interface BuddyStatusToolBar () <BuddyStatusSharedViewDelegate>
 @property (nonatomic, strong) NSMutableArray *separators;
@@ -202,7 +204,107 @@
 }
 
 #pragma mark - BuddyStatusSharedViewDelegate
-- (void)buddyStatusSharedViewDidClickAddFriendBtn:(BuddyStatusSharedView *)buddyStatusSharedView
+-(void)buddyStatusSharedViewDidClickSharedBtn:(BuddyStatusSharedViewBtnType)type
+{
+    NSString *url;
+    UIImage *image;
+    if (self.noteItem.thumbs.count > 0) {
+        url = self.noteItem.imgs[self.noteItem.selectedIndex];
+        image = self.noteItem.selectedImageView.image;
+    } else {
+        url = @"http://www.shitouren.com";
+        image = [UIImage imageNamed:@"icon-144.png"];
+    }
+    
+    [UMSocialData defaultData].extConfig.wechatSessionData.url = url;
+    [UMSocialData defaultData].extConfig.wechatTimelineData.url = url;
+    
+    NSString *content = self.noteItem.content;
+    
+    switch (type) {
+        case BuddyStatusSharedViewBtnTypeFriends:
+            NSLog(@"BuddyStatusSharedViewBtnTypeFriends。。。");
+        {
+            [[UMSocialDataService defaultDataService]  postSNSWithTypes:@[UMShareToWechatSession] content:content image:image location:nil urlResource:nil presentedController:nil completion:^(UMSocialResponseEntity *shareResponse){
+                if (shareResponse.responseCode == UMSResponseCodeSuccess) {
+                    NSLog(@"分享成功！");
+                    [MessageView showMessageView:@"分享成功" delayTime:2.0];
+                    //                        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil
+                    //                                                                        message:@"分享成功"
+                    //                                                                       delegate:self
+                    //                                                              cancelButtonTitle:@"确定"
+                    //                                                              otherButtonTitles:nil];
+                    //                        [alert show];
+                }
+            }];
+        }
+            break;
+        case BuddyStatusSharedViewBtnTypeFriendsGroup:
+            NSLog(@"BuddyStatusSharedViewBtnTypeFriendsGroup。。。");
+        {
+            [[UMSocialDataService defaultDataService]  postSNSWithTypes:@[UMShareToWechatTimeline] content:content image:image location:nil urlResource:nil presentedController:nil completion:^(UMSocialResponseEntity *shareResponse){
+                if (shareResponse.responseCode == UMSResponseCodeSuccess) {
+                    NSLog(@"分享成功！");
+                    [MessageView showMessageView:@"分享成功" delayTime:2.0];
+                    //                        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil
+                    //                                                                        message:@"分享成功"
+                    //                                                                       delegate:self
+                    //                                                              cancelButtonTitle:@"确定"
+                    //                                                              otherButtonTitles:nil];
+                    //                        [alert show];
+                }
+            }];
+        }
+            break;
+        case BuddyStatusSharedViewBtnTypeWeiBo:
+        {
+            NSLog(@"BuddyStatusSharedViewBtnTypeWeiBo。。。");
+            AppController *delegate = (AppController *)[UIApplication sharedApplication].delegate;
+            
+            [[UMSocialDataService defaultDataService]  postSNSWithTypes:@[UMShareToSina] content:content image:image location:nil urlResource:nil presentedController:[delegate getVisibleViewController] completion:^(UMSocialResponseEntity *shareResponse){
+                if (shareResponse.responseCode == UMSResponseCodeSuccess) {
+                    NSLog(@"分享成功！");
+                    [MessageView showMessageView:@"分享成功" delayTime:2.0];
+                    //                        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil
+                    //                                                                        message:@"分享成功"
+                    //                                                                       delegate:self
+                    //                                                              cancelButtonTitle:@"确定"
+                    //                                                              otherButtonTitles:nil];
+                    //                        [alert show];
+                }
+            }];
+            
+        }
+            break;
+        case BuddyStatusSharedViewBtnTypeQZone:
+            NSLog(@"BuddyStatusSharedViewBtnTypeQZone。。。");
+        {
+            [[UMSocialDataService defaultDataService]  postSNSWithTypes:@[UMShareToQzone] content:content image:image location:nil urlResource:nil presentedController:nil completion:^(UMSocialResponseEntity *shareResponse){
+                if (shareResponse.responseCode == UMSResponseCodeSuccess) {
+                    NSLog(@"分享成功！");
+                    [MessageView showMessageView:@"分享成功" delayTime:2.0];
+                    //                        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil
+                    //                                                                        message:@"分享成功"
+                    //                                                                       delegate:self
+                    //                                                              cancelButtonTitle:@"确定"
+                    //                                                              otherButtonTitles:nil];
+                    //                        [alert show];
+                }
+            }];
+        }
+            break;
+        case BuddyStatusSharedViewBtnTypeAddFriend:
+            [self addFriend];
+            break;
+        default:
+            break;
+    }
+    
+    [UMSocialData defaultData].extConfig.wechatSessionData.url = @"http://www.shitouren.com";
+    [UMSocialData defaultData].extConfig.wechatTimelineData.url = @"http://www.shitouren.com";
+}
+
+- (void)addFriend
 {
     NSDictionary * params = @{@"userid":@(self.noteItem.user.userid),
                               };

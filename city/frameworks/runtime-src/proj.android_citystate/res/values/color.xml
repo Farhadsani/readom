@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="mainColor">#FBD635</color>
+    <color name="gray">#969697</color>
+    <color name="less_gray">#B4B5B6</color>
+    
+    
+    
+    <color name="square_background"> #FCFEF2</color>
+    <color name="background_white"> #FFFFFF</color>
+    
+    
+    <color name="line_divider">#E1DFDF</color>
+    
+    
+    
+   
+</resources>
