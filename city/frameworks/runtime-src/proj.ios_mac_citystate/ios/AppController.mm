@@ -52,6 +52,8 @@
 //JPush推送
 #import "APService.h"
 
+#import "WNXTopWindow.h"
+
 
 ////APP端签名相关头文件
 //#import "payRequsestHandler.h"
@@ -85,6 +87,8 @@ static AppDelegate s_sharedApplication;
         [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookie:cookie];
         NSLog(@"cookie%@", cookie);
     }
+    
+    [WNXTopWindow show];
     
     [[UserManager sharedInstance] initServerCity:@"太原"];    //初始化服务城市
     
