@@ -39,6 +39,7 @@ public class ImageDetailActivity extends Activity {
 
 		Intent intent = getIntent();
 		list = intent.getStringArrayListExtra("links");
+		curPosition = intent.getIntExtra("id", 0);
 		
 		Debuger.log_w("ImageDetail:", list.size()+"");
 		
@@ -48,7 +49,7 @@ public class ImageDetailActivity extends Activity {
 		pager.setCurrentItem(curPosition);
 		pager.setOnPageChangeListener(pageChangeListener);
 
-		tvText.setText(1+"/"+list.size());
+		tvText.setText(curPosition+"/"+list.size());
 	}
 
 	private class ImagePagerAdapter extends PagerAdapter {

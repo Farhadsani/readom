@@ -116,6 +116,7 @@ public class SquareAdapter extends BaseAdapter {
 				
 				Intent intent = new Intent(context,ImageDetailActivity.class);
 				intent.putExtra("links", (Serializable)list.get(position).getImglink());
+				intent.putExtra("id", arg0);
 				context.startActivity(intent);
 			}
 		});
