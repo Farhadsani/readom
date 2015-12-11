@@ -5,10 +5,11 @@
     android:background="@color/background_white"
     android:orientation="vertical" >
 
-    <RelativeLayout
+    <LinearLayout
         android:id="@+id/rlUserSquare"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
         android:padding="10dp" >
 
         <com.shitouren.view.CircularImage
@@ -17,19 +18,21 @@
             android:layout_height="50dp"
             android:scaleType="fitXY"
             android:src="@drawable/tou" />
-
+        
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
             android:layout_marginLeft="10dp"
-            android:layout_toRightOf="@id/imgPersonSquare"
             android:orientation="vertical" >
 
             <TextView
                 android:id="@+id/tvNameSquare"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:ellipsize="end"
                 android:text="爱德华.刘德华" />
 
             <TextView
@@ -42,12 +45,12 @@
         </LinearLayout>
 
         <ImageView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
+            android:layout_weight="5"
+            android:layout_gravity="center_vertical"
             android:src="@drawable/arrow_right" />
-    </RelativeLayout>
+    </LinearLayout>
 
     <!--  
     <ViewStub
