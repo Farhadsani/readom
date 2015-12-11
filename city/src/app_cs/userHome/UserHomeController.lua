@@ -54,7 +54,7 @@ function UserHomeController:viewDidLoad()
 	-- if not QMapGlobal._notFirstIntoUH then
 	-- 	QMapGlobal._notFirstIntoUH = true
 		
-	-- 	self:_login(0)
+	-- 	self:_login(0)·
 	-- else
 	if not self.curUser or (not self.curUser.userid) or self.curUser.userid == 0 then
 

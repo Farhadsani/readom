@@ -119,6 +119,8 @@ public class MainActivity extends TabActivity implements OnClickListener {
 
 	private void prepareIntent() {
 
+//		indexIntent = new Intent(this, IndexActivity.class);
+
 		indexIntent = new Intent(this, AppActivity.class);
 
 		squareIntent = new Intent(this, SquareActivity.class);
@@ -287,7 +289,7 @@ public class MainActivity extends TabActivity implements OnClickListener {
 	
 	private void showPopupWindow(View view) {
 
-		// 一个自定义的布局，作为显示的内容
+		// 涓�涓����瀹�涔����甯�灞�锛�浣�涓烘�剧ず������瀹�
 		View contentView = LayoutInflater.from(this).inflate(R.layout.publish_activity, null);
 
 		final PopupWindow popupWindow = new PopupWindow(contentView, LayoutParams.MATCH_PARENT,
@@ -303,17 +305,17 @@ public class MainActivity extends TabActivity implements OnClickListener {
 		// Log.i("mengdd", "onTouch : ");
 		//
 		// return false;
-		// // 这里如果返回true的话，touch事件将被拦截
-		// // 拦截后 PopupWindow的onTouchEvent不被调用，这样点击外部区域无法dismiss
+		// // 杩����濡����杩����true���璇�锛�touch浜�浠跺��琚�������
+		// // ��������� PopupWindow���onTouchEvent涓�琚�璋����锛�杩���风�瑰�诲����ㄥ�哄�����娉�dismiss
 		// }
 		// });
 
-		// 如果不设置PopupWindow的背景，无论是点击外部区域还是Back键都无法dismiss弹框
-		// 我觉得这里是API的一个bug
+		// 濡����涓�璁剧疆PopupWindow���������锛����璁烘����瑰�诲����ㄥ�哄��杩����Back�����芥��娉�dismiss寮规��
+		// ���瑙�寰�杩�������API���涓�涓�bug
 		// popupWindow.setBackgroundDrawable(getResources().getDrawable(
 		// R.drawable.selectmenu_bg_downward));
 
-		// 设置好参数之后再show
+		// 璁剧疆濂藉����颁��������show
 		popupWindow.showAtLocation(view, Gravity.BOTTOM, 0, 0);
 
 	}

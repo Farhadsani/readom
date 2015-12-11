@@ -198,6 +198,29 @@
     [self loadStarViewTo:section_tags];
     
     mainSection.frame = CGRectMake(mainSection.x, mainSection.y, mainSection.width, section_tags.y+section_tags.height);
+    
+#ifdef k_SHOW_AGREEMENT_LINK_POST_PICTURE
+    UILabel * agreement = [UIView label:@{V_Parent_View:self.contentView,
+                                          V_Over_Flow_Y:num(OverFlowBottom),
+                                          V_Over_Flow_X:num(OverFlowXCenter),
+                                          V_Height:@50,
+                                          V_Text:[NSString stringWithFormat:@"发表即为已同意《%@》", k_user_agreement_post_picture_title],
+                                          V_Font_Family:k_defaultFontName,
+                                          V_Font_Size:@12,
+                                          V_Color:gray_color,
+                                          V_TextAlign:num(TextAlignCenter),
+                                          V_Alpha:@0.6,
+                                          V_Delegate:self,
+                                          V_SEL:selStr(@selector(jumpToAgreement)),
+                                          }];
+    [self.contentView addSubview:agreement];
+#endif
+    
+}
+
+- (void)jumpToAgreement{
+    InfoLog(@"");
+    [self openWebView:k_user_agreement_post_picture localXml:nil title:k_user_agreement_post_picture_title otherInfo:@{@"openType":@"push",@"hidNav":@"NO"}];
 }
 
 - (void)loadStarViewTo:(UIView *)view{
@@ -606,10 +629,13 @@
                         ALAssetRepresentation *assetRep = [asset defaultRepresentation];
                         CGImageRef imgRef = [assetRep fullResolutionImage];
                         UIImage *image = [UIImage imageWithCGImage:imgRef scale:assetRep.scale orientation:(UIImageOrientation)assetRep.orientation];
-                        image = [UIImage scaleAndRotateImage:image andMaxImageHeight:800];
-                        [images addObject:image];
+                        if (image) {
+                            image = [UIImage scaleAndRotateImage:image andMaxImageHeight:800];
+                            [images addObject:image];
+                        }
+                        
                         // [imagesName addObject:url.absoluteString]; // assets-library://asset/asset.JPG?id=D1AFC86A-59D3-4BA0-8C43-06064A57DFF0&ext=JPG
-                        if (images.count == urls.count) {
+                        if ([url isEqual:[urls lastObject]]) {
                             dispatch_semaphore_signal(sema);
                         }
                     } failureBlock:^(NSError *error) {

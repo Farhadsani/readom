@@ -39,7 +39,24 @@
  */
 //#define k_LOCAL_REQUEST_TEST_MODEL
 
-///************************************End*************************************/
+/*
+ 包含协议
+ */
+#define k_SHOW_AGREEMENT_LINK_USER   //开关
+#define k_user_agreement_user @"http://www.baidu.com"   //用户登录注册协议
+#define k_user_agreement_user_title @"用户协议"
+
+#define k_SHOW_AGREEMENT_LINK_POST_PICTURE //开关
+#define k_user_agreement_post_picture @"http://www.baidu.com"   //发表声明协议
+#define k_user_agreement_post_picture_title @"隐私免责申明"
+
+#define k_SHOW_AGREEMENT_LINK_PAY //开关
+#define k_user_agreement_pay @"http://www.baidu.com"   //购买申明
+#define k_user_agreement_pay_title @"购买申明"
+
+
+/************************************End*************************************/
+
 
 //#define kIsCurrentNetStatusOnline [[Reachability reachabilityForInternetConnection] currentReachabilityStatus] != NotReachable ? YES : NO
 

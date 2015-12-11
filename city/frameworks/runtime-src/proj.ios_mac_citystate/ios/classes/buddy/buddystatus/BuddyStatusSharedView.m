@@ -35,7 +35,8 @@
     
     self.animating = YES;
     
-    UIWindow *window = [[UIApplication sharedApplication].windows lastObject];
+//    UIWindow *window = [[UIApplication sharedApplication].windows lastObject];
+    UIWindow *window = APPLICATION.window;
     [window addSubview:self];
     self.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.0];
     self.frame = [UIScreen mainScreen].bounds;

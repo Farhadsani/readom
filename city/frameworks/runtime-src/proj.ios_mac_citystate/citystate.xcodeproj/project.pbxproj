@@ -1757,6 +1757,7 @@
 		67A0C03F1BF9B0DA003DEA91 /* PaySuccessViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaySuccessViewController.m; sourceTree = "<group>"; };
 		67A0CB741BD7A45B0031FFCC /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/CoreImage.framework; sourceTree = DEVELOPER_DIR; };
 		67A0CB761BD7AD330031FFCC /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/Accelerate.framework; sourceTree = DEVELOPER_DIR; };
+		67A196231C1995CF00FB3D7E /* KeyConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyConfig.h; sourceTree = "<group>"; };
 		67C0AF0D1BF0A92300550C02 /* MapLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapLocationViewController.h; sourceTree = "<group>"; };
 		67C0AF0E1BF0A92300550C02 /* MapLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapLocationViewController.m; sourceTree = "<group>"; };
 		67CC85A41BC641920099E421 /* CocosManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocosManager.h; sourceTree = "<group>"; };
@@ -4426,6 +4427,7 @@
 			children = (
 				6767A1EC1C0EB7A000CF2BD7 /* jpush-lib */,
 				6730C1521C1911B7009D8E3A /* 上线配置.txt */,
+				67A196231C1995CF00FB3D7E /* KeyConfig.h */,
 				9920713E1B5DF3F600F66F9C /* AppController.h */,
 				9920713F1B5DF3F600F66F9C /* AppController.mm */,
 				992D9FEB1C182FB300E689B7 /* WNXTopWindow.h */,
@@ -7467,8 +7469,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_ENABLE_OBJC_ARC = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Xiang Ye (2TZ6RAT5L9)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Xiang Ye (2TZ6RAT5L9)";
 				COMPRESS_PNG_FILES = NO;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -7516,11 +7518,12 @@
 					"-force_load",
 					../iOS_Common_Libs/SinaSSO/libWeiboSDK.a,
 				);
-				PROVISIONING_PROFILE = "";
+				PRODUCT_BUNDLE_IDENTIFIER = com.shitouren.citystate;
+				PROVISIONING_PROFILE = "36c5071f-7b14-4a99-aa0d-e5f75b1c5759";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "$(inherited) $(SRCROOT)/../../cocos2d-x/cocos/platform/ios $(SRCROOT)/../../cocos2d-x/external/curl/include/ios $(SDKROOT)/usr/include/libxml2 \"$(SRCROOT)/ios/jpush-lib\"";
-				VALID_ARCHS = "arm64 armv7";
+				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Debug;
 		};
@@ -7529,8 +7532,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_ENABLE_OBJC_ARC = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Rongoman Technology Co., Ltd. (S46E9D4J85)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Rongoman Technology Co., Ltd. (S46E9D4J85)";
 				COMPRESS_PNG_FILES = NO;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -7577,11 +7580,12 @@
 					"-force_load",
 					../iOS_Common_Libs/SinaSSO/libWeiboSDK.a,
 				);
-				PROVISIONING_PROFILE = "";
+				PRODUCT_BUNDLE_IDENTIFIER = com.shitouren.citystate;
+				PROVISIONING_PROFILE = "bc38aa4b-adb6-46bb-a450-c8f6b3330625";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "$(inherited) $(SRCROOT)/../../cocos2d-x/cocos/platform/ios $(SDKROOT)/usr/include/libxml2 \"$(SRCROOT)/ios/jpush-lib\"";
-				VALID_ARCHS = "arm64 armv7";
+				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Release;
 		};

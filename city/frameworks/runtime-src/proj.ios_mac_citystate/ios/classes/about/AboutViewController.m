@@ -45,7 +45,7 @@
 
 @implementation AboutViewController
 
-NSString *strIntro = @"城邦是一款城市在线手绘地图，拥有全国热门旅游目的地城市20个，一键查询目的地热门景点游览信息。直观可视化的了解景点路线分布。";
+NSString *strIntro = k_app_introduction;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -87,7 +87,7 @@ NSString *strIntro = @"城邦是一款城市在线手绘地图，拥有全国热
     [self.contentView addSubview:iconLabel];
     [iconLabel setTextAlignment:NSTextAlignmentCenter];
     NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
-    NSString *versionString = [NSString stringWithFormat:@"城邦 v%@", version];
+    NSString *versionString = [NSString stringWithFormat:@"%@ v%@", [Device appDisplayName], version];
     CGSize labeSize = [versionString sizeWithFont:iconLabel.font];
     iconLabel.text = versionString;
     iconLabel.textColor = text_Color;
@@ -142,7 +142,8 @@ NSString *strIntro = @"城邦是一款城市在线手绘地图，拥有全国热
     UILabel *followTitleLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(introLabel.frame)+5.5, self.contentView.width, 30)];
     self.followTitleLabel = followTitleLabel;
     followTitleLabel.font = [UIFont fontWithName:k_fontName_FZZY size:15];
-    followTitleLabel.text = @"   关注城邦";
+    
+    followTitleLabel.text = [NSString stringWithFormat:@"   关注%@", [Device appDisplayName]];
     followTitleLabel.textColor = k_defaultTextColor;
     followTitleLabel.backgroundColor = [UIColor whiteColor];
     [self.contentView addSubview:followTitleLabel];
@@ -232,7 +233,7 @@ NSString *strIntro = @"城邦是一款城市在线手绘地图，拥有全国热
 
 - (void)wb{
     InfoLog(@"微博");
-    [[UIPasteboard generalPasteboard] setString:@"城邦"];
+    [[UIPasteboard generalPasteboard] setString:[Device appDisplayName]];
     [[ExceptionEngine shared]alertTitle:@"已复制微博帐号" message:@"跳转到微博关注我们" delegate:self tag:200 cancelBtn:@"取消" btn1:@"确定" btn2:nil];
 //     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"已复制微博账号，跳转到微博关注我们" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
 //    alert.tag = 200;
@@ -250,8 +251,7 @@ NSString *strIntro = @"城邦是一款城市在线手绘地图，拥有全国热
 - (void)judge{
     InfoLog(@"给个好评");
 //    [self showAppInApp:@"992730518"];
-//    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://itunes.apple.com/cn/app/cheng-shi-da-ren/id992730518?mt=8"]];
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://itunes.apple.com/cn/app/cheng-bang/id1058188800?mt=8"]];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:k_AppStore_url]];
 }
 
 - (void)feedBack{
@@ -293,8 +293,7 @@ NSString *strIntro = @"城邦是一款城市在线手绘地图，拥有全国热
     }
     else{
         //低于iOS6没有这个类
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://itunes.apple.com/cn/app/cheng-bang/id1058188800?mt=8"]];
-//        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://itunes.apple.com/cn/app/cheng-shi-da-ren/id992730518?mt=8"]];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:k_AppStore_url]];
 //        NSString *string = [NSString stringWithFormat:@"itms-apps://itunes.apple.com/us/app/id%@?mt=8",_appId];
 //        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:string]];
     }
