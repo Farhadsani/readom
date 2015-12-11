@@ -44,6 +44,7 @@ function CardController:viewDidLoad(  )
 			self.view:setCardPanel(card)
 
 			self.isCollect = card.iscollect or 0
+			self.cardType = card.type or 1
 			print("当前卡牌的收藏状态。。。。", self.isCollect, card.cardname)
 			break
 		end
@@ -111,7 +112,7 @@ function CardController:onCollect(  )
 		if self then
 			self.isCollect = isCollect
 
-			self.view:modCollectCount(collectCount, isCollect)
+			self.view:modCollectCount(collectCount, isCollect, self.cardType)
 			self.noClick = false
 		end
 		

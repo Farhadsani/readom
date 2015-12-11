@@ -18,10 +18,12 @@ function LoadController:viewDidLoad()
 	local function callBack( ... )
         -- self.navigationController:setControllerPathBase("app/citySelection/CitySelectionViewController")
         -- self.navigationController:switchTo( "app/citySelection/CitySelectionViewController", {cityid = 1}, "fade" )
-        self.navigationController:switchTo( "app/citySelection/CitySelectionViewController", {}, "fade" )
+        
+        self.navigationController:switchTo( "app/userHome/UserHomeController", {}, "fade" )
+        -- self.navigationController:switchTo( "app/citySelection/CitySelectionViewController", {}, "fade" )
     end
 
-    local a1 = cc.DelayTime:create(0.5)
+    local a1 = cc.DelayTime:create(1.0)
     local a2 = cc.CallFunc:create(function()
     --     print("111111111111111111")
 			QMapGlobal.DataManager = require("src/app/data/DataManager").new({callBack = callBack})

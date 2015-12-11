@@ -155,7 +155,8 @@
     tableViewFooterView.backgroundColor = [UIColor clearColor];
     self.tableView.tableFooterView = tableViewFooterView;
     
-    UIView *keyView = [UIApplication sharedApplication].keyWindow;
+//    UIView *keyView = [UIApplication sharedApplication].keyWindow;
+    UIWindow *keyView = APPLICATION.window;
     UIControl *coverView  = [[UIControl alloc] init];
     [keyView addSubview:coverView];
     self.coverView = coverView;

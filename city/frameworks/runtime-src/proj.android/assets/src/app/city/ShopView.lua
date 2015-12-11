@@ -188,6 +188,7 @@ function ShopView:setMainPanel( mainPanelData )
             local pnlIcon = pnlBack:getChildByName("pnlIcon")
             local spIcon = pnlIcon:getChildByName"spIcon"
 
+            txtTitle:setFontName(QMapGlobal.resFile.font.caption)
             
             print(item.title, item.content)
             txtContent:setString(item.content)
@@ -223,7 +224,7 @@ function ShopView:setMainPanel( mainPanelData )
             -- local label = ui.newTTFLabel({
                 UILabelType = 2,
                 text = item.content,
-                font = "Arial",
+                font = QMapGlobal.resFile.font.content,   --"Arial",
                 size = 36, 
                 color = cc.c3b(0, 0, 0), -- 使用纯红色
                 align = cc.ui.TEXT_ALIGN_LEFT,

@@ -34,6 +34,9 @@ function StrategyView:initUI( ... )
 	local backGround = self.rootLayer:getChildByName("pnlGround")
 	local pnlTitle = backGround:getChildByName"pnlTitle"
 	local pnlButton = backGround:getChildByName"pnlButton"
+	local titleNode = backGround:getChildByName"titleNode"
+	local tn_pnlback = titleNode:getChildByName"pnlback"
+	self.txtCityName = tn_pnlback:getChildByName"txtCityName"
 
 	self.backGround = backGround
 	self.cityName = pnlTitle:getChildByName("cityName")
@@ -44,10 +47,17 @@ function StrategyView:initUI( ... )
 	self.btnTask = pnlButton:getChildByName"btnTask"
 	self.btnCollect = pnlButton:getChildByName"btnCollect"
 
+	self.btnFood:setScale(1)
+	self.btnTask:setScale(1)
+	self.btnCollect:setScale(1)
+
 	local pnlTitleSize = pnlTitle:getContentSize()
 	local pnlButtonSize = pnlButton:getContentSize()
 	
     pnlTitle:setPosition(cc.p(0, display.height))
+
+    local tn_pnlbackSize = tn_pnlback:getBoundingBox()
+    titleNode:setPosition(cc.p(display.width/2, display.height - 130))   --tn_pnlbackSize.height/2-70-2))
 	local height = display.height - pnlTitleSize.height - pnlButtonSize.height
 
     -- local lvCardHeight = height*1000/1320
@@ -63,12 +73,14 @@ function StrategyView:initUI( ... )
 	-- self.lvCard:setClippingEnabled(false)
 
 	self.pnlBack:setVisible(false)
+	pnlTitle:setVisible(false)
 
-	print("StrategyView:initUI.1111111111111111")
+	-- print("StrategyView:initUI.1111111111111111")
 end
 
 function StrategyView:setCityName( strCityName )
     self.cityName:setString(strCityName)
+    self.txtCityName:setString(strCityName)
 end
 
 function StrategyView:setClassIcon( index )
@@ -164,7 +176,7 @@ function StrategyView:setMainPanel( mainPanelData, posPer )
 	self.tv = tv
 end
 
-function StrategyView:setIsCollectData(cardID, isCollect, collectcount)
+function StrategyView:setIsCollectData(cardID, isCollect, collectcount, cardType)
 	if self.curCardNode then
 		if self.curCardNode.dataIndex == cardID then
 			local pnlGround = self.curCardNode:getChildByName"pnlGround"
@@ -173,11 +185,13 @@ function StrategyView:setIsCollectData(cardID, isCollect, collectcount)
 			local txtCollect = pnlGround:getChildByName"txtCollect"
 
 			txtCollect:setString(collectcount)
-			if isCollect == 1 then
-				spCollect:setTexture("ui/image/cardCollect1.png")
-			else
-				spCollect:setTexture("ui/image/cardCollect.png")
-			end
+			-- if isCollect == 1 then
+			-- 	spCollect:setTexture("ui/image/cardCollect1.png")
+			-- else
+			-- 	spCollect:setTexture("ui/image/cardCollect.png")
+			-- end
+			local collectPath = "ui/image/cardCollect" .. cardType .. "_" .. isCollect ..".png"
+			spCollect:setTexture(collectPath)
             local spSize = spCollect:getContentSize()
             local pnlSize = pnlCollect:getContentSize()
             local sW = pnlSize.width/spSize.width
@@ -193,6 +207,7 @@ function StrategyView:setCardNode( cardNode, cardData )
 	
     if cardData then
 	    local pnlGround = cardNode:getChildByName"pnlGround"
+	    local pnlFrame = pnlGround:getChildByName"pnlFrame"
 	    local pnlMainPic = pnlGround:getChildByName"pnlMainPic"
 	    local pnlTitle = pnlGround:getChildByName"pnlTitle"
 	    local cardName = pnlTitle:getChildByName"cardName"
@@ -208,11 +223,13 @@ function StrategyView:setCardNode( cardNode, cardData )
 	    cardName:setString(cardData.cardname)
 	    if cardData.type == 1 then   
 		    pnlTitle:setBackGroundImage("ui/image/cardTitle1.png")
+		    pnlFrame:setBackGroundImage("ui/image/greenFrame1.png")
 		else
 			pnlTitle:setBackGroundImage("ui/image/cardTitle2.png")
+			pnlFrame:setBackGroundImage("ui/image/greenFrame.png")
 		end
 	    pnlMainPic:setBackGroundImage(cardData.mainPicPath)
-	    local spSourcePath = "ui/image/cardSource" .. (cardData.source or 1) ..  ".png"
+	    local spSourcePath = "ui/image/cardSource" .. (cardData.source or 1) .. "_" .. (cardData.type or 1) ..  ".png"
 		local fu = cc.FileUtils:getInstance()
 	    if fu:isFileExist(spSourcePath) then
 	    	spSource:setTexture(spSourcePath)
@@ -243,20 +260,22 @@ function StrategyView:setCardNode( cardNode, cardData )
 		local descLabel = cc.ui.UILabel.new({
 	        UILabelType = 2,
 	        text = cardData.desc,
-	        font = "Arial",
+	        font = QMapGlobal.resFile.font.content,   
 	        size = 36, 
 	        color = cc.c3b(0, 0, 0), -- 使用纯红色
 	        align = cc.ui.TEXT_ALIGN_LEFT, 
 	        valign = cc.ui.TEXT_VALIGN_TOP,
 	        dimensions = cc.size(svDescSize.width, 0)
 	    })
-
+		-- descLabel:setSwallowTouches(false)
 	    descLabel:setAnchorPoint(cc.p(0,0))
 	    descLabel:setPosition(cc.p(0,0))
 	    descLabel:addTo(svDesc)
 	    local descLabelSize = descLabel:getContentSize()
 	    svDesc:setInnerContainerSize(descLabelSize)
+        svDesc:setSwallowTouches(false)
 
+svDesc:setSwallowTouches(false)
 		local colorList = {
 			cc.c3b(255, 153, 72),
 			cc.c3b(69, 180, 239),
@@ -277,7 +296,7 @@ function StrategyView:setCardNode( cardNode, cardData )
 				local label = cc.ui.UILabel.new({
 	                UILabelType = 2,
 	                text = strKeyWord,
-	                font = "Arial",
+	                font = QMapGlobal.resFile.font.content,
 	                size = 36, 
 	                color = cc.c3b(255, 255, 255), -- 使用纯红色
 	                align = cc.ui.TEXT_ALIGN_LEFT,
@@ -288,7 +307,6 @@ function StrategyView:setCardNode( cardNode, cardData )
 	            -- label:setPosition(cc.p(0,0))
 
 	            local labelSize = label:getContentSize()
-
 
 	            labelSize.width = labelSize.width + 10
             	labelSize.height = labelSize.height + 10
@@ -310,8 +328,10 @@ function StrategyView:setCardNode( cardNode, cardData )
 
 	            -- print(strKeyWord, nextPosX, nextPosY)
 	            labelGround:setPosition(cc.p(nextPosX, nextPosY))
-	            labelGround:setBackGroundColorType(1)
-				labelGround:setBackGroundColor(colorList[colorIndex])
+	            labelGround:setBackGroundColorType(0)
+				-- labelGround:setBackGroundColor(colorList[colorIndex])
+				labelGround:setBackGroundImage("ui/image/card_10.png")
+				labelGround:setBackGroundImageScale9Enabled(true)
 				
 				nextPosX = tempX
 				-- print("xiayige X", nextPosX)
@@ -322,13 +342,15 @@ function StrategyView:setCardNode( cardNode, cardData )
 		end
 
 		if cardData.iscollect then
-			if cardData.iscollect == 1 then
-				-- pnlCollect:setBackGroundImage("ui/image/cardCollect1.png")
-				spCollect:setTexture("ui/image/cardCollect1.png")
-			else
-				-- pnlCollect:setBackGroundImage("ui/image/cardCollect.png")
-				spCollect:setTexture("ui/image/cardCollect.png")
-			end
+			-- if cardData.iscollect == 1 then
+			-- 	-- pnlCollect:setBackGroundImage("ui/image/cardCollect1.png")
+			-- 	spCollect:setTexture("ui/image/cardCollect1.png")
+			-- else
+			-- 	-- pnlCollect:setBackGroundImage("ui/image/cardCollect.png")
+			-- 	spCollect:setTexture("ui/image/cardCollect.png")
+			-- end
+			local collectPath = "ui/image/cardCollect" .. (cardData.type or 1) .. "_" .. (cardData.iscollect or 0) ..".png"
+			spCollect:setTexture(collectPath)
 			-- pnlCollect:setBackGroundImageScale9Enabled(true)
    --          pnlCollect:setClippingEnabled(true)
             -- pnlCollect:setBackGroundImageCapInsets
@@ -473,13 +495,15 @@ function StrategyView:addItemToCardPanel( index, cardData )
 		end
 
 		if cardData.iscollect then
-			if cardData.iscollect == 1 then
-				-- pnlCollect:setBackGroundImage("ui/image/cardCollect1.png")
-				spCollect:setTexture("ui/image/cardCollect1.png")
-			else
-				-- pnlCollect:setBackGroundImage("ui/image/cardCollect.png")
-				spCollect:setTexture("ui/image/cardCollect.png")
-			end
+			-- if cardData.iscollect == 1 then
+			-- 	-- pnlCollect:setBackGroundImage("ui/image/cardCollect1.png")
+			-- 	spCollect:setTexture("ui/image/cardCollect1.png")
+			-- else
+			-- 	-- pnlCollect:setBackGroundImage("ui/image/cardCollect.png")
+			-- 	spCollect:setTexture("ui/image/cardCollect.png")
+			-- end
+			local collectPath = "ui/image/cardCollect" .. (cardData.type or 1) .. "_" .. (cardData.iscollect or 0) ..".png"
+			spCollect:setTexture(collectPath)
 			-- pnlCollect:setBackGroundImageScale9Enabled(true)
    --          pnlCollect:setClippingEnabled(true)
             -- pnlCollect:setBackGroundImageCapInsets

@@ -39,9 +39,13 @@ function DataManager:ctor(p)
 
     
     local gameState = GameState.load()
+    print("开始加载数据。。。。。。。。。。。。")
+    print_r(gameState)
     if gameState and gameState.ver then
         QMapGlobal.gameState = gameState
         QMapGlobal.gameState.ver = gameState.ver
+        -- QMapGlobal.gameState.userid = gameState.userid
+        -- QMapGlobal.gameState.pw = gameState.pw
     else
         -- QMapGlobal.gameState = QMapGlobal.gameState or {}
         -- QMapGlobal.gameState.ver = QMapGlobal.ver
@@ -59,6 +63,10 @@ function DataManager:ctor(p)
     -- dataBaseManager:commitTransaction()
 end
 
+function DataManager:saveGameState( ... )
+    GameState.save(QMapGlobal.gameState)
+end
+
 function DataManager:deleteTempFile( ... )
     local fu = cc.FileUtils:getInstance()
     local downloadPath = cc.FileUtils:getInstance():getDownloadPath()
@@ -66,6 +74,11 @@ function DataManager:deleteTempFile( ... )
     local path = downloadPath .. "specialitys/"
     if fu:isDirectoryExist(path) then
         fu:removeDirectory(path)
+    end
+
+    path = downloadPath .. "topicHot/" 
+    if fu:isDirectoryExist(path) then
+        -- fu:removeDirectory(path)
     end
 end
 
@@ -116,6 +129,7 @@ function DataManager:loadData(  )
             city.version = tonumber(city.version)
             city.versioninfo = tonumber(city.versioninfo)
             city.cityid = tonumber(city.cityid)
+            city.provid = tonumber(city.provid)
             -- city.clickcount = tonumber(city.clickcount)
 
             local sightBase = "sight_base_" .. city.cityid
@@ -144,7 +158,7 @@ function DataManager:loadData(  )
 
             -- local labelName = "card_label_" .. cityID
             local cards = dataBaseManager:select("card_"..city.cityid) 
-            dump(cards)
+            -- dump(cards)
             if cards and next(cards) then
                 local cardsTemp = {}
                 for k, card in pairs(cards) do
@@ -216,7 +230,7 @@ function DataManager:initSystemData()
     -- 联网获取网络数据
     self:getCityList(function ( cityData )
         local mapData = {}
-        dump(cityData)
+        -- dump(cityData)
 
         for i, item  in pairs(cityData) do
             local cityid = tonumber(item.cityid)
@@ -279,7 +293,7 @@ function DataManager:initSystemData()
                     cityData.pos.y, cityData.provid , tColor, bColor, 0, 0, 0})           
             else
 
-                print("->>>>>>", nativeCityData.isNative)
+                -- print("->>>>>>", nativeCityData.isNative)
                 local alterParam = {}
                 if nativeCityData.name ~= cityData.name then
                     nativeCityData.name = cityData.name
@@ -337,16 +351,16 @@ function DataManager:initSystemData()
         end
 
         QMapGlobal.systemData.mapData = nativeCityDatas
-print("initSystemData     00000000000000000000000")
-        if self.param.callBack then
-            print("initSystemData     11111111111111111111")
+-- print("initSystemData     00000000000000000000000")
+        if self.param and self.param.callBack then
+            -- print("initSystemData     11111111111111111111")
             self.param.callBack()
         end
     end, function (  )
         -- 连接网络失败
-        print("initSystemData     222222222222222222222222")
-        if self.param.callBack then
-            print("initSystemData     3333333333333333333333333333")
+        -- print("initSystemData     222222222222222222222222")
+        if self.param and self.param.callBack then
+            -- print("initSystemData     3333333333333333333333333333")
             self.param.callBack()
         end
     end)
@@ -364,7 +378,7 @@ function DataManager:initUserClickCityData( ... )
             QMapGlobal.userClickCityData[tonumber(item.cityid)] = tonumber(item.clickcount)
         end
     end
-    print("11111111111111111111111111111111111")
+    -- print("11111111111111111111111111111111111")
     dump(QMapGlobal.userClickCityData)
 end
 
@@ -407,6 +421,7 @@ end
 -- 初始化用户数据
 function DataManager:initUserData( )
     -- 初始化用户游记
+    do return end
     local mapData = QMapGlobal.systemData.mapData
     local userJourneys = {}
     local userid = QMapGlobal.userData.userInfo.userid or 0
@@ -1008,7 +1023,7 @@ function DataManager:getSpecialityData( cityID )
     local cityData = QMapGlobal.systemData.mapData[cityID]
     local cityCName = cityData and cityData.cname
     local cityName = cityData and cityData.name
-    local specialityData = QMapGlobal.specialityDatas[cityID]
+    local specialityData = QMapGlobal.specialityDatas[cityID] or {}
     return cityCName, cityName, specialityData
 end
 
@@ -1642,6 +1657,82 @@ function DataManager:downloadBallFile( url, fileName, callBackSucceed, callBackF
             callBackSucceed()
         end
     end)        
+end
+
+function DataManager:getTopichot( callBackSucceed, callBackFail )
+-- dump(QMapGlobal.systemData.mapData)
+    local cityID = QMapGlobal.gameState.curCityID or 0
+    local cityData = QMapGlobal.systemData.mapData[cityID]
+    local provid = 0
+    if cityData then
+        provid = cityData.provid or 0
+    end
+    -- dump(cityData)
+    local data = {provid = tonumber(provid)}
+    netWorkManager:requestData("api/topic/hot", {data = data}, function ( returnData )
+        -- dump(returnData)
+        if returnData and next(returnData) then
+            -- QMapGlobal.topicHotData = QMapGlobal.topicHotData or {}
+            QMapGlobal.topicHotData = {}
+
+            local downloadPath = cc.FileUtils:getInstance():getDownloadPath()
+            local filePath = downloadPath .. "topicHot/" 
+            cc.FileUtils:getInstance():createDirectory(filePath) 
+
+            for _, item in pairs(returnData) do
+                
+                local fileName = filePath .. item.topicid .. ".png"
+                table.insert(QMapGlobal.topicHotData, {url = item.imglink, topicid = item.topicid, fileName = fileName})
+                netWorkManager:getUrlFile(item.imglink, fileName, function ( )
+                    if callBack then
+                        callBack()
+                    end
+                end)       
+
+            end
+        end
+        if callBackSucceed then
+            callBackSucceed()
+        end
+    end, callBackFail)
+
+end
+
+function DataManager:SendPetMsg( userID, msgContent, callBackSucceed, callBackFail )
+    print("send msg ", userID, msgContent)
+    netWorkManager:requestData("api/message/pet/add", {data = {peerid = userID, content = msgContent}}, function ( returnData )
+        print("pet msg 成功。。。。")
+    end)
+end
+
+function DataManager:getShoutList( userID, callBackSucceed, callBackFail )
+    netWorkManager:requestData("api/shout/list", {data = {userid = userID}}, function ( returnData )
+        print("获取三句话 成功。。。。")
+        print_r(returnData)
+        if callBackSucceed then
+            callBackSucceed(returnData)
+        end
+    end)
+end
+
+-- 关注好友，返回关注后的状态 0，没有关系，1，已经关注，2，只是粉丝，3互相关注
+function DataManager:follow(userID, callBackSucceed, callBackFail)
+    netWorkManager:requestData("api/user/follow", {data = {userid = userID}}, function ( returnData )
+        print("关注 成功。。。。")
+        print_r(returnData)
+        if callBackSucceed then
+            callBackSucceed(returnData)
+        end
+    end, callBackFail)
+end
+
+-- 是否已经关注 ， 0，没有关系，1，已经关注，2，只是粉丝，3互相关注
+function DataManager:isFollow( userID, callBackSucceed, callBackFail )
+    netWorkManager:requestData("api/user/buddy/type", {data = {userid = userID}}, function ( returnData )
+        if callBackSucceed then
+            callBackSucceed(returnData)
+        end
+    end, callBackFail)
 end
 
 -- 网络操作结束

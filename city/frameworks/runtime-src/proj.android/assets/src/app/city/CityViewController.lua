@@ -41,6 +41,9 @@ function CityViewController:viewDidLoad()
         --     sights[sightData.sightid] = sightData
         -- end
         -- QMapGlobal.systemData.mapData[self.cityID].sight = sights
+
+    QMapGlobal.gameState.curCityID = self.cityID
+    QMapGlobal.DataManager:saveGameState()
         
     self:_attachCityViewToScenarioControllers()
     self:switchMapToScenicSpotsScenario()
@@ -124,12 +127,18 @@ end
 
 function CityViewController:switchBackToCitySelection()
     self.navigationController:clearContollerPathBase()
-    self.navigationController:switchTo("app/citySelection/CitySelectionViewController", {cityid = self.city:getCityId()})
+    -- self.navigationController:switchTo("app/citySelection/CitySelectionViewController", {cityid = self.city:getCityId()})
+
+    self.navigationController:switchTo("app/userHome/UserHomeController")   --, {cityid = self.city:getCityId()})
+
+
 
     local downloadPath = cc.FileUtils:getInstance():getDownloadPath()
     -- self.path = device.writablePath .. "map/" .. cityName .. "/image/" .. cityName
     local path = downloadPath .. "map/" .. self.cityName .. "/image/" .. self.cityName
     display.removeSpriteFramesWithFile(path ..".plist", path .. ".png")
+
+
 end
 
 function CityViewController:switchMapToScenicSpotsScenario()

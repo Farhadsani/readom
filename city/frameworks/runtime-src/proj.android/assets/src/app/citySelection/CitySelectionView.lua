@@ -212,12 +212,20 @@ function CitySelectionView:setBallData( cellBall, cityData )
     
     local backGround = cellBall:getChildByName"backGround"
     local spBall = backGround:getChildByName"spBall"
-    local txtCityName = backGround:getChildByName"txtCityName"
+    -- local txtCityName = backGround:getChildByName"txtCityName"
     local btnBack = backGround:getChildByName"btnBack"
     local spBtn = btnBack:getChildByName"spBtn"
     local waitting2 = backGround:getChildByName"waitting2"
     local waitting = backGround:getChildByName"waitting"
     local txtNum = waitting:getChildByName"txtNum"
+
+    local pnlTitle = cellBall:getChildByName"pnlTitle"
+    local txtCityName = pnlTitle:getChildByName"txtCityName"
+    local pnlBack = pnlTitle:getChildByName"pnlBack"
+
+    -- local pnlTitleH = (display.height/2/960) * 700
+    local pnlTitleH = display.height/2 - 100 - 70
+    pnlTitle:setPosition(cc.p(-540, pnlTitleH))
 
     -- local cityName = cityData:getDisplayName()
     local cityName = cityData:getShowName()
@@ -265,6 +273,14 @@ function CitySelectionView:setBallData( cellBall, cityData )
         print("CitySelectionView:setBallData", event)
         if event == 2 then
             self._delegate:onBtnCommand(cityIDTemp)
+        end
+    end)
+
+    pnlBack:addTouchEventListener(function ( sender, event )
+        -- print("1111111111111111", event)
+        if event == 2 then
+            print("movw........")
+            self._delegate:onBack()
         end
     end)
 end

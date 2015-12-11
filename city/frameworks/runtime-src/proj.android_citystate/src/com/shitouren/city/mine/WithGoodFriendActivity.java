@@ -1,10 +1,14 @@
 package com.shitouren.city.mine;
 
+
+import java.util.Timer;
+
 import com.shitouren.citystate.R;
 import com.shitouren.fragment.MineFansFragment;
 import com.shitouren.fragment.MineFocusFragment;
 import com.shitouren.utils.Utils;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -17,11 +21,14 @@ import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup.LayoutParams;
 import android.view.WindowManager;
 import android.view.View.OnClickListener;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
+import android.view.inputmethod.InputMethodManager;
 import android.view.Window;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
@@ -37,8 +44,10 @@ public class WithGoodFriendActivity extends FragmentActivity implements OnClickL
 	View leftViewLine;
 	
 	private int mWidth;
-	
+	private int mHeight;
 	private PopupWindow window;
+	private EditText etSearch;
+	private TextView tvSearch;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -46,6 +55,7 @@ public class WithGoodFriendActivity extends FragmentActivity implements OnClickL
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.mine_good_friend_activity);
 		mWidth = Utils.windowXY(this)[0];
+		mHeight = Utils.windowXY(this)[1];
 		
 		/**
 		 * 头布局
@@ -106,7 +116,7 @@ public class WithGoodFriendActivity extends FragmentActivity implements OnClickL
 		ivTopbarRight =  (ImageView) findViewById(R.id.ivTopbarRight);
 		tvTopbarMiddle.setText("好友关系");
 		ivTopbarRight.setVisibility(View.VISIBLE);
-		ivTopbarRight.setBackgroundResource(R.drawable.sousuo);
+		ivTopbarRight.setImageResource(R.drawable.sousuo);
 		tvTopbarMiddle.setOnClickListener(this);
 		ivTopbarRight.setOnClickListener(this);
 		ivTopbarLeft.setOnClickListener(this);
@@ -155,9 +165,15 @@ public class WithGoodFriendActivity extends FragmentActivity implements OnClickL
 			break;
 		case R.id.ivTopbarRight:
 			showSearchPW(); 
+//			InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+//			imm.showSoftInput(etSearch, InputMethodManager.HIDE_NOT_ALWAYS);
 			break;
 		case R.id.ivTopbarLeft:
 			finish();
+			break;
+			//popwindow取消
+		case R.id.tvSearch:
+			window.dismiss();
 			break;
 			
 			
@@ -176,12 +192,15 @@ public class WithGoodFriendActivity extends FragmentActivity implements OnClickL
 		}
 		
 	}
+	
 
 	private void showSearchPW() {
 		// TODO Auto-generated method stub
 		LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		View view = inflater.inflate(R.layout.mine_good_friend_search_popupwindow, null);
-		
+		etSearch = (EditText) view.findViewById(R.id.etSearch);
+		tvSearch = (TextView) view.findViewById(R.id.tvSearch);
+		tvSearch.setOnClickListener(this);
 		window = new PopupWindow(view, 
 				WindowManager.LayoutParams.MATCH_PARENT, 
 				WindowManager.LayoutParams.WRAP_CONTENT);
@@ -192,11 +211,28 @@ public class WithGoodFriendActivity extends FragmentActivity implements OnClickL
 	    window.setBackgroundDrawable(dw);
 
 	    
-	    // 设置popWindow的显示和消失动画
-	    window.setAnimationStyle(R.style.mypopwindow_anim_top_style);
 	    // 在底部显示
-	    window.showAtLocation(WithGoodFriendActivity.this.findViewById(R.id.ivTopbarRight),
-	        Gravity.TOP, 0, 30);
-		
+	    window.showAtLocation(
+				rlLeftTV,
+				Gravity.TOP, 0, getStatusBarHeight());
+		// window.update(width, height)
+		LayoutParams viewLayoutParams = view.getLayoutParams();
+		int viewHeight = viewLayoutParams.height;
+		window.update(0, getStatusBarHeight(), mWidth, dip2px(50));
 	}
+
+	public int getStatusBarHeight() {
+		int result = 0;
+		int resourceId = getResources().getIdentifier("status_bar_height",
+				"dimen", "android");
+		if (resourceId > 0) {
+			result = getResources().getDimensionPixelSize(resourceId);
+		}
+		return result;
+	}
+	 public int dip2px(int dip) {
+	        final float scale = this.getResources().getDisplayMetrics().density;
+	        return (int) (dip * scale + 0.5f);
+	    }
+
 }

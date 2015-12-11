@@ -59,7 +59,7 @@ public class MineActivity extends Activity implements OnClickListener {
 			startActivity(new Intent(MineActivity.this, PersonalDynamicActivity.class));
 			break;
 		case R.id.ibWithPersonalEditor:
-			
+			startActivity(new Intent(MineActivity.this, PersonalEditorActivity.class));
 			break;
 		case R.id.ibWithBaseData:
 			

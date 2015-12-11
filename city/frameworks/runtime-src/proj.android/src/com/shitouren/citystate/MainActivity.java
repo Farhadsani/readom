@@ -120,6 +120,7 @@ public class MainActivity extends TabActivity implements OnClickListener {
 	private void prepareIntent() {
 
 //		indexIntent = new Intent(this, IndexActivity.class);
+
 		indexIntent = new Intent(this, AppActivity.class);
 
 		squareIntent = new Intent(this, SquareActivity.class);

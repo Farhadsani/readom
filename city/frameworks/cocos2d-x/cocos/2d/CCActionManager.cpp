@@ -33,8 +33,8 @@ THE SOFTWARE.
 #include "base/ccMacros.h"
 #include "base/ccCArray.h"
 #include "base/uthash.h"
-#include "CCSet.h"
-#include "CCDirector.h"
+#include "deprecated/CCSet.h"
+#include "base/CCDirector.h"
 
 NS_CC_BEGIN
 //

@@ -8,9 +8,8 @@ require("src/app/common/Util")
 require("src/app/common/QMapAction")
 require("src/app/resData/resFile")
 require("src/app/resData/mapData")
--- QMapGlobal.DataManager = require("src/app/data/DataManager").new()   -- 移动到加载页中
+QMapGlobal.DataManager = require("src/app/data/DataManager").new()   -- 移动到加载页中
 require("src/app/resData/menuDescription")
-
 
 local QMapApp = class("QMapApp", cc.mvc.AppBase)
 
@@ -29,7 +28,7 @@ function QMapApp:run()
  --    dump(cc.FileUtils:getInstance():getSearchPaths())
     
     cc.FileUtils:getInstance():addSearchPath("res/")
-    cc.FileUtils:getInstance():addSearchPath(device.writablePath)
+    -- cc.FileUtils:getInstance():addSearchPath(device.writablePath)
 
 -- print("路径。。。。。。。。。。。。。")
 --     dump(cc.FileUtils:getInstance():getSearchPaths())

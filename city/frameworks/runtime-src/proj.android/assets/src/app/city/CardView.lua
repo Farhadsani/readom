@@ -47,6 +47,8 @@ function CardView:initUI( ... )
 	self.pnlColse = self.pnlWriteBarrage:getChildByName"pnlColse"
 	self.pnlOK = self.pnlWriteBarrage:getChildByName"pnlOK"
 
+	self.pnlWriteBarrage:setVisible(false)
+
 	-- print_r(self.txtWrite)    -- ccui.TextField
 	self.txtWrite:setVisible(false)
 	self.txtWrite:setTextColor(cc.c3b(0,0,0))
@@ -95,6 +97,7 @@ function CardView:setCardPanel( cardData )
     local cardNode = self.mainCard
 
     local pnlGround = cardNode:getChildByName"pnlGround"
+    local pnlFrame = pnlGround:getChildByName"pnlFrame"
     local pnlMainPic = pnlGround:getChildByName"pnlMainPic"
     local pnlTitle = pnlGround:getChildByName"pnlTitle"
     local cardName = pnlTitle:getChildByName"cardName"
@@ -112,10 +115,14 @@ function CardView:setCardPanel( cardData )
     cardName:setString(cardData.cardname)
     if cardData.type == 2 then   
 	    pnlTitle:setBackGroundImage("ui/image/cardTitle2.png")
+	    pnlFrame:setBackGroundImage("ui/image/greenFrame.png")
+	else
+		pnlFrame:setBackGroundImage("ui/image/greenFrame1.png")
 	end
     pnlMainPic:setBackGroundImage(cardData.mainPicPath)
 
-    local spSourcePath = "ui/image/cardSource" .. (cardData.source or 1) ..  ".png"
+    local spSourcePath = "ui/image/cardSource" .. (cardData.source or 1) .. "_" .. (cardData.type or 1) ..  ".png"
+    print("source ..", spSourcePath)
 	local fu = cc.FileUtils:getInstance()
     if fu:isFileExist(spSourcePath) then
     	spSource:setTexture(spSourcePath)
@@ -144,7 +151,7 @@ function CardView:setCardPanel( cardData )
 	local descLabel = cc.ui.UILabel.new({
         UILabelType = 2,
         text = cardData.desc,
-        font = "Arial",
+        font = QMapGlobal.resFile.font.content,      --"Arial",
         size = 36, 
         color = cc.c3b(0, 0, 0), -- 使用纯红色
         align = cc.ui.TEXT_ALIGN_LEFT, 
@@ -178,7 +185,7 @@ function CardView:setCardPanel( cardData )
 			local label = cc.ui.UILabel.new({
                 UILabelType = 2,
                 text = strKeyWord,
-                font = "Arial",
+                font = QMapGlobal.resFile.font.content,
                 size = 36, 
                 color = cc.c3b(255, 255, 255), -- 使用纯红色
                 align = cc.ui.TEXT_ALIGN_LEFT,
@@ -211,8 +218,10 @@ function CardView:setCardPanel( cardData )
 
             -- print(strKeyWord, nextPosX, nextPosY)
             labelGround:setPosition(cc.p(nextPosX, nextPosY))
-            labelGround:setBackGroundColorType(1)
-			labelGround:setBackGroundColor(colorList[colorIndex])
+            labelGround:setBackGroundColorType(0)
+			-- labelGround:setBackGroundColor(colorList[colorIndex])
+			labelGround:setBackGroundImage("ui/image/card_10.png")
+			labelGround:setBackGroundImageScale9Enabled(true)
 			
 			nextPosX = tempX
 			-- print("xiayige X", nextPosX)
@@ -223,11 +232,13 @@ function CardView:setCardPanel( cardData )
 	end
 
 	if cardData.iscollect then
-		if cardData.iscollect == 1 then
-			spCollect:setTexture("ui/image/cardCollect1.png")
-		else
-			spCollect:setTexture("ui/image/cardCollect.png")
-		end
+		local collectPath = "ui/image/cardCollect" .. (cardData.type or 1) .. "_" .. (cardData.iscollect or 0) ..".png"
+		-- if cardData.iscollect == 1 then
+		-- 	spCollect:setTexture("ui/image/cardCollect1.png")
+		-- else
+		-- 	spCollect:setTexture("ui/image/cardCollect.png")
+		-- end
+		spCollect:setTexture(collectPath)
         local spSize = spCollect:getContentSize()
         local pnlSize = pnlCollect:getContentSize()
         local sW = pnlSize.width/spSize.width
@@ -245,6 +256,7 @@ function CardView:setCardPanel( cardData )
         end
     end)
 
+	pnlWrite:setVisible(false)
 	pnlWrite:addTouchEventListener(function(sender, event)
         if event == 2 then
             print("写弹幕。。。。。。。。。")
@@ -492,14 +504,17 @@ function CardView:addBarrageData( strContent )
 	
 end
 
-function CardView:modCollectCount( count , isCollect)
+function CardView:modCollectCount( count , isCollect, cardType)
 	self.txtCollect:setString(count)
 
-	if isCollect == 1 then
-		self.spCollect:setTexture("ui/image/cardCollect1.png")
-	else
-		self.spCollect:setTexture("ui/image/cardCollect.png")
-	end
+	-- if isCollect == 1 then
+	-- 	-- 
+	-- 	self.spCollect:setTexture("ui/image/cardCollect1.png")
+	-- else
+	-- 	self.spCollect:setTexture("ui/image/cardCollect.png")
+	-- end
+	local collectPath = "ui/image/cardCollect" .. cardType .. "_" .. isCollect ..".png"
+	self.spCollect:setTexture(collectPath)
 end
 
 return CardView

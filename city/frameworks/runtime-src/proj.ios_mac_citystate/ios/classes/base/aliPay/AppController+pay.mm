@@ -11,7 +11,7 @@
         return;
     }
     
-    NSString *appScheme = @"alipaycity";
+    NSString *appScheme = k_alipay_appScheme;
     NSString *orderString = [orderInfo objectOutForKey:@"sstr"];
     [[Cache shared].cache_dict setValue:orderInfo[@"orderid"] forKey:ZhiFuBaoPayOrderId];
 
