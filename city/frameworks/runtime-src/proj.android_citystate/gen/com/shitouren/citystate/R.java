@@ -247,18 +247,20 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int withcitysharequxiaoweixuanzhong=0x7f02003c;
         public static final int withcityshareweibo=0x7f02003d;
         public static final int withcityshareweiboweixuanzhong=0x7f02003e;
-        public static final int withcityweibo=0x7f02003f;
-        public static final int withcityweixin=0x7f020040;
-        public static final int xiangyoubaise=0x7f020041;
-        public static final int xiaoxiyemiankunian=0x7f020042;
-        public static final int xiaoxiyemianshanchu=0x7f020043;
-        public static final int xiaoxiyemianshanchuzhong=0x7f020044;
-        public static final int xiaoxiyemianxiaonian=0x7f020045;
-        public static final int xingbie=0x7f020046;
-        public static final int xingquxiang=0x7f020047;
-        public static final int xlistview_arrow=0x7f020048;
-        public static final int zan_normal=0x7f020049;
-        public static final int zan_selected=0x7f02004a;
+        public static final int withcityshareweixinapp=0x7f02003f;
+        public static final int withcityshareweixinappweixuanzhong=0x7f020040;
+        public static final int withcityweibo=0x7f020041;
+        public static final int withcityweixin=0x7f020042;
+        public static final int xiangyoubaise=0x7f020043;
+        public static final int xiaoxiyemiankunian=0x7f020044;
+        public static final int xiaoxiyemianshanchu=0x7f020045;
+        public static final int xiaoxiyemianshanchuzhong=0x7f020046;
+        public static final int xiaoxiyemianxiaonian=0x7f020047;
+        public static final int xingbie=0x7f020048;
+        public static final int xingquxiang=0x7f020049;
+        public static final int xlistview_arrow=0x7f02004a;
+        public static final int zan_normal=0x7f02004b;
+        public static final int zan_selected=0x7f02004c;
     }
     public static final class id {
         public static final int both=0x7f050003;
