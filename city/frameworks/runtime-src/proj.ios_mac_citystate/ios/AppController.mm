@@ -80,12 +80,8 @@ static AppDelegate s_sharedApplication;
         InfoLog(@"manager start failed!");
     }
     
-    for (NSHTTPCookie * cookie in [[UserManager sharedInstance] getRequestCookies:nil flag:YES]) {
-        [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookie:cookie];
-        NSLog(@"cookie%@", cookie);
-    }
-    
-    [WNXTopWindow show];
+    //iOS9下 不能调用下面代码
+//    [WNXTopWindow show];
     
     [[UserManager sharedInstance] initServerCity:k_server_city];    //初始化服务城市
     
