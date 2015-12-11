@@ -73,6 +73,10 @@ BMKMapManager* _mapManager;
 // cocos2d application instance
 static AppDelegate s_sharedApplication;
 
+//- (void)applicationDidFinishLaunching:(UIApplication *)application{
+
+//}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions{
     _mapManager = [[BMKMapManager alloc]init];
     BOOL ret = [_mapManager start:k_baidu_map_key generalDelegate:self];
@@ -148,6 +152,7 @@ static AppDelegate s_sharedApplication;
     
     _FirstViewController = [[FirstViewController alloc] init];
     window.rootViewController = _FirstViewController;
+//    [window setRootViewController:_FirstViewController];
     
     [window makeKeyAndVisible];
     

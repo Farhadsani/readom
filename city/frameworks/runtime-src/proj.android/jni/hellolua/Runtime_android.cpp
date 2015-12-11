@@ -24,7 +24,7 @@ string getIPAddress()
 #include "../../../Classes/qmap/ToolFunction.h"
 std::string getSSID()
 {
-	//���þ�̬����
+	//锟斤拷锟矫撅拷态锟斤拷锟斤拷
 //	jclass cls = env->FindClass("test/Demo");
 //	jmethodID mid = env->GetStaticMethodID(cls, "getHelloWorld","()Ljava/lang/String;");
 //	jstring msg = (jstring)env->CallStaticObjectMethod(cls, mid);
@@ -55,7 +55,7 @@ std::string getSSID_Verify()
 	return verify;
 }
 
-//�����¼�
+//锟斤拷锟斤拷锟铰硷拷
 void ymOnEvent(string eventName)
 {
 	JniMethodInfo t;
@@ -95,21 +95,21 @@ std::string getAppVersion()
 
 void showWebView( std::string strUrl){
 	JniMethodInfo minfo;
-	//getStaticMethodInfo���ж�Java��̬�����Ƿ���ڣ����Ұ���Ϣ���浽minfo��
-	//����1��JniMethodInfo
-	//����2��Java�����+����
-	//����3��Java��������
-	//����4�������������ͺͷ���ֵ����
+	//getStaticMethodInfo锟斤拷锟叫讹拷Java锟斤拷态锟斤拷锟斤拷锟角凤拷锟斤拷冢锟斤拷锟斤拷野锟斤拷锟较�锟斤拷锟芥到minfo锟斤拷
+	//锟斤拷锟斤拷1锟斤拷JniMethodInfo
+	//锟斤拷锟斤拷2锟斤拷Java锟斤拷锟斤拷锟�+锟斤拷锟斤拷
+	//锟斤拷锟斤拷3锟斤拷Java锟斤拷锟斤拷锟斤拷锟斤拷
+	//锟斤拷锟斤拷4锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟酵和凤拷锟斤拷值锟斤拷锟斤拷
 
 	bool isHave = JniHelper::getStaticMethodInfo(minfo,"org/cocos2dx/lua/AppActivity","getAppActivity","()Lorg/cocos2dx/lua/AppActivity;");
-	jobject jobj;//�����
+	jobject jobj;//锟斤拷锟斤拷锟�
 	if (isHave) {
-		//����ĵ���getInstance������Test��Ķ���
+		//锟斤拷锟斤拷牡锟斤拷锟�getInstance锟斤拷锟斤拷锟斤拷Test锟斤拷亩锟斤拷锟�
 		jobj = minfo.env->CallStaticObjectMethod(minfo.classID, minfo.methodID);
 
 		isHave = JniHelper::getMethodInfo(minfo,"org/cocos2dx/lua/AppActivity","openWebview","(Ljava/lang/String;)V");
 		if (isHave) {
-			//����openWebview, ����1��Test����   ����2������ID
+			//锟斤拷锟斤拷openWebview, 锟斤拷锟斤拷1锟斤拷Test锟斤拷锟斤拷   锟斤拷锟斤拷2锟斤拷锟斤拷锟斤拷ID
 			jstring jst = minfo.env->NewStringUTF(strUrl.c_str());
 			minfo.env->CallVoidMethod(jobj, minfo.methodID, jst);
 		}
@@ -136,19 +136,19 @@ void openAbout(ABOUTCALLBACK f)
 
 }
 
-//����
+//锟斤拷锟斤拷
 TOPICCALLBACK topicCallback_c;
 void topicCallback(int)
 {
     topicCallback_c();
 }
-//��topicIDΪ0ʱ�����뷢����ҳ������0ʱ����ֵΪ�����ID������Ļ��������
+//锟斤拷topicID为0时锟斤拷锟斤拷锟诫发锟斤拷锟斤拷页锟斤拷锟斤拷锟斤拷0时锟斤拷锟斤拷值为锟斤拷锟斤拷锟�ID锟斤拷锟斤拷锟斤拷幕锟斤拷锟斤拷锟斤拷锟斤拷
 void openTopic(long topicID, TOPICCALLBACK f)
 {
 
 }
 
-//����
+//锟斤拷锟斤拷
 BUDDYCALLBACK buddyCallback_c;
 void buddyCallback(int ret)
 {
@@ -170,7 +170,7 @@ void openMail(MAILCALLBACK f)
 
 }
 
-//���䣬�����ʼ� ��userID������Ϣ
+//锟斤拷锟戒，锟斤拷锟斤拷锟绞硷拷 锟斤拷userID锟斤拷锟斤拷锟斤拷息
 SENDMAILCALLBACK sendMailCallback_c;
 void sendMailCallback(int ret)
 {
@@ -182,7 +182,7 @@ void openSendmail(long userID, SENDMAILCALLBACK f)
 
 }
 
-//�������飬detail
+//锟斤拷锟斤拷锟斤拷锟介，detail
 DETAILCALLBACK detailCallback_c;
 void detailCallback(int ret)
 {
@@ -195,7 +195,7 @@ void openDetail(long userID, DETAILCALLBACK f)
 
 }
 
-//�ղأ�collect
+//锟秸藏ｏ拷collect
 COLLECTCALLBACK collectCallback_c;
 void collectCallback(int ret)
 {
@@ -207,7 +207,7 @@ void openCollect(long userID, COLLECTCALLBACK f)
 
 }
 
-//���Ѷ�̬
+//锟斤拷锟窖讹拷态
 FRIENDTRENDCALLBACK friendTrendCallback_c;
 void friendTrendCallback(int ret)
 {
@@ -216,11 +216,11 @@ void friendTrendCallback(int ret)
 void openFriendTrend(long userID, FRIENDTRENDCALLBACK f)
 {
     friendTrendCallback_c = f;
-    //һ�²�����Ѷ�̬�Ŀ�����
+    //一锟铰诧拷锟斤拷锟斤拷讯锟教�锟侥匡拷锟斤拷锟斤拷
 
 }
 
-//�������ģ�usercenter  �򿪻������Ͻ���
+//锟斤拷锟斤拷锟斤拷锟侥ｏ拷usercenter  锟津开伙拷锟斤拷锟斤拷锟较斤拷锟斤拷
 USERCENTERCALLBACK userCenterCallback_c;
 void usercenterCallback(int ret)
 {
@@ -231,7 +231,7 @@ void openUsercenter(long userID, std::string name ,std::string intro,std::string
 
 }
 
-//������speak, ���غ������仰
+//锟斤拷锟斤拷锟斤拷speak, 锟斤拷锟截猴拷锟斤拷锟斤拷锟戒话
 SPEAKCALLBACK speakCallback_c;
 void speakCallback(int ret)
 {
@@ -243,7 +243,7 @@ void openSpeak(SPEAKCALLBACK f)
 
 }
 
-//ˢ���û����ģ���oc������Ҫ�򿪣����Ƿ��أ�lua�е�С��������ʱ������
+//刷新用户中心，当oc界面需要打开（不是返回）lua中的小岛主界面时，调用
 USERHOMECALLBACK userHomeCallback_c;
 void openUserHomeCallback(long userID, string name, string intro, string zone, string thumblink, string imglink)
 {
@@ -259,14 +259,14 @@ void openUserHome(USERHOMECALLBACK f)
 
 void goback()
 {
-//    //ctrol������UITabBarController
+//    //ctrol锟斤拷锟斤拷锟斤拷UITabBarController
 //    UITabBarController* ctrol=(UITabBarController*)[UIApplication sharedApplication].keyWindow.rootViewController;
-//    //�л��ڶ���ͼ
+//    //锟叫伙拷锟节讹拷锟斤拷图
 //    [ctrol setSelectedIndex:1];
 
-    //ctrol������IIViewDeckController
+    //ctrol锟斤拷锟斤拷锟斤拷IIViewDeckController
 //    IIViewDeckController* ctrol=(IIViewDeckController*)[UIApplication sharedApplication].keyWindow.rootViewController;
-    //�л��ڶ���ͼ
+    //锟叫伙拷锟节讹拷锟斤拷图
 //    [ctrol toggleTopViewAnimated:YES];
 }
 
@@ -320,17 +320,17 @@ std::string getAppName()
     return "citystate";
 }
 
-//�������ű��г���������Ϻ�֪ͨԭ������
+//锟斤拷锟斤拷锟斤拷锟脚憋拷锟叫筹拷锟斤拷锟斤拷锟斤拷锟斤拷虾锟酵ㄖ�原锟斤拷锟斤拷锟斤拷
 void sceneLoadOver(std::string name)
 {
 
 }
 
-//ˢ��С������
+//刷新小岛数据
 REFRESHUSERHOMECALLBACK refreshUserHomeCallback_c;
-void refreshUserHomeCallback_1(long userID)    //��_1��Ϊ�˱�������
+void refreshUserHomeCallback_1(long userID)    //加_1是为了避免重名
 {
-//    InfoLog(@"ˢ�¸�������");
+//    InfoLog(@"刷新个人中心");
     if (refreshUserHomeCallback_c) {
         refreshUserHomeCallback_c(userID);
     }
@@ -376,9 +376,9 @@ void registBackToUserHome(BACKTOUSERHOMECALLBACK f)
 //    [BaseUIViewController setBackUserHome:backToUserHomeCallback];
 }
 
-//�رվ�����ܺ���Ҫ��������Ļص�����
+//关闭景点介绍后需要调用下面的回调函数
 SIGHTINTROCALLBACK sightIntroCallback_c;
-void sightIntroCallback(int)   //�򿪾�����ܺ�Ļص�����
+void sightIntroCallback(int)   //打开景点介绍后的回调函数
 {
     if(sightIntroCallback_c)
     {
@@ -386,10 +386,10 @@ void sightIntroCallback(int)   //�򿪾�����ܺ�Ļص�����
     }
 }
 
-//�򿪾������
-//sightID������id
-//sightName����������
-//sightDescs����������������������
+//打开景点介绍
+//sightID：景点id
+//sightName：景点名称
+//sightDescs：景点所包含的所有数据
 void openSightIntro(long sightID, std::string sightName, std::string sightDescs, SIGHTINTROCALLBACK f)
 {
 //    SightDetailViewController * vc = [[[SightDetailViewController alloc] initWithNibName:nil bundle:nil] autorelease];
@@ -401,12 +401,12 @@ void openSightIntro(long sightID, std::string sightName, std::string sightDescs,
 //    CocosMapIndexRootViewController * sVC = (CocosMapIndexRootViewController *)[(AppController *)APPLICATION getVisibleViewController];
 //    [sVC showSightDetailView:vc];
 
-    //sightDescs  �Ǿ���Ľ��ܵ�������json�ַ���,���£�
-    //"[{\"content\":\"4��-10��\",\"descid\":1},{\"content\":\"����(12-3��):07:00-21:30\\r\\n����(4-11��):06:30-21:30\",\"descid\":2},{\"content\":\"1-2Сʱ\",\"descid\":3},{\"content\":\"���ɽ��ˮ�¶�����������������\",\"descid\":4},{\"content\":\"ɽ��һͷվ�ڽ�����Ǻ����콭��Ȫ�ľ���\",\"descid\":5},{\"content\":\"�����гǻգ�����ɽˮ������\",\"descid\":6},{\"content\":\"75Ԫ\\/��\",\"descid\":7}]"
-    //content:���ܵ����ݣ�descid:Ϊ���ܵı�ʾ���ñ�ʾ��Ӧͼ��ͱ��⣬�������£�1 = "��������", 2 = "����ʱ��", 3 = "����ʱ��", 4 = "��Ҫ����", 5 = "���ӡ��", 6 = "�Ƽ�����", 7 = "��Ʊ�۸�", 8 = "����Tips", 9 = "��ͨ��·"
+    //sightDescs  是景点的介绍的描述，json字符串,如下：
+    //"[{\"content\":\"4月-10月\",\"descid\":1},{\"content\":\"淡季(12-3月):07:00-21:30\\r\\n旺季(4-11月):06:30-21:30\",\"descid\":2},{\"content\":\"1-2小时\",\"descid\":3},{\"content\":\"象鼻山、水月洞、普贤塔、象眼岩\",\"descid\":4},{\"content\":\"山像一头站在江边伸鼻豪饮漓江甘泉的巨象\",\"descid\":5},{\"content\":\"桂林市城徽，桂林山水的象征\",\"descid\":6},{\"content\":\"75元\\/人\",\"descid\":7}]"
+    //content:介绍的内容，descid:为介绍的标示，该标示对应图标和标题，标题如下：1 = "最美季节", 2 = "开放时间", 3 = "游览时间", 4 = "主要看点", 5 = "大家印象", 6 = "推荐理由", 7 = "门票价格", 8 = "游览Tips", 9 = "交通线路"
 }
 
-//�ر�Ƭ����Ϣ����Ҫ��������Ļص�����
+//关闭片区信息后需要调用下面的回调函数
 CATEGORYCALLBACK categoryCallback_c;
 void categoryCallback(int)
 {
@@ -416,9 +416,9 @@ void categoryCallback(int)
     }
 }
 
-//��ָ��/Ƭ��ָ��ɸѡ
-//sightID��Ƭ��id
-//categoryID��ѡ���ָ��id
+//打开指数/片区指数筛选
+//sightID：片区id
+//categoryID：选择的指数id
 void openCategory(long sightID, long categoryType, std::string categoryID, CATEGORYCALLBACK f)
 {
 //    NSInteger ID = [[NSString stringWithCString:categoryID.c_str() encoding:NSUTF8StringEncoding] integerValue];
@@ -470,8 +470,8 @@ void openCategory(long sightID, long categoryType, std::string categoryID, CATEG
 //    }
 }
 
-//���ű��ɺ����û�����ֱ�ӷ��ص��Լ����û�����ʱ�����ô˺���֪ͨԭ������,
-//��ԭ�����������Ϻ󣬵��ûص�
+//当脚本由好友用户中心直接返回到自己的用户中心时将调用此函数通知原生程序,
+//当原生程序操作完毕后，调用回调
 ONMAINPAGECALLBACK onMainPageCallback_c;
 void onMainPageCallback()
 {
@@ -482,7 +482,7 @@ void onMainPageCallback()
 }
 void onMainPage(ONMAINPAGECALLBACK f)
 {
-//    NSLog(@"�ű���ֱ�ӵ����˻ص��Լ��ĸ������ģ�ԭ����������Ϻ󣬵���onMainPageCallback");
+//    NSLog(@"脚本中直接调用了回到自己的个人中心，原生程序处理完毕后，调用onMainPageCallback");
     onMainPageCallback_c = f;
 //    UIViewController * sVC = [(AppController *)APPLICATION getVisibleViewController];
 //    if (sVC.navigationController) {
@@ -493,7 +493,7 @@ void onMainPage(ONMAINPAGECALLBACK f)
 //    }
 }
 
-//�û������������hotball
+//用户点击了热气球，hotball
 HOTBALLCALLBACK hotBallCallback_c;
 void hotBallCallback(int)
 {
