@@ -12,8 +12,6 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -33,6 +31,7 @@ public class SquareAdapter extends BaseAdapter {
 		this.context = context;
 		this.list = list;
 		bitmap = FinalBitmap.create(context);
+		bitmap.configBitmapLoadThreadSize(2);
 	}
 
 	@Override
@@ -58,7 +57,7 @@ public class SquareAdapter extends BaseAdapter {
 			holder = new ViewHolder();
 			convertView = inflater.inflate(R.layout.square_listview_item, null);
 			// 广场热门区域列表用户区域
-			holder.rlUser = (LinearLayout) convertView.findViewById(R.id.rlUserSquare);
+			holder.rlUser = (RelativeLayout) convertView.findViewById(R.id.rlUserSquare);
 			holder.imgHead = (CircularImage) convertView.findViewById(R.id.imgPersonSquare);
 			holder.tvName = (TextView) convertView.findViewById(R.id.tvNameSquare);
 			holder.tvTime = (TextView) convertView.findViewById(R.id.tvTimeSquare);
@@ -101,6 +100,7 @@ public class SquareAdapter extends BaseAdapter {
 				
 				ImageAdapter adapter = new ImageAdapter(list.get(position).getImglink(),context);
 				holder.gyPic.setAdapter(adapter);
+//				bitmap.display(holder.rlPic, list.get(position).getImglink().get(0));
 				StringBuilder builder = new StringBuilder();
 				for (String s : list.get(position).getTags()) {
 					builder.append(s);
@@ -118,19 +118,6 @@ public class SquareAdapter extends BaseAdapter {
 			} else {
 				holder.rlPic.setVisibility(View.GONE);
 			}
-			
-			holder.gyPic.setOnItemSelectedListener(new OnItemSelectedListener() {
-
-				@Override
-				public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-					holder.tvCurPicIndex.setText(position+1+"");
-				}
-
-				@Override
-				public void onNothingSelected(AdapterView<?> parent) {
-					
-				}
-			});
 
 			holder.tvContent.setText(list.get(position).getContent());
 
@@ -177,7 +164,7 @@ public class SquareAdapter extends BaseAdapter {
 	}
 
 	class ViewHolder {
-		LinearLayout rlUser;
+		RelativeLayout rlUser;
 		CircularImage imgHead;
 		TextView tvName;
 		TextView tvTime;

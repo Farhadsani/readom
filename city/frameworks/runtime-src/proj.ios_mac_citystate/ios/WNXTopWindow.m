@@ -15,6 +15,7 @@ static UIWindow *window_;
     window_ = [[UIWindow alloc] init];
     window_.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 20);
     window_.windowLevel = UIWindowLevelAlert;
+    window_.backgroundColor = [UIColor clearColor];
     [window_ addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(windowClick)]];
 }
 + (void)show {

@@ -174,7 +174,64 @@ getVersion = function (  )
     return QMapGlobal.gameState.ver 
 end
 
+refreshUserCenter = function ( callBack )
+    return lua_refreshUserCenter(callBack)
+end
 
+goback = function (  )
+    return lua_goback()
+end
 
+userLogin = function ( autoLogin, callBack )
+    return lua_userLogin(autoLogin, callBack)
+end
 
+openAbout = function ( callBack )
+    return lua_openAbout(callBack)
+end
+
+openTopic = function ( topicID, callBack )
+    return lua_openTopic(topicID, callBack)
+end
+
+openBuddy = function ( userID, name, intro, zone, thumblink, imglink, callBack )
+    -- print("util.lua", userID, name, intro, zone, thumblink, imglink, callBack )
+    return lua_openBuddy(userID, name, intro, zone, thumblink, imglink, callBack)
+end
+
+openMail = function ( callBack )
+    return lua_openMail(callBack)
+end
+
+openSendMail = function (userID ,callBack )
+    return lua_openSendMail(userID, callBack)
+end
+
+openUserCenter = function ( userID, name, intro, zone, thumblink, imglink, callBack  )
+    return lua_openUserCenter(userID, name, intro, zone, thumblink, imglink, callBack)
+end
+
+openDetail = function ( userID, callBack )
+    return lua_openDetail(userID, callBack)
+end
+
+openCallout = function ( callBack )
+    return lua_openCallout(callBack)
+end
+
+openCollect = function ( userID, callBack )
+    return lua_openCollect(userID, callBack)
+end
+
+openFriendTrend = function ( userID, callBack )
+    return lua_openFriendTrend(userID, callBack)
+end
+
+openMap = function ( callBack )
+    return lua_openMap(callBack)
+end
+
+registBackToUserHome = function ( callBack )
+    return lua_registBackToUserHome(callBack)
+end
 

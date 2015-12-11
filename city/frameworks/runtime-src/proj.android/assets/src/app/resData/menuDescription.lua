@@ -8,19 +8,21 @@ QMapGlobal.menuDescription = {
         -- 城市景点
         ScenicSpotsController = {
             topBar = {
-                position1 = {type = "Button",  btnScale = 1.8,  fontScale = 2.3,    name = "back", caption = "",captionPos = "R", initEnabled = true},
-                position2 = {type = "LocationLabel", name = "cityName", csbFile = "ui/menu/locationLabel.csb"}
+                position1 = {type = "Button",  btnScale = 1,  fontScale = 2.3,    name = "back102", dW = -40, dH = 10,caption = "",captionPos = "R", initEnabled = true},
+                -- position2 = {type = "LocationLabel2", name = "cityName", csbFile = "ui/menu/locationLabel2.csb", } --btn = {pnlback = "swicthCity"}}
+                position2 = {type = "LocationLabel4", name = "cityName", csbFile = "ui/menu/locationLabel4.csb", }
                 -- position3 = {type = "LocationLabel1", name = "cityName", csbFile = "ui/menu/locationLabel1.csb"}
             },
             bottomBar = {
                 -- position1 = {type = "Button", name = "start", caption = "开始",captionPos = "D", initEnabled = true},
-                -- position2 = {type = "Button", name = "browse", caption = "游记",captionPos = "D", initEnabled = true},
+                position2 = {type = "Button", name = "strategy1", caption = nil,captionPos = "D", initEnabled = true, btnScale = 2, },
                 -- position3 = {type = "Button", name = "record", caption = "说说",captionPos = "D", initEnabled = true}
+                -- position2 = {type = "LocationLabel2", scale = 1.5, dH = -50, csbFile = "ui/menu/locationLabel3.csb", btn = {task = "strategy", shop = "shop"}}
             },
-            suspendBar = {
-                position1 = {type = "Button", name = "shop", btnScale = 1.8, caption = "",captionPos = "D", initEnabled = true, disVisible = true, varHeight = false, fontY = -50},
-                position2 = {type = "Button", name = "strategy", btnScale = 1.8, caption = "",captionPos = "D", initEnabled = true, disVisible = true},
-            }
+            -- suspendBar = {
+            --     position1 = {type = "Button", name = "shop", btnScale = 1.8, caption = "",captionPos = "D", initEnabled = true, disVisible = true, varHeight = false, fontY = -50},
+            --     position2 = {type = "Button", name = "strategy", btnScale = 1.8, caption = "",captionPos = "D", initEnabled = true, disVisible = true},
+            -- }
         },
         
         -- 点评

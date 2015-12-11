@@ -24,7 +24,9 @@ function MapLayer:ctor(param)
     -- map root from csb
     local downloadPath = cc.FileUtils:getInstance():getDownloadPath()
     -- local csbMapPathName = device.writablePath ..  "map/" .. param.mapName .. "/" .. param.mapName .. ".csb"
-    local csbMapPathName = downloadPath ..  "map/" .. param.mapName .. "/" .. param.mapName .. ".csb"
+
+    local csbMap = QMapGlobal.resFile.csb.map:gsub("?", param.mapName)
+    local csbMapPathName = downloadPath ..  csbMap
     self._mapRoot = cc.uiloader:load(csbMapPathName)
     self._mapRoot:setPosition(cc.p(display.width/2, display.height/2))
     self:addChild(self._mapRoot, 2)
@@ -32,7 +34,8 @@ function MapLayer:ctor(param)
     -- map node(map image sprite)
     self._mapNode = self._mapRoot:getChildByName("map")
     -- local mapPath = device.writablePath .. "map/" .. param.mapName .. "/image/" .. param.mapName .. "map.jpg"
-    local mapPath = downloadPath .. "map/" .. param.mapName .. "/image/" .. param.mapName .. "map.jpg"
+    local jpgMap = QMapGlobal.resFile.image.map:gsub("?", param.mapName)
+    local mapPath = downloadPath .. jpgMap
     self._mapNode:setTexture(mapPath)
     
     -- background map mask which apply just above map image
@@ -236,10 +239,11 @@ end
 function MapLayer:setAllSenicSpotsFlash(flashed)
 
     if self._allSenicSpotsFlash ~= flashed then
-        
+        -- print("&&&&&&&&&&&&&&&*******")
         local children = self._locations:getChildren()
         if flashed then
             for k, node in pairs(children) do
+                -- print("&&&&&&&&&&&&&&&&&&")
                 QMapGlobal.Action:startTintColorFlashAnimation(node, cc.c3b(160, 160, 160), 1.5)
             end
         else
@@ -283,7 +287,6 @@ function MapLayer:_setNodeToDark(node, dark, animated, toDarkCallback, toTranspa
 end
 
 function MapLayer:setBackgroundMapToDark(dark, animated)
-
     self:_setNodeToDark(self._bgMapMask, dark, animated,
                         handler(self, self._bgMapMaskToDarkDone),
                         handler(self, self._bgMapMaskToTransparentDone))
@@ -711,6 +714,7 @@ end
 
 ------ event handle
 function MapLayer:setGestureRecognitionEnabled(enabled)
+    print("手势操作。。。。", enabled)
     self._gestureRecognizer:setEnabled(enabled)
 end
 

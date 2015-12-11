@@ -39,7 +39,6 @@
 	</style>
 
 	 <style name="LoginAnimActivity" >
-        <item name="android:windowIsTranslucent">true</item>
         <item name="@android:windowAnimationStyle">@style/activty_fade_in_fade_out</item>
     </style>
 
@@ -48,5 +47,22 @@
         <item name="android:windowEnterAnimation">@anim/in_from_righ</item>
         <item name="android:windowExitAnimation">@anim/out_to_left</item>
     </style>
+    
+    <!--  PopupWindow从底部出来-->
+    <style name="mypopwindow_anim_style">
+    <item name="android:windowEnterAnimation">@anim/popshow_anim</item>
+ 	<!-- 指定显示的动画xml -->
+
+    <item name="android:windowExitAnimation">@anim/pophidden_anim</item>
+ 	<!-- 指定消失的动画xml -->
+  </style>
+    <!--  PopupWindow从顶部出来-->
+    <style name="mypopwindow_anim_top_style">
+    <item name="android:windowEnterAnimation">@anim/popshow_top_anim</item>
+ 	<!-- 指定显示的动画xml -->
+
+    <item name="android:windowExitAnimation">@anim/pophidden_top_anim</item>
+ 	<!-- 指定消失的动画xml -->
+  </style>
     
 </resources>

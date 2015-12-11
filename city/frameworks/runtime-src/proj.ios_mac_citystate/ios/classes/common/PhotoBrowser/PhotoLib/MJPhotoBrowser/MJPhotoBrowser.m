@@ -56,10 +56,13 @@
 
 - (void)show
 {
-    UIWindow *window = [[UIApplication sharedApplication].windows lastObject];
+//    UIWindow *window = [[UIApplication sharedApplication].windows lastObject];
+    UIWindow *window = APPLICATION.window;
     [window addSubview:self.view];
     [window.rootViewController addChildViewController:self];
-
+//    [window bringSubviewTo_Front:self.view];
+//    window.windowLevel = UIWindowLevelAlert;
+    
     if (_currentPhotoIndex == 0) {
         [self showPhotos];
     }

@@ -1,4 +1,11 @@
 ShitourenApp/runtime/
+*.DS_Store
+.cproject
+CocosBuilder.launch
+.project
+gdb.setup
+libcocos2dlua.so
+R.java
 
 # Ignore thumbnails created by windows
 Thumbs.db

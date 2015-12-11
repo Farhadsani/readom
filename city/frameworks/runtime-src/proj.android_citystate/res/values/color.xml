@@ -13,6 +13,9 @@
     <color name="line_divider">#E1DFDF</color>
     <color name="yellow">#fddc43</color>
     <color name="textHint">#88ffffff</color>
+    
+    <color name="mainTextSelected">#b87721</color>
+    <color name="mainTextNormal">#838992</color>
    
     
     

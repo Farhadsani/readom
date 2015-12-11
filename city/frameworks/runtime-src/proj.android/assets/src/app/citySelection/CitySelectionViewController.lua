@@ -97,10 +97,11 @@ function CitySelectionViewController:onBtnCommand( cityID )
 end
 
 function CitySelectionViewController:viewWillUnload()
-	self.view:setGestureRecognitionEnabled(false)
+	if self.view.setGestureRecognitionEnabled then
+		self.view:setGestureRecognitionEnabled(false)
+		self.view:stopAllActions()
+	end
 	QMapGlobal.citySelectionView = nil
-
-	self.view:stopAllActions()
 end
 
 function CitySelectionViewController:getValueForMenuLabelWithName(labelName)
@@ -291,16 +292,20 @@ function CitySelectionViewController:cityBallStartTapped(cityID)
 				print("load map over..............")
     			display.addSpriteFrames(cityMapPath ..".plist", cityMapPath .. ".png", function (  )
     				print("add plist over..............")
-    	-- 			self.navigationController:setControllerPathBase("app/city/")
-					-- self.navigationController:switchTo(	"CityViewController", { cityid = cityID } )
+    				if device.platform ~= "android" then
+	    				self.navigationController:setControllerPathBase("app/city/")
+						self.navigationController:switchTo(	"CityViewController", { cityid = cityID } )
+					end
     			end)
 			end)
 
-			scheduler.performWithDelayGlobal(function (  )
-				-- body
-				self.navigationController:setControllerPathBase("app/city/")
-				self.navigationController:switchTo(	"CityViewController", { cityid = cityID } )
-			end, 0.3)
+			if device.platform == "android" then
+				scheduler.performWithDelayGlobal(function (  )
+					-- body
+					self.navigationController:setControllerPathBase("app/city/")
+					self.navigationController:switchTo(	"CityViewController", { cityid = cityID } )
+				end, 1)
+			end
 
 		end, 0.2)
 		-- end)
@@ -420,6 +425,15 @@ function CitySelectionViewController:downloadCityBall( ... )
     if #cityBallFiles > 0 then
         downLoadFile()
     end
+end
+
+function CitySelectionViewController:onBack( ... )
+	local topicID = 0
+	openTopic(topicID, function (  )
+		-- body
+		-- self:tappedElseWhere()
+	end)
+	QMapGlobal.app.navigationController:switchTo( nil, {}, "fade" )  -- 这个代码加的很变态，以后需要修改
 end
 
 return CitySelectionViewController
