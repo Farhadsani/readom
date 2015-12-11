@@ -24,70 +24,9 @@
         android:layout_height="wrap_content"
         android:src="@drawable/ic_launcher"
         />
-
     <TextView
-        android:id="@+id/ibWithChengBang"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginBottom="10dp"
-        android:clickable="true"
-        android:text="有关城邦"
-        android:textSize="20dp" />
-    <TextView
-        android:id="@+id/ibWithFriend"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginBottom="10dp"
-        android:clickable="true"
-        android:text="好友关系"
-        android:textSize="20dp" />
-    <TextView
-        android:id="@+id/ibWithPersonalDynamic "
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginBottom="10dp"
-        android:clickable="true"
-        android:text="个人动态"
-        android:textSize="20dp" />
-    <TextView
-        android:id="@+id/ibWithPersonalEditor "
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginBottom="10dp"
-        android:clickable="true"
-        android:text="个人资料编辑"
-        android:textSize="20dp" />
-    <TextView
-        android:id="@+id/ibWithBaseData"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginBottom="10dp"
-        android:clickable="true"
-        android:text="基本资料"
-        android:textSize="20dp" />
-    <TextView
-        android:id="@+id/ibWithFriendTrends"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginBottom="10dp"
-        android:clickable="true"
-        android:text="好友动态"
-        android:textSize="20dp" />
-    <TextView
-        android:id="@+id/ibWithPropaganda "
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginBottom="10dp"
-        android:clickable="true"
-        android:text="喊话"
-        android:textSize="20dp" />
-
+        android:text="Mine" />
 
 </LinearLayout>
