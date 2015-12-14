@@ -1,17 +1,23 @@
 package com.shitouren.adapter;
 
+import java.io.Serializable;
 import java.util.List;
 
 import com.shitouren.bean.SquareHot;
+import com.shitouren.citystate.ImageDetailActivity;
 import com.shitouren.citystate.R;
 import com.shitouren.utils.Debuger;
 import com.shitouren.view.CircularImage;
 import com.shitouren.view.MyGallery;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -31,7 +37,6 @@ public class SquareAdapter extends BaseAdapter {
 		this.context = context;
 		this.list = list;
 		bitmap = FinalBitmap.create(context);
-		bitmap.configBitmapLoadThreadSize(2);
 	}
 
 	@Override
@@ -51,13 +56,13 @@ public class SquareAdapter extends BaseAdapter {
 	}
 
 	@Override
-	public View getView(int position, View convertView, ViewGroup parent) {
+	public View getView(final int position, View convertView, ViewGroup parent) {
 		final ViewHolder holder;
 		if (convertView == null) {
 			holder = new ViewHolder();
 			convertView = inflater.inflate(R.layout.square_listview_item, null);
 			// 广场热门区域列表用户区域
-			holder.rlUser = (RelativeLayout) convertView.findViewById(R.id.rlUserSquare);
+			holder.rlUser = (LinearLayout) convertView.findViewById(R.id.rlUserSquare);
 			holder.imgHead = (CircularImage) convertView.findViewById(R.id.imgPersonSquare);
 			holder.tvName = (TextView) convertView.findViewById(R.id.tvNameSquare);
 			holder.tvTime = (TextView) convertView.findViewById(R.id.tvTimeSquare);
@@ -82,11 +87,40 @@ public class SquareAdapter extends BaseAdapter {
 			// 更多
 			holder.llMore = (LinearLayout) convertView.findViewById(R.id.llMoreSquare);
 			holder.imgMore = (ImageView) convertView.findViewById(R.id.imgMoreSquare);
+			
+			holder.gyPic.setOnItemSelectedListener(new OnItemSelectedListener() {
+
+				@Override
+				public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+					Debuger.log_w("xyz:", "onItemSelected");
+					holder.tvCurPicIndex.setText(position+1+"");
+				}
+
+				@Override
+				public void onNothingSelected(AdapterView<?> parent) {
+					Debuger.log_w("xyz:", "onNothingSelected");
+				}
+			});
+			
 			convertView.setTag(holder);
 		} else {
 			holder = (ViewHolder) convertView.getTag();
 		}
 
+		
+		holder.gyPic.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view, int arg0, long id) {
+				Debuger.log_w("setOnItemClickListener:", "position:"+position);
+				
+				Intent intent = new Intent(context,ImageDetailActivity.class);
+				intent.putExtra("links", (Serializable)list.get(position).getImglink());
+				intent.putExtra("id", arg0);
+				context.startActivity(intent);
+			}
+		});
+		
 		if ((1 == list.size()) && !list.get(position).isLoad()) {
 
 		} else {
@@ -100,7 +134,6 @@ public class SquareAdapter extends BaseAdapter {
 				
 				ImageAdapter adapter = new ImageAdapter(list.get(position).getImglink(),context);
 				holder.gyPic.setAdapter(adapter);
-//				bitmap.display(holder.rlPic, list.get(position).getImglink().get(0));
 				StringBuilder builder = new StringBuilder();
 				for (String s : list.get(position).getTags()) {
 					builder.append(s);
@@ -118,7 +151,7 @@ public class SquareAdapter extends BaseAdapter {
 			} else {
 				holder.rlPic.setVisibility(View.GONE);
 			}
-
+			
 			holder.tvContent.setText(list.get(position).getContent());
 
 			if (list.get(position).getPlace().size() > 0) {
@@ -164,7 +197,7 @@ public class SquareAdapter extends BaseAdapter {
 	}
 
 	class ViewHolder {
-		RelativeLayout rlUser;
+		LinearLayout rlUser;
 		CircularImage imgHead;
 		TextView tvName;
 		TextView tvTime;

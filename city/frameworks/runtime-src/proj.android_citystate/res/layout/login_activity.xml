@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/yellow"
     android:orientation="vertical" >
 
     <RelativeLayout
@@ -95,6 +96,7 @@
                     android:phoneNumber="true"
                     android:maxLength="11"
                     android:textColor="@color/background_white"
+                    android:textColorHint="@color/textHint"
                     android:textSize="20sp" />
             </LinearLayout>
         </LinearLayout>
@@ -117,6 +119,7 @@
                 android:layout_marginLeft="5dp"
                 android:background="@null"
                 android:hint="请输入密码,至少6位"
+                android:textColorHint="@color/textHint"
                 android:password="true"
                 android:textColor="@color/background_white"
                 android:textSize="20sp" />
@@ -142,6 +145,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="立即登录"
+                android:textColor="@color/textHint"
                 android:textSize="20sp" />
         </LinearLayout>
     </LinearLayout>

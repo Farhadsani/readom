@@ -26,56 +26,54 @@ import com.shitouren.utils.HttpParamsUtil;
 import com.shitouren.utils.Utils;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewStub;
 import android.widget.ListView;
-import android.widget.ProgressBar;
-import android.widget.TextView;
 import net.tsz.afinal.FinalHttp;
 import net.tsz.afinal.http.AjaxCallBack;
 import net.tsz.afinal.http.AjaxParams;
 
 public class HotFragment extends Fragment {
 	private static final String TAG = "HotFragment";
-	//全局化View，在没有数据的情况下加载ViewStub布局，动态改变TextView内容
-	private View view;
-	// View控件和框架类
+
+	//View控件和框架类
 	private PullToRefreshListView pullToRefreshListView;
-	private ListView listView;
 	private SquareAdapter adapter;
 	private List<SquareHot> squareHotList;
-	//第一次进来显示的圆形进度条
-	private ProgressBar bar;
-	private boolean first = true;//第一次加载显示圆形进度条加载
-	//没有数据的布局
-	private ViewStub stub ;
-	private TextView tvNoMessage;
-	//访问网络必须类
+
 	private AjaxParams params;
 	private FinalHttp http;
-	// 数据区
+
+	//数据区
 	private int curBegin = 0;
 	private int curLimit = 10;
-	private int idx = 0;// 自增的参数
-	// 0x1是上刷新，0x2是下拉刷新
+	private int idx = 0;//自增的参数
+	
+	//0x1是上刷新，0x2是下拉刷新
 	private int refresh = 0x1;
-
+	
+	private final int FIRST_LOAD = 0x1;
+	private Handler handler = new Handler(){
+		public void handleMessage(android.os.Message msg) {
+			switch (msg.what) {
+			case FIRST_LOAD:
+				adapter = new SquareAdapter(getActivity(), squareHotList);
+				pullToRefreshListView.setAdapter(adapter);
+				break;
+			}
+		};
+	};
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-		view = inflater.inflate(R.layout.hot_fragment, null);
+		View view = inflater.inflate(R.layout.hot_fragment, null);
 
 		pullToRefreshListView = (PullToRefreshListView) view.findViewById(R.id.listviewHotFragment);
 		pullToRefreshListView.setMode(Mode.BOTH);
-
-		bar = (ProgressBar) view.findViewById(R.id.progressBar);
-		
-		stub = (ViewStub) view.findViewById(R.id.vsNoMessage);
-		
-		listView = pullToRefreshListView.getRefreshableView();
 
 		ILoadingLayout startLabels = pullToRefreshListView.getLoadingLayoutProxy(true, false);
 		startLabels.setPullLabel("下拉刷新...");// 刚下拉时，显示的提示
@@ -90,39 +88,13 @@ public class HotFragment extends Fragment {
 		params = new AjaxParams();
 		http = AppManager.getFinalHttp(getActivity());
 
-		// pull-to-refresh第一种方法
-		// pullToRefreshListView.setOnRefreshListener(new
-		// OnRefreshListener<ListView>() {
-		//
-		// @Override
-		// public void onRefresh(PullToRefreshBase<ListView> refreshView) {
-		// if (pullToRefreshListView.isHeaderShown()) {
-		// Debuger.log_w(TAG, "isHeaderShown");
-		// if (Utils.isNetworkAvailable(getActivity())) {
-		// Debuger.log_w(TAG, "excute on PullDown");
-		// initData();
-		// } else {
-		// Utils.showToastShort(getActivity(), "没有网络连接!");
-		// pullToRefreshListView.onRefreshComplete();
-		// }
-		// } else {
-		// Debuger.log_w(TAG, "isFooterShown");
-		// if (Utils.isNetworkAvailable(getActivity())) {
-		// initData();
-		// } else {
-		// Utils.showToastShort(getActivity(), "没有网络连接!");
-		// pullToRefreshListView.onRefreshComplete();
-		// }
-		// }
-		// }
-		// });
-		// pull-to-refresh第二种方法
+		//pull-to-refresh第二种方法
 		pullToRefreshListView.setOnRefreshListener(new OnRefreshListener2() {
 
 			@Override
 			public void onPullDownToRefresh(PullToRefreshBase refreshView) {
 				refresh = 0x1;
-				if (squareHotList!=null&&squareHotList.size() > 1) {
+				if(squareHotList.size()>1){
 					squareHotList.clear();
 				}
 				if (Utils.isNetworkAvailable(getActivity())) {
@@ -146,13 +118,15 @@ public class HotFragment extends Fragment {
 			}
 		});
 
-		// 为了实现页面刚进来上拉刷新加载，必须为adapter开始初始化数据，listview.setAdapter才行
-		// squareHotList = new ArrayList<SquareHot>();
-		// squareHotList.add(new SquareHot(false));
-		// adapter = new SquareAdapter(getActivity(), squareHotList);
-		// listView.setAdapter(adapter);
-		// 界面刚启动就开始上拉刷新加载
-		// pullToRefreshListView.setRefreshing(true);
+		//为了实现页面刚进来上拉刷新加载，必须为adapter开始初始化数据，listview.setAdapter才行
+		squareHotList = new ArrayList<SquareHot>();
+		pullToRefreshListView.onRefreshComplete();
+		pullToRefreshListView.setRefreshing(true);
+		
+		Message msg = handler.obtainMessage();
+		msg.what = FIRST_LOAD;
+		handler.sendMessage(msg);
+		//界面刚启动就开始上拉刷新加载
 		initData();
 		return view;
 	}
@@ -165,13 +139,13 @@ public class HotFragment extends Fragment {
 		// }
 	}
 
-	private  void initData() {
-
-		if (0x1 == refresh) {
+	private void initData() {
+		
+		if(0x1 == refresh){
 			curBegin = 0;
 			curLimit = HttpParamsUtil.LIMIT;
 		}
-
+		
 		Map<String, Object> map = new HashMap<String, Object>();
 		Map<String, Object> map1 = new HashMap<String, Object>();
 		map1.put("begin", curBegin);
@@ -188,43 +162,33 @@ public class HotFragment extends Fragment {
 			@Override
 			public void onStart() {
 				super.onStart();
-				if(first){
-					bar.setVisibility(View.VISIBLE);
-				}
 			}
 
 			@Override
 			public void onSuccess(String t) {
-				Debuger.log_w(t);
-				if(first){
-					bar.setVisibility(View.GONE);
-					first = false;
-				}
-				
-				stub.setVisibility(View.GONE);
-				// 每次刷新访问参数变化
-				curBegin = curLimit + 1;
+				 Debuger.log_w(t);
+				//每次刷新访问参数变化
+				curBegin = curLimit+1;
 				curLimit = HttpParamsUtil.incrementLimit(curLimit);
 				idx = HttpParamsUtil.incrementIdx(idx);
-				// 刷新控件停止
+				//刷新控件停止
 				pullToRefreshListView.onRefreshComplete();
-
+				
 				try {
 					JSONObject jsonObject = new JSONObject(t);
 					if ("ok".endsWith(jsonObject.getString("msg"))) {
 						String res = jsonObject.optString("res");
-						Type type = new TypeToken<List<SquareHot>>() {
-						}.getType();
+						Type type = new TypeToken<List<SquareHot>>() {}.getType();
 						Gson gson = new Gson();
-						if (0x1 == refresh) {
+						if(0x1 == refresh){
 							squareHotList = gson.fromJson(res, type);
-						} else {
+						}else{
 							List<SquareHot> lists = new ArrayList<SquareHot>();
 							lists = gson.fromJson(res, type);
 							squareHotList.addAll(lists);
 						}
-
-							setAdapter();
+						
+						setAdapter();
 					}
 				} catch (JSONException e) {
 					e.printStackTrace();
@@ -234,35 +198,27 @@ public class HotFragment extends Fragment {
 
 			@Override
 			public void onFailure(Throwable t, int errorNo, String strMsg) {
-				if(first){
-					bar.setVisibility(View.GONE);
-					first = false;
-				}
-				showNoMessage();
-				// idx是统计并发请求，不管失败成功都要自增1
+				
+				//idx是统计并发请求，不管失败成功都要自增1
 				idx = HttpParamsUtil.incrementIdx(idx);
-
+				Debuger.log_w("onFailure", strMsg);
 				pullToRefreshListView.onRefreshComplete();
 				super.onFailure(t, errorNo, strMsg);
 			}
 		});
 	}
-
-	private void showNoMessage(){
-		stub.inflate();
-		tvNoMessage = (TextView) view.findViewById(R.id.tvNoMessage);
-		tvNoMessage.setText("暂无动态");
-	}
 	
-	private void setAdapter() {
-		if (0x1 == refresh) {
+	
+	
+	private void setAdapter(){
+		if(0x1 == refresh){
 			Debuger.log_w(TAG, "new Adapter");
 			adapter = new SquareAdapter(getActivity(), squareHotList);
-			listView.setAdapter(adapter);
-		} else {
+			pullToRefreshListView.setAdapter(adapter);
+		}else{
 			Debuger.log_w(TAG, "adapter.notifyDataSetChanged");
 			adapter.notifyDataSetChanged();
 		}
-
+		
 	}
 }
