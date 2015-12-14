@@ -95,7 +95,7 @@ public class WithCityActivity extends Activity implements OnClickListener {
 
 	    
 	    // 设置popWindow的显示和消失动画
-	    window.setAnimationStyle(R.style.mypopwindow_anim_style);
+//	    window.setAnimationStyle(R.style.mypopwindow_anim_style);
 	    // 在底部显示
 	    window.showAtLocation(WithCityActivity.this.findViewById(R.id.llWithCityShare),
 	        Gravity.BOTTOM, 0, 0);
