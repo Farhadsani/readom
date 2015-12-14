@@ -7469,8 +7469,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_ENABLE_OBJC_ARC = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Xiang Ye (2TZ6RAT5L9)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Xiang Ye (2TZ6RAT5L9)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COMPRESS_PNG_FILES = NO;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -7519,7 +7519,7 @@
 					../iOS_Common_Libs/SinaSSO/libWeiboSDK.a,
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.shitouren.citystate;
-				PROVISIONING_PROFILE = "36c5071f-7b14-4a99-aa0d-e5f75b1c5759";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "$(inherited) $(SRCROOT)/../../cocos2d-x/cocos/platform/ios $(SRCROOT)/../../cocos2d-x/external/curl/include/ios $(SDKROOT)/usr/include/libxml2 \"$(SRCROOT)/ios/jpush-lib\"";
@@ -7532,8 +7532,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_ENABLE_OBJC_ARC = NO;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Rongoman Technology Co., Ltd. (S46E9D4J85)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Rongoman Technology Co., Ltd. (S46E9D4J85)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COMPRESS_PNG_FILES = NO;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -7581,7 +7581,7 @@
 					../iOS_Common_Libs/SinaSSO/libWeiboSDK.a,
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.shitouren.citystate;
-				PROVISIONING_PROFILE = "bc38aa4b-adb6-46bb-a450-c8f6b3330625";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "$(inherited) $(SRCROOT)/../../cocos2d-x/cocos/platform/ios $(SDKROOT)/usr/include/libxml2 \"$(SRCROOT)/ios/jpush-lib\"";

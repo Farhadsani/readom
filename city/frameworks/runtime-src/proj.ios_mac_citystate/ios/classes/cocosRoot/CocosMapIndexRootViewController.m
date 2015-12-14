@@ -64,6 +64,8 @@
         [self.view bringSubviewToFront:self.sightDetailViewController.view];
         [self hideTabBar:YES animation:YES];
     }
+    
+    [WNXTopWindow show];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
