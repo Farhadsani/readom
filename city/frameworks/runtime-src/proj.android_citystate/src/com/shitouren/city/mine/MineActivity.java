@@ -62,7 +62,7 @@ public class MineActivity extends Activity implements OnClickListener {
 			startActivity(new Intent(MineActivity.this, PersonalEditorActivity.class));
 			break;
 		case R.id.ibWithBaseData:
-			
+			startActivity(new Intent(MineActivity.this, BaseDataActivity.class));
 			break;
 		case R.id.ibWithFriendTrends:
 			
