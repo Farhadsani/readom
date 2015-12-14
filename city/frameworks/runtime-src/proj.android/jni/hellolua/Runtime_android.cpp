@@ -7,6 +7,9 @@
 using namespace std;
 using namespace cocos2d;
 
+#define  LOG_TAG    "main"
+#define  LOGD(...)  __android_log_print(ANDROID_LOG_DEBUG,LOG_TAG,__VA_ARGS__)
+
 string getIPAddress()
 {
 	JniMethodInfo t;
@@ -341,23 +344,39 @@ void refreshUserHome(REFRESHUSERHOMECALLBACK f)
 //    [BaseUIViewController setRefreshUserHome:refreshUserHomeCallback_1];
 }
 
+//打开地图操作
 MAPCALLBACK mapCallback_c;
-void mapCallback(int categoryType, std::string categoryID)
+
+void fangdongTest()
 {
-//    if (categoryID == nil) {
-//        categoryID = "";
-//    }
-//    InfoLog(@"");
-    if(mapCallback_c)
-    {
-//        mapCallback_c(categoryType, [categoryID UTF8String]);
-    }
+	LOGD("fangdongtest into lua...");
+	if(mapCallback_c)
+	{
+		LOGD("Java_org_cocos2dx_lua_AppActivity_openmapCallback into lua...");
+//		std::string strID = JniHelper::jstring2string(categoryID);
+//		mapCallback_c((int)categoryType, strID);
+//		mapCallback_c( 0, "");
+	}
+}
+extern "C"
+{
+	void Java_org_cocos2dx_lua_AppActivity_openmapCallback(JNIEnv *env, jint categoryType, jstring categoryID)
+	{
+		LOGD("Java_org_cocos2dx_lua_AppActivity_openmapCallback");
+		fangdongTest();
+//		if(mapCallback_c)
+//		{
+//			LOGD("Java_org_cocos2dx_lua_AppActivity_openmapCallback into lua...");
+//			std::string strID = JniHelper::jstring2string(categoryID);
+//			mapCallback_c((int)categoryType, strID);
+//		}
+	}
 }
 void openMap(MAPCALLBACK f)
 {
-//    InfoLog(@"");
+	LOGD("注册openMap。。。。。。。");
     mapCallback_c = f;
-//    [BaseUIViewController setToMapCallback : mapCallback];
+//    mapCallback_c(0, "");
 }
 
 BACKTOUSERHOMECALLBACK backToUserHomeCallback_c;

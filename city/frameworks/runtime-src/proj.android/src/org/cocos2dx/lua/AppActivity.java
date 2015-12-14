@@ -50,6 +50,7 @@ import android.net.NetworkInfo;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.Settings;
 import android.telephony.TelephonyManager;
 import android.text.format.Formatter;
@@ -69,6 +70,7 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 import com.anysdk.framework.PluginWrapper;
 import com.shitouren.qmap.R;
+import com.shitouren.utils.Debuger;
 import com.umeng.analytics.MobclickAgent;
 
 
@@ -177,8 +179,17 @@ public class AppActivity extends Cocos2dxActivity{
 	@Override
 	protected void onStart(){
 		super.onStart();
+		Debuger.log_w("xyz:", "onStart");
 //		openWebview();
+		new Handler().postDelayed(new Runnable(){  
+		    public void run() {  
+		    //execute the task
+		    	Debuger.log_w("xyz:", "onStart   kaishi");
+		    	openmapCallback();
+		    }  
+		 }, 2000);  
 	}
+	
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data){
@@ -188,8 +199,10 @@ public class AppActivity extends Cocos2dxActivity{
     @Override
     protected void onResume() {
         super.onResume();
+        Debuger.log_w("xyz:", "onResume");
         PluginWrapper.onResume();
         MobclickAgent.onResume(this);
+//        
     }
     @Override
     public void onPause(){
@@ -285,6 +298,7 @@ public class AppActivity extends Cocos2dxActivity{
 
 	private static native boolean nativeIsLandScape();
 	private static native boolean nativeIsDebug();
+	private static native void openmapCallback();
 	
 	public static AppActivity getAppActivity(){
 		return app;
