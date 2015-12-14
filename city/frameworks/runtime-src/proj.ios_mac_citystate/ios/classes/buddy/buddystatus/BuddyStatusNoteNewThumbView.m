@@ -84,6 +84,11 @@
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     BuddyStatusNoteNewThumbViewCell *cell = [BuddyStatusNoteNewThumbViewCell cellForCollectionView:collectionView forIndexPath:indexPath];
     cell.imageUrl = self.noteItem.thumbs[indexPath.item];
+    
+    if (self.noteItem.selectedIndex == 0) {
+        self.noteItem.selectedImageView = cell.imageView;
+    }
+    
     return cell;
 }
 
