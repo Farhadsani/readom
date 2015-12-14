@@ -45,6 +45,7 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.Rect;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.wifi.WifiInfo;
@@ -66,332 +67,367 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.Toast;
 import com.anysdk.framework.PluginWrapper;
 import com.shitouren.qmap.R;
 import com.umeng.analytics.MobclickAgent;
 
-
-public class AppActivity extends Cocos2dxActivity{
+public class AppActivity extends Cocos2dxActivity {
 
 	static String hostIPAdress = "0.0.0.0";
 	static AppActivity app = null;
-	
-	WebView m_webView;//WebView¿Ø¼þ
-	ImageView m_imageView;//ImageView¿Ø¼þ
-	FrameLayout m_webLayout;//FrameLayout²¼¾Ö
-	LinearLayout m_topLayout;//LinearLayout²¼¾Ö
-	Button m_backButton;//¹Ø±Õ°´Å¥
-	FrameLayout m_viewTitle; //±êÌâÀ¸
-	
+
+	WebView m_webView;// WebViewï¿½Ø¼ï¿½
+	ImageView m_imageView;// ImageViewï¿½Ø¼ï¿½
+	FrameLayout m_webLayout;// FrameLayoutï¿½ï¿½ï¿½ï¿½
+	LinearLayout m_topLayout;// LinearLayoutï¿½ï¿½ï¿½ï¿½
+	Button m_backButton;// ï¿½Ø±Õ°ï¿½Å¥
+	FrameLayout m_viewTitle; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+
+	PopupWindow popupWindow;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState); 
+		super.onCreate(savedInstanceState);
 		Log.i("qmap", "onCreate");
 		app = this;
-		
-		//³õÊ¼»¯Ò»¸ö¿Õ²¼¾Ö
-//	    m_webLayout = new FrameLayout(this);
-//	    DisplayMetrics dm = new DisplayMetrics();
-//	    getWindowManager().getDefaultDisplay().getMetrics(dm);
-//	    Rect frame = new Rect();    
-//	    getWindow().getDecorView().getWindowVisibleDisplayFrame(frame);
-//	    
-//	    int width = frame.width(); // dm.widthPixels;//¿í¶È
-//	    int height = frame.height();  // dm.heightPixels ;//¸ß¶È
-//	    Log.i("qmap", "w = " + width + ",H = " + height + "///" + dm.widthPixels + "," + dm.heightPixels);
-//	    FrameLayout.LayoutParams lytp = new FrameLayout.LayoutParams(width,height);
-//	    lytp.gravity = Gravity.CENTER;
-//	    addContentView(m_webLayout, lytp);
-	    //-----------------------------
-	    
-		if(nativeIsLandScape()) {
+
+		// ï¿½ï¿½Ê¼ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Õ²ï¿½ï¿½ï¿½
+		// m_webLayout = new FrameLayout(this);
+		// DisplayMetrics dm = new DisplayMetrics();
+		// getWindowManager().getDefaultDisplay().getMetrics(dm);
+		// Rect frame = new Rect();
+		// getWindow().getDecorView().getWindowVisibleDisplayFrame(frame);
+		//
+		// int width = frame.width(); // dm.widthPixels;//ï¿½ï¿½ï¿½
+		// int height = frame.height(); // dm.heightPixels ;//ï¿½ß¶ï¿½
+		// Log.i("qmap", "w = " + width + ",H = " + height + "///" +
+		// dm.widthPixels + "," + dm.heightPixels);
+		// FrameLayout.LayoutParams lytp = new
+		// FrameLayout.LayoutParams(width,height);
+		// lytp.gravity = Gravity.CENTER;
+		// addContentView(m_webLayout, lytp);
+		// -----------------------------
+
+		if (nativeIsLandScape()) {
 			setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE);
 		} else {
 			setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT);
 		}
-		
-		//2.Set the format of window
-		
+
+		// 2.Set the format of window
+
 		// Check the wifi is opened when the native is debug.
-		if(nativeIsDebug())
-		{
-			getWindow().setFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON, WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-			if(!isNetworkConnected())
-			{
-//				AlertDialog.Builder builder=new AlertDialog.Builder(this);
-//				builder.setTitle("Warning");
-//				builder.setMessage("Please open WIFI for debuging...");
-//				builder.setPositiveButton("OK",new DialogInterface.OnClickListener() {
-//					
-//					@Override
-//					public void onClick(DialogInterface dialog, int which) {
-//						startActivity(new Intent(Settings.ACTION_WIFI_SETTINGS));
-//						finish();
-//						System.exit(0);
-//					}
-//				});
-//
-//				builder.setNegativeButton("Cancel", null);
-//				builder.setCancelable(true);
-//				builder.show();
+		if (nativeIsDebug()) {
+			getWindow().setFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON,
+					WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+			if (!isNetworkConnected()) {
+				// AlertDialog.Builder builder=new AlertDialog.Builder(this);
+				// builder.setTitle("Warning");
+				// builder.setMessage("Please open WIFI for debuging...");
+				// builder.setPositiveButton("OK",new
+				// DialogInterface.OnClickListener() {
+				//
+				// @Override
+				// public void onClick(DialogInterface dialog, int which) {
+				// startActivity(new Intent(Settings.ACTION_WIFI_SETTINGS));
+				// finish();
+				// System.exit(0);
+				// }
+				// });
+				//
+				// builder.setNegativeButton("Cancel", null);
+				// builder.setCancelable(true);
+				// builder.show();
 			}
 		}
 		hostIPAdress = getHostIpAddress();
 
-        //for anysdk
-        PluginWrapper.init(this); // for plugins
+		// for anysdk
+		PluginWrapper.init(this); // for plugins
 	}
-	
+
 	private boolean isNetworkConnected() {
-	        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);  
-	        if (cm != null) {  
-	            NetworkInfo networkInfo = cm.getActiveNetworkInfo();  
+		ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+		if (cm != null) {
+			NetworkInfo networkInfo = cm.getActiveNetworkInfo();
 			ArrayList networkTypes = new ArrayList();
 			networkTypes.add(ConnectivityManager.TYPE_WIFI);
 			try {
 				networkTypes.add(ConnectivityManager.class.getDeclaredField("TYPE_ETHERNET").getInt(null));
 			} catch (NoSuchFieldException nsfe) {
-			}
-			catch (IllegalAccessException iae) {
+			} catch (IllegalAccessException iae) {
 				throw new RuntimeException(iae);
 			}
 			if (networkInfo != null && networkTypes.contains(networkInfo.getType())) {
-	                return true;  
-	            }  
-	        }  
-	        return false;  
-	    } 
-	 
+				return true;
+			}
+		}
+		return false;
+	}
+
 	public String getHostIpAddress() {
 		WifiManager wifiMgr = (WifiManager) getSystemService(WIFI_SERVICE);
 		WifiInfo wifiInfo = wifiMgr.getConnectionInfo();
 		int ip = wifiInfo.getIpAddress();
 		return ((ip & 0xFF) + "." + ((ip >>>= 8) & 0xFF) + "." + ((ip >>>= 8) & 0xFF) + "." + ((ip >>>= 8) & 0xFF));
 	}
-	
+
 	public static String getLocalIpAddress() {
 		return hostIPAdress;
 	}
-	
+
 	@Override
-	protected void onStart(){
+	protected void onStart() {
 		super.onStart();
-//		openWebview();
+		// openWebview();
 	}
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data){
-        super.onActivityResult(requestCode, resultCode, data);
-        PluginWrapper.onActivityResult(requestCode, resultCode, data);
-    }
-    @Override
-    protected void onResume() {
-        super.onResume();
-        PluginWrapper.onResume();
-        MobclickAgent.onResume(this);
-    }
-    @Override
-    public void onPause(){
-        PluginWrapper.onPause();
-        super.onPause();
-        MobclickAgent.onPause(this);
-    }
-    @Override
-    protected void onNewIntent(Intent intent) {
-        PluginWrapper.onNewIntent(intent);
-        super.onNewIntent(intent);
-    }
-    
-    public static String getSSID() {
-    	
-    	final TelephonyManager tm = (TelephonyManager) app.getBaseContext().getSystemService(Context.TELEPHONY_SERVICE);
-    	 
-        final String tmDevice, tmSerial, tmPhone, androidId;
-        tmDevice = "" + tm.getDeviceId();
-        tmSerial = "" + tm.getSimSerialNumber();
-        androidId = "" + android.provider.Settings.Secure.getString(app.getContentResolver(), android.provider.Settings.Secure.ANDROID_ID);
-     
-        UUID deviceUuid = new UUID(androidId.hashCode(), ((long)tmDevice.hashCode() << 32) | tmSerial.hashCode());
-        String uniqueId = deviceUuid.toString();
-    	
-    	return uniqueId;
-    	
-    	
-//    	return "8888-8888-8888";
-    }
-    
-    public static void ymOnEvent(String eventName){
-    	MobclickAgent.onEvent(app, eventName);
-    }
-    
-    public static String getRequestHeader(){
-    	return "User-Agent:shitouren_qmap_android";
-    }
-    
-    public static String getAppVersion(){
-    	return app.getVersion();
-    }   
-    
-    /**
-     * »ñÈ¡°æ±¾ºÅ
-     * @return µ±Ç°Ó¦ÓÃµÄ°æ±¾ºÅ
-     */
-    public String getVersion() {
-        try {
-            PackageManager manager = this.getPackageManager();
-            PackageInfo info = manager.getPackageInfo(this.getPackageName(), 0);
-            return info.versionName;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return "1.0.0";
-        }
-    }
-    
-    private long exitTime = 0;
-    
-    @Override
-    public boolean dispatchKeyEvent(KeyEvent event) {
-        if (event.getKeyCode() == KeyEvent.KEYCODE_BACK) {
-            if (event.getAction() == KeyEvent.ACTION_DOWN && event.getRepeatCount() == 0) {
-            	if((System.currentTimeMillis()-exitTime) > 2000){  
-                    Toast.makeText(getApplicationContext(), "ÔÙ°´Ò»´ÎÍË³ö³ÌÐò", Toast.LENGTH_SHORT).show();                                
-                    exitTime = System.currentTimeMillis();   
-                } else {
-                    finish();
-                    System.exit(0);
-                }
-            }
-            return true;
-        }
-        return super.dispatchKeyEvent(event);
-    }
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+		PluginWrapper.onActivityResult(requestCode, resultCode, data);
+	}
 
-//    @Override
-//    public boolean onKeyDown(int keyCode, KeyEvent event) {
-//        if(keyCode == KeyEvent.KEYCODE_BACK){  // && event.getAction() == KeyEvent.ACTION_DOWN){   
-//        	Log.i("qmap", "sssssss");
-//            if((System.currentTimeMillis()-exitTime) > 2000){  
-//                Toast.makeText(getApplicationContext(), "ÔÙ°´Ò»´ÎÍË³ö³ÌÐò", Toast.LENGTH_SHORT).show();                                
-//                exitTime = System.currentTimeMillis();   
-//            } else {
-//                finish();
-//                System.exit(0);
-//            }
-//            return true;   
-//        }
-//        return super.onKeyDown(keyCode, event);
-//    }
+	@Override
+	protected void onResume() {
+		super.onResume();
+		PluginWrapper.onResume();
+		MobclickAgent.onResume(this);
+	}
+
+	@Override
+	public void onPause() {
+		PluginWrapper.onPause();
+		super.onPause();
+		MobclickAgent.onPause(this);
+	}
+
+	@Override
+	protected void onNewIntent(Intent intent) {
+		PluginWrapper.onNewIntent(intent);
+		super.onNewIntent(intent);
+	}
+
+	public static String getSSID() {
+
+		final TelephonyManager tm = (TelephonyManager) app.getBaseContext().getSystemService(Context.TELEPHONY_SERVICE);
+
+		final String tmDevice, tmSerial, tmPhone, androidId;
+		tmDevice = "" + tm.getDeviceId();
+		tmSerial = "" + tm.getSimSerialNumber();
+		androidId = "" + android.provider.Settings.Secure.getString(app.getContentResolver(),
+				android.provider.Settings.Secure.ANDROID_ID);
+
+		UUID deviceUuid = new UUID(androidId.hashCode(), ((long) tmDevice.hashCode() << 32) | tmSerial.hashCode());
+		String uniqueId = deviceUuid.toString();
+
+		return uniqueId;
+
+		// return "8888-8888-8888";
+	}
+
+	public static void ymOnEvent(String eventName) {
+		MobclickAgent.onEvent(app, eventName);
+	}
+
+	public static String getRequestHeader() {
+		return "User-Agent:shitouren_qmap_android";
+	}
+
+	public static String getAppVersion() {
+		return app.getVersion();
+	}
+
+	/**
+	 * ï¿½ï¿½È¡ï¿½æ±¾ï¿½ï¿½
+	 * 
+	 * @return ï¿½ï¿½Ç°Ó¦ï¿½ÃµÄ°æ±¾ï¿½ï¿½
+	 */
+	public String getVersion() {
+		try {
+			PackageManager manager = this.getPackageManager();
+			PackageInfo info = manager.getPackageInfo(this.getPackageName(), 0);
+			return info.versionName;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "1.0.0";
+		}
+	}
+
+	private long exitTime = 0;
+
+	@Override
+	public boolean dispatchKeyEvent(KeyEvent event) {
+		if (event.getKeyCode() == KeyEvent.KEYCODE_BACK) {
+			if (event.getAction() == KeyEvent.ACTION_DOWN && event.getRepeatCount() == 0) {
+				if ((System.currentTimeMillis() - exitTime) > 2000) {
+					Toast.makeText(getApplicationContext(), "ï¿½Ù°ï¿½Ò»ï¿½ï¿½ï¿½Ë³ï¿½ï¿½ï¿½ï¿½ï¿½", Toast.LENGTH_SHORT).show();
+					exitTime = System.currentTimeMillis();
+				} else {
+					finish();
+					System.exit(0);
+				}
+			}
+			return true;
+		}
+		return super.dispatchKeyEvent(event);
+	}
+
+	// @Override
+	// public boolean onKeyDown(int keyCode, KeyEvent event) {
+	// if(keyCode == KeyEvent.KEYCODE_BACK){ // && event.getAction() ==
+	// KeyEvent.ACTION_DOWN){
+	// Log.i("qmap", "sssssss");
+	// if((System.currentTimeMillis()-exitTime) > 2000){
+	// Toast.makeText(getApplicationContext(), "ï¿½Ù°ï¿½Ò»ï¿½ï¿½ï¿½Ë³ï¿½ï¿½ï¿½ï¿½ï¿½",
+	// Toast.LENGTH_SHORT).show();
+	// exitTime = System.currentTimeMillis();
+	// } else {
+	// finish();
+	// System.exit(0);
+	// }
+	// return true;
+	// }
+	// return super.onKeyDown(keyCode, event);
+	// }
 
 	private static native boolean nativeIsLandScape();
+
 	private static native boolean nativeIsDebug();
-	
-	public static AppActivity getAppActivity(){
+
+	public static AppActivity getAppActivity() {
 		return app;
 	}
-	
+
 	public void openWebview(String strUrl) {
-//	    Log.v("TestJacky, openWebView);
+		// Log.v("TestJacky, openWebView);
 		final String _strUrl = strUrl;
-	    this.runOnUiThread(new Runnable() {//ÔÚÖ÷Ïß³ÌÀïÌí¼Ó±ðµÄ¿Ø¼þ
-	        public void run() {   
-	        	
-	        	m_webLayout = new FrameLayout(app);
-	    	    DisplayMetrics dm = new DisplayMetrics();
-	    	    getWindowManager().getDefaultDisplay().getMetrics(dm);
-	    	    Rect frame = new Rect();    
-	    	    getWindow().getDecorView().getWindowVisibleDisplayFrame(frame);
-	    	    
-	    	    int width = frame.width(); // dm.widthPixels;//¿í¶È
-	    	    int height = frame.height();  // dm.heightPixels ;//¸ß¶È
-	    	    Log.i("qmap", "w = " + width + ",H = " + height + "///" + dm.widthPixels + "," + dm.heightPixels);
-	    	    FrameLayout.LayoutParams lytp = new FrameLayout.LayoutParams(width,height);
-	    	    lytp.gravity = Gravity.CENTER;
-	    	    addContentView(m_webLayout, lytp);
-	    	    
-	    	    
-	            //³õÊ¼»¯webView
-	            m_webView = new WebView(app);
-	            //ÉèÖÃwebViewÄÜ¹»Ö´ÐÐjavascript½Å±¾
-	            m_webView.getSettings().setJavaScriptEnabled(true);            
-	            //ÉèÖÃ¿ÉÒÔÖ§³ÖËõ·Å
-	            m_webView.getSettings().setSupportZoom(true);//ÉèÖÃ³öÏÖËõ·Å¹¤¾ß
-	            m_webView.getSettings().setBuiltInZoomControls(true);
-	            //ÔØÈëURL
-	            m_webView.loadUrl(_strUrl);
-	            //Ê¹Ò³Ãæ»ñµÃ½¹µã
-	            m_webView.requestFocus();
-	            //Èç¹ûÒ³ÃæÖÐÁ´½Ó£¬Èç¹ûÏ£Íûµã»÷Á´½Ó¼ÌÐøÔÚµ±Ç°browserÖÐÏìÓ¦
-	            m_webView.setWebViewClient(new WebViewClient(){       
-	                public boolean shouldOverrideUrlLoading(WebView view, String url) {   
-	                    if(url.indexOf("tel:")<0){
-	                        view.loadUrl(url); 
-	                    }
-	                    return true;       
-	                }    
-	            });
-	            
-//	            Rect frame = new Rect();    
-//	    	    getWindow().getDecorView().getWindowVisibleDisplayFrame(frame);
-//	    	    Log.i("qmap", frame.toString());
-	             
-	            //±³¾°Í¼
-	            m_imageView = new ImageView(app);
-	            m_imageView.setBackgroundColor(Color.WHITE);
-//	            m_imageView.setImageResource(R.drawable.bkgnd);
-	            m_imageView.setScaleType(ImageView.ScaleType.FIT_XY);
-	            //³õÊ¼»¯ÏßÐÔ²¼¾Ö ÀïÃæ¼Ó°´Å¥ºÍwebView
-	            m_topLayout = new LinearLayout(app);      
-	            m_topLayout.setOrientation(LinearLayout.VERTICAL);
-	            //³õÊ¼»¯·µ»Ø°´Å¥
-	            m_backButton = new Button(app);
-	            m_backButton.setBackgroundResource(R.drawable.webback);
-//	            m_backButton.setPadding(10, 20, 0, 20);
-//	            m_backButton.setScaleX((float) 0.8);
-//	            m_backButton.setScaleY((float) 0.8);
-//	            m_backButton.set
-	          
-	            LinearLayout.LayoutParams lypt=new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-	            lypt.gravity=Gravity.LEFT | Gravity.CENTER_HORIZONTAL;
-	            m_backButton.setLayoutParams(lypt);            
-	            m_backButton.setOnClickListener(new OnClickListener() {                    
-	                public void onClick(View v) {
-	                    removeWebView();
-	                }
-	            });
-	            
-	            m_viewTitle = new FrameLayout(app);
-	            FrameLayout.LayoutParams lytp1 = new FrameLayout.LayoutParams(width,100);
-	            lytp1.gravity = Gravity.CENTER;
-	            m_viewTitle.setLayoutParams(lytp1);
-//	            m_backButton.setTop(top)
-	       
-	            //°Ñimage¼Óµ½Ö÷²¼¾ÖÀï
-	            m_webLayout.addView(m_imageView);
-	            
-//	            m_viewTitle.addView(m_backButton);
-	            //°ÑwebView¼ÓÈëµ½ÏßÐÔ²¼¾Ö
-//	            m_topLayout.addView(m_viewTitle);
-	            m_topLayout.addView(m_backButton);
-	            m_topLayout.addView(m_webView);                
-	            //ÔÙ°ÑÏßÐÔ²¼¾Ö¼ÓÈëµ½Ö÷²¼¾Ö
-	            m_webLayout.addView(m_topLayout);
-	        }
-	    });
+		this.runOnUiThread(new Runnable() {// ï¿½ï¿½ï¿½ï¿½ï¿½ß³ï¿½ï¿½ï¿½ï¿½ï¿½Ó±ï¿½Ä¿Ø¼ï¿½
+			public void run() {
+
+				m_webLayout = new FrameLayout(app);
+				DisplayMetrics dm = new DisplayMetrics();
+				getWindowManager().getDefaultDisplay().getMetrics(dm);
+				Rect frame = new Rect();
+				getWindow().getDecorView().getWindowVisibleDisplayFrame(frame);
+
+				int width = frame.width(); // dm.widthPixels;//ï¿½ï¿½ï¿½
+				int height = frame.height(); // dm.heightPixels ;//ï¿½ß¶ï¿½
+				Log.i("qmap", "w = " + width + ",H = " + height + "///" + dm.widthPixels + "," + dm.heightPixels);
+				FrameLayout.LayoutParams lytp = new FrameLayout.LayoutParams(width, height);
+				lytp.gravity = Gravity.CENTER;
+				addContentView(m_webLayout, lytp);
+
+				// ï¿½ï¿½Ê¼ï¿½ï¿½webView
+				m_webView = new WebView(app);
+				// ï¿½ï¿½ï¿½ï¿½webViewï¿½Ü¹ï¿½Ö´ï¿½ï¿½javascriptï¿½Å±ï¿½
+				m_webView.getSettings().setJavaScriptEnabled(true);
+				// ï¿½ï¿½ï¿½Ã¿ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+				m_webView.getSettings().setSupportZoom(true);// ï¿½ï¿½ï¿½Ã³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å¹ï¿½ï¿½ï¿½
+				m_webView.getSettings().setBuiltInZoomControls(true);
+				// ï¿½ï¿½ï¿½ï¿½URL
+				m_webView.loadUrl(_strUrl);
+				// Ê¹Ò³ï¿½ï¿½ï¿½Ã½ï¿½ï¿½ï¿½
+				m_webView.requestFocus();
+				// ï¿½ï¿½ï¿½Ò³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó£ï¿½ï¿½ï¿½ï¿½Ï£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¼ï¿½ï¿½ï¿½ï¿½Úµï¿½Ç°browserï¿½ï¿½ï¿½ï¿½Ó¦
+				m_webView.setWebViewClient(new WebViewClient() {
+					public boolean shouldOverrideUrlLoading(WebView view, String url) {
+						if (url.indexOf("tel:") < 0) {
+							view.loadUrl(url);
+						}
+						return true;
+					}
+				});
+
+				// Rect frame = new Rect();
+				// getWindow().getDecorView().getWindowVisibleDisplayFrame(frame);
+				// Log.i("qmap", frame.toString());
+
+				// ï¿½ï¿½ï¿½ï¿½Í¼
+				m_imageView = new ImageView(app);
+				m_imageView.setBackgroundColor(Color.WHITE);
+				// m_imageView.setImageResource(R.drawable.bkgnd);
+				m_imageView.setScaleType(ImageView.ScaleType.FIT_XY);
+				// ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½Ô²ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ó°ï¿½Å¥ï¿½ï¿½webView
+				m_topLayout = new LinearLayout(app);
+				m_topLayout.setOrientation(LinearLayout.VERTICAL);
+				// ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½Ø°ï¿½Å¥
+				m_backButton = new Button(app);
+				m_backButton.setBackgroundResource(R.drawable.webback);
+				// m_backButton.setPadding(10, 20, 0, 20);
+				// m_backButton.setScaleX((float) 0.8);
+				// m_backButton.setScaleY((float) 0.8);
+				// m_backButton.set
+
+				LinearLayout.LayoutParams lypt = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,
+						LinearLayout.LayoutParams.WRAP_CONTENT);
+				lypt.gravity = Gravity.LEFT | Gravity.CENTER_HORIZONTAL;
+				m_backButton.setLayoutParams(lypt);
+				m_backButton.setOnClickListener(new OnClickListener() {
+					public void onClick(View v) {
+						removeWebView();
+					}
+				});
+
+				m_viewTitle = new FrameLayout(app);
+				FrameLayout.LayoutParams lytp1 = new FrameLayout.LayoutParams(width, 100);
+				lytp1.gravity = Gravity.CENTER;
+				m_viewTitle.setLayoutParams(lytp1);
+				// m_backButton.setTop(top)
+
+				// ï¿½ï¿½imageï¿½Óµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+				m_webLayout.addView(m_imageView);
+
+				// m_viewTitle.addView(m_backButton);
+				// ï¿½ï¿½webViewï¿½ï¿½ï¿½ëµ½ï¿½ï¿½ï¿½Ô²ï¿½ï¿½ï¿½
+				// m_topLayout.addView(m_viewTitle);
+				m_topLayout.addView(m_backButton);
+				m_topLayout.addView(m_webView);
+				// ï¿½Ù°ï¿½ï¿½ï¿½ï¿½Ô²ï¿½ï¿½Ö¼ï¿½ï¿½ëµ½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+				m_webLayout.addView(m_topLayout);
+			}
+		});
 	}
-	
-	public void removeWebView() {              
-	    m_webLayout.removeView(m_imageView);
-	    m_imageView.destroyDrawingCache();
-	     
-	    m_webLayout.removeView(m_topLayout);
-	    m_topLayout.destroyDrawingCache();
-	             
-	    m_topLayout.removeView(m_webView);
-	    m_webView.destroy();
-	             
-	    m_topLayout.removeView(m_backButton);
-	    m_backButton.destroyDrawingCache();
+
+	public void removeWebView() {
+		m_webLayout.removeView(m_imageView);
+		m_imageView.destroyDrawingCache();
+
+		m_webLayout.removeView(m_topLayout);
+		m_topLayout.destroyDrawingCache();
+
+		m_topLayout.removeView(m_webView);
+		m_webView.destroy();
+
+		m_topLayout.removeView(m_backButton);
+		m_backButton.destroyDrawingCache();
 	}
-	
+
+	public void popUp() {
+		AppActivity.this.runOnUiThread(new Runnable() {
+
+			@Override
+			public void run() {
+				View view = View.inflate(AppActivity.this, R.layout.pop_window, null);
+				WindowManager window = (WindowManager) AppActivity.this.getSystemService(Context.WINDOW_SERVICE);
+				int screenwith = window.getDefaultDisplay().getWidth();
+				int screenHeight = window.getDefaultDisplay().getHeight();
+
+				popupWindow = new PopupWindow(view, screenwith, screenHeight * 4 / 5);
+				popupWindow.setFocusable(true);
+				popupWindow.setOutsideTouchable(true);
+				popupWindow.setBackgroundDrawable(new BitmapDrawable());
+				popupWindow.showAtLocation(view, Gravity.BOTTOM, 0, 0);
+			}
+		});
+
+	}
+
+	public void popDown() {
+		if (popupWindow != null)
+			popupWindow.dismiss();
+	}
+
 }

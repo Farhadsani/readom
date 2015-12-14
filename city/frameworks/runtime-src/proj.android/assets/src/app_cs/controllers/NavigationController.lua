@@ -43,7 +43,20 @@ function NavigationController:switchToDefaultViewController()
 
     -- local vcPathName = "app/load/LoadController"
     -- local vcPathName = "app/userHome/UserHomeController"
-    self:switchTo(vcPathName)
+    -- self:switchTo(vcPathName)
+
+    print("11111", os.date())
+        display.addImageAsync("res/ui/map/taiyuan/image/taiyuanmap.jpg", function ( ... )
+            print("22222", os.date())
+            display.addSpriteFrames("res/ui/map/taiyuan/image/taiyuan.plist", "res/ui/map/taiyuan/image/taiyuan.png", function (  )
+                print("33333", os.date())
+                -- print("add plist over..............")
+                -- if device.platform ~= "android" then
+                    QMapGlobal.app.navigationController:setControllerPathBase(self.packageRoot .. "/city/")
+                    QMapGlobal.app.navigationController:switchTo( "citymap", { cityid = QMapGlobal.cityID , categoryType = 0, categoryID = ""} )
+                -- end
+            end)
+        end)
 
     -- local function callBack( ... )
     --     -- self.navigationController:setControllerPathBase("app/citySelection/CitySelectionViewController")

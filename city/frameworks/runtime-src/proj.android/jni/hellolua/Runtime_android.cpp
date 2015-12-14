@@ -7,6 +7,9 @@
 using namespace std;
 using namespace cocos2d;
 
+#define  LOG_TAG    "main"
+#define  LOGD(...)  __android_log_print(ANDROID_LOG_DEBUG,LOG_TAG,__VA_ARGS__)
+
 string getIPAddress()
 {
 	JniMethodInfo t;
@@ -392,6 +395,24 @@ void sightIntroCallback(int)   //打开景点介绍后的回调函数
 //sightDescs：景点所包含的所有数据
 void openSightIntro(long sightID, std::string sightName, std::string sightDescs, SIGHTINTROCALLBACK f)
 {
+	LOGD("openSightIntro.........");
+	JniMethodInfo minfo;
+		//getStaticMethodInfo
+
+	bool isHave = JniHelper::getStaticMethodInfo(minfo,"org/cocos2dx/lua/AppActivity","getAppActivity","()Lorg/cocos2dx/lua/AppActivity;");
+	jobject jobj;//锟斤拷锟斤拷锟�
+	if (isHave) {
+			//锟斤拷锟斤拷牡锟斤拷锟�getInstance锟斤拷锟斤拷锟斤拷Test锟斤拷亩锟斤拷锟�
+		jobj = minfo.env->CallStaticObjectMethod(minfo.classID, minfo.methodID);
+		LOGD("openSightIntro.........1");
+		isHave = JniHelper::getMethodInfo(minfo,"org/cocos2dx/lua/AppActivity","popUp","()V");
+		if (isHave) {
+			LOGD("openSightIntro.........2");
+				//锟斤拷锟斤拷openWebview, 锟斤拷锟斤拷1锟斤拷Test锟斤拷锟斤拷   锟斤拷锟斤拷2锟斤拷锟斤拷锟斤拷ID
+//				jstring jst = minfo.env->NewStringUTF(strUrl.c_str());
+				minfo.env->CallVoidMethod(jobj, minfo.methodID);
+		}
+	}
 //    SightDetailViewController * vc = [[[SightDetailViewController alloc] initWithNibName:nil bundle:nil] autorelease];
 //    [vc.data_dict setNonEmptyObject:@(sightID) forKey:k_sightID];
 //    [vc.data_dict setNonEmptyObject:[NSString stringWithCString:sightName.c_str() encoding:NSUTF8StringEncoding] forKey:k_sightName];
