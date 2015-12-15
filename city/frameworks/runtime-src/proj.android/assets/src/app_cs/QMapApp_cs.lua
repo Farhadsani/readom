@@ -9,7 +9,7 @@ require(appPath .. "common/Util")
 require(appPath .. "common/QMapAction")
 require(appPath .. "resData/resFile")
 require(appPath .. "resData/mapData")
--- QMapGlobal.DataManager = require(appPath .. "data/DataManager").new()   -- 移动到加载页中
+QMapGlobal.DataManager = require(appPath .. "data/DataManager").new()   -- 移动到加载页中
 require(appPath .. "resData/menuDescription")
 
 local QMapApp = class("QMapApp", cc.mvc.AppBase)
@@ -28,6 +28,7 @@ end
 function QMapApp:run()
 	-- print("路径。。。。。。。。。。。。。")
  --    dump(cc.FileUtils:getInstance():getSearchPaths())
+    print("lua is running.........")
     
     cc.FileUtils:getInstance():addSearchPath("res/")
     -- cc.FileUtils:getInstance():addSearchPath(device.writablePath)
