@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ios/classes/buddy/buddystatus/BuddyStatusToolBar.m"
-            timestampString = "471782869.774493"
+            filePath = "ios/classes/message/MyMsgViewController.m"
+            timestampString = "472036611.973165"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "218"
-            endingLineNumber = "218"
-            landmarkName = "-buddyStatusSharedViewDidClickSharedBtn:"
+            startingLineNumber = "162"
+            endingLineNumber = "162"
+            landmarkName = "-requestMyMsgBegin:limit:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
