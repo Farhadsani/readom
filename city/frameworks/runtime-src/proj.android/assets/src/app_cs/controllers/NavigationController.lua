@@ -43,8 +43,9 @@ function NavigationController:switchToDefaultViewController()
 
     -- local vcPathName = "app/load/LoadController"
     -- local vcPathName = "app/userHome/UserHomeController"
-    self:switchTo(vcPathName)
+    -- self:switchTo(vcPathName)
 
+    QMapGlobal.app.navigationController:switchTo( "loading", { cityid = 1 , categoryType = 0, categoryID = ""} )
     -- local function callBack( ... )
     --     -- self.navigationController:setControllerPathBase("app/citySelection/CitySelectionViewController")
     --     -- self.navigationController:switchTo( "app/citySelection/CitySelectionViewController", {cityid = 1}, "fade" )
@@ -173,11 +174,11 @@ function NavigationController:registToMap( ... )
         self.categoryType = categoryType
         self.categoryID = categoryID
         
-        if not QMapGlobal.loadover then   -- 没有加载loading ,先加载loading
-            QMapGlobal.loadover = true
-            QMapGlobal.app.navigationController:switchTo( "loading", { cityid = 1 , categoryType = categoryType, categoryID = categoryID} )
-            return 
-        end
+        -- if not QMapGlobal.loadover then   -- 没有加载loading ,先加载loading
+        --     QMapGlobal.loadover = true
+        --     QMapGlobal.app.navigationController:switchTo( "loading", { cityid = 1 , categoryType = categoryType, categoryID = categoryID} )
+        --     return 
+        -- end
         print("openMap.........", categoryType , categoryID )
         -- categoryType = 0
         -- categoryID = 2
@@ -206,7 +207,10 @@ function NavigationController:registToUserHome( ... )
         QMapGlobal.app.navigationController:setControllerPathBase("")
         local curUser = {userid = userid, name = username, intro = intro, zone = zonename, thumblink = thumblink, imglink = imglink}
         local ncPathName = self.packageRoot .. "/userHome/UserHomeController" 
-        QMapGlobal.app.navigationController:switchTo( "userhome", {curUser = curUser}, "fade" )
+
+        display.addImageAsync("res/ui/image/userHome/userHomeMap.jpg", function ( ... )
+            QMapGlobal.app.navigationController:switchTo( "userhome", {curUser = curUser}, "fade" )
+        end)
 
     end)
 

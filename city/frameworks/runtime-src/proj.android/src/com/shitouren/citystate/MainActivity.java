@@ -119,7 +119,10 @@ public class MainActivity extends TabActivity implements OnClickListener {
 
 	private void prepareIntent() {
 
+//		indexIntent = new Intent(this, IndexActivity.class);
+
 		indexIntent = new Intent(this, AppActivity.class);
+		indexIntent.putExtra("scene_name", "citymap");
 
 		squareIntent = new Intent(this, SquareActivity.class);
 
@@ -127,7 +130,9 @@ public class MainActivity extends TabActivity implements OnClickListener {
 
 		messageIntent = new Intent(this, MessageActivity.class);
 
-		mineIntent = new Intent(this, MineActivity.class);
+		mineIntent = new Intent(this, AppActivity.class);
+//		mineIntent = new  Intent(this, AppActivity.class);
+		mineIntent.putExtra("scene_name", "userhome");
 
 	}
 
@@ -143,7 +148,7 @@ public class MainActivity extends TabActivity implements OnClickListener {
 
 		mTabHost.addTab(buildTabSpec(TAB_TAG_MESSAGE, R.string.message, R.drawable.message_selector, messageIntent));
 
-		mTabHost.addTab(buildTabSpec(TAB_TAB_MINE, R.string.mine, R.drawable.mine_selector, mineIntent));
+		mTabHost.addTab(buildTabSpec(TAB_TAG_INDEX, R.string.mine, R.drawable.mine_selector, mineIntent));
 	}
 
 	private TabHost.TabSpec buildTabSpec(String tag, int resLabel, int resIcon, final Intent content) {
@@ -173,6 +178,7 @@ public class MainActivity extends TabActivity implements OnClickListener {
 		tvMine.setTextColor(COLOR1);
 		int checkedId = v.getId();
 		int o;
+		
 
 		if (mCurTabId < checkedId)
 			o = 0;
@@ -195,7 +201,7 @@ public class MainActivity extends TabActivity implements OnClickListener {
 			mTabHost.setCurrentTabByTag(TAB_TAG_INDEX);
 			imgIndex.setImageResource(R.drawable.index_selected);
 			tvIndex.setTextColor(COLOR2);
-
+			AppActivity.printMsg("citymap");
 			break;
 
 		case R.id.layoutSquare:
@@ -219,9 +225,10 @@ public class MainActivity extends TabActivity implements OnClickListener {
 
 			break;
 		case R.id.layoutMine:
-			mTabHost.setCurrentTabByTag(TAB_TAB_MINE);
+			mTabHost.setCurrentTabByTag(TAB_TAG_INDEX);
 			imgMine.setImageResource(R.drawable.mine_selected);
 			tvMine.setTextColor(COLOR2);
+			AppActivity.printMsg("userhome");
 
 			break;
 		default:
@@ -273,7 +280,7 @@ public class MainActivity extends TabActivity implements OnClickListener {
 
 			break;
 		case R.id.layoutMine:
-			mTabHost.setCurrentTabByTag(TAB_TAB_MINE);
+			mTabHost.setCurrentTabByTag(TAB_TAG_INDEX);
 			imgMine.setImageResource(R.drawable.mine_selected);
 			tvMine.setTextColor(COLOR2);
 
@@ -287,7 +294,7 @@ public class MainActivity extends TabActivity implements OnClickListener {
 	
 	private void showPopupWindow(View view) {
 
-		// 一个自定义的布局，作为显示的内容
+		// 娑�锟芥��锟斤拷锟斤拷��癸拷娑�锟斤拷锟斤拷���锟界��锟介��锟芥担锟芥�����锟藉�с��锟斤拷锟斤拷锟斤拷��癸拷
 		View contentView = LayoutInflater.from(this).inflate(R.layout.publish_activity, null);
 
 		final PopupWindow popupWindow = new PopupWindow(contentView, LayoutParams.MATCH_PARENT,
@@ -303,17 +310,17 @@ public class MainActivity extends TabActivity implements OnClickListener {
 		// Log.i("mengdd", "onTouch : ");
 		//
 		// return false;
-		// // 这里如果返回true的话，touch事件将被拦截
-		// // 拦截后 PopupWindow的onTouchEvent不被调用，这样点击外部区域无法dismiss
+		// // ��╋拷锟斤拷锟芥俊锟斤拷锟斤拷��╋拷锟斤拷锟�true锟斤拷锟界��锟介��锟�touch娴�锟芥��璺猴拷锟界��锟斤拷锟斤拷锟斤拷锟�
+		// // 锟斤拷锟斤拷锟斤拷锟斤拷锟� PopupWindow锟斤拷锟�onTouchEvent娑�锟界��锟界��锟斤拷锟斤拷���锟芥�╋拷锟斤拷椋�锟界�帮拷璇诧拷锟斤拷锟姐�ワ拷���锟斤拷锟斤拷锟藉��锟�dismiss
 		// }
 		// });
 
-		// 如果不设置PopupWindow的背景，无论是点击外部区域还是Back键都无法dismiss弹框
-		// 我觉得这里是API的一个bug
+		// 婵★拷锟斤拷锟芥��锟界����х��PopupWindow锟斤拷锟斤拷锟斤拷锟斤拷锟介��锟斤拷锟斤拷������锟斤拷锟斤拷��帮拷璇诧拷锟斤拷锟姐�ワ拷���锟斤拷��╋拷锟斤拷锟�Back锟斤拷锟斤拷锟借�ワ拷锟藉��锟�dismiss瀵�瑙�锟斤拷
+		// 锟斤拷锟界��锟藉�帮拷��╋拷锟斤拷锟斤拷锟斤拷API锟斤拷锟芥��锟芥��锟�bug
 		// popupWindow.setBackgroundDrawable(getResources().getDrawable(
 		// R.drawable.selectmenu_bg_downward));
 
-		// 设置好参数之后再show
+		// �����х��婵����锟斤拷锟斤拷棰�锟斤拷锟斤拷锟斤拷锟斤拷show
 		popupWindow.showAtLocation(view, Gravity.BOTTOM, 0, 0);
 
 	}

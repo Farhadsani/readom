@@ -28,6 +28,7 @@ end
 function QMapApp:run()
 	-- print("路径。。。。。。。。。。。。。")
  --    dump(cc.FileUtils:getInstance():getSearchPaths())
+    print("lua is running.........")
     
     cc.FileUtils:getInstance():addSearchPath("res/")
     -- cc.FileUtils:getInstance():addSearchPath(device.writablePath)

@@ -502,15 +502,27 @@ static UserManager * st_UserManager = nil;
         return;
     }
     
-    NSUserDefaults *defaults =[NSUserDefaults standardUserDefaults];
-    
     [UserManager sharedInstance].userLoginStatus = Lstatus_loginSuccess;
     [self.user_dict setNonEmptyValuesForKeysWithDictionary:resRes];
+    
+    NSUserDefaults *defaults =[NSUserDefaults standardUserDefaults];
+    long resUserid = (long)[[_user_dict objectForKey:@"userid"] longLongValue];
+    
+    //如果登录的是其他用户，需要清除原来用户的缓存数据
+    NSString *tUserid = [defaults stringForKey:@"SHITOUREN_UD_USERID"];
+    if(tUserid && tUserid !=0 && ![tUserid isEqualToString:@"null"] ){
+        if ((long)[tUserid longLongValue] != resUserid) {
+            [self signout];
+            [UserManager sharedInstance].userLoginStatus = Lstatus_loginSuccess;
+            [self.user_dict setNonEmptyValuesForKeysWithDictionary:resRes];
+            resUserid = (long)[[_user_dict objectForKey:@"userid"] longLongValue];
+        }
+    }
+    //END
     
     [defaults setObject:self.user_dict forKey:@"user_dict"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
-    long resUserid = (long)[[_user_dict objectForKey:@"userid"] longLongValue];
     self.userid = resUserid;
     _ss.userid = resUserid;
     

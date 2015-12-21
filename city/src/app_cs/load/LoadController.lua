@@ -16,6 +16,7 @@ end
 
 function LoadController:viewDidLoad()
     -- print("11222222222222222211111")
+    print("function LoadController:viewDidLoad()")
 	self.view:setDelegate(self)
     -- print("3333333333333333333333")
  --    self.view:setPercent( 50 )

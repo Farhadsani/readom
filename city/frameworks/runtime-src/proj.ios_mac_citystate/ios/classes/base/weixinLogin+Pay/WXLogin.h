@@ -1,7 +1,7 @@
 #import "WXApi.h"
 
-#define WXAppID @"wxcee6a0851b3ea57f"
-#define WXAppSecret @"d4624c36b6795d1d99dcf0547af5443d"
+#define WXAppID k_wechat_appID
+#define WXAppSecret k_wechat_appSecret
 
 @interface WXLoginInfo : NSObject
 @property (copy,atomic) NSString *nickName;

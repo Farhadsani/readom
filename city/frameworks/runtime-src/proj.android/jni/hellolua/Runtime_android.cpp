@@ -7,6 +7,9 @@
 using namespace std;
 using namespace cocos2d;
 
+#define  LOG_TAG    "main"
+#define  LOGD(...)  __android_log_print(ANDROID_LOG_DEBUG,LOG_TAG,__VA_ARGS__)
+
 string getIPAddress()
 {
 	JniMethodInfo t;
@@ -24,7 +27,7 @@ string getIPAddress()
 #include "../../../Classes/qmap/ToolFunction.h"
 std::string getSSID()
 {
-	//���þ�̬����
+	//�����ゆ�烽����������锋�������ゆ�烽����ゆ��
 //	jclass cls = env->FindClass("test/Demo");
 //	jmethodID mid = env->GetStaticMethodID(cls, "getHelloWorld","()Ljava/lang/String;");
 //	jstring msg = (jstring)env->CallStaticObjectMethod(cls, mid);
@@ -55,7 +58,7 @@ std::string getSSID_Verify()
 	return verify;
 }
 
-//�����¼�
+//�����ゆ�烽����ゆ�烽����扮》���
 void ymOnEvent(string eventName)
 {
 	JniMethodInfo t;
@@ -95,21 +98,21 @@ std::string getAppVersion()
 
 void showWebView( std::string strUrl){
 	JniMethodInfo minfo;
-	//getStaticMethodInfo���ж�Java��̬�����Ƿ���ڣ����Ұ���Ϣ���浽minfo��
-	//����1��JniMethodInfo
-	//����2��Java�����+����
-	//����3��Java��������
-	//����4�������������ͺͷ���ֵ����
+	//getStaticMethodInfo�����ゆ�烽�����璁规��Java�����ゆ�锋�������ゆ�烽����ゆ�烽��瑙���ゆ�烽����ゆ�峰�㈤����ゆ�烽����ゆ�烽�������ゆ�烽��杈�锟介����ゆ�烽����ュ��minfo�����ゆ��
+	//�����ゆ�烽����ゆ��1�����ゆ��JniMethodInfo
+	//�����ゆ�烽����ゆ��2�����ゆ��Java�����ゆ�烽����ゆ�烽��锟�+�����ゆ�烽����ゆ��
+	//�����ゆ�烽����ゆ��3�����ゆ��Java�����ゆ�烽����ゆ�烽����ゆ�烽����ゆ��
+	//�����ゆ�烽����ゆ��4�����ゆ�烽����ゆ�烽����ゆ�烽����ゆ�烽����ゆ�烽����ゆ�烽����靛����ゆ�烽����ゆ�峰�奸����ゆ�烽����ゆ��
 
 	bool isHave = JniHelper::getStaticMethodInfo(minfo,"org/cocos2dx/lua/AppActivity","getAppActivity","()Lorg/cocos2dx/lua/AppActivity;");
-	jobject jobj;//�����
+	jobject jobj;//�����ゆ�烽����ゆ�烽��锟�
 	if (isHave) {
-		//����ĵ���getInstance������Test��Ķ���
+		//�����ゆ�烽����ゆ�风�￠����ゆ�烽��锟�getInstance�����ゆ�烽����ゆ�烽����ゆ��Test�����ゆ�蜂憨�����ゆ�烽��锟�
 		jobj = minfo.env->CallStaticObjectMethod(minfo.classID, minfo.methodID);
 
 		isHave = JniHelper::getMethodInfo(minfo,"org/cocos2dx/lua/AppActivity","openWebview","(Ljava/lang/String;)V");
 		if (isHave) {
-			//����openWebview, ����1��Test����   ����2������ID
+			//�����ゆ�烽����ゆ��openWebview, �����ゆ�烽����ゆ��1�����ゆ��Test�����ゆ�烽����ゆ��   �����ゆ�烽����ゆ��2�����ゆ�烽����ゆ�烽����ゆ��ID
 			jstring jst = minfo.env->NewStringUTF(strUrl.c_str());
 			minfo.env->CallVoidMethod(jobj, minfo.methodID, jst);
 		}
@@ -136,19 +139,19 @@ void openAbout(ABOUTCALLBACK f)
 
 }
 
-//����
+//�����ゆ�烽����ゆ��
 TOPICCALLBACK topicCallback_c;
 void topicCallback(int)
 {
     topicCallback_c();
 }
-//��topicIDΪ0ʱ�����뷢����ҳ������0ʱ����ֵΪ�����ID������Ļ��������
+//�����ゆ��topicID涓�0��堕����ゆ�烽����ゆ�烽��璇���������ゆ�烽����ゆ�烽〉�����ゆ�烽����ゆ�烽����ゆ��0��堕����ゆ�烽����ゆ�峰�间负�����ゆ�烽����ゆ�烽��锟�ID�����ゆ�烽����ゆ�烽����ゆ�峰�������ゆ�烽����ゆ�烽����ゆ�烽����ゆ��
 void openTopic(long topicID, TOPICCALLBACK f)
 {
 
 }
 
-//����
+//�����ゆ�烽����ゆ��
 BUDDYCALLBACK buddyCallback_c;
 void buddyCallback(int ret)
 {
@@ -170,7 +173,7 @@ void openMail(MAILCALLBACK f)
 
 }
 
-//���䣬�����ʼ� ��userID������Ϣ
+//�����ゆ�烽�����锛������ゆ�烽����ゆ�烽��缁�纭锋�� �����ゆ��userID�����ゆ�烽����ゆ�烽����ゆ�锋��
 SENDMAILCALLBACK sendMailCallback_c;
 void sendMailCallback(int ret)
 {
@@ -182,7 +185,7 @@ void openSendmail(long userID, SENDMAILCALLBACK f)
 
 }
 
-//�������飬detail
+//�����ゆ�烽����ゆ�烽����ゆ�烽��浠�锛�detail
 DETAILCALLBACK detailCallback_c;
 void detailCallback(int ret)
 {
@@ -195,7 +198,7 @@ void openDetail(long userID, DETAILCALLBACK f)
 
 }
 
-//�ղأ�collect
+//���绉歌��锝����collect
 COLLECTCALLBACK collectCallback_c;
 void collectCallback(int ret)
 {
@@ -207,7 +210,7 @@ void openCollect(long userID, COLLECTCALLBACK f)
 
 }
 
-//���Ѷ�̬
+//�����ゆ�烽��绐�璁规�锋��
 FRIENDTRENDCALLBACK friendTrendCallback_c;
 void friendTrendCallback(int ret)
 {
@@ -216,11 +219,11 @@ void friendTrendCallback(int ret)
 void openFriendTrend(long userID, FRIENDTRENDCALLBACK f)
 {
     friendTrendCallback_c = f;
-    //һ�²�����Ѷ�̬�Ŀ�����
+    //涓������拌�ф�烽����ゆ�烽����ゆ�疯��������锟介��渚ュ�℃�烽����ゆ�烽����ゆ��
 
 }
 
-//�������ģ�usercenter  �򿪻������Ͻ���
+//�����ゆ�烽����ゆ�烽����ゆ�烽��渚ワ�����usercenter  ���娲ュ��浼���烽����ゆ�烽����ゆ�烽��杈���ゆ�烽����ゆ��
 USERCENTERCALLBACK userCenterCallback_c;
 void usercenterCallback(int ret)
 {
@@ -231,7 +234,7 @@ void openUsercenter(long userID, std::string name ,std::string intro,std::string
 
 }
 
-//������speak, ���غ������仰
+//�����ゆ�烽����ゆ�烽����ゆ��speak, �����ゆ�烽�������存�烽����ゆ�烽����ゆ�烽�����璇�
 SPEAKCALLBACK speakCallback_c;
 void speakCallback(int ret)
 {
@@ -243,14 +246,29 @@ void openSpeak(SPEAKCALLBACK f)
 
 }
 
-//ˢ���û����ģ���oc������Ҫ�򿪣����Ƿ��أ�lua�е�С��������ʱ������
+//��锋�扮�ㄦ�蜂腑蹇�锛�褰�oc�����㈤��瑕����寮�锛�涓����杩����锛�lua涓����灏�宀�涓荤����㈡�讹��璋����
 USERHOMECALLBACK userHomeCallback_c;
 void openUserHomeCallback(long userID, string name, string intro, string zone, string thumblink, string imglink)
 {
     if(userHomeCallback_c)
     {
-//        refreshUserCenterCallback_c(userID, [name UTF8String], [intro UTF8String], [zone UTF8String], [thumblink UTF8String], [imglink UTF8String]);
+    	userHomeCallback_c(userID, name, intro, zone, thumblink, imglink);
     }
+}
+
+extern "C"
+{
+	void Java_org_cocos2dx_lua_AppActivity_openUserHomeCallback(JNIEnv *env, jint categoryType, jstring categoryID)
+	{
+		LOGD("Java_org_cocos2dx_lua_AppActivity_openUserHomeCallback");
+		openUserHomeCallback(0, "name1", "intro", "zone", "thumb", "img");
+//		if(mapCallback_c)
+//		{
+//			LOGD("Java_org_cocos2dx_lua_AppActivity_openmapCallback into lua...");
+//			std::string strID = JniHelper::jstring2string(categoryID);
+//			mapCallback_c((int)categoryType, strID);
+//		}
+	}
 }
 void openUserHome(USERHOMECALLBACK f)
 {
@@ -259,14 +277,14 @@ void openUserHome(USERHOMECALLBACK f)
 
 void goback()
 {
-//    //ctrol������UITabBarController
+//    //ctrol�����ゆ�烽����ゆ�烽����ゆ��UITabBarController
 //    UITabBarController* ctrol=(UITabBarController*)[UIApplication sharedApplication].keyWindow.rootViewController;
-//    //�л��ڶ���ͼ
+//    //������浼���烽�����璁规�烽����ゆ�峰��
 //    [ctrol setSelectedIndex:1];
 
-    //ctrol������IIViewDeckController
+    //ctrol�����ゆ�烽����ゆ�烽����ゆ��IIViewDeckController
 //    IIViewDeckController* ctrol=(IIViewDeckController*)[UIApplication sharedApplication].keyWindow.rootViewController;
-    //�л��ڶ���ͼ
+    //������浼���烽�����璁规�烽����ゆ�峰��
 //    [ctrol toggleTopViewAnimated:YES];
 }
 
@@ -320,17 +338,17 @@ std::string getAppName()
     return "citystate";
 }
 
-//�������ű��г���������Ϻ�֪ͨԭ������
+//�����ゆ�烽����ゆ�烽����ゆ�烽����������烽�����绛规�烽����ゆ�烽����ゆ�烽����ゆ�烽����ゆ�疯�鹃����点��锟藉�������ゆ�烽����ゆ�烽����ゆ��
 void sceneLoadOver(std::string name)
 {
 
 }
 
-//ˢ��С������
+//��锋�板��宀���版��
 REFRESHUSERHOMECALLBACK refreshUserHomeCallback_c;
-void refreshUserHomeCallback_1(long userID)    //��_1��Ϊ�˱�������
+void refreshUserHomeCallback_1(long userID)    //���_1���涓轰����垮��������
 {
-//    InfoLog(@"ˢ�¸�������");
+//    InfoLog(@"��锋�颁釜浜轰腑蹇�");
     if (refreshUserHomeCallback_c) {
         refreshUserHomeCallback_c(userID);
     }
@@ -341,23 +359,39 @@ void refreshUserHome(REFRESHUSERHOMECALLBACK f)
 //    [BaseUIViewController setRefreshUserHome:refreshUserHomeCallback_1];
 }
 
+//���寮���板�炬��浣�
 MAPCALLBACK mapCallback_c;
-void mapCallback(int categoryType, std::string categoryID)
+
+void fangdongTest()
 {
-//    if (categoryID == nil) {
-//        categoryID = "";
-//    }
-//    InfoLog(@"");
-    if(mapCallback_c)
-    {
-//        mapCallback_c(categoryType, [categoryID UTF8String]);
-    }
+	LOGD("fangdongtest into lua...");
+	if(mapCallback_c)
+	{
+		LOGD("Java_org_cocos2dx_lua_AppActivity_openmapCallback into lua...");
+//		std::string strID = JniHelper::jstring2string(categoryID);
+//		mapCallback_c((int)categoryType, strID);
+		mapCallback_c( 0, "");
+	}
+}
+extern "C"
+{
+	void Java_org_cocos2dx_lua_AppActivity_openmapCallback(JNIEnv *env, jint categoryType, jstring categoryID)
+	{
+		LOGD("Java_org_cocos2dx_lua_AppActivity_openmapCallback");
+		fangdongTest();
+//		if(mapCallback_c)
+//		{
+//			LOGD("Java_org_cocos2dx_lua_AppActivity_openmapCallback into lua...");
+//			std::string strID = JniHelper::jstring2string(categoryID);
+//			mapCallback_c((int)categoryType, strID);
+//		}
+	}
 }
 void openMap(MAPCALLBACK f)
 {
-//    InfoLog(@"");
+	LOGD("娉ㄥ��openMap���������������������");
     mapCallback_c = f;
-//    [BaseUIViewController setToMapCallback : mapCallback];
+//    mapCallback_c(0, "");
 }
 
 BACKTOUSERHOMECALLBACK backToUserHomeCallback_c;
@@ -376,9 +410,9 @@ void registBackToUserHome(BACKTOUSERHOMECALLBACK f)
 //    [BaseUIViewController setBackUserHome:backToUserHomeCallback];
 }
 
-//�رվ�����ܺ���Ҫ��������Ļص�����
+//��抽�������逛��缁�������瑕�璋���ㄤ����㈢�����璋���芥��
 SIGHTINTROCALLBACK sightIntroCallback_c;
-void sightIntroCallback(int)   //�򿪾�����ܺ�Ļص�����
+void sightIntroCallback(int)   //���寮������逛��缁����������璋���芥��
 {
     if(sightIntroCallback_c)
     {
@@ -386,12 +420,13 @@ void sightIntroCallback(int)   //�򿪾�����ܺ�Ļص�����
     }
 }
 
-//�򿪾������
-//sightID������id
-//sightName����������
-//sightDescs����������������������
+//���寮������逛��缁�
+//sightID锛�������id
+//sightName锛������瑰��绉�
+//sightDescs锛������规�������������������版��
 void openSightIntro(long sightID, std::string sightName, std::string sightDescs, SIGHTINTROCALLBACK f)
 {
+	LOGD("���寮������逛��缁����������������������");
 //    SightDetailViewController * vc = [[[SightDetailViewController alloc] initWithNibName:nil bundle:nil] autorelease];
 //    [vc.data_dict setNonEmptyObject:@(sightID) forKey:k_sightID];
 //    [vc.data_dict setNonEmptyObject:[NSString stringWithCString:sightName.c_str() encoding:NSUTF8StringEncoding] forKey:k_sightName];
@@ -401,12 +436,12 @@ void openSightIntro(long sightID, std::string sightName, std::string sightDescs,
 //    CocosMapIndexRootViewController * sVC = (CocosMapIndexRootViewController *)[(AppController *)APPLICATION getVisibleViewController];
 //    [sVC showSightDetailView:vc];
 
-    //sightDescs  �Ǿ���Ľ��ܵ�������json�ַ���,���£�
-    //"[{\"content\":\"4��-10��\",\"descid\":1},{\"content\":\"����(12-3��):07:00-21:30\\r\\n����(4-11��):06:30-21:30\",\"descid\":2},{\"content\":\"1-2Сʱ\",\"descid\":3},{\"content\":\"���ɽ��ˮ�¶�����������������\",\"descid\":4},{\"content\":\"ɽ��һͷվ�ڽ�����Ǻ����콭��Ȫ�ľ���\",\"descid\":5},{\"content\":\"�����гǻգ�����ɽˮ������\",\"descid\":6},{\"content\":\"75Ԫ\\/��\",\"descid\":7}]"
-    //content:���ܵ����ݣ�descid:Ϊ���ܵı�ʾ���ñ�ʾ��Ӧͼ��ͱ��⣬�������£�1 = "��������", 2 = "����ʱ��", 3 = "����ʱ��", 4 = "��Ҫ����", 5 = "���ӡ��", 6 = "�Ƽ�����", 7 = "��Ʊ�۸�", 8 = "����Tips", 9 = "��ͨ��·"
+    //sightDescs  ��������圭��浠�缁�������杩帮��json瀛�绗�涓�,濡�涓�锛�
+    //"[{\"content\":\"4���-10���\",\"descid\":1},{\"content\":\"娣″��(12-3���):07:00-21:30\\r\\n��哄��(4-11���):06:30-21:30\",\"descid\":2},{\"content\":\"1-2灏����\",\"descid\":3},{\"content\":\"璞￠蓟灞便��姘存��娲�������璐ゅ�����璞＄�煎博\",\"descid\":4},{\"content\":\"灞卞��涓�澶寸����ㄦ��杈逛几榧昏豹楗�婕�姹����娉����宸ㄨ薄\",\"descid\":5},{\"content\":\"妗����甯����寰斤��妗����灞辨按���璞″��\",\"descid\":6},{\"content\":\"75���\\/浜�\",\"descid\":7}]"
+    //content:浠�缁�������瀹癸��descid:涓轰��缁�������绀猴��璇ユ��绀哄�瑰����炬��������棰�锛����棰�濡�涓�锛�1 = "���缇�瀛ｈ��", 2 = "寮���炬�堕��", 3 = "娓歌����堕��", 4 = "涓昏��������", 5 = "澶у�跺�拌薄", 6 = "��ㄨ��������", 7 = "��ㄧエ浠锋��", 8 = "娓歌��Tips", 9 = "浜ら��绾胯矾"
 }
 
-//�ر�Ƭ����Ϣ����Ҫ��������Ļص�����
+//��抽�������轰俊���������瑕�璋���ㄤ����㈢�����璋���芥��
 CATEGORYCALLBACK categoryCallback_c;
 void categoryCallback(int)
 {
@@ -416,9 +451,9 @@ void categoryCallback(int)
     }
 }
 
-//��ָ��/Ƭ��ָ��ɸѡ
-//sightID��Ƭ��id
-//categoryID��ѡ���ָ��id
+//���寮�������/�����烘����扮�����
+//sightID锛�������id
+//categoryID锛������╃��������id
 void openCategory(long sightID, long categoryType, std::string categoryID, CATEGORYCALLBACK f)
 {
 //    NSInteger ID = [[NSString stringWithCString:categoryID.c_str() encoding:NSUTF8StringEncoding] integerValue];
@@ -470,8 +505,8 @@ void openCategory(long sightID, long categoryType, std::string categoryID, CATEG
 //    }
 }
 
-//���ű��ɺ����û�����ֱ�ӷ��ص��Լ����û�����ʱ�����ô˺���֪ͨԭ������,
-//��ԭ�����������Ϻ󣬵��ûص�
+//褰���������卞ソ�����ㄦ�蜂腑蹇���存�ヨ�������拌��宸辩����ㄦ�蜂腑蹇���跺��璋���ㄦ�ゅ�芥�伴����ュ�����绋�搴�,
+//褰�������绋�搴����浣�瀹�姣����锛�璋���ㄥ��璋�
 ONMAINPAGECALLBACK onMainPageCallback_c;
 void onMainPageCallback()
 {
@@ -482,7 +517,7 @@ void onMainPageCallback()
 }
 void onMainPage(ONMAINPAGECALLBACK f)
 {
-//    NSLog(@"�ű���ֱ�ӵ����˻ص��Լ��ĸ������ģ�ԭ����������Ϻ󣬵���onMainPageCallback");
+//    NSLog(@"������涓���存�ヨ����ㄤ�������拌��宸辩��涓�浜轰腑蹇�锛�������绋�搴�澶����瀹�姣����锛�璋����onMainPageCallback");
     onMainPageCallback_c = f;
 //    UIViewController * sVC = [(AppController *)APPLICATION getVisibleViewController];
 //    if (sVC.navigationController) {
@@ -493,7 +528,7 @@ void onMainPage(ONMAINPAGECALLBACK f)
 //    }
 }
 
-//�û������������hotball
+//��ㄦ�风�瑰�讳�����姘����锛�hotball
 HOTBALLCALLBACK hotBallCallback_c;
 void hotBallCallback(int)
 {

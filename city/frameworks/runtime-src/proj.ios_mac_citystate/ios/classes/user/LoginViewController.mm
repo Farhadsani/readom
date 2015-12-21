@@ -207,8 +207,7 @@
                                                 V_Title:@"微信登录",
                                                 }];
     [self.loginView addSubview:wxloginButton];
-    
-    text = @"  使用城邦账号登录  ";
+    text = @"  使用账号登录  ";
     UIFont * font = [UIFont fontWithName:k_fontName_FZXY size:13.0];
     CGFloat text_wid = [text sizeWithAttributes:@{NSFontAttributeName:font}].width;
     CGFloat margin = 35;

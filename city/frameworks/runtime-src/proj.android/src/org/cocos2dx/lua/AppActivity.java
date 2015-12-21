@@ -57,8 +57,10 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
 import android.view.WindowManager;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -66,9 +68,12 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TabHost;
 import android.widget.Toast;
 import com.anysdk.framework.PluginWrapper;
 import com.shitouren.qmap.R;
+import com.shitouren.utils.Debuger;
 import com.umeng.analytics.MobclickAgent;
 
 
@@ -84,11 +89,34 @@ public class AppActivity extends Cocos2dxActivity{
 	Button m_backButton;//关闭按钮
 	FrameLayout m_viewTitle; //标题栏
 	
+	private static LinearLayout tabFrame = null;
+	
+	private TabHost tab;   //
+	private View view1;
+	private View view2;
+	private View view3;
+	
+	private Button btn1;
+	private Button btn2;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState); 
 		Log.i("qmap", "onCreate");
 		app = this;
+		
+//		view1 = new View(this);
+//		
+//		tabFrame = new LinearLayout(this);
+//		LinearLayout.LayoutParams lytp = new LinearLayout.LayoutParams(300,100);
+//	    lytp.gravity = Gravity.BOTTOM;
+//		tab = new TabHost(this);
+////		tab.setup();
+//		tab.addTab(tab.newTabSpec("tab1").setIndicator(view1)); 
+//		tabFrame.addView(tab);
+//		addContentView(tabFrame, lytp);
+//		
+//		initTabFrame();
 		
 		//初始化一个空布局
 //	    m_webLayout = new FrameLayout(this);
@@ -104,6 +132,8 @@ public class AppActivity extends Cocos2dxActivity{
 //	    lytp.gravity = Gravity.CENTER;
 //	    addContentView(m_webLayout, lytp);
 	    //-----------------------------
+		
+		
 	    
 		if(nativeIsLandScape()) {
 			setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE);
@@ -141,6 +171,37 @@ public class AppActivity extends Cocos2dxActivity{
 
         //for anysdk
         PluginWrapper.init(this); // for plugins
+	}
+	
+	public void initTabFrame(){
+		btn1 = new Button(this);
+		btn1.setText("地图");
+		btn1.setOnTouchListener(new OnTouchListener(){
+
+			@Override
+			public boolean onTouch(View arg0, MotionEvent arg1) {
+				// TODO Auto-generated method stub
+				Debuger.log_w("star:", "openmap");
+				app.openmapCallback();
+				return false;
+			}
+			
+		});
+		btn2 = new Button(this);
+		btn2.setText("主页");
+		btn2.setOnTouchListener(new OnTouchListener(){
+
+			@Override
+			public boolean onTouch(View arg0, MotionEvent arg1) {
+				// TODO Auto-generated method stub
+				Debuger.log_w("star:", "openuserhome");
+				app.openUserHomeCallback();
+				return false;
+			}
+			
+		});
+		tabFrame.addView(btn1);
+		tabFrame.addView(btn2);
 	}
 	
 	private boolean isNetworkConnected() {
@@ -190,6 +251,8 @@ public class AppActivity extends Cocos2dxActivity{
         super.onResume();
         PluginWrapper.onResume();
         MobclickAgent.onResume(this);
+        
+        
     }
     @Override
     public void onPause(){
@@ -201,6 +264,22 @@ public class AppActivity extends Cocos2dxActivity{
     protected void onNewIntent(Intent intent) {
         PluginWrapper.onNewIntent(intent);
         super.onNewIntent(intent);
+        
+//        Bundle bundle = intent.getExtras();
+//        String name = bundle.getString("scene_name");
+//        if( name == "citymap"){
+//        	
+//        	this.runOnUiThread(new Runnable() {//在主线程里添加别的控件
+//    	        public void run() {  
+//    	        	openmapCallback();
+//    	        }});
+//        }else if(name == "userhome"){
+//        	openUserHomeCallback();
+//        	this.runOnUiThread(new Runnable() {//在主线程里添加别的控件
+//    	        public void run() {  
+//    	        	openUserHomeCallback();
+//    	        }});
+//        }
     }
     
     public static String getSSID() {
@@ -257,6 +336,14 @@ public class AppActivity extends Cocos2dxActivity{
             	if((System.currentTimeMillis()-exitTime) > 2000){  
                     Toast.makeText(getApplicationContext(), "再按一次退出程序", Toast.LENGTH_SHORT).show();                                
                     exitTime = System.currentTimeMillis();   
+                    
+//                    openmapCallback();
+//                    openUserHomeCallback();
+                    
+//                    this.runOnUiThread(new Runnable() {//在主线程里添加别的控件
+//            	        public void run() {  
+//            	        	openUserHomeCallback();
+//            	        }});
                 } else {
                     finish();
                     System.exit(0);
@@ -285,6 +372,8 @@ public class AppActivity extends Cocos2dxActivity{
 
 	private static native boolean nativeIsLandScape();
 	private static native boolean nativeIsDebug();
+	public static native void openmapCallback();
+	public static native void openUserHomeCallback();
 	
 	public static AppActivity getAppActivity(){
 		return app;
@@ -394,4 +483,16 @@ public class AppActivity extends Cocos2dxActivity{
 	    m_backButton.destroyDrawingCache();
 	}
 	
+	public static void printMsg(String strName){
+		Debuger.log_w("bangbang:", "printMsg");
+		if (app == null)
+			return;
+		if (strName == "citymap")
+		{
+			AppActivity.openmapCallback();
+		}else if(strName == "userhome")
+		{
+			AppActivity.openUserHomeCallback();
+		}
+	}
 }

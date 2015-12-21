@@ -73,41 +73,43 @@ BMKMapManager* _mapManager;
 // cocos2d application instance
 static AppDelegate s_sharedApplication;
 
+//- (void)applicationDidFinishLaunching:(UIApplication *)application{
+
+//}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions{
     _mapManager = [[BMKMapManager alloc]init];
-    BOOL ret = [_mapManager start:@"kOP2RRyB554tKFqNtMTrCX9w" generalDelegate:self];
+    BOOL ret = [_mapManager start:k_baidu_map_key generalDelegate:self];
     if (!ret) {
         InfoLog(@"manager start failed!");
     }
     
-    for (NSHTTPCookie * cookie in [[UserManager sharedInstance] getRequestCookies:nil flag:YES]) {
-        [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookie:cookie];
-        NSLog(@"cookie%@", cookie);
-    }
+    //iOS9下 不能调用下面代码
+//    [WNXTopWindow show];
     
-    [WNXTopWindow show];
-    
-    [[UserManager sharedInstance] initServerCity:@"太原"];    //初始化服务城市
+    [[UserManager sharedInstance] initServerCity:k_server_city];    //初始化服务城市
     
     NSString *version = [Device appBundleShortVersion];
     [MobClick setAppVersion:version];
-    [MobClick startWithAppkey:@"5629bd6c67e58e8d6f001d98" reportPolicy:BATCH channelId:@"App Store"];
+    [MobClick startWithAppkey:k_umeng_appKey reportPolicy:BATCH channelId:@"App Store"];
     [MobClick setCrashReportEnabled:YES];
     
-    [UMSocialData setAppKey:@"5629bd6c67e58e8d6f001d98"];
+    InfoLog(@"%@", [Device appDisplayName]);
+    
+    [UMSocialData setAppKey:k_umeng_appKey];
     [UMSocialConfig hiddenNotInstallPlatforms:@[UMShareToQQ,UMShareToQzone,UMShareToWechatSession,UMShareToWechatTimeline]];
-    [UMSocialData defaultData].extConfig.wechatSessionData.title = @"城邦";
-    [UMSocialData defaultData].extConfig.wechatTimelineData.title = @"城邦";
-    [UMSocialData defaultData].extConfig.wechatSessionData.url = @"http://www.shitouren.com";
-    [UMSocialData defaultData].extConfig.wechatTimelineData.url = @"http://www.shitouren.com";
+    [UMSocialData defaultData].extConfig.wechatSessionData.title = [Device appDisplayName];
+    [UMSocialData defaultData].extConfig.wechatTimelineData.title = [Device appDisplayName];
+    [UMSocialData defaultData].extConfig.wechatSessionData.url = k_umeng_default_callback_url;
+    [UMSocialData defaultData].extConfig.wechatTimelineData.url = k_umeng_default_callback_url;
     
     //设置微信AppId、appSecret，分享url
-    [UMSocialWechatHandler setWXAppId:@"wxcee6a0851b3ea57f" appSecret:@"d4624c36b6795d1d99dcf0547af5443d" url:@"http://www.shitouren.com"];
+    [UMSocialWechatHandler setWXAppId:k_wechat_appID appSecret:k_wechat_appSecret url:k_wechat_default_callback_url];
     
     //打开新浪微博的SSO开关，设置新浪微博回调地址，这里必须要和你在新浪微博后台设置的回调地址一致。若在新浪后台设置我们的回调地址，“http://sns.whalecloud.com/sina2/callback”，这里可以传nil
-    [UMSocialSinaSSOHandler openNewSinaSSOWithRedirectURL:@"http://sns.whalecloud.com/sina2/callback"];
+    [UMSocialSinaSSOHandler openNewSinaSSOWithRedirectURL:k_sina_SSO_redirectURL];
     
-    [UMSocialQQHandler setQQWithAppId:@"1104998708" appKey:@"ZQUBKES7eXLOcqio" url:@"http://www.shitouren.com"];
+    [UMSocialQQHandler setQQWithAppId:k_qq_AppId appKey:k_qq_appKey url:k_qq_default_callback_url];
     
     
     // iOS8 下需要使用新的 API
@@ -150,6 +152,7 @@ static AppDelegate s_sharedApplication;
     
     _FirstViewController = [[FirstViewController alloc] init];
     window.rootViewController = _FirstViewController;
+//    [window setRootViewController:_FirstViewController];
     
     [window makeKeyAndVisible];
     

@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fefef4"
+    android:orientation="vertical" >
+    
+    <include layout="@layout/top_bar_layout"
+        android:background="#ffd731"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="7"
+        android:background="#ffffff"
+        android:gravity="center_vertical"
+        android:orientation="horizontal" >
+
+        <ImageView 
+            android:layout_width="wrap_content"
+    		android:layout_height="wrap_content"
+    		android:src="@drawable/ic_launcher"
+    		android:layout_marginLeft="5dp"
+            />
+        <TextView 
+            android:layout_width="wrap_content"
+    		android:layout_height="wrap_content"
+    		android:textSize="20dp"
+    		android:layout_marginLeft="5dp"
+    		android:text="版本号："/>
+        
+    </LinearLayout>
+
+    <View 
+        android:layout_width="match_parent"
+    	android:layout_height="1dp"
+    	android:layout_marginLeft="10dp"
+    	android:layout_marginRight="10dp"
+    	android:background="#44000000"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="9"
+        android:background="#ffffff"
+        android:orientation="vertical" >
+        <TextView 
+            android:layout_width="wrap_content"
+    		android:layout_height="wrap_content"
+    		android:textSize="20dp"
+    		android:layout_marginLeft="5dp"
+    		android:text="简介"/>
+        <TextView 
+            android:layout_width="wrap_content"
+    		android:layout_height="wrap_content"
+    		android:textSize="14dp"
+    		android:layout_marginLeft="5dp"
+    		android:text="城市达人是一款在线手绘地图，拥有全国热门旅游目的地城市20个，一键查询目的地热门景点"/>
+        
+    </LinearLayout>
+    <View 
+        android:layout_width="match_parent"
+    	android:layout_height="5dp"
+        />
+    <LinearLayout 
+        android:layout_width="match_parent"
+    	android:layout_height="0dp"
+        android:layout_weight="30"
+        android:background="#ffffff"
+        android:orientation="vertical">
+        <TextView 
+            android:layout_width="wrap_content"
+    		android:layout_height="wrap_content"
+    		android:gravity="center_vertical"
+    		android:textSize="20dp"
+    		android:layout_marginTop="10dp"
+    		android:layout_marginLeft="5dp"
+    		android:layout_marginBottom="5dp"
+    		android:text="关于城邦"/>
+        
+        <!--  分享-->
+        <LinearLayout
+            android:id="@+id/llWithCityShare" 
+        android:layout_width="fill_parent"
+    	android:layout_height="0dp"
+    	android:layout_weight="1"
+    	android:layout_marginTop="5dp"
+    	android:orientation="horizontal">
+        
+        <ImageView 
+            android:layout_width="wrap_content"
+    		android:layout_height="wrap_content"
+    		android:layout_marginLeft="5dp"
+    		android:layout_gravity="center_vertical"
+    		android:src="@drawable/withcityfenxiangyingyong"
+            />
+        <TextView 
+            android:layout_width="0dp"
+    		android:layout_height="wrap_content"
+    		android:layout_weight="1"
+    		android:layout_gravity="center_vertical"
+    		android:layout_marginLeft="10dp"
+    		android:text="分享应用"
+    		android:textColor="#99000000"
+    		android:textSize="20dp"/>
+        <ImageView 
+            android:layout_width="wrap_content"
+    		android:layout_height="wrap_content"
+    		android:layout_gravity="center_vertical"
+    		android:layout_marginRight="10dp"
+    		android:src="@drawable/qianjin"
+            />
+    </LinearLayout>
+        <!--  微信-->
+        <LinearLayout 
+            android:id="@+id/llWithCityWeiXin" 
+        android:layout_width="fill_parent"
+    	android:layout_height="0dp"
+    	android:layout_weight="1"
+    	android:layout_marginTop="5dp"
+    	android:orientation="horizontal">
+        
+        <ImageView 
+            android:layout_width="wrap_content"
+    		android:layout_height="wrap_content"
+    		android:layout_marginLeft="5dp"
+    		android:layout_gravity="center_vertical"
+    		android:src="@drawable/withcityweixin"
+            />
+        <TextView 
+            android:layout_width="0dp"
+    		android:layout_height="wrap_content"
+    		android:layout_weight="1"
+    		android:layout_gravity="center_vertical"
+    		android:layout_marginLeft="10dp"
+    		android:text="微信"
+    		android:textColor="#99000000"
+    		android:textSize="20dp"/>
+        <ImageView 
+            android:layout_width="wrap_content"
+    		android:layout_height="wrap_content"
+    		android:layout_gravity="center_vertical"
+    		android:layout_marginRight="10dp"
+    		android:src="@drawable/qianjin"
+            />
+    </LinearLayout>
+        <!--  微博-->
+        <LinearLayout 
+            android:id="@+id/llWithCityWeiBo" 
+        android:layout_width="fill_parent"
+    	android:layout_height="0dp"
+    	android:layout_weight="1"
+    	android:layout_marginTop="5dp"
+    	android:orientation="horizontal">
+        
+        <ImageView 
+            android:layout_width="wrap_content"
+    		android:layout_height="wrap_content"
+    		android:layout_marginLeft="5dp"
+    		android:layout_gravity="center_vertical"
+    		android:src="@drawable/withcityweibo"
+            />
+        <TextView 
+            android:layout_width="0dp"
+    		android:layout_height="wrap_content"
+    		android:layout_weight="1"
+    		android:layout_gravity="center_vertical"
+    		android:layout_marginLeft="10dp"
+    		android:text="微博"
+    		android:textColor="#99000000"
+    		android:textSize="20dp"/>
+        <ImageView 
+            android:layout_width="wrap_content"
+    		android:layout_height="wrap_content"
+    		android:layout_gravity="center_vertical"
+    		android:layout_marginRight="10dp"
+    		android:src="@drawable/qianjin"
+            />
+    </LinearLayout>
+        <!--  反馈-->
+        <LinearLayout 
+            android:id="@+id/llWithCityFeedback" 
+        android:layout_width="fill_parent"
+    	android:layout_height="0dp"
+    	android:layout_weight="1"
+    	android:layout_marginTop="5dp"
+    	android:orientation="horizontal">
+        
+        <ImageView 
+            android:layout_width="wrap_content"
+    		android:layout_height="wrap_content"
+    		android:layout_marginLeft="5dp"
+    		android:layout_gravity="center_vertical"
+    		android:src="@drawable/withcityfankui"
+            />
+        <TextView 
+            android:layout_width="0dp"
+    		android:layout_height="wrap_content"
+    		android:layout_weight="1"
+    		android:layout_gravity="center_vertical"
+    		android:layout_marginLeft="10dp"
+    		android:text="反馈"
+    		android:textColor="#99000000"
+    		android:textSize="20dp"/>
+        <ImageView 
+            android:layout_width="wrap_content"
+    		android:layout_height="wrap_content"
+    		android:layout_gravity="center_vertical"
+    		android:layout_marginRight="10dp"
+    		android:src="@drawable/qianjin"
+            />
+    </LinearLayout>
+        <!--  给个好评-->
+        <LinearLayout 
+            android:id="@+id/llWithCityHaoPing" 
+        android:layout_width="fill_parent"
+    	android:layout_height="0dp"
+    	android:layout_weight="1"
+    	android:layout_marginTop="5dp"
+    	android:orientation="horizontal">
+        
+        <ImageView 
+            android:layout_width="wrap_content"
+    		android:layout_height="wrap_content"
+    		android:layout_marginLeft="5dp"
+    		android:layout_gravity="center_vertical"
+    		android:src="@drawable/withcityhaoping"
+            />
+        <TextView 
+            android:layout_width="0dp"
+    		android:layout_height="wrap_content"
+    		android:layout_weight="1"
+    		android:layout_gravity="center_vertical"
+    		android:layout_marginLeft="10dp"
+    		android:text="给个好评"
+    		android:textColor="#99000000"
+    		android:textSize="20dp"/>
+        <ImageView 
+            android:layout_width="wrap_content"
+    		android:layout_height="wrap_content"
+    		android:layout_gravity="center_vertical"
+    		android:layout_marginRight="10dp"
+    		android:src="@drawable/qianjin"
+            />
+    </LinearLayout>
+        
+    </LinearLayout>
+    <View 
+        android:layout_width="match_parent"
+    	android:layout_height="40dp"
+        />
+    
+    
+
+</LinearLayout>
