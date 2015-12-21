@@ -87,9 +87,9 @@ function NetWorkManager:requestData(agreementName, reqParam, callBackSucceed, ca
     -- request:addRequestHeader("User-Agent:shitouren_qmap_ios")
     print("RequestHeader = ", requestHeaderString)
     request:addRequestHeader(requestHeaderString)
-    request:setTimeout(10000)
+    request:setTimeout(5000)
 
-    local cookieString = "shitouren_ssid=" .. lua_getSSID() .. ";shitouren_check=" .. lua_getSSIDCheck() .. ";shitouren_verify=" .. lua_getSSIDVerify()
+    local cookieString = "shitouren_ssid=" .. lua_getSSID() .. ";shitouren_check=" .. (lua_getSSIDCheck() or "lua_check") .. ";shitouren_verify=" .. (lua_getSSIDVerify() or "lua_verify")
     local ver = getVersion()
 
     print("当前应用程序的版本是。。", ver)

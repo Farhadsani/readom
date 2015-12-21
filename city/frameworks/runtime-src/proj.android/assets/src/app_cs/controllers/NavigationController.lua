@@ -41,23 +41,11 @@ function NavigationController:switchToDefaultViewController()
 	-- local vcPathName = "app/citySelection/CitySelectionViewController"
  --    self:switchTo(vcPathName, {cityid = 1}, "fade")
 
- display.addImageAsync("res/ui/map/taiyuan/image/taiyuanmap.jpg", function ( ... )
-            print("22222", os.date())
-            display.addSpriteFrames("res/ui/map/taiyuan/image/taiyuan.plist", "res/ui/map/taiyuan/image/taiyuan.png", function (  )
-                print("33333", os.date())
-                -- print("add plist over..............")
-                -- if device.platform ~= "android" then
-                    QMapGlobal.app.navigationController:setControllerPathBase(self.packageRoot .. "/city/")
-                    QMapGlobal.app.navigationController:switchTo( "citymap", { cityid = QMapGlobal.cityID , categoryType = 0, categoryID = ""} )
-                -- end
-            end)
-        end)
-
     -- local vcPathName = "app/load/LoadController"
     -- local vcPathName = "app/userHome/UserHomeController"
-    -- local vcPathName = "citymap"
-    -- self:switchTo(vcPathName,  { cityid = QMapGlobal.cityID , categoryType = 0, categoryID = ""} )
+    -- self:switchTo(vcPathName)
 
+    QMapGlobal.app.navigationController:switchTo( "loading", { cityid = 1 , categoryType = 0, categoryID = ""} )
     -- local function callBack( ... )
     --     -- self.navigationController:setControllerPathBase("app/citySelection/CitySelectionViewController")
     --     -- self.navigationController:switchTo( "app/citySelection/CitySelectionViewController", {cityid = 1}, "fade" )
@@ -110,19 +98,14 @@ function NavigationController:switchTo(newViewControllerName, param, transitionS
     end
     
     local newViewController = self:_createViewController(newViewControllerName, param)
-    print("22222222222222222222")
     newViewController.__sceneSymbol = newViewControllerName
-    print("3333333333333")
     newViewController:loadView()
-    print("444444444444444444")
     newViewController:viewDidLoad()
-    print("5555555555555555555555555555555")
     self:_replaceTop(newViewController)
-    print("666666666666666")
 
     self._currentScene = display.newScene(newViewController:getName())
     newViewController.view:addTo(self._currentScene)
-print("fd   11111111111111111111")
+
     
     display.replaceScene(self._currentScene, transitionStyle, 0.5, nil)
 
@@ -191,11 +174,11 @@ function NavigationController:registToMap( ... )
         self.categoryType = categoryType
         self.categoryID = categoryID
         
-        if not QMapGlobal.loadover then   -- 没有加载loading ,先加载loading
-            QMapGlobal.loadover = true
-            QMapGlobal.app.navigationController:switchTo( "loading", { cityid = 1 , categoryType = categoryType, categoryID = categoryID} )
-            return 
-        end
+        -- if not QMapGlobal.loadover then   -- 没有加载loading ,先加载loading
+        --     QMapGlobal.loadover = true
+        --     QMapGlobal.app.navigationController:switchTo( "loading", { cityid = 1 , categoryType = categoryType, categoryID = categoryID} )
+        --     return 
+        -- end
         print("openMap.........", categoryType , categoryID )
         -- categoryType = 0
         -- categoryID = 2
@@ -224,7 +207,10 @@ function NavigationController:registToUserHome( ... )
         QMapGlobal.app.navigationController:setControllerPathBase("")
         local curUser = {userid = userid, name = username, intro = intro, zone = zonename, thumblink = thumblink, imglink = imglink}
         local ncPathName = self.packageRoot .. "/userHome/UserHomeController" 
-        QMapGlobal.app.navigationController:switchTo( "userhome", {curUser = curUser}, "fade" )
+
+        display.addImageAsync("res/ui/image/userHome/userHomeMap.jpg", function ( ... )
+            QMapGlobal.app.navigationController:switchTo( "userhome", {curUser = curUser}, "fade" )
+        end)
 
     end)
 

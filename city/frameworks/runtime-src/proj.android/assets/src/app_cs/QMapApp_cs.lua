@@ -9,7 +9,7 @@ require(appPath .. "common/Util")
 require(appPath .. "common/QMapAction")
 require(appPath .. "resData/resFile")
 require(appPath .. "resData/mapData")
-QMapGlobal.DataManager = require(appPath .. "data/DataManager").new()   -- 移动到加载页中
+-- QMapGlobal.DataManager = require(appPath .. "data/DataManager").new()   -- 移动到加载页中
 require(appPath .. "resData/menuDescription")
 
 local QMapApp = class("QMapApp", cc.mvc.AppBase)
