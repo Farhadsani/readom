@@ -195,7 +195,9 @@ public class IndexActivity extends Activity implements OnClickListener, IActivit
 	private void initPagerView(){
 		lvPager1 = (ListView) viewPager1.findViewById(R.id.listPagerLayout1);
 		introLists = new ArrayList<IndexIntroduction>();
-		introLists.add(null);
+		for(int i=0;i<9;i++){
+			introLists.add(null);
+		}
 		introAdapter = new IndexIntroductionAdapter(ctx, introLists);
 		lvPager1.setAdapter(introAdapter);
 	}
