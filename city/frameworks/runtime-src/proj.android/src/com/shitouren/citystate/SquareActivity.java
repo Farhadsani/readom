@@ -3,7 +3,6 @@ package com.shitouren.citystate;
 import com.shitouren.fragment.AttentionFragment;
 import com.shitouren.fragment.HotFragment;
 import com.shitouren.inter.IActivity;
-import com.shitouren.qmap.R;
 import com.shitouren.utils.Utils;
 
 import android.annotation.SuppressLint;
@@ -31,7 +30,7 @@ import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.RadioGroup.OnCheckedChangeListener;
-
+import com.shitouren.qmap.R;
 public class SquareActivity extends FragmentActivity implements IActivity {
 
 	private RelativeLayout rlHot;

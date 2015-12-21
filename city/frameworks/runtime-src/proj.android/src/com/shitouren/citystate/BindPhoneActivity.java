@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
-
+import com.shitouren.qmap.R;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -15,7 +15,6 @@ import com.shitouren.app.AppManager;
 import com.shitouren.bean.WXToken;
 import com.shitouren.entity.Contacts;
 import com.shitouren.inter.IActivity;
-import com.shitouren.qmap.R;
 import com.shitouren.utils.ActivityUtils;
 import com.shitouren.utils.Debuger;
 import com.shitouren.utils.HttpParamsUtil;

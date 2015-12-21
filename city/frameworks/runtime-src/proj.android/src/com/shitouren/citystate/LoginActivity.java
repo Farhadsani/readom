@@ -2,7 +2,7 @@ package com.shitouren.citystate;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-import com.shitouren.qmap.R;
+
 import com.shitouren.app.AppManager;
 import com.shitouren.entity.Contacts;
 import com.shitouren.utils.ActivityUtils;
@@ -26,7 +26,7 @@ import android.widget.ImageView;
 import net.tsz.afinal.FinalHttp;
 import net.tsz.afinal.http.AjaxCallBack;
 import net.tsz.afinal.http.AjaxParams;
-
+import com.shitouren.qmap.R;
 public class LoginActivity extends Activity implements OnClickListener {
 	private static final String TAG = "LoginActivity";
 
