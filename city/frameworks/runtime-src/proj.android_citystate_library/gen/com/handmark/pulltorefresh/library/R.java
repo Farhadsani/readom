@@ -151,11 +151,19 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static int ptrSubHeaderTextAppearance=0x7f01000b;
     }
     public static final class dimen {
+<<<<<<< HEAD
+        public static int header_footer_left_right_padding=0x7f060003;
+        public static int header_footer_top_bottom_padding=0x7f060004;
+        public static int indicator_corner_radius=0x7f060001;
+        public static int indicator_internal_padding=0x7f060002;
+        public static int indicator_right_padding=0x7f060000;
+=======
         public static int header_footer_left_right_padding=0x7f050003;
         public static int header_footer_top_bottom_padding=0x7f050004;
         public static int indicator_corner_radius=0x7f050001;
         public static int indicator_internal_padding=0x7f050002;
         public static int indicator_right_padding=0x7f050000;
+>>>>>>> e8c973af256aa4bd0ee9a5210d809f4f6180fc06
     }
     public static final class drawable {
         public static int default_ptr_flip=0x7f020000;
@@ -165,6 +173,25 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static int indicator_bg_top=0x7f020004;
     }
     public static final class id {
+<<<<<<< HEAD
+        public static int both=0x7f050003;
+        public static int disabled=0x7f050000;
+        public static int fl_inner=0x7f05000c;
+        public static int flip=0x7f050008;
+        public static int gridview=0x7f050009;
+        public static int manualOnly=0x7f050004;
+        public static int pullDownFromTop=0x7f050005;
+        public static int pullFromEnd=0x7f050002;
+        public static int pullFromStart=0x7f050001;
+        public static int pullUpFromBottom=0x7f050006;
+        public static int pull_to_refresh_image=0x7f05000d;
+        public static int pull_to_refresh_progress=0x7f05000e;
+        public static int pull_to_refresh_sub_text=0x7f050010;
+        public static int pull_to_refresh_text=0x7f05000f;
+        public static int rotate=0x7f050007;
+        public static int scrollview=0x7f05000b;
+        public static int webview=0x7f05000a;
+=======
         public static int both=0x7f060003;
         public static int disabled=0x7f060004;
         public static int fl_inner=0x7f06000c;
@@ -182,6 +209,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static int rotate=0x7f06000b;
         public static int scrollview=0x7f060002;
         public static int webview=0x7f060001;
+>>>>>>> e8c973af256aa4bd0ee9a5210d809f4f6180fc06
     }
     public static final class layout {
         public static int pull_to_refresh_header_horizontal=0x7f030000;

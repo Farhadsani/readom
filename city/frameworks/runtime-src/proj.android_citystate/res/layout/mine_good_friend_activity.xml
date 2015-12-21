@@ -64,5 +64,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:background="#33000000" />
+    
+    <include layout="@layout/mine_two_view"/>
 
 </LinearLayout>
