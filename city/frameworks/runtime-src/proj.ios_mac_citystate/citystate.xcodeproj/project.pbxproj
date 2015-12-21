@@ -601,6 +601,7 @@
 		991B54B41BD0DF42007171BC /* store_delcount@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 991B54A51BD0DF42007171BC /* store_delcount@3x.png */; };
 		991B54B71BD0E9DF007171BC /* SubmitOrderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 991B54B61BD0E9DF007171BC /* SubmitOrderView.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		991B54BA1BD0EA94007171BC /* StoreSubmitOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 991B54B91BD0EA94007171BC /* StoreSubmitOrderViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		991F30AE1C27D28400E027F9 /* NewMobleLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 991F30AD1C27D28400E027F9 /* NewMobleLoginViewController.m */; };
 		992073E61B5DF3F700F66F9C /* AppController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9920713F1B5DF3F600F66F9C /* AppController.mm */; };
 		992073ED1B5DF3F700F66F9C /* build-cfg.json in Resources */ = {isa = PBXBuildFile; fileRef = 9920714E1B5DF3F600F66F9C /* build-cfg.json */; };
 		992074061B5DF3F700F66F9C /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9920716A1B5DF3F600F66F9C /* Info.plist */; };
@@ -887,6 +888,10 @@
 		99ADD0F41BCD28BC00CD823F /* StoreGoods.m in Sources */ = {isa = PBXBuildFile; fileRef = 99ADD0F31BCD28BC00CD823F /* StoreGoods.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		99ADD0F71BCD293400CD823F /* StoreComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 99ADD0F61BCD293400CD823F /* StoreComment.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		99ADD0FA1BCD2A9C00CD823F /* StoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 99ADD0F91BCD2A9C00CD823F /* StoreViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		99B22A101C23EB52000D4AD6 /* tousu-xuanzhong@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 99B22A0C1C23EB52000D4AD6 /* tousu-xuanzhong@2x.png */; };
+		99B22A111C23EB52000D4AD6 /* tousu-xuanzhong@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 99B22A0D1C23EB52000D4AD6 /* tousu-xuanzhong@3x.png */; };
+		99B22A121C23EB52000D4AD6 /* tousu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 99B22A0E1C23EB52000D4AD6 /* tousu@2x.png */; };
+		99B22A131C23EB52000D4AD6 /* tousu@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 99B22A0F1C23EB52000D4AD6 /* tousu@3x.png */; };
 		99B4C0D71AB2915C007911EF /* SqliteManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 99B4C0D51AB2915C007911EF /* SqliteManager.cpp */; };
 		99B4C0D81AB2915C007911EF /* SqliteManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 99B4C0D51AB2915C007911EF /* SqliteManager.cpp */; };
 		99C454D81BC8B2F1000D3FED /* ExponentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 99C454D71BC8B2F1000D3FED /* ExponentViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
@@ -1993,6 +1998,8 @@
 		991B54B61BD0E9DF007171BC /* SubmitOrderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubmitOrderView.m; sourceTree = "<group>"; };
 		991B54B81BD0EA94007171BC /* StoreSubmitOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreSubmitOrderViewController.h; sourceTree = "<group>"; };
 		991B54B91BD0EA94007171BC /* StoreSubmitOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreSubmitOrderViewController.m; sourceTree = "<group>"; };
+		991F30AC1C27D28400E027F9 /* NewMobleLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewMobleLoginViewController.h; sourceTree = "<group>"; };
+		991F30AD1C27D28400E027F9 /* NewMobleLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewMobleLoginViewController.m; sourceTree = "<group>"; };
 		9920713E1B5DF3F600F66F9C /* AppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppController.h; sourceTree = "<group>"; };
 		9920713F1B5DF3F600F66F9C /* AppController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AppController.mm; sourceTree = "<group>"; };
 		9920714E1B5DF3F600F66F9C /* build-cfg.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "build-cfg.json"; sourceTree = "<group>"; };
@@ -2487,6 +2494,10 @@
 		99ADD0F61BCD293400CD823F /* StoreComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreComment.m; sourceTree = "<group>"; };
 		99ADD0F81BCD2A9C00CD823F /* StoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = StoreViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		99ADD0F91BCD2A9C00CD823F /* StoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = StoreViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		99B22A0C1C23EB52000D4AD6 /* tousu-xuanzhong@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tousu-xuanzhong@2x.png"; sourceTree = "<group>"; };
+		99B22A0D1C23EB52000D4AD6 /* tousu-xuanzhong@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tousu-xuanzhong@3x.png"; sourceTree = "<group>"; };
+		99B22A0E1C23EB52000D4AD6 /* tousu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tousu@2x.png"; sourceTree = "<group>"; };
+		99B22A0F1C23EB52000D4AD6 /* tousu@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tousu@3x.png"; sourceTree = "<group>"; };
 		99B4C0D51AB2915C007911EF /* SqliteManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SqliteManager.cpp; path = ../Classes/SqliteManager.cpp; sourceTree = "<group>"; };
 		99B4C0D61AB2915C007911EF /* SqliteManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SqliteManager.h; path = ../Classes/SqliteManager.h; sourceTree = "<group>"; };
 		99C454D61BC8B2F1000D3FED /* ExponentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExponentViewController.h; sourceTree = "<group>"; };
@@ -3208,6 +3219,8 @@
 				33E56DA51B80A80A00CEF957 /* LoginViewController.mm */,
 				284CD3AA1BB3E94B006BFA4E /* MobleLoginViewController.h */,
 				284CD3AB1BB3E94B006BFA4E /* MobleLoginViewController.m */,
+				991F30AC1C27D28400E027F9 /* NewMobleLoginViewController.h */,
+				991F30AD1C27D28400E027F9 /* NewMobleLoginViewController.m */,
 				33E56DAE1B80A80A00CEF957 /* RegisterViewController.h */,
 				33E56DAF1B80A80A00CEF957 /* RegisterViewController.m */,
 				F1F783AF1B906BB00010C5F4 /* UserBaseInfoEditController.h */,
@@ -3220,6 +3233,7 @@
 				673B1D501BD8906000022275 /* SettingViewController.m */,
 				2847384A1BD9031800A5D930 /* RequstPassWordViewController.h */,
 				2847384B1BD9031800A5D930 /* RequstPassWordViewController.m */,
+				F10B69D41BE9E05F006CFF72 /* MapSearchViewController.h */,
 				33E56DC21B80A80A00CEF957 /* UserManager.h */,
 				33E56DC31B80A80A00CEF957 /* UserManager.m */,
 				67DC2BA01B9007E300AE3CF9 /* ResetPasswordViewController.h */,
@@ -3228,12 +3242,11 @@
 				67DC2BA51B900C9200AE3CF9 /* InputVerCodeViewController.m */,
 				67DC2B9E1B9007E300AE3CF9 /* ChangePasswordViewController.h */,
 				67DC2B9F1B9007E300AE3CF9 /* ChangePasswordViewController.m */,
-				F10B69D41BE9E05F006CFF72 /* MapSearchViewController.h */,
 				F10B69D51BE9E05F006CFF72 /* MapSearchViewController.m */,
-				67C0AF0D1BF0A92300550C02 /* MapLocationViewController.h */,
 				67C0AF0E1BF0A92300550C02 /* MapLocationViewController.m */,
 				6785AB9C1BFB0CB400C4ED69 /* StreetListInAreaViewController.h */,
 				6785AB9D1BFB0CB400C4ED69 /* StreetListInAreaViewController.m */,
+				67C0AF0D1BF0A92300550C02 /* MapLocationViewController.h */,
 			);
 			path = user;
 			sourceTree = "<group>";
@@ -3393,6 +3406,10 @@
 		6700351C1B8C5B8A0027CB08 /* images-buddy */ = {
 			isa = PBXGroup;
 			children = (
+				99B22A0C1C23EB52000D4AD6 /* tousu-xuanzhong@2x.png */,
+				99B22A0D1C23EB52000D4AD6 /* tousu-xuanzhong@3x.png */,
+				99B22A0E1C23EB52000D4AD6 /* tousu@2x.png */,
+				99B22A0F1C23EB52000D4AD6 /* tousu@3x.png */,
 				992376C51BF48FF60060EFF3 /* buddystatus_defaultnotenewthumbview@2x.png */,
 				992376C61BF48FF60060EFF3 /* buddystatus_defaultnotenewthumbview@3x.png */,
 				995347EB1BDE33140019D0C4 /* buddystatus_sendcomment_sel.png */,
@@ -6343,6 +6360,7 @@
 				6737A8481BD220DE0036E9CB /* star_comment_halfSelected@2x.png in Resources */,
 				990C8F771B91A94F003CD84E /* msg_5.png in Resources */,
 				674111EE1B8EE2AD0025553D /* menu-1-1.png in Resources */,
+				99B22A101C23EB52000D4AD6 /* tousu-xuanzhong@2x.png in Resources */,
 				674111E81B8EE2AD0025553D /* login-2-1@2x.png in Resources */,
 				99ADD0C81BCBB0E600CD823F /* buddystatus_qzone.png in Resources */,
 				992B99FE1BD4FC2D000E72A8 /* store_back@3x.png in Resources */,
@@ -6389,6 +6407,7 @@
 				99ADD0B41BCBB0E600CD823F /* buddystatus_addfriend_sel@2x.png in Resources */,
 				6704AA651B86F4F400833E06 /* collect_5@3x.png in Resources */,
 				991B54751BCF5F40007171BC /* store_unfollow@3x.png in Resources */,
+				99B22A121C23EB52000D4AD6 /* tousu@2x.png in Resources */,
 				280193CD1BCBB18700347CD6 /* del_bg@3x.png in Resources */,
 				99C455341BC90EA6000D3FED /* exponenttype@2x.png in Resources */,
 				287EB7A91BD648E2006F6172 /* buddy_4@3x.png in Resources */,
@@ -6579,6 +6598,7 @@
 				280193F01BCE4C7F00347CD6 /* sca_bg.png in Resources */,
 				99DEA7681BE338E900C28F43 /* MyStoreGoodsEditCell.xib in Resources */,
 				287EB7A01BD648E2006F6172 /* buddy_1@3x.png in Resources */,
+				99B22A131C23EB52000D4AD6 /* tousu@3x.png in Resources */,
 				991B54901BCFAE0A007171BC /* store_quickbuy@3x.png in Resources */,
 				6704AA661B86F4F400833E06 /* collect_6.png in Resources */,
 				99ADD0C61BCBB0E600CD823F /* buddystatus_qzone_sel@2x.png in Resources */,
@@ -6711,6 +6731,7 @@
 				990C8F7A1B91A94F003CD84E /* msg_6.png in Resources */,
 				99C455651BCB58EA000D3FED /* buddystatus_more_sel.png in Resources */,
 				992BB8D81BE2222A00DB377C /* shanchu@3x.png in Resources */,
+				99B22A111C23EB52000D4AD6 /* tousu-xuanzhong@3x.png in Resources */,
 				287EB7A11BD648E2006F6172 /* buddy_2.png in Resources */,
 				6737A8251BD20C5C0036E9CB /* commentBG@3x.png in Resources */,
 				99C455671BCB58EA000D3FED /* buddystatus_more_sel@3x.png in Resources */,
@@ -7001,6 +7022,7 @@
 				673B1D511BD8906000022275 /* SettingViewController.m in Sources */,
 				992548D71BB14F2D00506A9D /* MJRefreshBaseView.m in Sources */,
 				9F91079619F56A6600AD5CAB /* SimulatorConfig.cpp in Sources */,
+				991F30AE1C27D28400E027F9 /* NewMobleLoginViewController.m in Sources */,
 				991B54291BCDEED2007171BC /* MJPropertyKey.m in Sources */,
 				992073E61B5DF3F700F66F9C /* AppController.mm in Sources */,
 				67D90CCB1B95582D00AF65A5 /* SysMsgViewController.m in Sources */,

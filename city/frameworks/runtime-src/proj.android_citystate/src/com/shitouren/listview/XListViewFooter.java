@@ -1,10 +1,10 @@
 /**
- * @file XFooterView.java
  * @create Mar 31, 2012 9:33:43 PM
  * @author Maxwin
  * @description XListView's footer
  */
 package com.shitouren.listview;
+
 
 
 import com.shitouren.citystate.R;

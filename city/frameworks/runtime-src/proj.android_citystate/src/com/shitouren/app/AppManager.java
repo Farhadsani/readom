@@ -27,7 +27,7 @@ public class AppManager {
 	
 	
 	
-	public static  String getSSID(Context context){
+	private static  String getSSID(Context context){
 		final TelephonyManager tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
 
 		tmDevice = "" + tm.getDeviceId();
