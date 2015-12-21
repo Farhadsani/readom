@@ -16,7 +16,7 @@
 package com.polites.android;
 
 /**
- * @author Jason Polites
+ * @author Jason Polites 
  *
  */
 public interface Animation {

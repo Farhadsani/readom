@@ -4,12 +4,15 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.http.cookie.Cookie;
+import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.shitouren.app.AppManager;
+import com.shitouren.app.GlobleApplication;
 import com.shitouren.bean.SquareHot;
 import com.shitouren.bean.User;
 import com.shitouren.entity.Contacts;
@@ -57,6 +60,9 @@ public class LoginPhoneActivity extends Activity implements IActivity, OnClickLi
 		setContentView(R.layout.login_activity);
 
 		ctx = LoginPhoneActivity.this;
+		http = new FinalHttp();
+		http.addHeader("Cookie", "shitouren_ssid=" + AppManager.getSSID(this));
+		http.addHeader("User-Agent", "shitouren_qmap_android");
 
 		if (VERSION.SDK_INT >= VERSION_CODES.KITKAT) {
 			getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
@@ -131,7 +137,6 @@ public class LoginPhoneActivity extends Activity implements IActivity, OnClickLi
 	private void login() {
 		Debuger.log_w(TAG, "login");
 		params = new AjaxParams();
-		http = AppManager.getFinalHttp(ctx);
 		List<String> lists = new ArrayList<String>();
 		{
 			lists.add("from");
@@ -157,6 +162,23 @@ public class LoginPhoneActivity extends Activity implements IActivity, OnClickLi
 				try {
 					JSONObject jsonObject = new JSONObject(t);
 					Debuger.showToastShort(ctx, "登录成功!");
+					DefaultHttpClient client = (DefaultHttpClient) http.getHttpClient();
+					List<Cookie> cookies = client.getCookieStore().getCookies();
+
+					for (int i = 0; i < cookies.size(); i++) {
+
+						Utils.saveStrInShared(ctx, Contacts.COOKIE, cookies.get(i).getName(),
+								cookies.get(i).getValue());
+
+						Debuger.log_w(TAG, "- domain " + cookies.get(i).getDomain());
+						Debuger.log_w(TAG, "- path " + cookies.get(i).getPath());
+						Debuger.log_w(TAG, "- value " + cookies.get(i).getValue());
+						Debuger.log_w(TAG, "- name " + cookies.get(i).getName());
+						Debuger.log_w(TAG, "- port " + cookies.get(i).getPorts());
+						Debuger.log_w(TAG, "- comment " + cookies.get(i).getComment());
+						Debuger.log_w(TAG, "- commenturl" + cookies.get(i).getCommentURL());
+						Debuger.log_w(TAG, "- all " + cookies.get(i).toString());
+					}
 					String res = jsonObject.optString("res");
 					Utils.saveStrInShared(ctx, Contacts.USER, Contacts.USER_RES, res);
 

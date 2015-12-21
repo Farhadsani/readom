@@ -1,27 +1,130 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffffff"
-    android:orientation="vertical" >
+    android:background="@color/mainBackground" >
 
-    <RelativeLayout
+    <include
+        android:id="@+id/topBar"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="#FBD635" >
+        android:layout_height="@dimen/topBarLayoutHeight"
+        layout="@layout/top_bar_layout" />
 
-        <TextView
-            android:layout_width="wrap_content"
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/topBar"
+        android:scrollbars="none" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="发布"
-            android:textColor="@android:color/black" />
-    </RelativeLayout>
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:paddingLeft="10dp" >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp" >
+
+                <EditText
+                    android:id="@+id/etContent"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:gravity="left"
+                    android:hint="发表内容" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:text="1200字以内" />
+            </RelativeLayout>
+
+            <com.shitouren.view.PropertyGridView
+                android:id="@+id/gridview_imgs"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:horizontalSpacing="5dp"
+                android:listSelector="@android:color/transparent"
+                android:scrollbars="none"
+                android:verticalSpacing="5dp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#f2f2f2" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                 >
+
+                <com.shitouren.tagview.TagListView
+                    xmlns:f="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/tagview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="@dimen/common_margin"
+                    android:paddingTop="16.0dip"
+                    f:horizontalSpacing="@dimen/tag_horizontal_spacing"
+                    f:orientation="horizontal"
+                    f:verticalSpacing="@dimen/tag_vertical_spacing" >
+                </com.shitouren.tagview.TagListView>
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#f2f2f2" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:layout_marginTop="15dp" >
+
+                <TextView
+                    android:id="@+id/tvLocationTag"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="位置:" />
+
+                <ImageView
+                    android:id="@+id/ivArrowRight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="5dp"
+                    android:src="@drawable/arrow_right" />
+
+                <TextView
+                    android:id="@+id/tvLocationText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_toLeftOf="@id/ivArrowRight"
+                    android:layout_toRightOf="@id/tvLocationTag"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:text="第四季度是第三代是发的发的发的发辅导费的飞的奋斗奋斗" />
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
 
     <TextView
-        android:id="@+id/tvBack"
+        android:id="@+id/tvState"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="publish" />
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp"
+        android:text="发表即为已同意《隐私免责声明》" />
 
-</LinearLayout>
+</RelativeLayout>
