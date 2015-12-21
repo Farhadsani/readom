@@ -7,20 +7,27 @@ import com.shitouren.bean.SquareHot;
 import com.shitouren.citystate.ImageDetailActivity;
 import com.shitouren.citystate.R;
 import com.shitouren.utils.Debuger;
+import com.shitouren.utils.Utils;
 import com.shitouren.view.CircularImage;
 import com.shitouren.view.MyGallery;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.BitmapDrawable;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import net.tsz.afinal.FinalBitmap;
@@ -107,6 +114,13 @@ public class SquareAdapter extends BaseAdapter {
 			holder = (ViewHolder) convertView.getTag();
 		}
 
+		holder.llMore.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Utils.pop_Input(context,3);
+			}
+		});
 		
 		holder.gyPic.setOnItemClickListener(new OnItemClickListener() {
 
