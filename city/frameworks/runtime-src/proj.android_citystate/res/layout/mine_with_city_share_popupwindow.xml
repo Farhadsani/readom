@@ -19,27 +19,27 @@
     	android:padding="10dp"
         android:orientation="horizontal">
         <ImageView 
-            android:id="@+id/tvShareFriend"
+            android:id="@+id/ivShareFriend"
             android:layout_width="wrap_content"
     		android:layout_height="wrap_content"
     		android:padding="10dp"
     		android:layout_marginRight="12dp"
-    		android:background="@drawable/withcitysharepengyouquanweixuanzhong"/>
+    		android:src="@drawable/with_city_pengyouquan_selector"/>
         <ImageView 
-            android:id="@+id/tvShareWeiBo"
+            android:id="@+id/ivShareWeiBo"
             android:layout_width="wrap_content"
     		android:layout_height="wrap_content"
     		android:padding="10dp"
     		android:layout_marginRight="12dp"
     		android:layout_marginLeft="12dp"
-    		android:background="@drawable/withcityshareweiboweixuanzhong"/>
+    		android:src="@drawable/with_city_weibo_selector"/>
         <ImageView 
-            android:id="@+id/tvShareQQ"
+            android:id="@+id/ivShareQQ"
             android:layout_width="wrap_content"
     		android:layout_height="wrap_content"
     		android:padding="10dp"
     		android:layout_marginLeft="12dp"
-    		android:background="@drawable/withcityshareqqkongjianweixuanzhong"/>
+    		android:src="@drawable/with_city_qqkongjian_selector"/>
     </LinearLayout>
     <RelativeLayout 
         android:id="@+id/rlShareCancel"
@@ -47,8 +47,9 @@
     	android:layout_height="wrap_content"
     	android:gravity="center"
     	android:layout_marginBottom="10dp"
-    	android:background="@drawable/withcitysharequxiaoweixuanzhong"
+    	android:background="@drawable/with_city_quxiao_selector"
         >
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

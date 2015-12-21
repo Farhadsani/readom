@@ -2,7 +2,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/yellow"
     android:orientation="vertical" >
 
     <RelativeLayout
@@ -35,7 +34,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:text="绑定手机号"
-                android:textColor="@color/white"
+                android:textColor="@color/background_white"
                 android:textSize="23sp" />
         </RelativeLayout>
 
@@ -48,7 +47,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="国家和地区"
-                android:textColor="@color/white"
+                android:textColor="@color/background_white"
                 android:textSize="20sp" />
 
             <TextView
@@ -56,7 +55,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:text="中国"
-                android:textColor="@color/white"
+                android:textColor="@color/background_white"
                 android:textSize="20sp" />
         </RelativeLayout>
 
@@ -83,7 +82,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="+86"
-                    android:textColor="@color/white"
+                    android:textColor="@color/background_white"
                     android:textSize="20sp" />
             </LinearLayout>
 
@@ -91,7 +90,7 @@
                 android:layout_width="1dp"
                 android:layout_height="25dp"
                 android:layout_gravity="bottom"
-                android:background="@color/white" />
+                android:background="@color/background_white" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -108,8 +107,7 @@
                     android:hint="请填写手机号码"
                     android:phoneNumber="true"
                     android:maxLength="11"
-                    android:textColor="@color/white"
-                    android:textColorHint="@color/textHint"
+                    android:textColor="@color/background_white"
                     android:textSize="20sp" />
             </LinearLayout>
         </LinearLayout>
@@ -132,9 +130,8 @@
                 android:layout_marginLeft="5dp"
                 android:background="@null"
                 android:hint="请输入密码,至少6位"
-                android:textColorHint="@color/textHint"
                 android:password="true"
-                android:textColor="@color/white"
+                android:textColor="@color/background_white"
                 android:textSize="20sp" />
         </LinearLayout>
 
@@ -162,7 +159,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="发送验证码"
-                    android:textColor="@color/yellow" />
+                     />
             </LinearLayout>
 
             <EditText
@@ -172,9 +169,8 @@
                 android:layout_marginLeft="5dp"
                 android:background="@null"
                 android:hint="请输入验证码"
-                android:textColorHint="@color/textHint"
                 android:numeric="integer"
-                android:textColor="@color/white"
+                android:textColor="@color/background_white"
                 android:layout_alignBottom="@id/llVerCodeBindPhone"
                 android:textSize="20sp" />
 
@@ -200,7 +196,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="确定"
-                android:textColor="@color/textHint"
                 android:textSize="20sp" />
         </LinearLayout>
     </LinearLayout>

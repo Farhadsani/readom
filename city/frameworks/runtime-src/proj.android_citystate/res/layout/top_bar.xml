@@ -2,52 +2,49 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="40dp"
-    android:background="#fddc41"
-    android:orientation="horizontal" >
-
-    <LinearLayout
-        android:id="@+id/llTopbarLeft"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:visibility="invisible" >
-
-        <ImageView
-            android:id="@+id/ivTopbarLeft"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/zan_normal" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/llTopbarMiddle"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="4"
-        android:gravity="center" >
-
-        <TextView
-            android:id="@+id/tvTopbarMiddle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="哈哈哈"
-            android:visibility="invisible" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/llTopbarRight"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:gravity="center" >
-
-        <ImageView
-            android:id="@+id/ivTopbarRight"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/zan_normal"
-            android:visibility="invisible" />
-    </LinearLayout>
+    android:orientation="horizontal"
+    android:background="#fddc41" >
+            <LinearLayout
+                android:id="@+id/llTopbarLeft" 
+                android:layout_width="0dp"
+   		 		android:layout_height="match_parent" 
+   		 		android:layout_weight="1"
+   		 		android:visibility="invisible"
+   		 		android:gravity="center">
+                <ImageView
+                    android:id="@+id/ivTopbarLeft"
+	                android:layout_width="wrap_content"
+	   		 		android:layout_height="wrap_content" 
+	   		 		android:src="@drawable/zan_normal"/>
+                </LinearLayout>
+          
+            <LinearLayout
+                android:id="@+id/llTopbarMiddle" 
+                android:layout_width="0dp"
+   		 		android:layout_height="match_parent" 
+   		 		android:layout_weight="4"
+   		 		android:gravity="center">
+                <TextView 
+                    android:id="@+id/tvTopbarMiddle"
+	                android:layout_width="wrap_content"
+	   		 		android:layout_height="wrap_content" 
+	   		 		android:visibility="invisible"
+	   		 		android:text="哈哈哈"
+                />
+            </LinearLayout>
+            
+            <LinearLayout
+                android:id="@+id/llTopbarRight" 
+                android:layout_width="0dp"
+   		 		android:layout_height="match_parent" 
+   		 		android:layout_weight="1"
+   		 		android:gravity="center">
+                <ImageView 
+                    android:id="@+id/ivTopbarRight"
+	                android:layout_width="wrap_content"
+	   		 		android:layout_height="wrap_content" 
+	   		 		android:visibility="invisible"
+	   		 		android:src="@drawable/zan_normal"/>
+             </LinearLayout>
 
 </LinearLayout>

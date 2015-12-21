@@ -13,7 +13,7 @@ local tableFields = require("app_cs/resData/TableFields")   -- 加载字段表
 function DataManager:ctor(p)
     -- 初始化用户状态
     self.param = p
-    print("function DataManager:ctor(p).....")
+
     -- 删除临时文件
     self:deleteTempFile()
     ---------------------------
@@ -52,7 +52,7 @@ function DataManager:ctor(p)
         GameState.save(QMapGlobal.gameState)
     end
 
-    -- self:getNewVer()
+    self:getNewVer()
     -- 初始化系统数据
     -- self:initSystemData()-- 移动到外部调用
     -- 初始化用户数据
@@ -158,7 +158,7 @@ function DataManager:loadData(  )
             city.sight = sights
             city.isNative = isNative
             
-            -- dump(city)
+            dump(city)
             CityTableCopy[city.cityid] = city
 
 
@@ -196,7 +196,7 @@ function DataManager:loadData(  )
 
         end
         QMapGlobal.systemData.mapData = CityTableCopy
-        -- dump(QMapGlobal.systemData.mapData[1])
+        dump(QMapGlobal.systemData.mapData[1])
     end
 end
 
@@ -237,9 +237,7 @@ end
 function DataManager:initSystemData(LoadDataOverCallBack)
 
     -- 加载数据
-    -- self:loadData()
-    LoadDataOverCallBack()
-    do return end
+    self:loadData()
     -- 联网获取网络数据
     self:getCityList(function ( cityData )
         local mapData = {}
@@ -261,6 +259,20 @@ function DataManager:initSystemData(LoadDataOverCallBack)
                     -- newVersion = item.version,
                     -- versioninfo = item.versioninfo
                 }
+
+                -- item.iconfile
+                -- local fu = cc.FileUtils:getInstance()
+                -- local downloadPath = fu:getDownloadPath()
+                -- local ballPath = downloadPath .. "map/" .. item.name .. "/image/"
+                -- cc.FileUtils:getInstance():createDirectory(ballPath)
+                -- print("开始下载ball", ballPath , item.cname)
+                -- ballPath = ballPath .. item.name .. "ball.png"
+                -- if not fu:isFileExist(ballPath) then
+                --     netWorkManager:getUrlFile(item.iconfile, ballPath, function (  )
+                --     end, function (  )
+                --         -- body
+                --     end)
+                -- end
   
                 QMapGlobal.tempCityBall[cityid] = {name = item.name, ballUrl = item.iconfile}
                 
@@ -357,7 +369,6 @@ function DataManager:initSystemData(LoadDataOverCallBack)
         -- end
         if LoadDataOverCallBack then LoadDataOverCallBack() end
     end, function (  )
-        print("getcityList   失败。。。。。。。。。。。。")
         -- 连接网络失败
         -- print("initSystemData     222222222222222222222222")
         -- if self.param and self.param.callBack then

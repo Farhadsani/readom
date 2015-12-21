@@ -6,8 +6,6 @@ import java.util.Map;
 
 import org.json.JSONObject;
 
-import com.google.gson.JsonObject;
-
 import android.content.Context;
 import net.tsz.afinal.http.AjaxParams;
 

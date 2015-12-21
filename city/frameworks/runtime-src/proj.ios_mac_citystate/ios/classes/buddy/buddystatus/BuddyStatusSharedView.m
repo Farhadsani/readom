@@ -12,7 +12,7 @@
 #define Margin 20
 #define SharedViewTitleHight 50
 #define SharedViewButtonHight 80
-#define SharedViewHight (SharedViewTitleHight + SharedViewButtonHight * self.type + Margin)
+#define SharedViewHight (SharedViewTitleHight + SharedViewButtonHight * 2 + Margin)
 
 @interface BuddyStatusSharedView ()
 @property (nonatomic, assign) BOOL animating;
@@ -111,9 +111,10 @@
     [self setupBtnWithTitle:@"微信朋友圈" icon:@"buddystatus_friendsgroup" selIcon:@"buddystatus_friendsgroup_sel" type:BuddyStatusSharedViewBtnTypeFriendsGroup];
     [self setupBtnWithTitle:@"新浪微博" icon:@"buddystatus_weibo" selIcon:@"buddystatus_weibo_sel" type:BuddyStatusSharedViewBtnTypeWeiBo];
     [self setupBtnWithTitle:@"QQ空间" icon:@"buddystatus_qzone" selIcon:@"buddystatus_qzone_sel" type:BuddyStatusSharedViewBtnTypeQZone];
+    [self setupBtnWithTitle:@"投诉" icon:@"tousu" selIcon:@"tousu-xuanzhong" type:BuddyStatusSharedViewBtnTypeReport];
     [self setupBtnWithTitle:@"添加关注" icon:@"buddystatus_addfriend" selIcon:@"buddystatus_addfriend_sel" type:BuddyStatusSharedViewBtnTypeAddFriend];
-    
-    int count = (self.type == BuddyStatusSharedViewTypeWithAddFriend) ? 5 : 4;
+
+    int count = (self.type == BuddyStatusSharedViewTypeWithAddFriend) ? 6 : 5;
     CGFloat btnW = bottomViewWidh / 4;
     CGFloat btnH = SharedViewButtonHight;
     CGFloat btnBaseY = CGRectGetMaxY(titleLabel.frame);
@@ -126,13 +127,11 @@
         btn.frame = CGRectMake(btnX, btnY, btnW, btnH);
     }
     
-    if (self.type == BuddyStatusSharedViewTypeWithAddFriend) {
-        UIView *lineView = [[UIView alloc] init];
-        [self.bottomView addSubview:lineView];
-        lineView.backgroundColor = k_defaultLineColor;
-        CGFloat lineViewMargin = 10;
-        lineView.frame = CGRectMake(lineViewMargin, btnBaseY + btnH + Margin * 0.5, bottomViewWidh - lineViewMargin * 2, 0.6);
-    }
+    UIView *lineView = [[UIView alloc] init];
+    [self.bottomView addSubview:lineView];
+    lineView.backgroundColor = k_defaultLineColor;
+    CGFloat lineViewMargin = 10;
+    lineView.frame = CGRectMake(lineViewMargin, btnBaseY + btnH + Margin * 0.5, bottomViewWidh - lineViewMargin * 2, 0.6);
 }
 
 - (SharedViewButton *)setupBtnWithTitle:(NSString *)title icon:(NSString *)iconName selIcon:(NSString *)selIconName type:(BuddyStatusSharedViewBtnType)type

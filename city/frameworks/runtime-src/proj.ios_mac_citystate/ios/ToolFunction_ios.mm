@@ -41,6 +41,7 @@
 #import "StoreViewController.h"
 
 #import "MyStoreViewController.h"
+#import "NewMobleLoginViewController.h"
 
 @interface Test : NSObject
 
@@ -290,7 +291,11 @@ void userLogin(int autoLogin, LOGINCALLBACK f)
                 [UserManager sharedInstance].userLoginStatus = Lstatus_loginFailed;
                 if(autoLogin == 1)  //显示登录界面
                 {
-                    LoginViewController *vc = [[LoginViewController alloc] init];
+//                    LoginViewController *vc = [[LoginViewController alloc] init];
+//                    [vc setCocosCallback:loginCallback];
+//                    toIOS(vc);
+//                    [vc release];
+                    NewMobleLoginViewController *vc = [[NewMobleLoginViewController alloc] init];
                     [vc setCocosCallback:loginCallback];
                     toIOS(vc);
                     [vc release];

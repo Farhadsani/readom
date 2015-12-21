@@ -91,6 +91,7 @@
     		android:layout_height="wrap_content"
     		android:layout_marginLeft="5dp"
     		android:layout_gravity="center_vertical"
+    		android:src="@drawable/withcityfenxiangyingyong"
             />
         <TextView 
             android:layout_width="0dp"
@@ -106,6 +107,7 @@
     		android:layout_height="wrap_content"
     		android:layout_gravity="center_vertical"
     		android:layout_marginRight="10dp"
+    		android:src="@drawable/qianjin"
             />
     </LinearLayout>
         <!--  微信-->
@@ -122,6 +124,7 @@
     		android:layout_height="wrap_content"
     		android:layout_marginLeft="5dp"
     		android:layout_gravity="center_vertical"
+    		android:src="@drawable/withcityweixin"
             />
         <TextView 
             android:layout_width="0dp"
@@ -137,6 +140,7 @@
     		android:layout_height="wrap_content"
     		android:layout_gravity="center_vertical"
     		android:layout_marginRight="10dp"
+    		android:src="@drawable/qianjin"
             />
     </LinearLayout>
         <!--  微博-->
@@ -153,6 +157,7 @@
     		android:layout_height="wrap_content"
     		android:layout_marginLeft="5dp"
     		android:layout_gravity="center_vertical"
+    		android:src="@drawable/withcityweibo"
             />
         <TextView 
             android:layout_width="0dp"
@@ -168,6 +173,7 @@
     		android:layout_height="wrap_content"
     		android:layout_gravity="center_vertical"
     		android:layout_marginRight="10dp"
+    		android:src="@drawable/qianjin"
             />
     </LinearLayout>
         <!--  反馈-->
@@ -184,6 +190,7 @@
     		android:layout_height="wrap_content"
     		android:layout_marginLeft="5dp"
     		android:layout_gravity="center_vertical"
+    		android:src="@drawable/withcityfankui"
             />
         <TextView 
             android:layout_width="0dp"
@@ -199,6 +206,7 @@
     		android:layout_height="wrap_content"
     		android:layout_gravity="center_vertical"
     		android:layout_marginRight="10dp"
+    		android:src="@drawable/qianjin"
             />
     </LinearLayout>
         <!--  给个好评-->
@@ -215,6 +223,7 @@
     		android:layout_height="wrap_content"
     		android:layout_marginLeft="5dp"
     		android:layout_gravity="center_vertical"
+    		android:src="@drawable/withcityhaoping"
             />
         <TextView 
             android:layout_width="0dp"
@@ -230,6 +239,7 @@
     		android:layout_height="wrap_content"
     		android:layout_gravity="center_vertical"
     		android:layout_marginRight="10dp"
+    		android:src="@drawable/qianjin"
             />
     </LinearLayout>
         
