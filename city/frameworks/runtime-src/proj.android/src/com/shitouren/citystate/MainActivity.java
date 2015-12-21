@@ -280,7 +280,7 @@ public class MainActivity extends TabActivity implements OnClickListener {
 
 			break;
 		case R.id.layoutMine:
-			mTabHost.setCurrentTabByTag(TAB_TAB_MINE);
+			mTabHost.setCurrentTabByTag(TAB_TAG_INDEX);
 			imgMine.setImageResource(R.drawable.mine_selected);
 			tvMine.setTextColor(COLOR2);
 
