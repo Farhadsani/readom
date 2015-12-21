@@ -127,8 +127,7 @@ public class MainActivity extends TabActivity implements OnClickListener {
 
 	private void prepareIntent() {
 
-		indexIntent = new Intent(this, IndexActivity.class);
-		indexIntent.putExtra("name", "11111");
+		indexIntent = new Intent(this, AppActivity.class);
 
 		squareIntent = new Intent(this, SquareActivity.class);
 
@@ -136,9 +135,7 @@ public class MainActivity extends TabActivity implements OnClickListener {
 
 		messageIntent = new Intent(this, MessageActivity.class);
 
-		mineIntent = new Intent(this, IndexActivity.class);
-		mineIntent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-		mineIntent.putExtra("name", "2222");
+		mineIntent = new Intent(this, AppActivity.class);
 //		mineIntent = new Intent(this,
 //				IndexActivity.class);
 	}
@@ -210,6 +207,7 @@ public class MainActivity extends TabActivity implements OnClickListener {
 			mTabHost.setCurrentTabByTag(TAB_TAG_INDEX);
 			imgIndex.setImageResource(R.drawable.index_selected);
 			tvIndex.setTextColor(COLOR2);
+			AppActivity.printMsg("citymap");
 
 			break;
 
@@ -238,6 +236,7 @@ public class MainActivity extends TabActivity implements OnClickListener {
 			imgMine.setImageResource(R.drawable.mine_selected);
 			tvMine.setTextColor(COLOR2);
 
+			AppActivity.printMsg("userhome");
 			break;
 		default:
 			break;
