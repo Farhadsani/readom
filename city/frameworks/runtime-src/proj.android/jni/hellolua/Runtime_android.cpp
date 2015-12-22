@@ -258,16 +258,16 @@ void openUserHomeCallback(long userID, string name, string intro, string zone, s
 
 extern "C"
 {
-	void Java_org_cocos2dx_lua_AppActivity_openUserHomeCallback(JNIEnv *env, jint categoryType, jstring categoryID)
+	void Java_org_cocos2dx_lua_AppActivity_openUserHomeCallback(JNIEnv *env, jlong userID, jstring userName, jstring userIntro, jstring userZone, jstring thumbLink, jstring imgLink)
 	{
 		LOGD("Java_org_cocos2dx_lua_AppActivity_openUserHomeCallback");
-		openUserHomeCallback(0, "name1", "intro", "zone", "thumb", "img");
-//		if(mapCallback_c)
-//		{
-//			LOGD("Java_org_cocos2dx_lua_AppActivity_openmapCallback into lua...");
-//			std::string strID = JniHelper::jstring2string(categoryID);
-//			mapCallback_c((int)categoryType, strID);
-//		}
+		long userid = userID;
+		string username = JniHelper::jstring2string(userName);
+		string userintro = JniHelper::jstring2string(userIntro);
+		string userzone = JniHelper::jstring2string(userZone);
+		string thumblink = JniHelper::jstring2string(thumbLink);
+		string imglink = JniHelper::jstring2string(imgLink);
+		openUserHomeCallback(userid, username, userintro, userzone, thumblink, imglink);
 	}
 }
 void openUserHome(USERHOMECALLBACK f)
@@ -362,15 +362,13 @@ void refreshUserHome(REFRESHUSERHOMECALLBACK f)
 //���寮���板�炬��浣�
 MAPCALLBACK mapCallback_c;
 
-void fangdongTest()
+void openmapCallback(int categoryType, std::string categoryID)
 {
 	LOGD("fangdongtest into lua...");
 	if(mapCallback_c)
 	{
 		LOGD("Java_org_cocos2dx_lua_AppActivity_openmapCallback into lua...");
-//		std::string strID = JniHelper::jstring2string(categoryID);
-//		mapCallback_c((int)categoryType, strID);
-		mapCallback_c( 0, "");
+		mapCallback_c( categoryType, categoryID);
 	}
 }
 extern "C"
@@ -378,20 +376,15 @@ extern "C"
 	void Java_org_cocos2dx_lua_AppActivity_openmapCallback(JNIEnv *env, jint categoryType, jstring categoryID)
 	{
 		LOGD("Java_org_cocos2dx_lua_AppActivity_openmapCallback");
-		fangdongTest();
-//		if(mapCallback_c)
-//		{
-//			LOGD("Java_org_cocos2dx_lua_AppActivity_openmapCallback into lua...");
-//			std::string strID = JniHelper::jstring2string(categoryID);
-//			mapCallback_c((int)categoryType, strID);
-//		}
+		int categorytype = categoryType;
+		std::string categoryid = JniHelper::jstring2string(categoryID);;
+		openmapCallback(categorytype, categoryid);
 	}
 }
 void openMap(MAPCALLBACK f)
 {
 	LOGD("娉ㄥ��openMap���������������������");
     mapCallback_c = f;
-//    mapCallback_c(0, "");
 }
 
 BACKTOUSERHOMECALLBACK backToUserHomeCallback_c;
@@ -426,7 +419,8 @@ void sightIntroCallback(int)   //���寮������逛��缁��
 //sightDescs锛������规�������������������版��
 void openSightIntro(long sightID, std::string sightName, std::string sightDescs, SIGHTINTROCALLBACK f)
 {
-	LOGD("���寮������逛��缁����������������������");
+	LOGD("C++打开景点介绍。。。。。。");
+
 //    SightDetailViewController * vc = [[[SightDetailViewController alloc] initWithNibName:nil bundle:nil] autorelease];
 //    [vc.data_dict setNonEmptyObject:@(sightID) forKey:k_sightID];
 //    [vc.data_dict setNonEmptyObject:[NSString stringWithCString:sightName.c_str() encoding:NSUTF8StringEncoding] forKey:k_sightName];
