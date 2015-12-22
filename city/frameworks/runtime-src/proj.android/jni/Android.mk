@@ -66,7 +66,7 @@ endif
 
 #$(warning   "COCOS2DX_ROOT")
 #$(warning   $(COCOS2DX_ROOT))
-$(warning   "--------------------")
+#$(warning   "--------------------")
 #$(warning   $(LOCAL_PATH))
 #$(warning   "--------------------")
 #$(warning   $(NDK_MODULE_PATH))

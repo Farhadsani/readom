@@ -203,7 +203,9 @@ function NavigationController:registToUserHome( ... )
         QMapGlobal.app.navigationController:setControllerPathBase("")
         local curUser = {userid = userid, name = username, intro = intro, zone = zonename, thumblink = thumblink, imglink = imglink}
         local ncPathName = self.packageRoot .. "/userHome/UserHomeController" 
-        QMapGlobal.app.navigationController:switchTo( "userhome", {curUser = curUser}, "fade" )
+        display.addImageAsync("res/ui/image/userHome/userHomeMap.jpg", function ( ... )
+            QMapGlobal.app.navigationController:switchTo( "userhome", {curUser = curUser}, "fade" )
+        end)
 
     end)
 
