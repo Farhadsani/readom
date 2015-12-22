@@ -2,6 +2,7 @@ package com.shitouren.utils;
 
 import java.io.Serializable;
 
+import com.shitouren.qmap.R;
 import android.app.Activity;
 import android.content.Intent;
 import android.provider.Settings;

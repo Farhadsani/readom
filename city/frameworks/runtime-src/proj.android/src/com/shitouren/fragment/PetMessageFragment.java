@@ -1,8 +1,6 @@
 package com.shitouren.fragment;
 
-
 import com.shitouren.qmap.R;
-
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;

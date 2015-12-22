@@ -19,9 +19,9 @@ import com.shitouren.adapter.SquareAdapter;
 import com.shitouren.app.AppManager;
 import com.shitouren.bean.MyMessage;
 import com.shitouren.bean.SquareHot;
+import com.shitouren.qmap.R;
 import com.shitouren.entity.Contacts;
 import com.shitouren.listview.XListView;
-import com.shitouren.qmap.R;
 import com.shitouren.utils.Debuger;
 
 import android.os.Bundle;

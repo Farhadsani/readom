@@ -1,11 +1,9 @@
 package com.shitouren.citystate;
 
-import org.cocos2dx.lua.AppActivity;
-
-import com.shitouren.qmap.R;
 import com.shitouren.utils.Debuger;
 import com.shitouren.utils.Utils;
 
+import android.app.Activity;
 import android.app.TabActivity;
 import android.content.Intent;
 import android.graphics.Color;
@@ -27,6 +25,9 @@ import android.widget.PopupWindow;
 import android.widget.TabHost;
 import android.widget.TextView;
 
+import org.cocos2dx.lua.AppActivity;
+
+import com.shitouren.qmap.R;
 @SuppressWarnings("deprecation")
 public class MainActivity extends TabActivity implements OnClickListener {
 	private static final String TAG = "MainActivity";
@@ -85,6 +86,13 @@ public class MainActivity extends TabActivity implements OnClickListener {
 		Debuger.log_w("MainActivity","onDestroy");
 	}
 
+	public void replaceContentView(String id, Intent newIntent) {
+		View view = getLocalActivityManager().startActivity(id,
+				newIntent)
+				.getDecorView();
+		this.setContentView(view);
+	}
+	
 	private void prepareAnim() {
 		left_in = AnimationUtils.loadAnimation(this, R.anim.left_in);
 		left_out = AnimationUtils.loadAnimation(this, R.anim.left_out);
@@ -119,10 +127,7 @@ public class MainActivity extends TabActivity implements OnClickListener {
 
 	private void prepareIntent() {
 
-//		indexIntent = new Intent(this, IndexActivity.class);
-
 		indexIntent = new Intent(this, AppActivity.class);
-		indexIntent.putExtra("scene_name", "citymap");
 
 		squareIntent = new Intent(this, SquareActivity.class);
 
@@ -131,9 +136,8 @@ public class MainActivity extends TabActivity implements OnClickListener {
 		messageIntent = new Intent(this, MessageActivity.class);
 
 		mineIntent = new Intent(this, AppActivity.class);
-//		mineIntent = new  Intent(this, AppActivity.class);
-		mineIntent.putExtra("scene_name", "userhome");
-
+//		mineIntent = new Intent(this,
+//				IndexActivity.class);
 	}
 
 	private void setupIntent() {
@@ -178,7 +182,6 @@ public class MainActivity extends TabActivity implements OnClickListener {
 		tvMine.setTextColor(COLOR1);
 		int checkedId = v.getId();
 		int o;
-		
 
 		if (mCurTabId < checkedId)
 			o = 0;
@@ -189,12 +192,15 @@ public class MainActivity extends TabActivity implements OnClickListener {
 			o = 2;
 		}
 
-		if (0 == o)
-			mTabHost.getCurrentView().startAnimation(left_out);
-		else if (1 == o)
-			mTabHost.getCurrentView().startAnimation(right_out);
-		else
+//		if (0 == o)
+//			mTabHost.getCurrentView().startAnimation(left_out);
+//		else if (1 == o)
+//			mTabHost.getCurrentView().startAnimation(right_out);
+//		else
+//			mTabHost.getCurrentView().startAnimation(up_out);
+		if(2 == o){
 			mTabHost.getCurrentView().startAnimation(up_out);
+		}
 		switch (checkedId) {
 
 		case R.id.layoutIndex:
@@ -202,6 +208,7 @@ public class MainActivity extends TabActivity implements OnClickListener {
 			imgIndex.setImageResource(R.drawable.index_selected);
 			tvIndex.setTextColor(COLOR2);
 			AppActivity.printMsg("citymap");
+
 			break;
 
 		case R.id.layoutSquare:
@@ -228,18 +235,24 @@ public class MainActivity extends TabActivity implements OnClickListener {
 			mTabHost.setCurrentTabByTag(TAB_TAG_INDEX);
 			imgMine.setImageResource(R.drawable.mine_selected);
 			tvMine.setTextColor(COLOR2);
-			AppActivity.printMsg("userhome");
 
+			AppActivity.printMsg("userhome");
 			break;
 		default:
 			break;
 		}
 
-		if (0 == o)
-			mTabHost.getCurrentView().startAnimation(left_in);
-		else if (1 == o)
-			mTabHost.getCurrentView().startAnimation(right_in);
-		else {
+//		if (0 == o)
+//			mTabHost.getCurrentView().startAnimation(left_in);
+//		else if (1 == o)
+//			mTabHost.getCurrentView().startAnimation(right_in);
+//		else {
+//			mainBottom.startAnimation(bottom_up_in);
+//			mTabHost.getCurrentView().startAnimation(up_in);
+//			mainBottom.setVisibility(View.GONE);
+//		}
+		if(2 == o)
+		{
 			mainBottom.startAnimation(bottom_up_in);
 			mTabHost.getCurrentView().startAnimation(up_in);
 			mainBottom.setVisibility(View.GONE);
@@ -270,7 +283,7 @@ public class MainActivity extends TabActivity implements OnClickListener {
 
 			break;
 		case R.id.layoutPublish:
-			
+			mTabHost.setCurrentTabByTag(TAB_TAG_PUBLISH);
 			break;
 
 		case R.id.layoutMessage:
@@ -294,7 +307,7 @@ public class MainActivity extends TabActivity implements OnClickListener {
 	
 	private void showPopupWindow(View view) {
 
-		// 娑�锟芥��锟斤拷锟斤拷��癸拷娑�锟斤拷锟斤拷���锟界��锟介��锟芥担锟芥�����锟藉�с��锟斤拷锟斤拷锟斤拷��癸拷
+		// 涓�涓����瀹�涔����甯�灞�锛�浣�涓烘�剧ず������瀹�
 		View contentView = LayoutInflater.from(this).inflate(R.layout.publish_activity, null);
 
 		final PopupWindow popupWindow = new PopupWindow(contentView, LayoutParams.MATCH_PARENT,
@@ -310,17 +323,17 @@ public class MainActivity extends TabActivity implements OnClickListener {
 		// Log.i("mengdd", "onTouch : ");
 		//
 		// return false;
-		// // ��╋拷锟斤拷锟芥俊锟斤拷锟斤拷��╋拷锟斤拷锟�true锟斤拷锟界��锟介��锟�touch娴�锟芥��璺猴拷锟界��锟斤拷锟斤拷锟斤拷锟�
-		// // 锟斤拷锟斤拷锟斤拷锟斤拷锟� PopupWindow锟斤拷锟�onTouchEvent娑�锟界��锟界��锟斤拷锟斤拷���锟芥�╋拷锟斤拷椋�锟界�帮拷璇诧拷锟斤拷锟姐�ワ拷���锟斤拷锟斤拷锟藉��锟�dismiss
+		// // 杩����濡����杩����true���璇�锛�touch浜�浠跺��琚�������
+		// // ��������� PopupWindow���onTouchEvent涓�琚�璋����锛�杩���风�瑰�诲����ㄥ�哄�����娉�dismiss
 		// }
 		// });
 
-		// 婵★拷锟斤拷锟芥��锟界����х��PopupWindow锟斤拷锟斤拷锟斤拷锟斤拷锟介��锟斤拷锟斤拷������锟斤拷锟斤拷��帮拷璇诧拷锟斤拷锟姐�ワ拷���锟斤拷��╋拷锟斤拷锟�Back锟斤拷锟斤拷锟借�ワ拷锟藉��锟�dismiss瀵�瑙�锟斤拷
-		// 锟斤拷锟界��锟藉�帮拷��╋拷锟斤拷锟斤拷锟斤拷API锟斤拷锟芥��锟芥��锟�bug
+		// 濡����涓�璁剧疆PopupWindow���������锛����璁烘����瑰�诲����ㄥ�哄��杩����Back�����芥��娉�dismiss寮规��
+		// ���瑙�寰�杩�������API���涓�涓�bug
 		// popupWindow.setBackgroundDrawable(getResources().getDrawable(
 		// R.drawable.selectmenu_bg_downward));
 
-		// �����х��婵����锟斤拷锟斤拷棰�锟斤拷锟斤拷锟斤拷锟斤拷show
+		// 璁剧疆濂藉����颁��������show
 		popupWindow.showAtLocation(view, Gravity.BOTTOM, 0, 0);
 
 	}

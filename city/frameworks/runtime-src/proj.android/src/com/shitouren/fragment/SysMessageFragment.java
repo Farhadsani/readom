@@ -19,8 +19,8 @@ import com.shitouren.adapter.SysMessageAdapter;
 import com.shitouren.app.AppManager;
 import com.shitouren.bean.MyMessage;
 import com.shitouren.entity.Contacts;
-import com.shitouren.listview.XListView;
 import com.shitouren.qmap.R;
+import com.shitouren.listview.XListView;
 import com.shitouren.utils.Debuger;
 
 import android.os.Bundle;

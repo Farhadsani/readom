@@ -40,12 +40,9 @@ end
 function NavigationController:switchToDefaultViewController()
 	-- local vcPathName = "app/citySelection/CitySelectionViewController"
  --    self:switchTo(vcPathName, {cityid = 1}, "fade")
+    local vcPathName = "loading"
+    self:switchTo(vcPathName,  { cityid = QMapGlobal.cityID , categoryType = 0, categoryID = ""} )
 
-    -- local vcPathName = "app/load/LoadController"
-    -- local vcPathName = "app/userHome/UserHomeController"
-    -- self:switchTo(vcPathName)
-
-    QMapGlobal.app.navigationController:switchTo( "loading", { cityid = 1 , categoryType = 0, categoryID = ""} )
     -- local function callBack( ... )
     --     -- self.navigationController:setControllerPathBase("app/citySelection/CitySelectionViewController")
     --     -- self.navigationController:switchTo( "app/citySelection/CitySelectionViewController", {cityid = 1}, "fade" )
@@ -105,7 +102,6 @@ function NavigationController:switchTo(newViewControllerName, param, transitionS
 
     self._currentScene = display.newScene(newViewController:getName())
     newViewController.view:addTo(self._currentScene)
-
     
     display.replaceScene(self._currentScene, transitionStyle, 0.5, nil)
 
@@ -207,10 +203,7 @@ function NavigationController:registToUserHome( ... )
         QMapGlobal.app.navigationController:setControllerPathBase("")
         local curUser = {userid = userid, name = username, intro = intro, zone = zonename, thumblink = thumblink, imglink = imglink}
         local ncPathName = self.packageRoot .. "/userHome/UserHomeController" 
-
-        display.addImageAsync("res/ui/image/userHome/userHomeMap.jpg", function ( ... )
-            QMapGlobal.app.navigationController:switchTo( "userhome", {curUser = curUser}, "fade" )
-        end)
+        QMapGlobal.app.navigationController:switchTo( "userhome", {curUser = curUser}, "fade" )
 
     end)
 

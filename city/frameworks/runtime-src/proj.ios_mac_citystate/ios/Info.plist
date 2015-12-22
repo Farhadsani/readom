@@ -196,7 +196,7 @@
 			</dict>
 		</dict>
 	</dict>
-	<key>NSLocationAlwaysUsageDescription</key>
+	<key>NSLocationWhenInUseUsageDescription</key>
 	<true/>
 	<key>UIAppFonts</key>
 	<array>

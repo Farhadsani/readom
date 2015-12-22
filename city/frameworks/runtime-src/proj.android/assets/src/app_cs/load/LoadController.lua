@@ -12,6 +12,7 @@ function LoadController:ctor( param )
 
     self.categoryType = param.categoryType
     self.categoryID = param.categoryID
+    print("111111111111111111111")
 end
 
 function LoadController:viewDidLoad()
@@ -23,6 +24,7 @@ function LoadController:viewDidLoad()
  -- do return end
     -- 更新数据，异步下载
     QMapGlobal.DataManager = require( "app_cs/data/DataManager").new()
+
     -- 下载完毕，加载地图场景
     local function callBack( ... )
         -- self.navigationController:setControllerPathBase("app/citySelection/CitySelectionViewController")
@@ -42,8 +44,9 @@ function LoadController:viewDidLoad()
             path = "res/ui/" .. mapPath
         end
 
+        print(path)
+
         self.view:setPercent( 98 )
-        print("地图的路径。。。", path)
         display.addImageAsync(path, function ( ... )
             self.view:setPercent( 99 )
             -- print("22222", os.date())
@@ -73,7 +76,6 @@ function LoadController:viewDidLoad()
     end
 
     QMapGlobal.DataManager:initSystemData(function (  )
- 
        if QMapGlobal.DataManager:mapHasNewVer(QMapGlobal.cityID) then   -- 下载。。。。
 
            QMapGlobal.DataManager:downloadMapFiles(QMapGlobal.cityID, function ( cityid, progress )
@@ -90,7 +92,6 @@ function LoadController:viewDidLoad()
                callBack()
            end)
        else
- 
             callBack()
        end
     end)

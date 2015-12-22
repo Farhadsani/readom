@@ -15,7 +15,8 @@ typedef enum {
     BuddyStatusSharedViewBtnTypeFriendsGroup,
     BuddyStatusSharedViewBtnTypeWeiBo,
     BuddyStatusSharedViewBtnTypeQZone,
-    BuddyStatusSharedViewBtnTypeAddFriend
+    BuddyStatusSharedViewBtnTypeAddFriend,
+    BuddyStatusSharedViewBtnTypeReport
 } BuddyStatusSharedViewBtnType;
 
 typedef NS_ENUM(NSInteger, BuddyStatusSharedViewType){

@@ -66,7 +66,7 @@ endif
 
 #$(warning   "COCOS2DX_ROOT")
 #$(warning   $(COCOS2DX_ROOT))
-#$(warning   "--------------------")
+$(warning   "--------------------")
 #$(warning   $(LOCAL_PATH))
 #$(warning   "--------------------")
 #$(warning   $(NDK_MODULE_PATH))
@@ -79,7 +79,7 @@ $(call import-module, scripting/lua-bindings/proj.android)
 
 $(call import-add-path, $(LOCAL_PATH)/../../Classes)
 $(call import-add-path, $(LOCAL_PATH)/../../proj.android)
-$(call import-add-path, $(LOCAL_PATH)/../../../cocos2d-x/external/lua/luajit/include)
+#$(call import-add-path, $(LOCAL_PATH)/../../../cocos2d-x/external/lua/luajit/include)
 
 $(call import-module, quick-src/lua_extensions)
 $(call import-module, quick-src/extra)

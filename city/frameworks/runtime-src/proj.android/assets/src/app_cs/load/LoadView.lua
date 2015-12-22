@@ -11,11 +11,10 @@ function LoadView:ctor(param)
     -- self._background = display.newSprite("ui/LoadLayer.csb")
     -- self._background:setPosition(cc.p(display.width/2, display.height/2))
     -- self._background:setScale(2)
+    print("function LoadView:ctor(param)")
     self.rootNode = cc.uiloader:load("ui/LoadLayer.csb")
     self:addChild(self.rootNode, 1)
-
     self.pnlBackGround = self.rootNode:getChildByName("pnlBackGround") 
-
     self.sp1 = self.pnlBackGround:getChildByName("sp1")
     self.sp2 = self.pnlBackGround:getChildByName("sp2")
     self.sp3 = self.pnlBackGround:getChildByName("sp3")
@@ -36,7 +35,7 @@ function LoadView:ctor(param)
 
     local action = cc.CSLoader:createTimeline("ui/LoadAni.csb")   
 	self.sp1:runAction(action)   
-	    
+   
 	-- //播放动画  
 	-- //从第0帧到20帧循环播放  
 	action:gotoFrameAndPlay(0, 50, true)
