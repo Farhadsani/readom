@@ -235,7 +235,8 @@ function DataManager:getSightFromJsonFile( jsonFile )
 end
 
 function DataManager:initSystemData(LoadDataOverCallBack)
-
+    LoadDataOverCallBack()
+    do return end
     -- 加载数据
     self:loadData()
     -- 联网获取网络数据
@@ -1094,6 +1095,7 @@ end
 
 -- 更新版本
 function DataManager:getNewVer(  )
+    do return end
     netWorkManager:requestData("api/app/getnewver", {data = {} }, function ( fileInfo )
         -- dump(fileInfo)
         local downloadPath = cc.FileUtils:getInstance():getDownloadPath()

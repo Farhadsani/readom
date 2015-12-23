@@ -97,12 +97,12 @@ public class AppActivity extends Cocos2dxActivity implements IActivity,OnClickLi
 	static String hostIPAdress = "0.0.0.0";
 	static AppActivity app = null;
 	
-	WebView m_webView;//WebView�ؼ�
-	ImageView m_imageView;//ImageView�ؼ�
-	FrameLayout m_webLayout;//FrameLayout����
-	LinearLayout m_topLayout;//LinearLayout����
-	Button m_backButton;//�رհ�ť
-	FrameLayout m_viewTitle; //������
+	WebView m_webView;//WebView锟截硷拷
+	ImageView m_imageView;//ImageView锟截硷拷
+	FrameLayout m_webLayout;//FrameLayout锟斤拷锟斤拷
+	LinearLayout m_topLayout;//LinearLayout锟斤拷锟斤拷
+	Button m_backButton;//锟截闭帮拷钮
+	FrameLayout m_viewTitle; //锟斤拷锟斤拷锟斤拷
 
 	
 	
@@ -166,15 +166,15 @@ public class AppActivity extends Cocos2dxActivity implements IActivity,OnClickLi
 //		
 //		initTabFrame();
 		
-		//��ʼ��һ���ղ���
+		//锟斤拷始锟斤拷一锟斤拷锟秸诧拷锟斤拷
 //	    m_webLayout = new FrameLayout(this);
 //	    DisplayMetrics dm = new DisplayMetrics();
 //	    getWindowManager().getDefaultDisplay().getMetrics(dm);
 //	    Rect frame = new Rect();    
 //	    getWindow().getDecorView().getWindowVisibleDisplayFrame(frame);
 //	    
-//	    int width = frame.width(); // dm.widthPixels;//���
-//	    int height = frame.height();  // dm.heightPixels ;//�߶�
+//	    int width = frame.width(); // dm.widthPixels;//锟斤拷锟�
+//	    int height = frame.height();  // dm.heightPixels ;//锟竭讹拷
 //	    Log.i("qmap", "w = " + width + ",H = " + height + "///" + dm.widthPixels + "," + dm.heightPixels);
 //	    FrameLayout.LayoutParams lytp = new FrameLayout.LayoutParams(width,height);
 //	    lytp.gravity = Gravity.CENTER;
@@ -314,9 +314,9 @@ public class AppActivity extends Cocos2dxActivity implements IActivity,OnClickLi
 	}
 
 	/**
-	 * ��ȡ�汾��
+	 * 锟斤拷取锟芥本锟斤拷
 	 * 
-	 * @return ��ǰӦ�õİ汾��
+	 * @return 锟斤拷前应锟矫的版本锟斤拷
 	 */
 	public String getVersion() {
 		try {
@@ -338,7 +338,7 @@ public class AppActivity extends Cocos2dxActivity implements IActivity,OnClickLi
 		if (event.getKeyCode() == KeyEvent.KEYCODE_BACK) {
 			if (event.getAction() == KeyEvent.ACTION_DOWN && event.getRepeatCount() == 0) {
 				if ((System.currentTimeMillis() - exitTime) > 2000) {
-					Toast.makeText(getApplicationContext(), "�ٰ�һ���˳�����", Toast.LENGTH_SHORT).show();
+					Toast.makeText(getApplicationContext(), "锟劫帮拷一锟斤拷锟剿筹拷锟斤拷锟斤拷", Toast.LENGTH_SHORT).show();
 					exitTime = System.currentTimeMillis();
 				} else {
 					finish();
@@ -353,8 +353,8 @@ public class AppActivity extends Cocos2dxActivity implements IActivity,OnClickLi
 	private static native boolean nativeIsLandScape();
 
 	private static native boolean nativeIsDebug();
-	public static native void openmapCallback();
-	public static native void openUserHomeCallback();
+	public static native void openmapCallback(int categoryType, String categoryID);
+	public static native void openUserHomeCallback(long userID, String name, String intro, String zone, String thumb, String img);
 	
 
 	public static AppActivity getAppActivity() {
@@ -364,7 +364,7 @@ public class AppActivity extends Cocos2dxActivity implements IActivity,OnClickLi
 	public void openWebview(String strUrl) {
 		// Log.v("TestJacky, openWebView);
 		final String _strUrl = strUrl;
-		this.runOnUiThread(new Runnable() {// �����߳�����ӱ�Ŀؼ�
+		this.runOnUiThread(new Runnable() {// 锟斤拷锟斤拷锟竭筹拷锟斤拷锟斤拷颖锟侥控硷拷
 			public void run() {
 
 				m_webLayout = new FrameLayout(app);
@@ -373,25 +373,25 @@ public class AppActivity extends Cocos2dxActivity implements IActivity,OnClickLi
 				Rect frame = new Rect();
 				getWindow().getDecorView().getWindowVisibleDisplayFrame(frame);
 
-				int width = frame.width(); // dm.widthPixels;//���
-				int height = frame.height(); // dm.heightPixels ;//�߶�
+				int width = frame.width(); // dm.widthPixels;//锟斤拷锟�
+				int height = frame.height(); // dm.heightPixels ;//锟竭讹拷
 				Log.i("qmap", "w = " + width + ",H = " + height + "///" + dm.widthPixels + "," + dm.heightPixels);
 				FrameLayout.LayoutParams lytp = new FrameLayout.LayoutParams(width, height);
 				lytp.gravity = Gravity.CENTER;
 				addContentView(m_webLayout, lytp);
 
-				// ��ʼ��webView
+				// 锟斤拷始锟斤拷webView
 				m_webView = new WebView(app);
-				// ����webView�ܹ�ִ��javascript�ű�
+				// 锟斤拷锟斤拷webView锟杰癸拷执锟斤拷javascript锟脚憋拷
 				m_webView.getSettings().setJavaScriptEnabled(true);
-				// ���ÿ���֧������
-				m_webView.getSettings().setSupportZoom(true);// ���ó������Ź���
+				// 锟斤拷锟矫匡拷锟斤拷支锟斤拷锟斤拷锟斤拷
+				m_webView.getSettings().setSupportZoom(true);// 锟斤拷锟矫筹拷锟斤拷锟斤拷锟脚癸拷锟斤拷
 				m_webView.getSettings().setBuiltInZoomControls(true);
-				// ����URL
+				// 锟斤拷锟斤拷URL
 				m_webView.loadUrl(_strUrl);
-				// ʹҳ���ý���
+				// 使页锟斤拷锟矫斤拷锟斤拷
 				m_webView.requestFocus();
-				// ���ҳ�������ӣ����ϣ��������Ӽ����ڵ�ǰbrowser����Ӧ
+				// 锟斤拷锟揭筹拷锟斤拷锟斤拷锟斤拷樱锟斤拷锟斤拷希锟斤拷锟斤拷锟斤拷锟斤拷蛹锟斤拷锟斤拷诘锟角�browser锟斤拷锟斤拷应
 				m_webView.setWebViewClient(new WebViewClient() {
 					public boolean shouldOverrideUrlLoading(WebView view, String url) {
 						if (url.indexOf("tel:") < 0) {
@@ -405,15 +405,15 @@ public class AppActivity extends Cocos2dxActivity implements IActivity,OnClickLi
 				// getWindow().getDecorView().getWindowVisibleDisplayFrame(frame);
 				// Log.i("qmap", frame.toString());
 
-				// ����ͼ
+				// 锟斤拷锟斤拷图
 				m_imageView = new ImageView(app);
 				m_imageView.setBackgroundColor(Color.WHITE);
 				// m_imageView.setImageResource(R.drawable.bkgnd);
 				m_imageView.setScaleType(ImageView.ScaleType.FIT_XY);
-				// ��ʼ�����Բ��� ����Ӱ�ť��webView
+				// 锟斤拷始锟斤拷锟斤拷锟皆诧拷锟斤拷 锟斤拷锟斤拷影锟脚ワ拷锟�webView
 				m_topLayout = new LinearLayout(app);
 				m_topLayout.setOrientation(LinearLayout.VERTICAL);
-				// ��ʼ�����ذ�ť
+				// 锟斤拷始锟斤拷锟斤拷锟截帮拷钮
 				m_backButton = new Button(app);
 				m_backButton.setBackgroundResource(R.drawable.webback);
 				// m_backButton.setPadding(10, 20, 0, 20);
@@ -437,15 +437,15 @@ public class AppActivity extends Cocos2dxActivity implements IActivity,OnClickLi
 				m_viewTitle.setLayoutParams(lytp1);
 				// m_backButton.setTop(top)
 
-				// ��image�ӵ���������
+				// 锟斤拷image锟接碉拷锟斤拷锟斤拷锟斤拷锟斤拷
 				m_webLayout.addView(m_imageView);
 
 				// m_viewTitle.addView(m_backButton);
-				// ��webView���뵽���Բ���
+				// 锟斤拷webView锟斤拷锟诫到锟斤拷锟皆诧拷锟斤拷
 				// m_topLayout.addView(m_viewTitle);
 				m_topLayout.addView(m_backButton);
 				m_topLayout.addView(m_webView);
-				// �ٰ����Բ��ּ��뵽������
+				// 锟劫帮拷锟斤拷锟皆诧拷锟街硷拷锟诫到锟斤拷锟斤拷锟斤拷
 				m_webLayout.addView(m_topLayout);
 			}
 		});
@@ -471,10 +471,10 @@ public class AppActivity extends Cocos2dxActivity implements IActivity,OnClickLi
 			return;
 		if (strName == "citymap")
 		{
-			AppActivity.openmapCallback();
+			AppActivity.openmapCallback(0, "");
 		}else if(strName == "userhome")
 		{
-			AppActivity.openUserHomeCallback();
+			AppActivity.openUserHomeCallback(1, "name", "intro", "zone", "thumb", "img");
 		}
 	}
 
