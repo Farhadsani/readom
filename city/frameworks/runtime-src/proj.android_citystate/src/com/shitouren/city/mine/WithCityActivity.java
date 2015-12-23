@@ -110,9 +110,9 @@ public class WithCityActivity extends Activity implements OnClickListener {
 			}
 		});
 	    
-//	    tvShareFriend =  (ImageView) view.findViewById(R.id.tvShareFriend);
-//	    tvShareWeiBo = (ImageView) view.findViewById(R.id.tvShareWeiBo);
-//	    tvShareQQ =  (ImageView) view.findViewById(R.id.tvShareQQ);
+	    tvShareFriend =  (ImageView) view.findViewById(R.id.tvShareFriend);
+	    tvShareWeiBo = (ImageView) view.findViewById(R.id.tvShareWeiBo);
+	    tvShareQQ =  (ImageView) view.findViewById(R.id.tvShareQQ);
 	    rlShareCancel = (RelativeLayout) view.findViewById(R.id.rlShareCancel);
 	    
 	    tvShareFriend.setOnClickListener(this);
@@ -151,26 +151,26 @@ public class WithCityActivity extends Activity implements OnClickListener {
 			 * PopupWindow选择键
 			 */
 			//分享朋友
-//		case R.id.tvShareFriend:
-//			tvShareFriend.setBackgroundResource(R.drawable.withcitysharepengyouquan);
-//			tvShareWeiBo.setBackgroundResource(R.drawable.withcityshareweiboweixuanzhong);
-//			tvShareQQ.setBackgroundResource(R.drawable.withcityshareqqkongjianweixuanzhong);
-//			rlShareCancel.setBackgroundResource(R.drawable.withcitysharequxiaoweixuanzhong);
-//			break;
-//			//分享微博
-//		case R.id.tvShareWeiBo:
-//			tvShareWeiBo.setBackgroundResource(R.drawable.withcityshareweibo);
-//			tvShareFriend.setBackgroundResource(R.drawable.withcitysharepengyouquanweixuanzhong);
-//			tvShareQQ.setBackgroundResource(R.drawable.withcityshareqqkongjianweixuanzhong);
-//			rlShareCancel.setBackgroundResource(R.drawable.withcitysharequxiaoweixuanzhong);
-//			break;
-//			//分享QQ
-//		case R.id.tvShareQQ:
-//			tvShareQQ.setBackgroundResource(R.drawable.withcityshareqqkongjian);
-//			tvShareFriend.setBackgroundResource(R.drawable.withcitysharepengyouquanweixuanzhong);
-//			tvShareWeiBo.setBackgroundResource(R.drawable.withcityshareweiboweixuanzhong);
-//			rlShareCancel.setBackgroundResource(R.drawable.withcitysharequxiaoweixuanzhong);
-//			break;
+		case R.id.tvShareFriend:
+			tvShareFriend.setBackgroundResource(R.drawable.withcitysharepengyouquan);
+			tvShareWeiBo.setBackgroundResource(R.drawable.withcityshareweiboweixuanzhong);
+			tvShareQQ.setBackgroundResource(R.drawable.withcityshareqqkongjianweixuanzhong);
+			rlShareCancel.setBackgroundResource(R.drawable.withcitysharequxiaoweixuanzhong);
+			break;
+			//分享微博
+		case R.id.tvShareWeiBo:
+			tvShareWeiBo.setBackgroundResource(R.drawable.withcityshareweibo);
+			tvShareFriend.setBackgroundResource(R.drawable.withcitysharepengyouquanweixuanzhong);
+			tvShareQQ.setBackgroundResource(R.drawable.withcityshareqqkongjianweixuanzhong);
+			rlShareCancel.setBackgroundResource(R.drawable.withcitysharequxiaoweixuanzhong);
+			break;
+			//分享QQ
+		case R.id.tvShareQQ:
+			tvShareQQ.setBackgroundResource(R.drawable.withcityshareqqkongjian);
+			tvShareFriend.setBackgroundResource(R.drawable.withcitysharepengyouquanweixuanzhong);
+			tvShareWeiBo.setBackgroundResource(R.drawable.withcityshareweiboweixuanzhong);
+			rlShareCancel.setBackgroundResource(R.drawable.withcitysharequxiaoweixuanzhong);
+			break;
 			//分享取消
 		case R.id.rlShareCancel:
 			rlShareCancel.setBackgroundResource(R.drawable.withcitysharequxiao);

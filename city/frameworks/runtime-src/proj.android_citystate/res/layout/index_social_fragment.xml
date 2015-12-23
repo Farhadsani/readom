@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/mainBackground"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <GridView
+            android:id="@+id/gvIndexSocial"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:background="@color/white"
+            android:horizontalSpacing="0dp"
+            android:numColumns="2"
+            android:verticalSpacing="0dp" >
+        </GridView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:text="热门标签" />
+
+        <com.shitouren.tagview.TagListView
+            xmlns:f="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/tagIndexSocial"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginLeft="10dp"
+            android:paddingBottom="@dimen/common_margin"
+            android:paddingTop="16.0dip"
+            f:horizontalSpacing="@dimen/tag_horizontal_spacing"
+            f:orientation="horizontal"
+            f:verticalSpacing="@dimen/tag_vertical_spacing" >
+        </com.shitouren.tagview.TagListView>
+    </LinearLayout>
+
+    <ViewStub
+        android:id="@+id/vsNoMessageIndexSocial"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout="@layout/no_message" />
+
+</RelativeLayout>

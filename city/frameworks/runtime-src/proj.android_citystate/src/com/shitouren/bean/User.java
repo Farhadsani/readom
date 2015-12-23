@@ -9,6 +9,90 @@ public class User {
 	private Integer type;
 	private String zone;
 
+	private String phone;
+	private String sex;
+	private String sexot;
+	private String love;
+	private String horo;
+
+	private String music;
+	private String hobby;
+
+	private String ssid;
+	private String thumblink;
+
+	public String getSsid() {
+		return ssid;
+	}
+
+	public void setSsid(String ssid) {
+		this.ssid = ssid;
+	}
+
+	public String getThumblink() {
+		return thumblink;
+	}
+
+	public void setThumblink(String thumblink) {
+		this.thumblink = thumblink;
+	}
+
+	public String getMusic() {
+		return music;
+	}
+
+	public void setMusic(String music) {
+		this.music = music;
+	}
+
+	public String getHobby() {
+		return hobby;
+	}
+
+	public void setHobby(String hobby) {
+		this.hobby = hobby;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public String getSex() {
+		return sex;
+	}
+
+	public void setSex(String sex) {
+		this.sex = sex;
+	}
+
+	public String getSexot() {
+		return sexot;
+	}
+
+	public void setSexot(String sexot) {
+		this.sexot = sexot;
+	}
+
+	public String getLove() {
+		return love;
+	}
+
+	public void setLove(String love) {
+		this.love = love;
+	}
+
+	public String getHoro() {
+		return horo;
+	}
+
+	public void setHoro(String horo) {
+		this.horo = horo;
+	}
+
 	public String getZone() {
 		return zone;
 	}

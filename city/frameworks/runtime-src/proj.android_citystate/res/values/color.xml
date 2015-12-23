@@ -4,20 +4,26 @@
     <color name="gray">#969697</color>
     <color name="less_gray">#B4B5B6</color>
     
-    
-    
     <color name="square_background"> #FCFEF2</color>
-    <color name="background_white"> #FFFFFF</color>
+    <color name="white">#FFFFFF</color>
     
     
     <color name="line_divider">#E1DFDF</color>
     <color name="yellow">#fddc43</color>
     <color name="textHint">#88ffffff</color>
+    <!-- 上拉下拉刷新背景色 -->
+    <color name="pullToRefreshBackColor">#FFFDEF</color>
+    <!-- 上拉下拉刷新字体颜色 -->
+    <color name="pullToRefreshTextColor">#6D6D6D</color>
     
-    <color name="mainTextSelected">#b87721</color>
-    <color name="mainTextNormal">#838992</color>
+    <color name="image_checked_bg">#66000000</color>
    
-    
-    
+    <color name="blue">#ff33b5e5</color>
+    <!-- 程序所有界面底部布局颜色值 -->
+    <color name="mainBackground">#fffef8</color>
+    <!-- TopBar背景色 -->
+    <color name="topBarBackground">#ffd731</color>
+    <!-- 黑色 -->
+    <color name="black">#000000</color>
    
 </resources>
