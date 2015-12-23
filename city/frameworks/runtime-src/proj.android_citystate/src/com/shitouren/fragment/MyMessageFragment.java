@@ -17,12 +17,14 @@ import com.google.gson.reflect.TypeToken;
 import com.shitouren.adapter.MyMessageAdapter;
 import com.shitouren.adapter.SquareAdapter;
 import com.shitouren.app.AppManager;
+import com.shitouren.app.GlobleApplication;
 import com.shitouren.bean.MyMessage;
 import com.shitouren.bean.SquareHot;
 import com.shitouren.citystate.R;
 import com.shitouren.entity.Contacts;
 import com.shitouren.listview.XListView;
 import com.shitouren.utils.Debuger;
+import com.shitouren.utils.Utils;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -37,26 +39,25 @@ public class MyMessageFragment extends BaseFragment {
 	private View view;
 	private XListView my_listview;
 	private ProgressBar my_pbar;
-	
+
 	private List<MyMessage> myMessageList;
 	private MyMessageAdapter myMessageAdapter;
-	
+
 	private AjaxParams params;
 	private FinalHttp finalhttp;
-	private String url = Contacts.BASE_URL+Contacts.MY_MESSAGE;
-	
-	//添加数据
+	private String url = Contacts.BASE_URL + Contacts.MY_MESSAGE;
+
+	// 添加数据
 	@Override
 	public void initData(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
-//		params = new AjaxParams();
-//		finalhttp = AppManager.getFinalHttp(getActivity());
-//		initmymessagedata();
-		
-	}
- 
+		// params = new AjaxParams();
+//		 finalhttp = AppManager.getFinalHttp(getActivity());
+//		 initmymessagedata();
 
-	//加载布局
+	}
+
+	// 加载布局
 	@Override
 	public View initView(LayoutInflater inflater) {
 		// TODO Auto-generated method stub
@@ -73,6 +74,7 @@ public class MyMessageFragment extends BaseFragment {
 		// TODO Auto-generated method stub
 		Map<String, Object> mymessagemap = new HashMap<String, Object>();
 		Map<String, Object> mymessagemap1 = new HashMap<String, Object>();
+		mymessagemap1.put("userid", "72431");
 		mymessagemap1.put("begin", 0);
 		mymessagemap1.put("limit", 10);
 		JSONObject obj = new JSONObject(mymessagemap1);
@@ -83,6 +85,14 @@ public class MyMessageFragment extends BaseFragment {
 
 		params.put("postData", object.toString());
 		
+		String verify = Utils.getStrFromShared(getActivity(), Contacts.COOKIE, "shitouren_verify");
+		String check = Utils.getStrFromShared(getActivity(), Contacts.COOKIE, "shitouren_check");
+		
+		Debuger.log_w("Set-Cookie", "verify:"+verify);
+		Debuger.log_w("cookie", "check:"+check);
+//		finalhttp.configCookieStore(GlobleApplication.cookieStore);
+		finalhttp.addHeader("Cookie","shitouren_ssid="+AppManager.getSSID(getActivity())+";"+"shitouren_verify="+verify+";"+"shitouren_check="+check);
+//		finalhttp.addHeader("Cookie","shitouren_check="+check,true);
 		finalhttp.post(url, params, new AjaxCallBack<String>() {
 
 			@Override
@@ -101,14 +111,16 @@ public class MyMessageFragment extends BaseFragment {
 					JSONObject obj = new JSONObject(t);
 					if ("ok".endsWith(obj.getString("msg"))) {
 						String res = obj.optString("res");
-						Type type = new TypeToken<List<MyMessage>>() {}.getType();
-						Gson gson = new Gson();
-						myMessageList = gson.fromJson(res, type);
-						
-						myMessageAdapter = new MyMessageAdapter(getActivity(), myMessageList);
-						
-						if (myMessageAdapter != null) {
-							my_listview.setAdapter(myMessageAdapter);
+						if(res!=null&&!res.equals("[]")){
+							Type type = new TypeToken<List<MyMessage>>() {}.getType();
+							Gson gson = new Gson();
+							myMessageList = gson.fromJson(res, type);
+							
+							myMessageAdapter = new MyMessageAdapter(getActivity(), myMessageList);
+							
+							if (myMessageAdapter != null) {
+								my_listview.setAdapter(myMessageAdapter);
+							}
 						}
 					}
 				} catch (JSONException e) {

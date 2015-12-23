@@ -132,7 +132,7 @@ public class MainActivity extends TabActivity implements OnClickListener {
 
 		messageIntent = new Intent(this, MessageActivity.class);
 
-		mineIntent = new Intent(this, IndexActivity.class);
+		mineIntent = new Intent(this, MineActivity.class);
 //		mineIntent = new Intent(this,
 //				IndexActivity.class);
 	}
@@ -149,7 +149,7 @@ public class MainActivity extends TabActivity implements OnClickListener {
 
 		mTabHost.addTab(buildTabSpec(TAB_TAG_MESSAGE, R.string.message, R.drawable.message_selector, messageIntent));
 
-		mTabHost.addTab(buildTabSpec(TAB_TAG_INDEX, R.string.mine, R.drawable.mine_selector, mineIntent));
+		mTabHost.addTab(buildTabSpec(TAB_TAB_MINE, R.string.mine, R.drawable.mine_selector, mineIntent));
 	}
 
 	private TabHost.TabSpec buildTabSpec(String tag, int resLabel, int resIcon, final Intent content) {
@@ -204,7 +204,7 @@ public class MainActivity extends TabActivity implements OnClickListener {
 			mTabHost.setCurrentTabByTag(TAB_TAG_INDEX);
 			imgIndex.setImageResource(R.drawable.index_selected);
 			tvIndex.setTextColor(COLOR2);
-			IndexActivity.printMsg("index");
+//			IndexActivity.printMsg("index");
 
 			break;
 
@@ -229,10 +229,10 @@ public class MainActivity extends TabActivity implements OnClickListener {
 
 			break;
 		case R.id.layoutMine:
-			mTabHost.setCurrentTabByTag(TAB_TAG_INDEX);
+			mTabHost.setCurrentTabByTag(TAB_TAB_MINE);
 			imgMine.setImageResource(R.drawable.mine_selected);
 			tvMine.setTextColor(COLOR2);
-			IndexActivity.printMsg("mine");
+//			IndexActivity.printMsg("mine");
 			break;
 		default:
 			break;

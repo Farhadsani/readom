@@ -1,5 +1,6 @@
 package com.shitouren.fragment;
 
+import java.io.Serializable;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,23 +14,29 @@ import com.shitouren.adapter.IndexSocialAdapter;
 import com.shitouren.app.AppManager;
 import com.shitouren.bean.IndexSocial;
 import com.shitouren.bean.TagBean;
+import com.shitouren.city.mine.MoreActivity;
 import com.shitouren.citystate.R;
 import com.shitouren.entity.Contacts;
 import com.shitouren.inter.IActivity;
 import com.shitouren.tagview.Tag;
 import com.shitouren.tagview.TagListView;
+import com.shitouren.utils.ActivityUtils;
 import com.shitouren.utils.Debuger;
 import com.shitouren.utils.HttpParamsUtil;
 import com.shitouren.utils.Utils;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewStub;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
+import android.widget.ProgressBar;
 import net.tsz.afinal.FinalHttp;
 import net.tsz.afinal.http.AjaxCallBack;
 import net.tsz.afinal.http.AjaxParams;
@@ -43,8 +50,11 @@ public class IndexConsumFragment extends Fragment implements IActivity {
 	private FinalHttp http;
 
 	private GridView gridView;
+	private ProgressBar bar;
 
 	private List<IndexSocial> socialLists;
+	List<IndexSocial> majorLists;
+	private List<IndexSocial> noneMajorLists;
 	private IndexSocialAdapter adapter;
 
 	@Override
@@ -56,6 +66,10 @@ public class IndexConsumFragment extends Fragment implements IActivity {
 		http = AppManager.getFinalHttp(ctx);
 
 		gridView = (GridView) view.findViewById(R.id.gvIndexConsum);
+		bar = (ProgressBar) view.findViewById(R.id.progressBar);
+		
+		majorLists = new ArrayList<IndexSocial>();
+		noneMajorLists = new ArrayList<IndexSocial>();
 
 		socialLists = new ArrayList<IndexSocial>();
 		IndexSocial indexSocial = new IndexSocial();
@@ -63,10 +77,11 @@ public class IndexConsumFragment extends Fragment implements IActivity {
 		indexSocial.setCname("Default");
 		indexSocial.setImglink("1");
 		indexSocial.setMajor(1);
-		socialLists.add(indexSocial);
+		majorLists.add(indexSocial);
 
 		params = HttpParamsUtil.getParams(ctx, params, 0, null);
 		initData();
+		setLisener();
 		return view;
 	}
 
@@ -88,6 +103,7 @@ public class IndexConsumFragment extends Fragment implements IActivity {
 			public void onSuccess(String t) {
 				super.onSuccess(t);
 				Debuger.log_w(TAG, t);
+				bar.setVisibility(View.GONE);
 				JSONObject jsonObject;
 				try {
 					jsonObject = new JSONObject(t);
@@ -98,25 +114,24 @@ public class IndexConsumFragment extends Fragment implements IActivity {
 						Gson gson = new Gson();
 						List<IndexSocial> lists = gson.fromJson(res, type);
 						socialLists.addAll(lists);
-						
-						List<IndexSocial> majorLists = new ArrayList<IndexSocial>();
-						for(int i=0;i<socialLists.size();i++){
-							if(1 == socialLists.get(i).getMajor()){
-								majorLists.add(socialLists.get(i));
+
+						for (int i = 0; i < lists.size(); i++) {
+							if (1 == lists.get(i).getMajor()) {
+								majorLists.add(lists.get(i));
+							}else{
+								noneMajorLists.add(lists.get(i));
 							}
 						}
-						
+
 						IndexSocial indexSocial = new IndexSocial();
 						indexSocial.setName("更多");
 						indexSocial.setCname("More");
 						indexSocial.setImglink("2");
 						indexSocial.setMajor(1);
 						majorLists.add(indexSocial);
-						
-						adapter = new IndexSocialAdapter(ctx, majorLists,true);
+
+						adapter = new IndexSocialAdapter(ctx, majorLists, true);
 						gridView.setAdapter(adapter);
-						
-						
 
 					}
 				} catch (JSONException e) {
@@ -128,10 +143,10 @@ public class IndexConsumFragment extends Fragment implements IActivity {
 			@Override
 			public void onFailure(Throwable t, int errorNo, String strMsg) {
 				super.onFailure(t, errorNo, strMsg);
+				bar.setVisibility(View.GONE);
 			}
 		});
 	}
-
 
 	@Override
 	public void initView() {
@@ -140,7 +155,17 @@ public class IndexConsumFragment extends Fragment implements IActivity {
 
 	@Override
 	public void setLisener() {
+		gridView.setOnItemClickListener(new OnItemClickListener() {
 
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+				if(position == (majorLists.size()-1)){
+					Intent intent = new Intent(getActivity(),MoreActivity.class);
+					intent.putExtra("list", (Serializable)noneMajorLists);
+					startActivity(intent);
+				}
+			}
+		});
 	}
 
 	@Override

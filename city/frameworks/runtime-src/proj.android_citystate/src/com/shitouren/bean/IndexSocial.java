@@ -1,6 +1,8 @@
 package com.shitouren.bean;
 
-public class IndexSocial {
+import java.io.Serializable;
+
+public class IndexSocial implements Serializable {
 	private int major;
 	private String cname;
 	private String hlimglink;
@@ -8,6 +10,15 @@ public class IndexSocial {
 	private String imglink;
 	private String type;
 	private int categoryid;
+	private int headerid;
+
+	public int getHeaderid() {
+		return headerid;
+	}
+
+	public void setHeaderid(int headerid) {
+		this.headerid = headerid;
+	}
 
 	public int getMajor() {
 		return major;

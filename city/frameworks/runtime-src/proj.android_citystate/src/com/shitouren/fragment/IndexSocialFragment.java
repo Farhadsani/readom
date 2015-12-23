@@ -31,6 +31,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewStub;
 import android.widget.GridView;
+import android.widget.ProgressBar;
 import net.tsz.afinal.FinalHttp;
 import net.tsz.afinal.http.AjaxCallBack;
 import net.tsz.afinal.http.AjaxParams;
@@ -46,6 +47,7 @@ public class IndexSocialFragment extends Fragment implements IActivity {
 	private GridView gridView;
 	private TagListView tagListView;
 	private ViewStub stub;
+	private ProgressBar bar;
 
 	private List<Tag> tagLists;
 	private List<TagBean> tagBeanLists;
@@ -64,6 +66,7 @@ public class IndexSocialFragment extends Fragment implements IActivity {
 		gridView = (GridView) view.findViewById(R.id.gvIndexSocial);
 		tagListView = (TagListView) view.findViewById(R.id.tagIndexSocial);
 		stub = (ViewStub) view.findViewById(R.id.vsNoMessageIndexSocial);
+		bar = (ProgressBar) view.findViewById(R.id.progressBar);
 
 		socialLists = new ArrayList<IndexSocial>();
 		IndexSocial indexSocial = new IndexSocial();
@@ -97,6 +100,7 @@ public class IndexSocialFragment extends Fragment implements IActivity {
 			public void onSuccess(String t) {
 				super.onSuccess(t);
 				Debuger.log_w(TAG, t);
+				bar.setVisibility(View.GONE);
 				JSONObject jsonObject;
 				try {
 					jsonObject = new JSONObject(t);
@@ -124,6 +128,7 @@ public class IndexSocialFragment extends Fragment implements IActivity {
 			@Override
 			public void onFailure(Throwable t, int errorNo, String strMsg) {
 				super.onFailure(t, errorNo, strMsg);
+				bar.setVisibility(View.GONE);
 			}
 		});
 	}

@@ -11,7 +11,7 @@ public class Contacts {
 	// 广场接口
 	public static final String SQUARE_HOT = "api/feed/hot";
 	// 消息接口
-	public static final String MY_MESSAGE = "api/messgae/user";
+	public static final String MY_MESSAGE = "api/message/user";
 	public static final String SYS_MESSAGE = "api/message/system";
 	// 用户接口
 	public static final String SIGNIN = "api/user/signin";

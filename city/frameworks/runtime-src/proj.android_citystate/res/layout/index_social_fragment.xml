@@ -24,16 +24,16 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:text="热门标签" />
+            android:text="热门标签"
+            android:textColor="@color/black" />
 
         <com.shitouren.tagview.TagListView
             xmlns:f="http://schemas.android.com/apk/res-auto"
             android:id="@+id/tagIndexSocial"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
             android:layout_marginLeft="10dp"
+            android:layout_weight="1"
             android:paddingBottom="@dimen/common_margin"
             android:paddingTop="16.0dip"
             f:horizontalSpacing="@dimen/tag_horizontal_spacing"
@@ -41,6 +41,12 @@
             f:verticalSpacing="@dimen/tag_vertical_spacing" >
         </com.shitouren.tagview.TagListView>
     </LinearLayout>
+
+    <include
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        layout="@layout/progressbar" />
 
     <ViewStub
         android:id="@+id/vsNoMessageIndexSocial"

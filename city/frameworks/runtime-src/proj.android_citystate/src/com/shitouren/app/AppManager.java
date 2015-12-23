@@ -51,6 +51,14 @@ public class AppManager {
 		}
 		return finalHttp;
 	}
+	public static FinalHttp getFinalHttp(Context context,String cookie){
+		if(finalHttp == null){
+			finalHttp = new FinalHttp();
+			finalHttp.addHeader("Cookie", "shitouren_ssid="+getSSID(context)+";"+cookie);
+			finalHttp.addHeader("User-Agent", "shitouren_qmap_android");
+		}
+		return finalHttp;
+	}
 
 	/**
 	 * ��һʵ��

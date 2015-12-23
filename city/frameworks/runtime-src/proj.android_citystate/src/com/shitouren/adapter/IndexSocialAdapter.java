@@ -106,16 +106,17 @@ public class IndexSocialAdapter extends BaseAdapter {
 					holder.ivTag.setImageBitmap(bp);
 				}
 			}
+			holder.tvTitle.setText(list.get(position).getCname());
+			holder.tvContent.setText(list.get(position).getName());
 		} else {
 			if (!TextUtils.isEmpty(list.get(position).getImglink())) {
 				bitmap.display(holder.ivTag, list.get(position).getImglink());
 			} else {
 				holder.ivTag.setImageBitmap(bp);
 			}
+			holder.tvTitle.setText(list.get(position).getName());
+			holder.tvContent.setText(list.get(position).getCname());
 		}
-
-		holder.tvTitle.setText(list.get(position).getName());
-		holder.tvContent.setText(list.get(position).getCname());
 
 		return convertView;
 	}

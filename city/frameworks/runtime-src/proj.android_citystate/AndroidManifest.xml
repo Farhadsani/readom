@@ -52,6 +52,7 @@
         <activity android:name="com.shitouren.citystate.StatementActivity" />
         <activity android:name="com.shitouren.citystate.NearbyActivity" />
         <activity android:name="com.shitouren.citystate.IndexSocialActivity" />
+        <activity android:name="com.shitouren.city.mine.MoreActivity" />
         <!-- 微信登录 -->
         <activity
             android:name=".wxapi.WXEntryActivity"

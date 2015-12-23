@@ -4,6 +4,7 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.http.client.CookieStore;
 import org.apache.http.cookie.Cookie;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONException;
@@ -163,8 +164,10 @@ public class LoginPhoneActivity extends Activity implements IActivity, OnClickLi
 					JSONObject jsonObject = new JSONObject(t);
 					Debuger.showToastShort(ctx, "登录成功!");
 					DefaultHttpClient client = (DefaultHttpClient) http.getHttpClient();
-					List<Cookie> cookies = client.getCookieStore().getCookies();
+					CookieStore cookieStore = client.getCookieStore();
+					List<Cookie> cookies = cookieStore.getCookies();
 
+					GlobleApplication.cookieStore = cookieStore;
 					for (int i = 0; i < cookies.size(); i++) {
 
 						Utils.saveStrInShared(ctx, Contacts.COOKIE, cookies.get(i).getName(),
