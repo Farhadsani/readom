@@ -2,10 +2,10 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:clipToPadding="true"
     android:background="@color/topBarBackground"
-    android:fitsSystemWindows="true" >
+    android:clipToPadding="true"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical" >
 
     <include
         android:layout_width="match_parent"
@@ -35,5 +35,11 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout="@layout/no_message" />
+
+    <include
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        layout="@layout/progressbar" />
 
 </LinearLayout>

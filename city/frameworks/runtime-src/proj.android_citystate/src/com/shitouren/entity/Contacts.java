@@ -7,7 +7,7 @@ public class Contacts {
 	public static final int LATEEST_PIC_NUM = 100;
 
 	///////////////////////////////// 接口/////////////////////////////////////////////
-	public static final String BASE_URL = "http://taiyuantest.shitouren.com/";
+	public static final String BASE_URL = "http://citystate.shitouren.com/";
 	// 广场接口
 	public static final String SQUARE_HOT = "api/feed/hot";
 	// 消息接口
@@ -21,6 +21,11 @@ public class Contacts {
 	public static final String SOCIAL_INDEX = "api/category/social/list";
 	public static final String SOCIAL_INDEX_TAG = "api/category/tag/list";
 	public static final String CONSUM_INDEX = "api/category/cost/list";
+	public static final String SQUARE_ATTENTION = "api/feed/follow";
+	public static final String ZAN_POST = "api/feed/like/post";//点赞
+	public static final String ZAN_DEL = "api/feed/like/del";//取消赞
+	public static final String COMMENT_LIST = "api/feed/comment/list";//评论列表
+	public static final String COMMENT_POST = "api/feed/comment/post";//发表评论
 
 	// 微信登录接口
 	public static final String APP_ID = "wxcee6a0851b3ea57f";

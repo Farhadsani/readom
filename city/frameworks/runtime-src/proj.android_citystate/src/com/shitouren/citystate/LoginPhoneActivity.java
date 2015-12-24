@@ -162,30 +162,43 @@ public class LoginPhoneActivity extends Activity implements IActivity, OnClickLi
 				Debuger.log_w(TAG, t);
 				try {
 					JSONObject jsonObject = new JSONObject(t);
-					Debuger.showToastShort(ctx, "登录成功!");
-					DefaultHttpClient client = (DefaultHttpClient) http.getHttpClient();
-					CookieStore cookieStore = client.getCookieStore();
-					List<Cookie> cookies = cookieStore.getCookies();
+					if (0 == jsonObject.getInt("ret")) {
+						Debuger.showToastShort(ctx, jsonObject.getString("msg"));
+						DefaultHttpClient client = (DefaultHttpClient) http.getHttpClient();
+						CookieStore cookieStore = client.getCookieStore();
+						List<Cookie> cookies = cookieStore.getCookies();
 
-					GlobleApplication.cookieStore = cookieStore;
-					for (int i = 0; i < cookies.size(); i++) {
+						GlobleApplication.cookieStore = cookieStore;
+						for (int i = 0; i < cookies.size(); i++) {
 
-						Utils.saveStrInShared(ctx, Contacts.COOKIE, cookies.get(i).getName(),
-								cookies.get(i).getValue());
+							Utils.saveStrInShared(ctx, Contacts.COOKIE, cookies.get(i).getName(),
+									cookies.get(i).getValue());
 
-						Debuger.log_w(TAG, "- domain " + cookies.get(i).getDomain());
-						Debuger.log_w(TAG, "- path " + cookies.get(i).getPath());
-						Debuger.log_w(TAG, "- value " + cookies.get(i).getValue());
-						Debuger.log_w(TAG, "- name " + cookies.get(i).getName());
-						Debuger.log_w(TAG, "- port " + cookies.get(i).getPorts());
-						Debuger.log_w(TAG, "- comment " + cookies.get(i).getComment());
-						Debuger.log_w(TAG, "- commenturl" + cookies.get(i).getCommentURL());
-						Debuger.log_w(TAG, "- all " + cookies.get(i).toString());
+							Debuger.log_w(TAG, "- domain " + cookies.get(i).getDomain());
+							Debuger.log_w(TAG, "- path " + cookies.get(i).getPath());
+							Debuger.log_w(TAG, "- value " + cookies.get(i).getValue());
+							Debuger.log_w(TAG, "- name " + cookies.get(i).getName());
+							Debuger.log_w(TAG, "- port " + cookies.get(i).getPorts());
+							Debuger.log_w(TAG, "- comment " + cookies.get(i).getComment());
+							Debuger.log_w(TAG, "- commenturl" + cookies.get(i).getCommentURL());
+							Debuger.log_w(TAG, "- all " + cookies.get(i).toString());
+						}
+
+						GlobleApplication.shitouren_check = Utils.getStrFromShared(ctx, Contacts.COOKIE,
+								"shitouren_check");
+						GlobleApplication.shitouren_verify = Utils.getStrFromShared(ctx, Contacts.COOKIE,
+								"shitouren_verify");
+
+						Debuger.log_w(TAG, "shitouren_check:"+GlobleApplication.shitouren_check);
+						Debuger.log_w(TAG, "shitouren_verify:"+GlobleApplication.shitouren_verify);
+						String res = jsonObject.optString("res");
+						Utils.saveStrInShared(ctx, Contacts.USER, Contacts.USER_RES, res);
+
+						ActivityUtils.startActivityAndFinish(LoginPhoneActivity.this, MainActivity.class);
+					} else {
+						Debuger.showToastShort(ctx, jsonObject.getString("msg"));
 					}
-					String res = jsonObject.optString("res");
-					Utils.saveStrInShared(ctx, Contacts.USER, Contacts.USER_RES, res);
 
-					ActivityUtils.startActivityAndFinish(LoginPhoneActivity.this, MainActivity.class);
 				} catch (JSONException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

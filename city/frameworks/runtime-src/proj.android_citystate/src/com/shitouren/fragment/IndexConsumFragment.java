@@ -79,7 +79,7 @@ public class IndexConsumFragment extends Fragment implements IActivity {
 		indexSocial.setMajor(1);
 		majorLists.add(indexSocial);
 
-		params = HttpParamsUtil.getParams(ctx, params, 0, null);
+		params = HttpParamsUtil.getParams(ctx, params,0,"");
 		initData();
 		setLisener();
 		return view;

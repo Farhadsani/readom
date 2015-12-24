@@ -238,27 +238,28 @@ public class Utils {
 		}
 		return time;
 	}
-
+	static LinearLayout ll = null;
 	public static void showNoMessage(View view, String info) {
-		if (view != null) {
-			LinearLayout ll = (LinearLayout) view.findViewById(R.id.llNoMessage);
-			ll.setPadding(ll.getPaddingLeft(), ll.getPaddingTop() + 500, ll.getPaddingRight(), ll.getPaddingBottom());
-
+		if (ll == null) {
+			ViewStub noDataViewStub = (ViewStub) view.findViewById(R.id.vsNoMessageAttention);
+			noDataViewStub.inflate();
+			ll = (LinearLayout) view.findViewById(R.id.llNoMessage);
+//			ll.setPadding(ll.getPaddingLeft(), ll.getPaddingTop() + 200, ll.getPaddingRight(), ll.getPaddingBottom());
 			TextView tv = (TextView) view.findViewById(R.id.tvNoMessage);
 			tv.setText(info);
+		} else {
+			ll.setVisibility(View.VISIBLE);
 		}
 	}
 
 	static PopupWindow popupWindow;
-	//个数为4或5的时候的布局
+	// 个数为4或5的时候的布局
 	static View viewShare;
 	static LinearLayout llShare;
 	static LinearLayout llAttention;
-	//个数为3时的布局
+	// 个数为3时的布局
 	static View viewShareApp;
 	static LinearLayout llShareApp;
-	
-	
 
 	public static void pop_Input(final Context context, int count) {
 		View view = View.inflate(context, R.layout.share, null);
@@ -269,37 +270,37 @@ public class Utils {
 			vsApp.inflate();
 			viewShareApp = view.findViewById(R.id.viewShareApp);
 			llShareApp = (LinearLayout) view.findViewById(R.id.llShareApp);
-			
+
 			viewShareApp.setOnClickListener(new OnClickListener() {
-				
+
 				@Override
 				public void onClick(View v) {
 					popupWindow.dismiss();
 				}
 			});
 			view.findViewById(R.id.friendShareApp).setOnClickListener(new OnClickListener() {
-				
+
 				@Override
 				public void onClick(View v) {
 					popupWindow.dismiss();
 				}
 			});
 			view.findViewById(R.id.weixinShareApp).setOnClickListener(new OnClickListener() {
-				
+
 				@Override
 				public void onClick(View v) {
 					popupWindow.dismiss();
 				}
 			});
 			view.findViewById(R.id.sinaShareApp).setOnClickListener(new OnClickListener() {
-				
+
 				@Override
 				public void onClick(View v) {
 					popupWindow.dismiss();
 				}
 			});
 			view.findViewById(R.id.btnCancelShareApp).setOnClickListener(new OnClickListener() {
-				
+
 				@Override
 				public void onClick(View v) {
 					popupWindow.dismiss();
@@ -311,9 +312,9 @@ public class Utils {
 			viewShare = view.findViewById(R.id.viewShare);
 			llShare = (LinearLayout) view.findViewById(R.id.llShare);
 			llAttention = (LinearLayout) view.findViewById(R.id.llAttention);
-			
+
 			llAttention.setVisibility(View.GONE);
-			
+
 			viewShare.setOnClickListener(new OnClickListener() {
 
 				@Override
@@ -336,7 +337,7 @@ public class Utils {
 				public void onClick(View v) {
 					Debuger.showToastShort(context, "微信朋友圈");
 					popupWindow.dismiss();
-					
+
 				}
 			});
 			view.findViewById(R.id.ivSina).setOnClickListener(new OnClickListener() {
@@ -361,7 +362,7 @@ public class Utils {
 			viewShare = view.findViewById(R.id.viewShare);
 			llShare = (LinearLayout) view.findViewById(R.id.llShare);
 			llAttention = (LinearLayout) view.findViewById(R.id.llAttention);
-			
+
 			viewShare.setOnClickListener(new OnClickListener() {
 
 				@Override
@@ -384,7 +385,7 @@ public class Utils {
 				public void onClick(View v) {
 					Debuger.showToastShort(context, "微信朋友圈");
 					popupWindow.dismiss();
-					
+
 				}
 			});
 			view.findViewById(R.id.ivSina).setOnClickListener(new OnClickListener() {
@@ -404,7 +405,7 @@ public class Utils {
 				}
 			});
 			view.findViewById(R.id.ivAttention).setOnClickListener(new OnClickListener() {
-				
+
 				@Override
 				public void onClick(View v) {
 					Debuger.showToastShort(context, "添加关注");
@@ -413,26 +414,25 @@ public class Utils {
 			});
 			break;
 		}
-		
-
-		
-
-		
 
 		if (popupWindow != null && popupWindow.isShowing()) {
 			return;
 		} else if (popupWindow != null && !popupWindow.isShowing()) {
-//			viewShare.startAnimation(AnimationUtils.loadAnimation(context, R.anim.alpha_in));
-//			llShare.startAnimation(AnimationUtils.loadAnimation(context, R.anim.pop_up));
+			// viewShare.startAnimation(AnimationUtils.loadAnimation(context,
+			// R.anim.alpha_in));
+			// llShare.startAnimation(AnimationUtils.loadAnimation(context,
+			// R.anim.pop_up));
 			popupWindow.showAtLocation(view, Gravity.BOTTOM, 0, 0);
 		} else {
 			popupWindow = new PopupWindow(view, LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
 			popupWindow.setFocusable(true);
 			popupWindow.setOutsideTouchable(true);
 			popupWindow.setBackgroundDrawable(new BitmapDrawable());
-//			viewShare.startAnimation(AnimationUtils.loadAnimation(context, R.anim.alpha_in));
-//			llShare.startAnimation(AnimationUtils.loadAnimation(context, R.anim.pop_up));
-//			popupWindow.setAnimationStyle(R.style.popWindowAnim);
+			// viewShare.startAnimation(AnimationUtils.loadAnimation(context,
+			// R.anim.alpha_in));
+			// llShare.startAnimation(AnimationUtils.loadAnimation(context,
+			// R.anim.pop_up));
+			// popupWindow.setAnimationStyle(R.style.popWindowAnim);
 			popupWindow.showAtLocation(view, Gravity.BOTTOM, 0, 0);
 			popupWindow.update();
 		}
@@ -440,11 +440,52 @@ public class Utils {
 	}
 	
 	
+
+	public static void loginPop(Context context) {
+		View view = View.inflate(context, R.layout.login_need, null);
+		LinearLayout all = (LinearLayout) view.findViewById(R.id.llAll);
+		LinearLayout cancel = (LinearLayout) view.findViewById(R.id.llCancel);
+		LinearLayout login = (LinearLayout) view.findViewById(R.id.llLogin);
+		all.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				popupWindow.dismiss();
+			}
+		});
+		cancel.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				popupWindow.dismiss();
+			}
+		});
+		login.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				popupWindow.dismiss();
+			}
+		});
+		if (popupWindow != null && popupWindow.isShowing()) {
+			return;
+		} else if (popupWindow != null && !popupWindow.isShowing()) {
+			popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
+		} else {
+			popupWindow = new PopupWindow(view, LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+			popupWindow.setFocusable(true);
+			popupWindow.setOutsideTouchable(true);
+			popupWindow.setBackgroundDrawable(new BitmapDrawable());
+			popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
+			popupWindow.update();
+		}
+	}
+
 	public static boolean isImage(String fileName) {
-        return fileName.endsWith(".jpg") || fileName.endsWith(".jpeg") || fileName.endsWith(".png");
-    }
-	
+		return fileName.endsWith(".jpg") || fileName.endsWith(".jpeg") || fileName.endsWith(".png");
+	}
+
 	public static boolean isSDcardOK() {
-        return Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED);
-    }
+		return Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED);
+	}
 }

@@ -3,10 +3,17 @@ package com.shitouren.adapter;
 import java.io.Serializable;
 import java.util.List;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import com.shitouren.app.AppManager;
 import com.shitouren.bean.SquareHot;
+import com.shitouren.city.mine.CommentActivity;
 import com.shitouren.citystate.ImageDetailActivity;
 import com.shitouren.citystate.R;
+import com.shitouren.entity.Contacts;
 import com.shitouren.utils.Debuger;
+import com.shitouren.utils.HttpParamsUtil;
 import com.shitouren.utils.Utils;
 import com.shitouren.view.CircularImage;
 import com.shitouren.view.MyGallery;
@@ -28,22 +35,38 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import net.tsz.afinal.FinalBitmap;
+import net.tsz.afinal.FinalHttp;
+import net.tsz.afinal.http.AjaxCallBack;
+import net.tsz.afinal.http.AjaxParams;
 
 public class SquareAdapter extends BaseAdapter {
+	private static final String TAG = "SquareAdapter";
 
 	private LayoutInflater inflater;
 	private List<SquareHot> list;
 	private Context context;
 	private FinalBitmap bitmap;
 
-	public SquareAdapter(Context context, List<SquareHot> list) {
+	private AjaxParams params;
+	private FinalHttp http;
+	private ProgressBar bar;
+
+	boolean isZan;
+	boolean isCancelZan;
+
+	public SquareAdapter(Context context, List<SquareHot> list, ProgressBar bar) {
 		this.inflater = LayoutInflater.from(context);
 		this.context = context;
 		this.list = list;
+		this.bar = bar;
 		bitmap = FinalBitmap.create(context);
+
+		params = new AjaxParams();
+		http = AppManager.getFinalHttp(context);
 	}
 
 	@Override
@@ -94,13 +117,13 @@ public class SquareAdapter extends BaseAdapter {
 			// 更多
 			holder.llMore = (LinearLayout) convertView.findViewById(R.id.llMoreSquare);
 			holder.imgMore = (ImageView) convertView.findViewById(R.id.imgMoreSquare);
-			
+
 			holder.gyPic.setOnItemSelectedListener(new OnItemSelectedListener() {
 
 				@Override
 				public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 					Debuger.log_w("xyz:", "onItemSelected");
-					holder.tvCurPicIndex.setText(position+1+"");
+					holder.tvCurPicIndex.setText(position + 1 + "");
 				}
 
 				@Override
@@ -108,33 +131,45 @@ public class SquareAdapter extends BaseAdapter {
 					Debuger.log_w("xyz:", "onNothingSelected");
 				}
 			});
-			
+
 			convertView.setTag(holder);
 		} else {
 			holder = (ViewHolder) convertView.getTag();
 		}
-
-		holder.llMore.setOnClickListener(new OnClickListener() {
+		
+		holder.llZan.setOnClickListener(new MyOnClickListener(holder, position));
+		
+		holder.llComment.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
-				Utils.pop_Input(context,3);
+				Intent inetnt = new Intent(context,CommentActivity.class);
+				inetnt.putExtra("feedid", list.get(position).getFeedid());
+				context.startActivity(inetnt);
 			}
 		});
-		
+
+		holder.llMore.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				Utils.pop_Input(context, 4);
+			}
+		});
+
 		holder.gyPic.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int arg0, long id) {
-				Debuger.log_w("setOnItemClickListener:", "position:"+position);
-				
-				Intent intent = new Intent(context,ImageDetailActivity.class);
-				intent.putExtra("links", (Serializable)list.get(position).getImglink());
+				Debuger.log_w("setOnItemClickListener:", "position:" + position);
+
+				Intent intent = new Intent(context, ImageDetailActivity.class);
+				intent.putExtra("links", (Serializable) list.get(position).getImglink());
 				intent.putExtra("id", arg0);
 				context.startActivity(intent);
 			}
 		});
-		
+
 		if ((1 == list.size()) && !list.get(position).isLoad()) {
 
 		} else {
@@ -145,27 +180,26 @@ public class SquareAdapter extends BaseAdapter {
 
 			if (list.get(position).getImglink().size() > 0) {
 				holder.rlPic.setVisibility(View.VISIBLE);
-				
-				ImageAdapter adapter = new ImageAdapter(list.get(position).getImglink(),context);
+
+				ImageAdapter adapter = new ImageAdapter(list.get(position).getImglink(), context);
 				holder.gyPic.setAdapter(adapter);
 				StringBuilder builder = new StringBuilder();
 				for (String s : list.get(position).getTags()) {
 					builder.append(s);
 					builder.append(" ");
 				}
-				if(holder.tvTag == null || builder == null){
+				if (holder.tvTag == null || builder == null) {
 					Debuger.log_w("holder.tvTag|builder is null");
-				}else{
+				} else {
 					holder.tvTag.setText(builder.toString());
 				}
-				
 
 				holder.tvCurPicIndex.setText("1");
 				holder.tvPicSum.setText(list.get(position).getImglink().size() + "");
 			} else {
 				holder.rlPic.setVisibility(View.GONE);
 			}
-			
+
 			holder.tvContent.setText(list.get(position).getContent());
 
 			if (list.get(position).getPlace().size() > 0) {
@@ -236,6 +270,111 @@ public class SquareAdapter extends BaseAdapter {
 
 		LinearLayout llMore;
 		ImageView imgMore;
+	}
+
+	class MyOnClickListener implements OnClickListener {
+		ViewHolder holder;
+		int position;
+
+		public MyOnClickListener(ViewHolder holder, int position) {
+			this.holder = holder;
+			this.position = position;
+		}
+
+		@Override
+		public void onClick(View v) {
+			if (0 != list.get(position).getLiked()) {
+				Debuger.log_w(TAG, "cancelZan");
+				cancelZan();
+			} else {
+				Debuger.log_w(TAG, "zan");
+				zan();
+			}
+		}
+
+		private void zan() {
+			params = HttpParamsUtil.getParams(context, params, 0, "feedid", list.get(position).getFeedid() + "");
+			http.post(Contacts.BASE_URL + Contacts.ZAN_POST, params, new AjaxCallBack<String>() {
+				@Override
+				public void onStart() {
+					super.onStart();
+					bar.setVisibility(View.VISIBLE);
+				}
+
+				@Override
+				public void onSuccess(String t) {
+					super.onSuccess(t);
+					bar.setVisibility(View.GONE);
+					Debuger.log_w(TAG, t);
+					try {
+						JSONObject jsonObject = new JSONObject(t);
+						if (0 == jsonObject.getInt("ret")) {
+							isZan = true;
+							holder.imgZan.setImageResource(R.drawable.zan_selected);
+							int zan = Integer.valueOf(holder.tvZan.getText().toString().trim()) + 1;
+							Debuger.log_w(TAG, zan + "");
+							holder.tvZan.setText(zan + "");
+							list.get(position).setLikecount(zan);
+							list.get(position).setLiked(1);
+						} else if (1 == jsonObject.getInt("ret")) {
+							Debuger.showToastShort(context, "已经赞过!");
+						} else {
+							Utils.loginPop(context);
+						}
+					} catch (JSONException e) {
+						e.printStackTrace();
+					}
+
+				}
+
+				@Override
+				public void onFailure(Throwable t, int errorNo, String strMsg) {
+					super.onFailure(t, errorNo, strMsg);
+					bar.setVisibility(View.GONE);
+				}
+			});
+		}
+
+		private void cancelZan() {
+			params = HttpParamsUtil.getParams(context, params, 0, "feedid", list.get(position).getFeedid() + "");
+			http.post(Contacts.BASE_URL + Contacts.ZAN_DEL, params, new AjaxCallBack<String>() {
+				@Override
+				public void onStart() {
+					super.onStart();
+					bar.setVisibility(View.VISIBLE);
+				}
+
+				@Override
+				public void onSuccess(String t) {
+					super.onSuccess(t);
+					bar.setVisibility(View.GONE);
+					Debuger.log_w(TAG, t);
+					try {
+						JSONObject jsonObject = new JSONObject(t);
+						if (0 == jsonObject.getInt("ret")) {
+							holder.imgZan.setImageResource(R.drawable.zan_normal);
+							int zan = Integer.valueOf(holder.tvZan.getText().toString().trim()) - 1;
+							Debuger.log_w(TAG, zan + "");
+							holder.tvZan.setText(zan + "");
+							list.get(position).setLikecount(zan);
+							list.get(position).setLiked(0);
+						} else {
+							Utils.loginPop(context);
+						}
+					} catch (JSONException e) {
+						e.printStackTrace();
+					}
+
+				}
+
+				@Override
+				public void onFailure(Throwable t, int errorNo, String strMsg) {
+					super.onFailure(t, errorNo, strMsg);
+					bar.setVisibility(View.GONE);
+				}
+			});
+		}
+
 	}
 
 }

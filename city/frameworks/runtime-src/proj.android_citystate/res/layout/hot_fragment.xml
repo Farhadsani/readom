@@ -10,16 +10,16 @@
         android:id="@+id/listviewHotFragment"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
+        android:background="@color/pullToRefreshBackColor"
         android:cacheColorHint="#00000000"
         android:clickable="true"
         android:divider="@null"
         android:focusable="true"
-        android:background="@color/pullToRefreshBackColor"
         android:listSelector="@android:color/transparent"
         android:scrollbars="none"
         ptr:ptrAnimationStyle="flip"
-        ptr:ptrRefreshableViewBackground="@color/pullToRefreshBackColor"
-        ptr:ptrHeaderTextColor="@color/pullToRefreshTextColor" >
+        ptr:ptrHeaderTextColor="@color/pullToRefreshTextColor"
+        ptr:ptrRefreshableViewBackground="@color/pullToRefreshBackColor" >
     </com.handmark.pulltorefresh.library.PullToRefreshListView>
 
     <ViewStub
@@ -28,5 +28,11 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout="@layout/no_message" />
+
+    <include
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        layout="@layout/progressbar" />
 
 </RelativeLayout>

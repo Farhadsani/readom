@@ -21,6 +21,8 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadFactory;
 
+import com.shitouren.utils.Debuger;
+
 import net.tsz.afinal.bitmap.core.BitmapCache;
 import net.tsz.afinal.bitmap.core.BitmapDisplayConfig;
 import net.tsz.afinal.bitmap.core.BitmapProcess;
@@ -342,8 +344,10 @@ public class FinalBitmap {
 	
 		if (bitmap != null) {
 			if(imageView instanceof ImageView){
+				Debuger.log_w("imageview", "is imageview");
 				((ImageView)imageView).setImageBitmap(bitmap);
 			}else{
+				Debuger.log_w("imageview", "is not imageview");
 				imageView.setBackgroundDrawable(new BitmapDrawable(bitmap));
 			}
 			

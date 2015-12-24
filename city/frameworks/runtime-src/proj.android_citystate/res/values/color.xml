@@ -25,5 +25,6 @@
     <color name="topBarBackground">#ffd731</color>
     <!-- 黑色 -->
     <color name="black">#000000</color>
+    <color name="white_transparent_88">#88ffffff</color>
    
 </resources>

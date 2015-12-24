@@ -76,7 +76,7 @@ public class IndexSocialFragment extends Fragment implements IActivity {
 		
 		tagLists = new ArrayList<Tag>();
 
-		params = HttpParamsUtil.getParams(ctx, params, 0, null);
+		params = HttpParamsUtil.getParams(ctx, params, 0, "");
 		initData();
 		initTag();
 		return view;

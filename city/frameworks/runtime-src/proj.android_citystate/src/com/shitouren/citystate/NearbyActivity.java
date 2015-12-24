@@ -40,6 +40,7 @@ import android.view.ViewStub;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import net.tsz.afinal.FinalHttp;
@@ -64,6 +65,7 @@ public class NearbyActivity extends Activity implements IActivity {
 	private PullToRefreshListView pullToRefreshListView;
 	private ViewStub stub;
 	private View view;
+	private ProgressBar bar;
 	//////////////////////// 数据区域///////////////////////////////////////
 	private SquareAdapter adapter;
 	private List<SquareHot> squareHotList;
@@ -81,7 +83,7 @@ public class NearbyActivity extends Activity implements IActivity {
 		public void handleMessage(android.os.Message msg) {
 			switch (msg.what) {
 			case FIRST_LOAD:
-				adapter = new SquareAdapter(ctx, squareHotList);
+				adapter = new SquareAdapter(ctx, squareHotList,bar);
 				pullToRefreshListView.setAdapter(adapter);
 				break;
 			}
@@ -142,6 +144,7 @@ public class NearbyActivity extends Activity implements IActivity {
 		pullToRefreshListView.setMode(Mode.BOTH);
 
 		stub = (ViewStub) findViewById(R.id.vsNoMessageNearBy);
+		bar = (ProgressBar) findViewById(R.id.progressBar);
 
 		ILoadingLayout startLabels = pullToRefreshListView.getLoadingLayoutProxy(true, false);
 		startLabels.setPullLabel("下拉可以刷新");// 刚下拉时，显示的提示
@@ -191,6 +194,7 @@ public class NearbyActivity extends Activity implements IActivity {
 				idx = HttpParamsUtil.incrementIdx(idx);
 				// 刷新控件停止
 				pullToRefreshListView.onRefreshComplete();
+				bar.setVisibility(View.GONE);
 
 				SquareParser parser = new SquareParser();
 
@@ -227,6 +231,7 @@ public class NearbyActivity extends Activity implements IActivity {
 				idx = HttpParamsUtil.incrementIdx(idx);
 				Debuger.log_w("onFailure", strMsg);
 				pullToRefreshListView.onRefreshComplete();
+				bar.setVisibility(View.GONE);
 				Utils.showNoMessage(stub, "网络异常");
 				super.onFailure(t, errorNo, strMsg);
 			}
@@ -290,7 +295,7 @@ public class NearbyActivity extends Activity implements IActivity {
 	private void setAdapter() {
 		if (0x1 == refresh) {
 			Debuger.log_w(TAG, "new Adapter");
-			adapter = new SquareAdapter(ctx, squareHotList);
+			adapter = new SquareAdapter(ctx, squareHotList,bar);
 			pullToRefreshListView.setAdapter(adapter);
 		} else {
 			Debuger.log_w(TAG, "adapter.notifyDataSetChanged");
