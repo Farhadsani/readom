@@ -12,7 +12,7 @@ QMapGlobal.isLogin = false
 QMapGlobal.cityID = 140100                -- 当前城市ID
 QMapGlobal.cityName = "taiyuan"       -- 当前城市的名称
 QMapGlobal.cityShowName = "太原"      -- 当前城市显示名称
-QMapGlobal.serverUrl = "http://taiyuantest.shitouren.com/" --太原测试服务器
+QMapGlobal.serverUrl = "http://citystate.shitouren.com/" --太原测试服务器
 QMapGlobal.cityTColor = "D4B762FF"
 QMapGlobal.cityBColor = "D4B762FF"
 
