@@ -75,11 +75,13 @@ endif
 
 include $(BUILD_SHARED_LIBRARY)
 
+#$(call import-add-path, /web/shitouren-citystate-client/city/frameworks/cocos2d-x/cocos)
+
 $(call import-module, scripting/lua-bindings/proj.android)
 
-$(call import-add-path, $(LOCAL_PATH)/../../Classes)
-$(call import-add-path, $(LOCAL_PATH)/../../proj.android)
-#$(call import-add-path, $(LOCAL_PATH)/../../../cocos2d-x/external/lua/luajit/include)
+$(call import-add-path, /web/shitouren-citystate-client/city/frameworks/runtime-src/Classes)
+$(call import-add-path, /web/shitouren-citystate-client/city/frameworks/runtime-src/proj.android)
+#$(call import-add-path, /web/shitouren-citystate-client/city/frameworks/cocos2d-x/external/lua/luajit/include)
 
 $(call import-module, quick-src/lua_extensions)
 $(call import-module, quick-src/extra)
