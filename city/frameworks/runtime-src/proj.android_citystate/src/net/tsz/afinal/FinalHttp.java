@@ -18,7 +18,9 @@ package net.tsz.afinal;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
@@ -82,6 +84,7 @@ public class FinalHttp {
     private String charset = "utf-8";
     
     private final Map<String, String> clientHeaderMap;
+    private final List<String> clientHeaderList;
     
     private static final ThreadFactory  sThreadFactory = new ThreadFactory() {
         private final AtomicInteger mCount = new AtomicInteger(1);
@@ -125,6 +128,10 @@ public class FinalHttp {
                 	Debuger.logW("xyz:", clientHeaderMap.get(header));
                     request.addHeader(header, clientHeaderMap.get(header));
                 }
+                for (int i=0;i<clientHeaderList.size();i++) {
+                	request.addHeader("Cookie", clientHeaderList.get(i));
+                }
+                
             }
         });
 
@@ -149,6 +156,7 @@ public class FinalHttp {
         httpClient.setHttpRequestRetryHandler(new RetryHandler(maxRetries));
 
         clientHeaderMap = new HashMap<String, String>();
+        clientHeaderList = new ArrayList<String>();
         
     }
 
@@ -210,6 +218,20 @@ public class FinalHttp {
     */
     public void addHeader(String header, String value) {
         clientHeaderMap.put(header, value);
+    }
+    /**
+     * 添加http请求头
+     * @param header
+     * @param value
+     * @param flag为true使用list集合添加头信息，防止map去重
+     */
+    public void addHeader(String header, String value,boolean flag) {
+    	if(flag){
+    		clientHeaderList.add(value);
+    	}else{
+    		clientHeaderMap.put(header, value);
+    	}
+    	
     }
 
     

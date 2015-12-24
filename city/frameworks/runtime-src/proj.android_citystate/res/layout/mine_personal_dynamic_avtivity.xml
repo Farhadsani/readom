@@ -6,5 +6,4 @@
     <include layout="@layout/top_bar_layout"
         android:background="#ffd731"/>
 
-    <include layout="@layout/mine_two_view"/>
 </LinearLayout>

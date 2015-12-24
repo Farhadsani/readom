@@ -5,18 +5,10 @@
     android:background="#ffffff"
     android:orientation="vertical" >
 
-    <RelativeLayout
+    <include
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="#FBD635" >
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="指数"
-            android:textColor="@android:color/black" />
-    </RelativeLayout>
+        android:layout_height="@dimen/topBarLayoutHeight"
+        layout="@layout/top_bar_layout" />
 
     <TextView
         android:id="@+id/tv"

@@ -31,7 +31,8 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:visibility="gone" />
+                android:visibility="gone"
+                />
 
             <LinearLayout
                 android:id="@+id/mainbottom"
@@ -73,14 +74,14 @@
                             android:id="@+id/imgSquare"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/square_normal" />
+                            android:src="@drawable/square_selected" />
 
                         <TextView
                             android:id="@+id/tvSquare"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/square"
-                            android:textColor="@color/mainTextNormal"
+                            android:textColor="#b87721"
                             android:textSize="12sp"
                             android:visibility="visible" />
                     </LinearLayout>
@@ -145,14 +146,14 @@
                             android:id="@+id/imgMessage"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/message_normal" />
+                            android:src="@drawable/message_selected" />
 
                         <TextView
                             android:id="@+id/tvMessage"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/message"
-                            android:textColor="@color/mainTextNormal"
+                            android:textColor="#b87721"
                             android:textSize="12sp"
                             android:visibility="visible" />
                     </LinearLayout>
@@ -172,14 +173,14 @@
                             android:id="@+id/imgMine"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/mine_normal" />
+                            android:src="@drawable/mine_selected" />
 
                         <TextView
                             android:id="@+id/tvMine"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/mine"
-                            android:textColor="@color/mainTextNormal"
+                            android:textColor="#b87721"
                             android:textSize="12sp"
                             android:visibility="visible" />
                     </LinearLayout>

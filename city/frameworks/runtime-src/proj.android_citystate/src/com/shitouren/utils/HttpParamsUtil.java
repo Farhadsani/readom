@@ -6,6 +6,8 @@ import java.util.Map;
 
 import org.json.JSONObject;
 
+import com.google.gson.JsonObject;
+
 import android.content.Context;
 import net.tsz.afinal.http.AjaxParams;
 
@@ -27,13 +29,19 @@ public class HttpParamsUtil {
 		map.put("idx", idx);
 		map.put("ver", Utils.getApkVersionName(context));
 		
-		Map<String,Object> paramsMap = new HashMap<String,Object>();
-		for(int i=0;i<lists.size();i = i+2){
-			paramsMap.put(lists.get(i), lists.get(i+1));
+		JSONObject jsonObject;
+		if(lists!=null){
+			Map<String,Object> paramsMap = new HashMap<String,Object>();
+			for(int i=0;i<lists.size();i = i+2){
+				paramsMap.put(lists.get(i), lists.get(i+1));
+			}
+			
+			jsonObject = new JSONObject(paramsMap);
+		}else{
+			jsonObject = new JSONObject();
 		}
-		JSONObject jsonObject = new JSONObject(paramsMap);
-		map.put("params", jsonObject);
 		
+		map.put("params", jsonObject);
 		JSONObject object = new JSONObject(map);
 		
 		params.put("postData", object.toString());

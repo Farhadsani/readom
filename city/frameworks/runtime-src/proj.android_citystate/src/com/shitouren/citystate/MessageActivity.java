@@ -9,6 +9,7 @@ import com.shitouren.utils.Debuger;
 import com.shitouren.utils.Utils;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.opengl.Matrix;
 import android.os.Bundle;
@@ -28,7 +29,7 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 
 public class MessageActivity extends FragmentActivity implements OnClickListener {
-	
+	private static final String TAG = "MessageActivity";
 
 	/**
 	 * 四个导航
@@ -60,6 +61,36 @@ public class MessageActivity extends FragmentActivity implements OnClickListener
 		//初始化
 		
 		initview();
+	}
+	@Override
+	protected void onStart() {
+		super.onStart();
+		Debuger.log_w(TAG, "onStart");
+	}
+	@Override
+	protected void onRestart() {
+		super.onRestart();Debuger.log_w(TAG, "onRestart");
+	}
+	@Override
+	protected void onResume() {
+		super.onResume();Debuger.log_w(TAG, "onResume");
+	}
+	@Override
+	protected void onPause() {
+		super.onPause();Debuger.log_w(TAG, "onPause");
+	}
+	@Override
+	protected void onStop() {
+		super.onStop();Debuger.log_w(TAG, "onStop");
+	}
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();Debuger.log_w(TAG, "onDestroy");
+	}
+	@Override
+	protected void onNewIntent(Intent intent) {
+		super.onNewIntent(intent);
+		Debuger.log_w(TAG, "onNewIntent");
 	}
 
 
@@ -174,20 +205,36 @@ public class MessageActivity extends FragmentActivity implements OnClickListener
 	@Override
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
+//		iv_mymessage.setBackgroundResource(R.color.background_white);
+//		iv_petmessage.setBackgroundResource(R.color.background_white);
+//		iv_myhelp.setBackgroundResource(R.color.background_white);
+//		iv_sysmessage.setBackgroundResource(R.color.background_white);
 		
 		
 		switch (v.getId()) {
 		case R.id.tv_my_message:
+//			iv_mymessage.setBackgroundResource(R.drawable.horital_yellow_line);
 			messagePager.setCurrentItem(0);
+//			myMessage = new MyMessageFragment();
+//			getSupportFragmentManager().beginTransaction().replace(R.id.message_content, myMessage).commit();
 			break;
 		case R.id.tv_pet_message:
+//			iv_petmessage.setBackgroundResource(R.drawable.horital_yellow_line);
 			messagePager.setCurrentItem(1);
+//			petMessage = new PetMessageFragment();
+//			getSupportFragmentManager().beginTransaction().replace(R.id.message_content, petMessage).commit();
 			break;
 		case R.id.tv_my_help:
+//			iv_myhelp.setBackgroundResource(R.drawable.horital_yellow_line);
 			messagePager.setCurrentItem(2);
+//			myHelp = new MyHelpFragment();
+//			getSupportFragmentManager().beginTransaction().replace(R.id.message_content, myHelp).commit();
 			break;
 		case R.id.tv_sys_message:
+//			iv_sysmessage.setBackgroundResource(R.drawable.horital_yellow_line);
 			messagePager.setCurrentItem(3);
+//			sysMessage = new SysMessageFragment();
+//			getSupportFragmentManager().beginTransaction().replace(R.id.message_content, sysMessage).commit();
 			break;
 
 		default:
@@ -205,19 +252,26 @@ public class MessageActivity extends FragmentActivity implements OnClickListener
 		@Override
 		public Fragment getItem(int position) {
 			// TODO Auto-generated method stub
-			iv_mymessage.setBackgroundResource(R.color.background_white);
+			iv_mymessage.setBackgroundResource(R.color.white);
+//			iv_petmessage.setBackgroundResource(R.color.background_white);
+//			iv_myhelp.setBackgroundResource(R.color.background_white);
+//			iv_sysmessage.setBackgroundResource(R.color.background_white);
 			Fragment fragment = null;
 			switch (position) {
 			case 0:
+//				iv_mymessage.setBackgroundResource(R.drawable.horital_yellow_line);
 				fragment = new MyMessageFragment();
 				break;
 			case 1:
+//				iv_mymessage.setBackgroundResource(R.drawable.horital_yellow_line);
 				fragment = new PetMessageFragment();
 				break;
 			case 2:
+//				iv_mymessage.setBackgroundResource(R.drawable.horital_yellow_line);
 				fragment = new MyHelpFragment();
 				break;
 			case 3:
+//				iv_mymessage.setBackgroundResource(R.drawable.horital_yellow_line);
 				fragment = new SysMessageFragment();
 				break;
 

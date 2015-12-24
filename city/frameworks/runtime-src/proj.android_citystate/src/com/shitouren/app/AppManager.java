@@ -27,7 +27,7 @@ public class AppManager {
 	
 	
 	
-	private static  String getSSID(Context context){
+	public static  String getSSID(Context context){
 		final TelephonyManager tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
 
 		tmDevice = "" + tm.getDeviceId();
@@ -47,6 +47,14 @@ public class AppManager {
 		if(finalHttp == null){
 			finalHttp = new FinalHttp();
 			finalHttp.addHeader("Cookie", "shitouren_ssid="+getSSID(context));
+			finalHttp.addHeader("User-Agent", "shitouren_qmap_android");
+		}
+		return finalHttp;
+	}
+	public static FinalHttp getFinalHttp(Context context,String cookie){
+		if(finalHttp == null){
+			finalHttp = new FinalHttp();
+			finalHttp.addHeader("Cookie", "shitouren_ssid="+getSSID(context)+";"+cookie);
 			finalHttp.addHeader("User-Agent", "shitouren_qmap_android");
 		}
 		return finalHttp;

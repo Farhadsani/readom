@@ -7,7 +7,6 @@
 package com.shitouren.listview;
 
 
-
 import com.shitouren.citystate.R;
 
 import android.content.Context;

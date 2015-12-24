@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <ViewStub
+        android:id="@+id/vsShareContent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout="@layout/share_content" />
+
+    <ViewStub
+        android:id="@+id/vsShareApp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout="@layout/share_app" />
+
+</LinearLayout>

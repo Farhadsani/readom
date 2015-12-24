@@ -1,3 +1,5 @@
+bin/
+gen/
 ShitourenApp/runtime/
 *.DS_Store
 .cproject

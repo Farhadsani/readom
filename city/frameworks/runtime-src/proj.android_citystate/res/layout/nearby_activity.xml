@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:clipToPadding="true"
+    android:background="@color/topBarBackground"
+    android:fitsSystemWindows="true" >
+
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/topBarLayoutHeight"
+        layout="@layout/top_bar_layout" />
+
+    <com.handmark.pulltorefresh.library.PullToRefreshListView
+        xmlns:ptr="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/listviewNearBy"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@color/pullToRefreshBackColor"
+        android:cacheColorHint="#00000000"
+        android:clickable="true"
+        android:divider="@null"
+        android:focusable="true"
+        android:listSelector="@android:color/transparent"
+        android:scrollbars="none"
+        ptr:ptrAnimationStyle="flip"
+        ptr:ptrHeaderTextColor="@color/pullToRefreshTextColor"
+        ptr:ptrRefreshableViewBackground="@color/pullToRefreshBackColor" >
+    </com.handmark.pulltorefresh.library.PullToRefreshListView>
+
+    <ViewStub
+        android:id="@+id/vsNoMessageNearBy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout="@layout/no_message" />
+
+</LinearLayout>
