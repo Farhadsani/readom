@@ -148,6 +148,8 @@ function CityViewController:viewWillUnload()
     end
     print("function CityViewController:viewWillUnload() remove file ..", mapPath)
     display.removeSpriteFrameByImageName(mapPath)
+
+    display.removeSpriteFrameByImageName("ui/map/taiyuan/image/taiyuanmap.jpg")
 end
 
 function CityViewController:_initScenarioControllers()

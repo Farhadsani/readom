@@ -162,7 +162,10 @@
 
 //服务器接口地址
 #define SHITOUREN_DOMAIN                        @"shitouren.com"
-#define k_EXTERN_ENDPOINT_SERVER_URL            @"http://citystate.shitouren.com"    //测试地址
+#define k_EXTERN_ENDPOINT_SERVER_URL            @"http://taiyuantest.shitouren.com"    //测试地址
+//#define k_EXTERN_ENDPOINT_SERVER_URL            @"http://test.shitouren.com"    //测试地址
+
+//#define k_EXTERN_ENDPOINT_SERVER_URL            @"http://www.shitouren.com"     //发布地址
 
 /*---------------------------------------------------------------------------*/
 /******* 接口（运行参数） ******/
@@ -243,6 +246,8 @@
 #define k_api_user_follow                @"/api/user/follow"        //关注用户
 #define k_api_user_unfollow              @"/api/user/unfollow"      //取消关注用户
 #define k_api_user_getbuddycount         @"/api/user/getbuddycount" //获取用户关注粉丝统计
+#define k_api_user_feedreport            @"/api/user/feedreport"        // 投诉
+
 
 
 

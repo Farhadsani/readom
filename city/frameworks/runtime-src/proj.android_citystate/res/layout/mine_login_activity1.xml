@@ -141,8 +141,6 @@
 			          	android:text="通过手机号登陆"
 		                android:textColor="#fddc43"
 		                android:textSize="20sp" />
-
-                    
                 </RelativeLayout>
             </TableRow>
             

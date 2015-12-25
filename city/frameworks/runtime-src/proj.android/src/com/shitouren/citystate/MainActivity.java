@@ -1,11 +1,9 @@
 package com.shitouren.citystate;
 
-import org.cocos2dx.lua.AppActivity;
-
-import com.shitouren.qmap.R;
 import com.shitouren.utils.Debuger;
 import com.shitouren.utils.Utils;
 
+import android.app.Activity;
 import android.app.TabActivity;
 import android.content.Intent;
 import android.graphics.Color;
@@ -27,6 +25,9 @@ import android.widget.PopupWindow;
 import android.widget.TabHost;
 import android.widget.TextView;
 
+import org.cocos2dx.lua.AppActivity;
+
+import com.shitouren.qmap.R;
 @SuppressWarnings("deprecation")
 public class MainActivity extends TabActivity implements OnClickListener {
 	private static final String TAG = "MainActivity";
@@ -85,6 +86,13 @@ public class MainActivity extends TabActivity implements OnClickListener {
 		Debuger.log_w("MainActivity","onDestroy");
 	}
 
+	public void replaceContentView(String id, Intent newIntent) {
+		View view = getLocalActivityManager().startActivity(id,
+				newIntent)
+				.getDecorView();
+		this.setContentView(view);
+	}
+	
 	private void prepareAnim() {
 		left_in = AnimationUtils.loadAnimation(this, R.anim.left_in);
 		left_out = AnimationUtils.loadAnimation(this, R.anim.left_out);
@@ -119,8 +127,6 @@ public class MainActivity extends TabActivity implements OnClickListener {
 
 	private void prepareIntent() {
 
-//		indexIntent = new Intent(this, IndexActivity.class);
-
 		indexIntent = new Intent(this, AppActivity.class);
 
 		squareIntent = new Intent(this, SquareActivity.class);
@@ -129,8 +135,9 @@ public class MainActivity extends TabActivity implements OnClickListener {
 
 		messageIntent = new Intent(this, MessageActivity.class);
 
-		mineIntent = new Intent(this, MineActivity.class);
-
+		mineIntent = new Intent(this, AppActivity.class);
+//		mineIntent = new Intent(this,
+//				IndexActivity.class);
 	}
 
 	private void setupIntent() {
@@ -145,7 +152,7 @@ public class MainActivity extends TabActivity implements OnClickListener {
 
 		mTabHost.addTab(buildTabSpec(TAB_TAG_MESSAGE, R.string.message, R.drawable.message_selector, messageIntent));
 
-		mTabHost.addTab(buildTabSpec(TAB_TAB_MINE, R.string.mine, R.drawable.mine_selector, mineIntent));
+		mTabHost.addTab(buildTabSpec(TAB_TAG_INDEX, R.string.mine, R.drawable.mine_selector, mineIntent));
 	}
 
 	private TabHost.TabSpec buildTabSpec(String tag, int resLabel, int resIcon, final Intent content) {
@@ -185,18 +192,22 @@ public class MainActivity extends TabActivity implements OnClickListener {
 			o = 2;
 		}
 
-		if (0 == o)
-			mTabHost.getCurrentView().startAnimation(left_out);
-		else if (1 == o)
-			mTabHost.getCurrentView().startAnimation(right_out);
-		else
+//		if (0 == o)
+//			mTabHost.getCurrentView().startAnimation(left_out);
+//		else if (1 == o)
+//			mTabHost.getCurrentView().startAnimation(right_out);
+//		else
+//			mTabHost.getCurrentView().startAnimation(up_out);
+		if(2 == o){
 			mTabHost.getCurrentView().startAnimation(up_out);
+		}
 		switch (checkedId) {
 
 		case R.id.layoutIndex:
 			mTabHost.setCurrentTabByTag(TAB_TAG_INDEX);
 			imgIndex.setImageResource(R.drawable.index_selected);
 			tvIndex.setTextColor(COLOR2);
+			AppActivity.printMsg("citymap");
 
 			break;
 
@@ -221,20 +232,27 @@ public class MainActivity extends TabActivity implements OnClickListener {
 
 			break;
 		case R.id.layoutMine:
-			mTabHost.setCurrentTabByTag(TAB_TAB_MINE);
+			mTabHost.setCurrentTabByTag(TAB_TAG_INDEX);
 			imgMine.setImageResource(R.drawable.mine_selected);
 			tvMine.setTextColor(COLOR2);
 
+			AppActivity.printMsg("userhome");
 			break;
 		default:
 			break;
 		}
 
-		if (0 == o)
-			mTabHost.getCurrentView().startAnimation(left_in);
-		else if (1 == o)
-			mTabHost.getCurrentView().startAnimation(right_in);
-		else {
+//		if (0 == o)
+//			mTabHost.getCurrentView().startAnimation(left_in);
+//		else if (1 == o)
+//			mTabHost.getCurrentView().startAnimation(right_in);
+//		else {
+//			mainBottom.startAnimation(bottom_up_in);
+//			mTabHost.getCurrentView().startAnimation(up_in);
+//			mainBottom.setVisibility(View.GONE);
+//		}
+		if(2 == o)
+		{
 			mainBottom.startAnimation(bottom_up_in);
 			mTabHost.getCurrentView().startAnimation(up_in);
 			mainBottom.setVisibility(View.GONE);
@@ -265,7 +283,7 @@ public class MainActivity extends TabActivity implements OnClickListener {
 
 			break;
 		case R.id.layoutPublish:
-			
+			mTabHost.setCurrentTabByTag(TAB_TAG_PUBLISH);
 			break;
 
 		case R.id.layoutMessage:
@@ -275,7 +293,7 @@ public class MainActivity extends TabActivity implements OnClickListener {
 
 			break;
 		case R.id.layoutMine:
-			mTabHost.setCurrentTabByTag(TAB_TAB_MINE);
+			mTabHost.setCurrentTabByTag(TAB_TAG_INDEX);
 			imgMine.setImageResource(R.drawable.mine_selected);
 			tvMine.setTextColor(COLOR2);
 

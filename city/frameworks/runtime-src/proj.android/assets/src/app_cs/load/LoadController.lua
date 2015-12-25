@@ -44,6 +44,8 @@ function LoadController:viewDidLoad()
             path = "res/ui/" .. mapPath
         end
 
+        print(path)
+
         self.view:setPercent( 98 )
         display.addImageAsync(path, function ( ... )
             self.view:setPercent( 99 )

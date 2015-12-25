@@ -4,6 +4,8 @@ import java.io.UnsupportedEncodingException;
 import java.security.InvalidKeyException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.UUID;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -11,6 +13,7 @@ import java.util.regex.Pattern;
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
 
+import com.shitouren.citystate.R;
 import com.shitouren.entity.Contacts;
 
 import android.app.Activity;
@@ -19,16 +22,31 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.Environment;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup.LayoutParams;
+import android.view.ViewStub;
+import android.view.WindowManager;
+import android.view.animation.AnimationUtils;
+import android.widget.LinearLayout;
+import android.widget.PopupWindow;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class Utils {
 	private static String verName = "";
+	private static int screenWidth = 0;
+	private static int screenHeight = 0;
 
 	public static String getSSID(Context context) {
 
@@ -46,18 +64,25 @@ public class Utils {
 		return uniqueId;
 	}
 
+	// 程序第一次获取宽高后缓存在全局参数里，不用每次使用都要计算屏幕宽高，节省cpu，内存和电量
 	public static int[] windowXY(Context context) {
-		DisplayMetrics displayMetrics = new DisplayMetrics();
-		((Activity) context).getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
-		int width = displayMetrics.widthPixels;
-		int height = displayMetrics.heightPixels;
 		int[] wh = new int[2];
-		wh[0] = width;
-		wh[1] = height;
+		if (screenWidth != 0 && screenHeight != 0) {
+			wh[0] = screenWidth;
+			wh[1] = screenHeight;
+		} else {
+			DisplayMetrics displayMetrics = new DisplayMetrics();
+			((Activity) context).getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+			screenWidth = displayMetrics.widthPixels;
+			screenHeight = displayMetrics.heightPixels;
+			wh[0] = screenWidth;
+			wh[1] = screenHeight;
+		}
 		return wh;
 	}
 
 	// 判断是否有网络连接
+	// 频繁联网耗电增加，没网时候不做联网操作，省电
 	public static boolean isNetworkAvailable(Context context) {
 		if (context != null) {
 			ConnectivityManager connectivity = (ConnectivityManager) context
@@ -156,9 +181,10 @@ public class Utils {
 		}
 	}
 
-	public static String getMD5Str(String s){
+	public static String getMD5Str(String s) {
 		return getHmacMd5Str(s, Contacts.MD5_KEY);
 	}
+
 	// 衍生版本的MD5
 	public static String getHmacMd5Str(String s, String keyString) {
 		String sEncodedString = null;
@@ -190,8 +216,276 @@ public class Utils {
 
 		Pattern p = Pattern.compile("^((13[0-9])|(15[^4,\\D])|(18[0,5-9]))\\d{8}$");
 		Matcher m = p.matcher(mobiles);
-		
+
 		return m.matches();
 
+	}
+
+	public static String getTime() {
+		SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+		String time = "";
+		try {
+			java.util.Date currentdate = new java.util.Date();// 当前时间
+
+			Timestamp now = new Timestamp(System.currentTimeMillis());// 获取系统当前时间
+
+			String str = sdf.format(currentdate);
+
+			time = "今天 " + str;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return time;
+	}
+	static LinearLayout ll = null;
+	public static void showNoMessage(View view, String info) {
+		if (ll == null) {
+			ViewStub noDataViewStub = (ViewStub) view.findViewById(R.id.vsNoMessageAttention);
+			noDataViewStub.inflate();
+			ll = (LinearLayout) view.findViewById(R.id.llNoMessage);
+//			ll.setPadding(ll.getPaddingLeft(), ll.getPaddingTop() + 200, ll.getPaddingRight(), ll.getPaddingBottom());
+			TextView tv = (TextView) view.findViewById(R.id.tvNoMessage);
+			tv.setText(info);
+		} else {
+			ll.setVisibility(View.VISIBLE);
+		}
+	}
+
+	static PopupWindow popupWindow;
+	// 个数为4或5的时候的布局
+	static View viewShare;
+	static LinearLayout llShare;
+	static LinearLayout llAttention;
+	// 个数为3时的布局
+	static View viewShareApp;
+	static LinearLayout llShareApp;
+
+	public static void pop_Input(final Context context, int count) {
+		View view = View.inflate(context, R.layout.share, null);
+		ViewStub vsContent = (ViewStub) view.findViewById(R.id.vsShareContent);
+		ViewStub vsApp = (ViewStub) view.findViewById(R.id.vsShareApp);
+		switch (count) {
+		case 3:
+			vsApp.inflate();
+			viewShareApp = view.findViewById(R.id.viewShareApp);
+			llShareApp = (LinearLayout) view.findViewById(R.id.llShareApp);
+
+			viewShareApp.setOnClickListener(new OnClickListener() {
+
+				@Override
+				public void onClick(View v) {
+					popupWindow.dismiss();
+				}
+			});
+			view.findViewById(R.id.friendShareApp).setOnClickListener(new OnClickListener() {
+
+				@Override
+				public void onClick(View v) {
+					popupWindow.dismiss();
+				}
+			});
+			view.findViewById(R.id.weixinShareApp).setOnClickListener(new OnClickListener() {
+
+				@Override
+				public void onClick(View v) {
+					popupWindow.dismiss();
+				}
+			});
+			view.findViewById(R.id.sinaShareApp).setOnClickListener(new OnClickListener() {
+
+				@Override
+				public void onClick(View v) {
+					popupWindow.dismiss();
+				}
+			});
+			view.findViewById(R.id.btnCancelShareApp).setOnClickListener(new OnClickListener() {
+
+				@Override
+				public void onClick(View v) {
+					popupWindow.dismiss();
+				}
+			});
+			break;
+		case 4:
+			vsContent.inflate();
+			viewShare = view.findViewById(R.id.viewShare);
+			llShare = (LinearLayout) view.findViewById(R.id.llShare);
+			llAttention = (LinearLayout) view.findViewById(R.id.llAttention);
+
+			llAttention.setVisibility(View.GONE);
+
+			viewShare.setOnClickListener(new OnClickListener() {
+
+				@Override
+				public void onClick(View v) {
+					popupWindow.dismiss();
+				}
+			});
+
+			view.findViewById(R.id.ivWeixin).setOnClickListener(new OnClickListener() {
+
+				@Override
+				public void onClick(View v) {
+					Debuger.showToastShort(context, "微信");
+					popupWindow.dismiss();
+				}
+			});
+			view.findViewById(R.id.ivFriend).setOnClickListener(new OnClickListener() {
+
+				@Override
+				public void onClick(View v) {
+					Debuger.showToastShort(context, "微信朋友圈");
+					popupWindow.dismiss();
+
+				}
+			});
+			view.findViewById(R.id.ivSina).setOnClickListener(new OnClickListener() {
+
+				@Override
+				public void onClick(View v) {
+					Debuger.showToastShort(context, "新浪微博");
+					popupWindow.dismiss();
+				}
+			});
+			view.findViewById(R.id.ivQzone).setOnClickListener(new OnClickListener() {
+
+				@Override
+				public void onClick(View v) {
+					Debuger.showToastShort(context, "QQ空间");
+					popupWindow.dismiss();
+				}
+			});
+			break;
+		case 5:
+			vsContent.inflate();
+			viewShare = view.findViewById(R.id.viewShare);
+			llShare = (LinearLayout) view.findViewById(R.id.llShare);
+			llAttention = (LinearLayout) view.findViewById(R.id.llAttention);
+
+			viewShare.setOnClickListener(new OnClickListener() {
+
+				@Override
+				public void onClick(View v) {
+					popupWindow.dismiss();
+				}
+			});
+
+			view.findViewById(R.id.ivWeixin).setOnClickListener(new OnClickListener() {
+
+				@Override
+				public void onClick(View v) {
+					Debuger.showToastShort(context, "微信");
+					popupWindow.dismiss();
+				}
+			});
+			view.findViewById(R.id.ivFriend).setOnClickListener(new OnClickListener() {
+
+				@Override
+				public void onClick(View v) {
+					Debuger.showToastShort(context, "微信朋友圈");
+					popupWindow.dismiss();
+
+				}
+			});
+			view.findViewById(R.id.ivSina).setOnClickListener(new OnClickListener() {
+
+				@Override
+				public void onClick(View v) {
+					Debuger.showToastShort(context, "新浪微博");
+					popupWindow.dismiss();
+				}
+			});
+			view.findViewById(R.id.ivQzone).setOnClickListener(new OnClickListener() {
+
+				@Override
+				public void onClick(View v) {
+					Debuger.showToastShort(context, "QQ空间");
+					popupWindow.dismiss();
+				}
+			});
+			view.findViewById(R.id.ivAttention).setOnClickListener(new OnClickListener() {
+
+				@Override
+				public void onClick(View v) {
+					Debuger.showToastShort(context, "添加关注");
+					popupWindow.dismiss();
+				}
+			});
+			break;
+		}
+
+		if (popupWindow != null && popupWindow.isShowing()) {
+			return;
+		} else if (popupWindow != null && !popupWindow.isShowing()) {
+			// viewShare.startAnimation(AnimationUtils.loadAnimation(context,
+			// R.anim.alpha_in));
+			// llShare.startAnimation(AnimationUtils.loadAnimation(context,
+			// R.anim.pop_up));
+			popupWindow.showAtLocation(view, Gravity.BOTTOM, 0, 0);
+		} else {
+			popupWindow = new PopupWindow(view, LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+			popupWindow.setFocusable(true);
+			popupWindow.setOutsideTouchable(true);
+			popupWindow.setBackgroundDrawable(new BitmapDrawable());
+			// viewShare.startAnimation(AnimationUtils.loadAnimation(context,
+			// R.anim.alpha_in));
+			// llShare.startAnimation(AnimationUtils.loadAnimation(context,
+			// R.anim.pop_up));
+			// popupWindow.setAnimationStyle(R.style.popWindowAnim);
+			popupWindow.showAtLocation(view, Gravity.BOTTOM, 0, 0);
+			popupWindow.update();
+		}
+
+	}
+	
+	
+
+	public static void loginPop(Context context) {
+		View view = View.inflate(context, R.layout.login_need, null);
+		LinearLayout all = (LinearLayout) view.findViewById(R.id.llAll);
+		LinearLayout cancel = (LinearLayout) view.findViewById(R.id.llCancel);
+		LinearLayout login = (LinearLayout) view.findViewById(R.id.llLogin);
+		all.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				popupWindow.dismiss();
+			}
+		});
+		cancel.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				popupWindow.dismiss();
+			}
+		});
+		login.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				popupWindow.dismiss();
+			}
+		});
+		if (popupWindow != null && popupWindow.isShowing()) {
+			return;
+		} else if (popupWindow != null && !popupWindow.isShowing()) {
+			popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
+		} else {
+			popupWindow = new PopupWindow(view, LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+			popupWindow.setFocusable(true);
+			popupWindow.setOutsideTouchable(true);
+			popupWindow.setBackgroundDrawable(new BitmapDrawable());
+			popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
+			popupWindow.update();
+		}
+	}
+
+	public static boolean isImage(String fileName) {
+		return fileName.endsWith(".jpg") || fileName.endsWith(".jpeg") || fileName.endsWith(".png");
+	}
+
+	public static boolean isSDcardOK() {
+		return Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED);
 	}
 }

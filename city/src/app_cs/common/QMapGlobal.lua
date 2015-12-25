@@ -17,6 +17,9 @@ QMapGlobal.cityTColor = "D4B762FF"
 QMapGlobal.cityBColor = "D4B762FF"
 
 -- local url = "http://test.shitouren.com/api/user/signin"
+-- local url = "http://www.shitouren.com/" .. agreementName    --正式服务器
+-- local url = "http://test.shitouren.com/" .. agreementName   --测试服务器
+-- local url = "http://taiyuantest.shitouren.com/" .. agreementName   --太原测试服务器
 
 -- QMapGlobal.userManager = qm.UserManager:getInstance()
 

@@ -3,9 +3,11 @@
     package="com.shitouren.citystate"
     android:versionCode="1"
     android:versionName="1.0.0" >
+
     <uses-sdk
-        android:minSdkVersion="8"
-        android:targetSdkVersion="19" />
+        android:minSdkVersion="19"
+        />
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -17,12 +19,11 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
-        android:allowBackup="true"
         android:name="com.shitouren.app.GlobleApplication"
+        android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@android:style/Theme.NoTitleBar" >
-
         <activity
             android:name="com.shitouren.citystate.MainActivity"
             android:screenOrientation="portrait" >
@@ -32,24 +33,32 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.shitouren.citystate.PubishActivity" ></activity>
-        <activity android:name="com.shitouren.citystate.SquareActivity"></activity>
-        <activity android:name="com.shitouren.citystate.MessageActivity"></activity>
-        <activity android:name="com.shitouren.city.mine.MineActivity">
+        <activity android:name="com.shitouren.citystate.PubishActivity" />
+        <activity android:name="com.shitouren.citystate.SquareActivity" />
+        <activity android:name="com.shitouren.citystate.MessageActivity" />
+        <activity android:name="com.shitouren.citystate.MineActivity" />
+        <activity android:name="com.shitouren.citystate.IndexActivity" />
+        <activity
+            android:name="com.shitouren.citystate.LoginActivity"
+            android:theme="@style/LoginAnimActivity" />
+        <activity
+            android:name="com.shitouren.citystate.LoginPhoneActivity"
+            android:theme="@style/LoginAnimActivity" />
+        <activity android:name="com.shitouren.citystate.BindPhoneActivity" />
+        <activity android:name="com.shitouren.citystate.ImageDetailActivity" />
+        <activity android:name="com.shitouren.citystate.TestActivity" />
+        <activity android:name="com.shitouren.photo.PhotoWallActivity" />
+        <activity android:name="com.shitouren.photo.PhotoAlbumActivity" />
+        <activity android:name="com.shitouren.citystate.StatementActivity" />
+        <activity android:name="com.shitouren.citystate.NearbyActivity" />
+        <activity android:name="com.shitouren.citystate.IndexSocialActivity" />
+        <activity android:name="com.shitouren.city.mine.MoreActivity" />
+        <activity android:name="com.shitouren.city.mine.CommentActivity" />
+        <!-- 微信登录 -->
+        <activity
+            android:name=".wxapi.WXEntryActivity"
+            android:exported="true" >
         </activity>
-        <activity android:name="com.shitouren.citystate.LoginActivity"
-            	android:theme="@style/LoginAnimActivity"></activity>
-        <activity android:name="com.shitouren.citystate.LoginPhoneActivity"
-            	android:theme="@style/LoginAnimActivity"></activity>
-        <activity android:name="com.shitouren.city.mine.WithCityActivity"
-            	android:theme="@style/LoginAnimActivity"></activity>
-        <activity android:name="com.shitouren.city.mine.WithGoodFriendActivity"
-            	android:theme="@style/LoginAnimActivity"></activity>
-        <activity android:name="com.shitouren.city.mine.PersonalDynamicActivity"
-            	android:theme="@style/LoginAnimActivity"></activity>
-        <activity android:name="com.shitouren.city.mine.PersonalEditorActivity"
-            	android:theme="@style/LoginAnimActivity"></activity>
-        <activity android:name="com.shitouren.citystate.IndexActivity"></activity>
     </application>
 
 </manifest>

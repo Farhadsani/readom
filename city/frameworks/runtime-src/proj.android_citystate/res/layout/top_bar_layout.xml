@@ -1,63 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="50dp"
-    
-    android:background="#ffd731"
-    android:orientation="horizontal" >
-    <LinearLayout 
-        android:layout_width="0dp"
-        android:layout_weight="1"
-    	android:layout_height="match_parent"
-        android:gravity="center">
-        
-    <ImageView 
-        android:id="@+id/ivTopbarLeft" 
+    android:layout_height="@dimen/topBarLayoutHeight"
+    android:background="@color/topBarBackground"
+     >
+
+    <LinearLayout
+        android:id="@+id/llTopbarLeft"
         android:layout_width="wrap_content"
-    	android:layout_height="wrap_content"
-    	android:src="@drawable/fanhuiblack"
-    	android:gravity="center"
-        />
+        android:layout_height="match_parent"
+        android:gravity="center" >
+
+        <ImageView
+            android:id="@+id/ivTopbarLeft"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:gravity="center"
+            android:src="@drawable/xiangyoubaise" />
     </LinearLayout>
-    <LinearLayout 
-        android:layout_width="0dp"
-        android:layout_weight="5"
-    	android:layout_height="match_parent"
-        android:gravity="center"
-        >
-        
-	      <TextView
-	        android:id="@+id/tvTopbarMiddle" 
-	        android:layout_width="wrap_content"
-	    	android:layout_height="wrap_content"
-	    	android:gravity="center"
-	    	android:textColor="#444444"
-	    	android:textSize="20dp"
-	        android:text="关于"/>
-    </LinearLayout>
-    
-    <RelativeLayout 
-        android:layout_width="0dp"
-        android:layout_weight="1"
-    	android:layout_height="match_parent"
-    	android:gravity="center_vertical"
-        >
-        <ImageView 
-	        android:id="@+id/ivTopbarRight" 
-	        android:layout_width="wrap_content"
-	    	android:layout_height="wrap_content"
-	    	android:src="@drawable/xiangyoubaise"
-	    	android:layout_marginRight="3dp"
-	    	android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/tvTopbarMiddle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="关于"
+        android:layout_centerInParent="true"
+        android:textColor="#444444"
+        android:textSize="20dp" />
+
+    <RelativeLayout
+        android:id="@+id/rlTopbarRight"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+         >
+
+        <ImageView
+            android:id="@+id/ivTopbarRight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:paddingRight="10dp"
+            android:paddingLeft="10dp"
+            android:visibility="gone"
+            android:src="@drawable/xiangyoubaise"
+            />
+
         <TextView
-	        android:id="@+id/tvTopbarRight" 
-	        android:layout_width="wrap_content"
-	    	android:layout_height="wrap_content"
-	    	android:gravity="center"
-	    	android:textColor="#444444"
-	    	android:textSize="15dp"
-	    	android:visibility="gone"
-	        android:text="关于"/>
+            android:id="@+id/tvTopbarRight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="关于"
+            android:textColor="#444444"
+            android:textSize="15dp"
+            android:paddingRight="10dp"
+            android:paddingLeft="10dp"
+            android:visibility="gone"
+           />
     </RelativeLayout>
 
-</LinearLayout>
+</RelativeLayout>

@@ -1,13 +1,20 @@
 package com.shitouren.adapter;
 
+import java.io.Serializable;
 import java.util.List;
 
+import com.shitouren.citystate.ImageDetailActivity;
 import com.shitouren.qmap.R;
+import com.shitouren.utils.Debuger;
 import com.shitouren.utils.Utils;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
@@ -38,6 +45,18 @@ public class ImageAdapter extends BaseAdapter {
 		}
 		
 		viewHolder.iv.setScaleType(ImageView.ScaleType.FIT_XY);
+		
+		
+//		convertView.setOnClickListener(new OnClickListener() {
+//			
+//			@Override
+//			public void onClick(View v) {
+//				Debuger.log_w("xyz:", "convertView.setOnClickListener");
+//				Intent intent = new Intent(context,ImageDetailActivity.class);
+//				intent.putExtra("links", (Serializable)views);
+//				context.startActivity(intent);
+//			}
+//		});
 		
 		if(views.size()>0){
 			bitmap.display(viewHolder.iv, views.get(position),Utils.windowXY(context)[0],Utils.dip2px(context, 220));

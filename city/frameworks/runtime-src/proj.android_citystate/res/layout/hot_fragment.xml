@@ -3,7 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#f2f2f2"
-    android:gravity="center"
     android:orientation="vertical" >
 
     <com.handmark.pulltorefresh.library.PullToRefreshListView
@@ -11,27 +10,29 @@
         android:id="@+id/listviewHotFragment"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:background="#ffffff"
+        android:background="@color/pullToRefreshBackColor"
         android:cacheColorHint="#00000000"
         android:clickable="true"
         android:divider="@null"
         android:focusable="true"
         android:listSelector="@android:color/transparent"
         android:scrollbars="none"
-        ptr:ptrAnimationStyle="flip" >
+        ptr:ptrAnimationStyle="flip"
+        ptr:ptrHeaderTextColor="@color/pullToRefreshTextColor"
+        ptr:ptrRefreshableViewBackground="@color/pullToRefreshBackColor" >
     </com.handmark.pulltorefresh.library.PullToRefreshListView>
+
+    <ViewStub
+        android:id="@+id/vsNoMessageHot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout="@layout/no_message" />
 
     <include
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        layout="@layout/progressbar_circle" />
-
-    <ViewStub
-        android:id="@+id/vsNoMessage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:layout="@layout/no_message" />
+        layout="@layout/progressbar" />
 
 </RelativeLayout>

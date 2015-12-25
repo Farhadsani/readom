@@ -6,14 +6,13 @@ import java.util.List;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
+import com.shitouren.qmap.R;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.shitouren.app.AppManager;
 import com.shitouren.bean.WXToken;
 import com.shitouren.citystate.LoginActivity;
 import com.shitouren.entity.Contacts;
-import com.shitouren.qmap.R;
 import com.shitouren.utils.ActivityUtils;
 import com.shitouren.utils.Debuger;
 import com.shitouren.utils.HttpParamsUtil;

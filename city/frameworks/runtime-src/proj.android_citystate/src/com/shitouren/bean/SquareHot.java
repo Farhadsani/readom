@@ -17,7 +17,17 @@ public class SquareHot {
 	private Integer commented;
 	private Integer commentscount;
 	private boolean isLoad;
+	private boolean isZan;
 	
+	
+	public boolean isZan() {
+		return isZan;
+	}
+
+	public void setZan(boolean isZan) {
+		this.isZan = isZan;
+	}
+
 	public SquareHot(boolean isLoad) {
 		this.isLoad = isLoad;
 	}

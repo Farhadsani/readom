@@ -24,8 +24,8 @@
         android:layout_height="wrap_content"
         android:src="@drawable/ic_launcher"
         />
-
-    <TextView
+    
+     <TextView
         android:id="@+id/ibWithChengBang"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -88,6 +88,5 @@
         android:clickable="true"
         android:text="喊话"
         android:textSize="20dp" />
-
 
 </LinearLayout>

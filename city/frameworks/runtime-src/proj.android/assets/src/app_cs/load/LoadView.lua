@@ -14,16 +14,14 @@ function LoadView:ctor(param)
     print("function LoadView:ctor(param)")
     self.rootNode = cc.uiloader:load("ui/LoadLayer.csb")
     self:addChild(self.rootNode, 1)
-print("function LoadView:ctor(param)1111111111111111")
     self.pnlBackGround = self.rootNode:getChildByName("pnlBackGround") 
-print("function LoadView:ctor(param)2222222222222222222222")
     self.sp1 = self.pnlBackGround:getChildByName("sp1")
     self.sp2 = self.pnlBackGround:getChildByName("sp2")
     self.sp3 = self.pnlBackGround:getChildByName("sp3")
     local pnlLoading = self.pnlBackGround:getChildByName("pnlLoading")
     self.loadingbar = pnlLoading:getChildByName("loadingBar")
     self.txtPercent = pnlLoading:getChildByName("txtPercent")
-print("function LoadView:ctor(param)33333333333333333333333")
+
     self.loadingbar:setVisible(true)
     self.loadingbar:setPercent(0.0)
     -- print("11111111111111111111")
@@ -34,10 +32,10 @@ print("function LoadView:ctor(param)33333333333333333333333")
     self.sp3:setVisible(false)
 
     pnlLoading:setPosition(cc.p(display.width/2, display.height/2 -220 + 118.5))
-print("function LoadView:ctor(param)4444444444444444444444")
+
     local action = cc.CSLoader:createTimeline("ui/LoadAni.csb")   
 	self.sp1:runAction(action)   
-print("function LoadView:ctor(param)55555555555555555555555")	    
+   
 	-- //播放动画  
 	-- //从第0帧到20帧循环播放  
 	action:gotoFrameAndPlay(0, 50, true)

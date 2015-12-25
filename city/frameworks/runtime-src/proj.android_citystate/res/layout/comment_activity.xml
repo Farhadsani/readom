@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/topBarBackground"
+    android:clipToPadding="true"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical" >
+
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/topBarLayoutHeight"
+        layout="@layout/top_bar_layout" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/mainBackground" >
+
+        <include
+            android:id="@+id/inComment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            layout="@layout/comment_content" />
+
+        <com.handmark.pulltorefresh.library.PullToRefreshListView
+            xmlns:ptr="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/listviewComment"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_above="@id/inComment"
+            android:background="@color/pullToRefreshBackColor"
+            android:cacheColorHint="#00000000"
+            android:clickable="true"
+            android:divider="@null"
+            android:focusable="true"
+            android:listSelector="@android:color/transparent"
+            android:scrollbars="none"
+            ptr:ptrAnimationStyle="flip"
+            ptr:ptrHeaderTextColor="@color/pullToRefreshTextColor"
+            ptr:ptrRefreshableViewBackground="@color/pullToRefreshBackColor" >
+        </com.handmark.pulltorefresh.library.PullToRefreshListView>
+
+        <include
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            layout="@layout/progressbar" />
+
+    </RelativeLayout>
+
+</LinearLayout>
