@@ -162,10 +162,7 @@
 
 //服务器接口地址
 #define SHITOUREN_DOMAIN                        @"shitouren.com"
-#define k_EXTERN_ENDPOINT_SERVER_URL            @"http://taiyuantest.shitouren.com"    //测试地址
-//#define k_EXTERN_ENDPOINT_SERVER_URL            @"http://test.shitouren.com"    //测试地址
-
-//#define k_EXTERN_ENDPOINT_SERVER_URL            @"http://www.shitouren.com"     //发布地址
+#define k_EXTERN_ENDPOINT_SERVER_URL            @"http://citystate.shitouren.com"    //测试地址
 
 /*---------------------------------------------------------------------------*/
 /******* 接口（运行参数） ******/
